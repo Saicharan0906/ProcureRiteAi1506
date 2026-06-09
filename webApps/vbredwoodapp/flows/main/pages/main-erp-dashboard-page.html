@@ -21,26 +21,9 @@
         type="bar"
         orientation="vertical"
         animation-on-display="auto"
+        :series="[[ $variables.barChartSeries ]]"
+        :groups="[[ $variables.barChartGroups ]]"
         style="height: 100%;">
-        <oj-chart-group name="Capital"></oj-chart-group>
-        <oj-chart-group name="Operations"></oj-chart-group>
-        <oj-chart-group name="IT"></oj-chart-group>
-        <oj-chart-group name="R&amp;D"></oj-chart-group>
-        <oj-chart-group name="Compliance"></oj-chart-group>
-        <oj-chart-series name="Budget" color="#1B6ACB">
-          <oj-chart-item value="850"></oj-chart-item>
-          <oj-chart-item value="320"></oj-chart-item>
-          <oj-chart-item value="780"></oj-chart-item>
-          <oj-chart-item value="450"></oj-chart-item>
-          <oj-chart-item value="210"></oj-chart-item>
-        </oj-chart-series>
-        <oj-chart-series name="Actual" color="#00B399">
-          <oj-chart-item value="620"></oj-chart-item>
-          <oj-chart-item value="290"></oj-chart-item>
-          <oj-chart-item value="510"></oj-chart-item>
-          <oj-chart-item value="380"></oj-chart-item>
-          <oj-chart-item value="195"></oj-chart-item>
-        </oj-chart-series>
       </oj-chart>
     </oj-sp-dashboard-panel>
 
@@ -49,13 +32,8 @@
       <oj-chart
         type="pie"
         animation-on-display="auto"
+        :series="[[ $variables.pieChartSeries ]]"
         style="height: 100%;">
-        <oj-chart-series name="Status">
-          <oj-chart-item value="65" label="On Track" color="#00B399"></oj-chart-item>
-          <oj-chart-item value="28" label="At Risk" color="#F7A300"></oj-chart-item>
-          <oj-chart-item value="19" label="Delayed" color="#E22134"></oj-chart-item>
-          <oj-chart-item value="30" label="Completed" color="#1B6ACB"></oj-chart-item>
-        </oj-chart-series>
       </oj-chart>
     </oj-sp-dashboard-panel>
 
@@ -64,29 +42,9 @@
       <oj-chart
         type="line"
         animation-on-display="auto"
+        :series="[[ $variables.lineChartSeries ]]"
+        :groups="[[ $variables.lineChartGroups ]]"
         style="height: 100%;">
-        <oj-chart-group name="Jan"></oj-chart-group>
-        <oj-chart-group name="Feb"></oj-chart-group>
-        <oj-chart-group name="Mar"></oj-chart-group>
-        <oj-chart-group name="Apr"></oj-chart-group>
-        <oj-chart-group name="May"></oj-chart-group>
-        <oj-chart-group name="Jun"></oj-chart-group>
-        <oj-chart-series name="Total Spend" color="#1B6ACB">
-          <oj-chart-item value="280"></oj-chart-item>
-          <oj-chart-item value="350"></oj-chart-item>
-          <oj-chart-item value="420"></oj-chart-item>
-          <oj-chart-item value="390"></oj-chart-item>
-          <oj-chart-item value="510"></oj-chart-item>
-          <oj-chart-item value="480"></oj-chart-item>
-        </oj-chart-series>
-        <oj-chart-series name="Budget Limit" color="#E22134" line-style="dashed">
-          <oj-chart-item value="400"></oj-chart-item>
-          <oj-chart-item value="400"></oj-chart-item>
-          <oj-chart-item value="450"></oj-chart-item>
-          <oj-chart-item value="450"></oj-chart-item>
-          <oj-chart-item value="500"></oj-chart-item>
-          <oj-chart-item value="500"></oj-chart-item>
-        </oj-chart-series>
       </oj-chart>
     </oj-sp-dashboard-panel>
 

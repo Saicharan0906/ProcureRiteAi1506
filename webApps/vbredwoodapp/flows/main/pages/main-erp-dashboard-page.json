@@ -51,6 +51,59 @@
         "keyAttributes": "id",
         "data": "{{ $page.variables.kpisArray }}"
       }
+    },
+    "barChartGroups": {
+      "type": "any[]",
+      "defaultValue": ["Capital", "Operations", "IT", "R&D", "Compliance"]
+    },
+    "barChartSeries": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "name": "Budget",
+          "color": "#1B6ACB",
+          "items": [850, 320, 780, 450, 210]
+        },
+        {
+          "name": "Actual",
+          "color": "#00B399",
+          "items": [620, 290, 510, 380, 195]
+        }
+      ]
+    },
+    "pieChartSeries": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "name": "Status",
+          "items": [
+            { "value": 65, "label": "On Track",  "color": "#00B399" },
+            { "value": 28, "label": "At Risk",   "color": "#F7A300" },
+            { "value": 19, "label": "Delayed",   "color": "#E22134" },
+            { "value": 30, "label": "Completed", "color": "#1B6ACB" }
+          ]
+        }
+      ]
+    },
+    "lineChartGroups": {
+      "type": "any[]",
+      "defaultValue": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+    },
+    "lineChartSeries": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "name": "Total Spend",
+          "color": "#1B6ACB",
+          "items": [280, 350, 420, 390, 510, 480]
+        },
+        {
+          "name": "Budget Limit",
+          "color": "#E22134",
+          "lineStyle": "dashed",
+          "items": [400, 400, 450, 450, 500, 500]
+        }
+      ]
     }
   },
   "metadata": {},
@@ -80,15 +133,6 @@
         "path": "oj-sp/dashboard-panel/loader"
       },
       "oj-chart": {
-        "path": "ojs/ojchart"
-      },
-      "oj-chart-series": {
-        "path": "ojs/ojchart"
-      },
-      "oj-chart-group": {
-        "path": "ojs/ojchart"
-      },
-      "oj-chart-item": {
         "path": "ojs/ojchart"
       }
     }
