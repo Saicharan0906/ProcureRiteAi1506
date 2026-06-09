@@ -2,7 +2,7 @@
 
   "id": "main",
   "description": "Flow main",
-  "defaultPage": "main-finance",
+  "defaultPage": "main-erp-dashboard",
   "chains": {},
   "services": {},
   "types": {},
