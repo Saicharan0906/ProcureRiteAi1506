@@ -1,0 +1,14 @@
+{
+    "vbcs.dt.version": "20250610-26.04.0",
+    "dependencies": {
+        "upgrade": "none",
+        "paths": {
+            "jet": "https://static.oracle.com/cdn/jet/19.0.0-2604.7",
+            "telemetry": "https://static.oracle.com/cdn/trace/10.4.2",
+            "visualRuntime": "https://static.oracle.com/cdn/vb/2510.1.0"
+        }
+    },
+    "source.version": "2510",
+    "rootURL": "main",
+    "version": "0.1"
+}

@@ -1,0 +1,11 @@
+{
+  "component-dependencies": {
+    "oj-sp": {
+      "version": "2604.0.4",
+      "components": {
+        "messages-banner": "2604.0.4",
+        "messages-toast": "2604.0.4"
+      }
+    }
+  }
+}
