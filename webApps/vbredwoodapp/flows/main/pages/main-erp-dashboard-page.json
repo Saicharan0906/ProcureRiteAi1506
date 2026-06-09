@@ -20,30 +20,27 @@
         {
           "id": "totalProjects",
           "title": "Total Projects",
-          "value": "142",
-          "trendLabel": "+8 this quarter",
-          "trendIndicator": "upward"
+          "metric": "142",
+          "meta": "+8 this quarter"
         },
         {
           "id": "budgetUtilized",
           "title": "Budget Utilized",
-          "value": "$2.4M",
-          "trendLabel": "73% of total allocated",
-          "trendIndicator": "neutral"
+          "metric": "$2.4M",
+          "meta": "73% of total allocated"
         },
         {
           "id": "activeMilestones",
           "title": "Active Milestones",
-          "value": "36",
-          "trendLabel": "Due this month",
-          "trendIndicator": "neutral"
+          "metric": "36",
+          "meta": "Due this month"
         },
         {
           "id": "overdueTasks",
           "title": "Overdue Tasks",
-          "value": "12",
-          "trendLabel": "Needs attention",
-          "trendIndicator": "downward"
+          "metric": "12",
+          "meta": "Needs attention",
+          "badge": { "status": "danger", "text": "Urgent" }
         }
       ]
     },
@@ -63,7 +60,7 @@
     "vbEnter": {
       "chains": [
         {
-          "chainId": "vbEnterChain"
+          "chain": "vbEnterChain"
         }
       ]
     }

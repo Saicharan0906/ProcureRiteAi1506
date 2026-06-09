@@ -135,7 +135,7 @@
     "vbEnter": {
       "chains": [
         {
-          "chainId": "vbEnterChain"
+          "chain": "vbEnterChain"
         }
       ]
     },
