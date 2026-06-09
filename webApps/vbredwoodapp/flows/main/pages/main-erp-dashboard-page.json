@@ -1,0 +1,99 @@
+{
+  "title": "ERP Projects Dashboard",
+  "description": "Dashboard landing page for ERP project performance overview",
+  "variables": {
+    "pageTitle": {
+      "type": "string",
+      "defaultValue": "ERP Projects Dashboard"
+    },
+    "pageSubtitle": {
+      "type": "string",
+      "defaultValue": "Real-time overview of project performance and financials — FY 2025"
+    },
+    "selectedKpi": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "kpisArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "id": "totalProjects",
+          "title": "Total Projects",
+          "value": "142",
+          "trendLabel": "+8 this quarter",
+          "trendIndicator": "upward"
+        },
+        {
+          "id": "budgetUtilized",
+          "title": "Budget Utilized",
+          "value": "$2.4M",
+          "trendLabel": "73% of total allocated",
+          "trendIndicator": "neutral"
+        },
+        {
+          "id": "activeMilestones",
+          "title": "Active Milestones",
+          "value": "36",
+          "trendLabel": "Due this month",
+          "trendIndicator": "neutral"
+        },
+        {
+          "id": "overdueTasks",
+          "title": "Overdue Tasks",
+          "value": "12",
+          "trendLabel": "Needs attention",
+          "trendIndicator": "downward"
+        }
+      ]
+    },
+    "kpisADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "id",
+        "data": "{{ $page.variables.kpisArray }}"
+      }
+    }
+  },
+  "metadata": {},
+  "types": {},
+  "chains": {},
+  "eventListeners": {
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "vbEnterChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-sp-dashboard-landing-page": {
+        "path": "oj-sp/dashboard-landing-page/loader"
+      },
+      "oj-sp-scoreboard": {
+        "path": "oj-sp/scoreboard/loader"
+      },
+      "oj-sp-dashboard-grid": {
+        "path": "oj-sp/dashboard-grid/loader"
+      },
+      "oj-sp-dashboard-panel": {
+        "path": "oj-sp/dashboard-panel/loader"
+      },
+      "oj-chart": {
+        "path": "ojs/ojchart"
+      },
+      "oj-chart-series": {
+        "path": "ojs/ojchart"
+      },
+      "oj-chart-group": {
+        "path": "ojs/ojchart"
+      },
+      "oj-chart-item": {
+        "path": "ojs/ojchart"
+      }
+    }
+  }
+}

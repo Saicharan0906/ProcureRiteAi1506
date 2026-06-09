@@ -248,7 +248,12 @@
     }
   },
   "types": {},
-  "variables": {},
+  "variables": {
+    "activeNavTab": {
+      "type": "string",
+      "defaultValue": "main-erp-dashboard"
+    }
+  },
   "userConfig": {
     "type": "vb/DefaultSecurityProvider",
     "configuration": {},

@@ -6,5 +6,19 @@
   "chains": {},
   "services": {},
   "types": {},
-  "variables": {}
+  "variables": {},
+  "pages": {
+    "main-finance": {
+      "path": "pages/main-finance-page"
+    },
+    "main-start": {
+      "path": "pages/main-start-page"
+    },
+    "main-erp-dashboard": {
+      "path": "pages/main-erp-dashboard-page"
+    },
+    "main-projects-overview": {
+      "path": "pages/main-projects-overview-page"
+    }
+  }
 }

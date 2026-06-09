@@ -1,0 +1,94 @@
+<!-- Copyright (c) 2026, Oracle and/or its affiliates -->
+
+<oj-sp-general-overview-page
+  id="oj_projects_gop"
+  display-options.responsive-padding="on"
+  display-mode="mixed"
+  page-title="[[ $variables.pageTitle ]]"
+  page-subtitle="[[ $variables.pageSubtitle ]]"
+  primary-action.label="Export"
+  primary-action.display="on"
+  contextual-info="[[ $variables.contextualInfo ]]"
+  badge="[[ $variables.badge ]]"
+  on-sp-go-to-parent="[[ $listeners.goToParentChain ]]"
+  on-sp-primary-action="[[ $listeners.primaryActionChain ]]"
+  class="oj-sm-width-full"
+  style="--oj-sp-general-overview-page-max-width: 100% !important;">
+
+  <div class="oj-flex oj-sm-flex-direction-column oj-sm-width-full oj-sm-gap-4x"
+       slot="main" style="max-width: 100% !important;">
+
+    <!-- Projects Table -->
+    <oj-table
+      id="projectsTable"
+      data="[[ $variables.projectsADP ]]"
+      class="oj-sm-width-full"
+      horizontal-grid-visible="enabled"
+      vertical-grid-visible="disabled"
+      selection-mode='{"row": "none", "column": "none"}'
+      columns='[
+        {"headerText": "Project #",       "field": "projectNumber",   "headerClassName": "list-header-label", "width": 140, "resizable": "enabled"},
+        {"headerText": "Project Name",    "template": "nameTemplate", "headerClassName": "list-header-label", "resizable": "enabled", "weight": 4, "minWidth": 200},
+        {"headerText": "Project Manager", "field": "projectManager",  "headerClassName": "list-header-label", "width": 165, "resizable": "enabled"},
+        {"headerText": "Status",          "template": "statusTemplate","headerClassName": "list-header-label", "width": 125},
+        {"headerText": "Start Date",      "field": "startDate",       "headerClassName": "list-header-label", "width": 120},
+        {"headerText": "End Date",        "field": "endDate",         "headerClassName": "list-header-label", "width": 120},
+        {"headerText": "Budget",          "template": "budgetTemplate","headerClassName": "list-header-label", "width": 110},
+        {"headerText": "% Complete",      "template": "progressTemplate","headerClassName": "list-header-label", "width": 140}
+      ]'>
+
+      <!-- Project Name template -->
+      <template slot="nameTemplate" data-oj-as="cell">
+        <div class="oj-flex oj-sm-align-items-center">
+          <span class="oj-typography-body-md oj-typography-semi-bold">
+            <oj-bind-text value="[[ cell.row.projectName ]]"></oj-bind-text>
+          </span>
+        </div>
+      </template>
+
+      <!-- Status badge template -->
+      <template slot="statusTemplate" data-oj-as="cell">
+        <span :class="[[
+          cell.row.status === 'On Track'    ? 'proj-status-on-track'   :
+          cell.row.status === 'In Progress' ? 'proj-status-in-progress':
+          cell.row.status === 'Completed'   ? 'proj-status-completed'  :
+          cell.row.status === 'At Risk'     ? 'proj-status-at-risk'    :
+                                              'proj-status-delayed'
+        ]]">
+          <oj-bind-text value="[[ cell.row.status ]]"></oj-bind-text>
+        </span>
+      </template>
+
+      <!-- Budget template -->
+      <template slot="budgetTemplate" data-oj-as="cell">
+        <span class="oj-typography-body-sm">
+          <oj-bind-text value="[[ '$' + (cell.row.budget / 1000).toFixed(0) + 'K' ]]"></oj-bind-text>
+        </span>
+      </template>
+
+      <!-- Progress bar + percentage template -->
+      <template slot="progressTemplate" data-oj-as="cell">
+        <div class="oj-flex oj-sm-align-items-center oj-sm-gap-2x">
+          <div style="width:64px; height:8px; background-color:var(--oj-core-bg-neutral-20,#e5e7eb); border-radius:4px; overflow:hidden; flex-shrink:0;">
+            <div :style="[[
+              'width:' + cell.row.percentComplete + '%;' +
+              'height:100%;' +
+              'background-color:' + (
+                cell.row.percentComplete === 100 ? 'var(--oj-core-text-color-success,#007a33)' :
+                cell.row.percentComplete >= 60   ? 'var(--oj-core-brand-primary,#1B6ACB)'      :
+                                                   'var(--oj-core-text-color-warning,#B45309)'
+              ) + ';' +
+              'border-radius:4px;'
+            ]]"></div>
+          </div>
+          <span class="oj-typography-body-sm">
+            <oj-bind-text value="[[ cell.row.percentComplete + '%' ]]"></oj-bind-text>
+          </span>
+        </div>
+      </template>
+
+    </oj-table>
+
+  </div>
+
+</oj-sp-general-overview-page>

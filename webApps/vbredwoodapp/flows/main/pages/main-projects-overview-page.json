@@ -1,0 +1,167 @@
+{
+  "title": "Projects Overview",
+  "description": "Oracle ERP Cloud — Project Portfolio Management Overview",
+  "variables": {
+    "pageTitle": {
+      "type": "string",
+      "defaultValue": "Projects Overview"
+    },
+    "pageSubtitle": {
+      "type": "string",
+      "defaultValue": "Oracle ERP Cloud — Project Portfolio Management"
+    },
+    "contextualInfo": {
+      "type": "any[]",
+      "defaultValue": [
+        { "label": "Total Projects", "value": "142" },
+        { "label": "Active",         "value": "98"  },
+        { "label": "Completed",      "value": "30"  },
+        { "label": "Total Budget",   "value": "$8.6M" }
+      ]
+    },
+    "badge": {
+      "type": "object",
+      "defaultValue": {
+        "text": "FY 2025",
+        "status": "info"
+      }
+    },
+    "projectsArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "id": 1,
+          "projectNumber": "PRJ-2025-001",
+          "projectName": "Cloud Migration Initiative",
+          "projectManager": "James Wilson",
+          "status": "In Progress",
+          "startDate": "15-Jan-2025",
+          "endDate": "31-Dec-2025",
+          "budget": 1200000,
+          "percentComplete": 58
+        },
+        {
+          "id": 2,
+          "projectNumber": "PRJ-2025-002",
+          "projectName": "Finance Automation",
+          "projectManager": "Emma Davis",
+          "status": "On Track",
+          "startDate": "01-Mar-2025",
+          "endDate": "30-Sep-2025",
+          "budget": 450000,
+          "percentComplete": 72
+        },
+        {
+          "id": 3,
+          "projectNumber": "PRJ-2025-003",
+          "projectName": "Supply Chain Optimization",
+          "projectManager": "Robert Kim",
+          "status": "At Risk",
+          "startDate": "01-Feb-2025",
+          "endDate": "30-Nov-2025",
+          "budget": 780000,
+          "percentComplete": 35
+        },
+        {
+          "id": 4,
+          "projectNumber": "PRJ-2025-004",
+          "projectName": "HR System Upgrade",
+          "projectManager": "Lisa Chen",
+          "status": "In Progress",
+          "startDate": "01-Apr-2025",
+          "endDate": "31-Jan-2026",
+          "budget": 320000,
+          "percentComplete": 28
+        },
+        {
+          "id": 5,
+          "projectNumber": "PRJ-2025-005",
+          "projectName": "Compliance &amp; Audit Tool",
+          "projectManager": "Michael Torres",
+          "status": "Completed",
+          "startDate": "15-Jan-2025",
+          "endDate": "30-Jun-2025",
+          "budget": 210000,
+          "percentComplete": 100
+        },
+        {
+          "id": 6,
+          "projectNumber": "PRJ-2025-006",
+          "projectName": "Data Warehouse Modernization",
+          "projectManager": "Sarah Park",
+          "status": "In Progress",
+          "startDate": "01-May-2025",
+          "endDate": "31-Mar-2026",
+          "budget": 950000,
+          "percentComplete": 15
+        },
+        {
+          "id": 7,
+          "projectNumber": "PRJ-2025-007",
+          "projectName": "Procurement Portal",
+          "projectManager": "David Smith",
+          "status": "On Track",
+          "startDate": "01-Jun-2025",
+          "endDate": "31-Dec-2025",
+          "budget": 380000,
+          "percentComplete": 10
+        },
+        {
+          "id": 8,
+          "projectNumber": "PRJ-2025-008",
+          "projectName": "Fixed Assets Management",
+          "projectManager": "Jennifer Brown",
+          "status": "Delayed",
+          "startDate": "01-Feb-2025",
+          "endDate": "31-Aug-2025",
+          "budget": 175000,
+          "percentComplete": 45
+        }
+      ]
+    },
+    "projectsADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "id",
+        "data": "{{ $page.variables.projectsArray }}"
+      }
+    }
+  },
+  "metadata": {},
+  "types": {},
+  "chains": {},
+  "eventListeners": {
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "vbEnterChain"
+        }
+      ]
+    },
+    "spGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParentChain"
+        }
+      ]
+    },
+    "spPrimaryAction": {
+      "chains": [
+        {
+          "chainId": "primaryActionChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-sp-general-overview-page": {
+        "path": "oj-sp/general-overview-page/loader"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      }
+    }
+  }
+}

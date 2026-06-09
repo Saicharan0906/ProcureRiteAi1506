@@ -1,0 +1,51 @@
+/* Status capsule badge styles for the Projects Overview table */
+
+.proj-status-on-track {
+  background-color: var(--oj-core-bg-success-subtle, #e5fdf4);
+  color: var(--oj-core-text-color-success, #007a33);
+  border-radius: 12px;
+  padding: 4px 12px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.proj-status-in-progress {
+  background-color: #e3f2fd;
+  color: #1565C0;
+  border-radius: 12px;
+  padding: 4px 12px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.proj-status-completed {
+  background-color: var(--oj-core-bg-success-subtle, #e5fdf4);
+  color: var(--oj-core-text-color-success, #007a33);
+  border-radius: 12px;
+  padding: 4px 12px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.proj-status-at-risk {
+  background-color: #fff8e1;
+  color: #B45309;
+  border-radius: 12px;
+  padding: 4px 12px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.proj-status-delayed {
+  background-color: var(--oj-core-bg-danger-subtle, #fdeded);
+  color: var(--oj-core-text-color-danger, #c12e2a);
+  border-radius: 12px;
+  padding: 4px 12px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.82rem;
+}

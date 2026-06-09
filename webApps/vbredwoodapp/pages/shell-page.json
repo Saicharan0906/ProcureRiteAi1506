@@ -2,6 +2,21 @@
     "description": "",
     "routerFlow": "main",
     "variables": {
+      "navigationItemsADP": {
+        "type": "vb/ArrayDataProvider2",
+        "defaultValue": {
+          "itemType": "any",
+          "keyAttributes": "id",
+          "data": [
+            { "id": "main-erp-dashboard",    "label": "Dashboard", "icon": "oj-ux-ico-dashboard" },
+            { "id": "main-projects-overview","label": "Projects",  "icon": "oj-ux-ico-folder"    }
+          ]
+        }
+      },
+      "isNavigating": {
+        "type": "boolean",
+        "defaultValue": false
+      },
       "messageToast": {
         "type": "string"
       },
@@ -28,46 +43,65 @@
       }
     },
     "eventListeners": {
-    "application:spShowToast": {
-      "chains": [
-        {
-          "parameters": {
-            "event": "{{ $event }}"
-          },
-          "chain": "showMessageToast"
-        }
-      ]
-    },
-    "messagesBannerSpClose": {
-      "chains": [
-        {
-          "parameters": {
-            "event": "{{ $event }}"
-          },
-          "chain": "closeMessageBanner"
-        }
-      ]
-    },
-    "vbNotification": {
-      "chains": [
-        {
-          "parameters": {
-            "event": "{{ $event }}"
-          },
-          "chain": "showNotificationMessage"
-        }
-      ]
-    }
+      "application:spShowToast": {
+        "chains": [
+          {
+            "parameters": {
+              "event": "{{ $event }}"
+            },
+            "chain": "showMessageToast"
+          }
+        ]
+      },
+      "messagesBannerSpClose": {
+        "chains": [
+          {
+            "parameters": {
+              "event": "{{ $event }}"
+            },
+            "chain": "closeMessageBanner"
+          }
+        ]
+      },
+      "vbNotification": {
+        "chains": [
+          {
+            "parameters": {
+              "event": "{{ $event }}"
+            },
+            "chain": "showNotificationMessage"
+          }
+        ]
+      },
+      "inAppNavigationSpSelectionAction": {
+        "chains": [
+          {
+            "parameters": {
+              "event": "{{ $event }}"
+            },
+            "chain": "onInAppNavAction"
+          }
+        ]
+      }
     },
     "imports": {
-    "components": {
-      "oj-sp-messages-banner": {
-        "path": "oj-sp/messages-banner/loader"
-      },
-      "oj-sp-messages-toast": {
-        "path": "oj-sp/messages-toast/loader"
+      "components": {
+        "oj-sp-messages-banner": {
+          "path": "oj-sp/messages-banner/loader"
+        },
+        "oj-sp-messages-toast": {
+          "path": "oj-sp/messages-toast/loader"
+        },
+        "oj-sp-in-app-navigation": {
+          "path": "oj-sp/in-app-navigation/loader"
+        },
+        "oj-progress-circle": {
+          "path": "ojs/ojprogress-circle"
+        },
+        "oj-bind-if": {
+          "path": "ojs/ojknockout"
+        }
       }
-    }
     },
     "translations": {}
   }

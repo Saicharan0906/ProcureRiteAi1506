@@ -1,0 +1,95 @@
+<!-- Copyright (c) 2026, Oracle and/or its affiliates -->
+
+<oj-sp-dashboard-landing-page
+  page-title="[[ $variables.pageTitle ]]"
+  page-subtitle="[[ $variables.pageSubtitle ]]">
+
+  <!-- KPI Scoreboard -->
+  <oj-sp-scoreboard
+    slot="kpi"
+    data="[[ $variables.kpisADP ]]"
+    selection="{{ $variables.selectedKpi }}"
+    selection-mode="single">
+  </oj-sp-scoreboard>
+
+  <!-- Dashboard Grid — Above Fold layout with 3 panels -->
+  <oj-sp-dashboard-grid grid-layout="Above Fold">
+
+    <!-- Panel 1: Budget vs Actual Bar Chart by Category -->
+    <oj-sp-dashboard-panel panel-title="Budget vs Actual by Category ($K)">
+      <oj-chart
+        type="bar"
+        orientation="vertical"
+        animation-on-display="auto"
+        style="height: 100%;">
+        <oj-chart-group name="Capital"></oj-chart-group>
+        <oj-chart-group name="Operations"></oj-chart-group>
+        <oj-chart-group name="IT"></oj-chart-group>
+        <oj-chart-group name="R&amp;D"></oj-chart-group>
+        <oj-chart-group name="Compliance"></oj-chart-group>
+        <oj-chart-series name="Budget" color="#1B6ACB">
+          <oj-chart-item value="850"></oj-chart-item>
+          <oj-chart-item value="320"></oj-chart-item>
+          <oj-chart-item value="780"></oj-chart-item>
+          <oj-chart-item value="450"></oj-chart-item>
+          <oj-chart-item value="210"></oj-chart-item>
+        </oj-chart-series>
+        <oj-chart-series name="Actual" color="#00B399">
+          <oj-chart-item value="620"></oj-chart-item>
+          <oj-chart-item value="290"></oj-chart-item>
+          <oj-chart-item value="510"></oj-chart-item>
+          <oj-chart-item value="380"></oj-chart-item>
+          <oj-chart-item value="195"></oj-chart-item>
+        </oj-chart-series>
+      </oj-chart>
+    </oj-sp-dashboard-panel>
+
+    <!-- Panel 2: Project Status Distribution Pie Chart -->
+    <oj-sp-dashboard-panel panel-title="Project Status Distribution">
+      <oj-chart
+        type="pie"
+        animation-on-display="auto"
+        style="height: 100%;">
+        <oj-chart-series name="Status">
+          <oj-chart-item value="65" label="On Track" color="#00B399"></oj-chart-item>
+          <oj-chart-item value="28" label="At Risk" color="#F7A300"></oj-chart-item>
+          <oj-chart-item value="19" label="Delayed" color="#E22134"></oj-chart-item>
+          <oj-chart-item value="30" label="Completed" color="#1B6ACB"></oj-chart-item>
+        </oj-chart-series>
+      </oj-chart>
+    </oj-sp-dashboard-panel>
+
+    <!-- Panel 3: Monthly Spending Trend Line Chart -->
+    <oj-sp-dashboard-panel panel-title="Monthly Spending Trend 2025 ($K)">
+      <oj-chart
+        type="line"
+        animation-on-display="auto"
+        style="height: 100%;">
+        <oj-chart-group name="Jan"></oj-chart-group>
+        <oj-chart-group name="Feb"></oj-chart-group>
+        <oj-chart-group name="Mar"></oj-chart-group>
+        <oj-chart-group name="Apr"></oj-chart-group>
+        <oj-chart-group name="May"></oj-chart-group>
+        <oj-chart-group name="Jun"></oj-chart-group>
+        <oj-chart-series name="Total Spend" color="#1B6ACB">
+          <oj-chart-item value="280"></oj-chart-item>
+          <oj-chart-item value="350"></oj-chart-item>
+          <oj-chart-item value="420"></oj-chart-item>
+          <oj-chart-item value="390"></oj-chart-item>
+          <oj-chart-item value="510"></oj-chart-item>
+          <oj-chart-item value="480"></oj-chart-item>
+        </oj-chart-series>
+        <oj-chart-series name="Budget Limit" color="#E22134" line-style="dashed">
+          <oj-chart-item value="400"></oj-chart-item>
+          <oj-chart-item value="400"></oj-chart-item>
+          <oj-chart-item value="450"></oj-chart-item>
+          <oj-chart-item value="450"></oj-chart-item>
+          <oj-chart-item value="500"></oj-chart-item>
+          <oj-chart-item value="500"></oj-chart-item>
+        </oj-chart-series>
+      </oj-chart>
+    </oj-sp-dashboard-panel>
+
+  </oj-sp-dashboard-grid>
+
+</oj-sp-dashboard-landing-page>
