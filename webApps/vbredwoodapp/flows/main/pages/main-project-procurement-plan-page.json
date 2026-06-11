@@ -26,6 +26,7 @@
     "planHeader": {
       "type": "object",
       "defaultValue": {
+        "projectName": "Pinnacle Park Project",
         "startDate": "01-Jan-2025",
         "finishDate": "01-Dec-2030",
         "status": "Draft",
@@ -82,11 +83,11 @@
     "planLinesArray": {
       "type": "any[]",
       "defaultValue": [
-        { "id": 1, "lineNumber": 214, "critical": "Yes", "lineType": "Goods", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "taskName": "Site Analysis", "plannedQuantity": 30, "uom": "Ea", "plannedCost": 2500, "currency": "USD", "buyer": "Developer, Rite", "supplier": "EIP Inc", "expenditureType": "Material", "status": "Ready for Procurement" },
-        { "id": 2, "lineNumber": 215, "critical": "No", "lineType": "Goods", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "taskName": "Site Analysis", "plannedQuantity": 40, "uom": "Ea", "plannedCost": 175, "currency": "USD", "buyer": "AJITH", "supplier": "EIP Inc", "expenditureType": "Material", "status": "Draft" },
-        { "id": 3, "lineNumber": 216, "critical": "Yes", "lineType": "Goods", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "taskName": "Site Analysis", "plannedQuantity": 55, "uom": "Ea", "plannedCost": 1240, "currency": "USD", "buyer": "Developer, Rite", "supplier": "FEC", "expenditureType": "Material", "status": "Ready for Procurement" },
-        { "id": 4, "lineNumber": 217, "critical": "No", "lineType": "Goods", "itemNumber": "AS00107", "itemDescription": "Alliance 7 Ultimate", "itemCategory": "Software.Server", "taskName": "Site Analysis", "plannedQuantity": 10, "uom": "Ea", "plannedCost": 980, "currency": "USD", "buyer": "AJITH", "supplier": "EIP Inc", "expenditureType": "Material", "status": "Draft" },
-        { "id": 5, "lineNumber": 218, "critical": "No", "lineType": "Goods", "itemNumber": "AS00103", "itemDescription": "Blue Hat Enterprise", "itemCategory": "Hardware.Network", "taskName": "Implementation", "plannedQuantity": 6, "uom": "Ea", "plannedCost": 4300, "currency": "USD", "buyer": "Developer, Rite", "supplier": "FEC", "expenditureType": "15003 HVAC", "status": "Draft" }
+        { "id": 1, "lineNumber": 214, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "Yes", "lineType": "Goods", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "taskName": "Site Analysis", "plannedQuantity": 30, "uom": "Ea", "plannedCost": 2500, "currency": "USD", "buyer": "Developer, Rite", "supplier": "EIP Inc", "expenditureType": "Material", "status": "Ready for Procurement" },
+        { "id": 2, "lineNumber": 215, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "No", "lineType": "Goods", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "taskName": "Site Analysis", "plannedQuantity": 40, "uom": "Ea", "plannedCost": 175, "currency": "USD", "buyer": "AJITH", "supplier": "EIP Inc", "expenditureType": "Material", "status": "Draft" },
+        { "id": 3, "lineNumber": 216, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "Yes", "lineType": "Goods", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "taskName": "Site Analysis", "plannedQuantity": 55, "uom": "Ea", "plannedCost": 1240, "currency": "USD", "buyer": "Developer, Rite", "supplier": "FEC", "expenditureType": "Material", "status": "Ready for Procurement" },
+        { "id": 4, "lineNumber": 217, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "No", "lineType": "Goods", "itemNumber": "AS00107", "itemDescription": "Alliance 7 Ultimate", "itemCategory": "Software.Server", "taskName": "Site Analysis", "plannedQuantity": 10, "uom": "Ea", "plannedCost": 980, "currency": "USD", "buyer": "AJITH", "supplier": "EIP Inc", "expenditureType": "Material", "status": "Draft" },
+        { "id": 5, "lineNumber": 218, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "No", "lineType": "Goods", "itemNumber": "AS00103", "itemDescription": "Blue Hat Enterprise", "itemCategory": "Hardware.Network", "taskName": "Implementation", "plannedQuantity": 6, "uom": "Ea", "plannedCost": 4300, "currency": "USD", "buyer": "Developer, Rite", "supplier": "FEC", "expenditureType": "15003 HVAC", "status": "Draft" }
       ]
     },
     "planLinesAllArray": { "type": "any[]", "defaultValue": [] },
@@ -124,10 +125,12 @@
       "defaultValue": {
         "$search": {
           "filters": {
-            "StatusFilter": { "label": "Status", "options": {
-              "optionsData": "[[ $page.variables.statusOptionsADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
-            "CriticalFilter": { "label": "Critical", "options": {
-              "optionsData": "[[ $page.variables.criticalOptionsADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "ProjectNumberFilter": { "label": "Project Number", "options": {
+              "optionsData": "[[ $page.variables.projectNumberADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "BusinessUnitFilter": { "label": "Business Unit", "options": {
+              "optionsData": "[[ $page.variables.businessUnitADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "ProjectOrgFilter": { "label": "Project Organization", "options": {
+              "optionsData": "[[ $page.variables.projectOrgADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
             "ItemCategoryFilter": { "label": "Item Category", "options": {
               "optionsData": "[[ $page.variables.itemCategoryADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
             "BuyerFilter": { "label": "Buyer", "options": {

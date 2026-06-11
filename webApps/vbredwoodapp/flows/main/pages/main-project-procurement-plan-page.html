@@ -29,12 +29,14 @@
       on-filter-criterion-changed="[[ $listeners.filterCriterionChanged ]]"
       search-context="[[ $variables.searchContext ]]"
       search-config="[[ $variables.searchConfiguration.provider ]]"
-      suggestion-filters='["StatusFilter","CriticalFilter","ItemCategoryFilter","BuyerFilter"]'
-      placeholder="Search plan lines by item, description, task — or add filters">
+      suggestion-filters='["ProjectNumberFilter","BusinessUnitFilter","ProjectOrgFilter","ItemCategoryFilter","BuyerFilter"]'
+      placeholder="Search by project number, item, supplier — or add filters">
     </oj-sp-smart-search>
 
     <!-- ═══ Plan header info row ═══ -->
     <div class="oj-flex oj-sm-flex-wrap oj-sm-gap-6x ppp-plan-header">
+      <div><span class="oj-typography-body-xs oj-text-color-secondary">Project Name</span>
+        <div class="oj-typography-body-md oj-typography-semi-bold"><oj-bind-text value="[[ $variables.planHeader.projectName ]]"></oj-bind-text></div></div>
       <div><span class="oj-typography-body-xs oj-text-color-secondary">Start Date</span>
         <div class="oj-typography-body-md oj-typography-semi-bold"><oj-bind-text value="[[ $variables.planHeader.startDate ]]"></oj-bind-text></div></div>
       <div><span class="oj-typography-body-xs oj-text-color-secondary">Finish Date</span>

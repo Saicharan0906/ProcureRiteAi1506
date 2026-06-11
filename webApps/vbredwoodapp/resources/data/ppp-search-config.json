@@ -1,24 +1,34 @@
 {
-  "description": "Project Procurement Plan smart search configuration",
+  "description": "Project Procurement Plan smart search configuration (filters mirror the original page search header)",
   "options": { "keyword": "on" },
   "filters": {
-    "StatusFilter": {
+    "ProjectNumberFilter": {
       "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
-      "label": "Status",
+      "label": "Project Number",
       "options": {
-        "field": "status",
-        "optionsData": "[[ $search.filters.StatusFilter.options.optionsData ]]",
-        "optionsKeys": "[[ $search.filters.StatusFilter.options.optionsKeys ]]"
+        "field": "projectNumber",
+        "optionsData": "[[ $search.filters.ProjectNumberFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.ProjectNumberFilter.options.optionsKeys ]]"
       },
       "data": {}
     },
-    "CriticalFilter": {
+    "BusinessUnitFilter": {
       "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
-      "label": "Critical",
+      "label": "Business Unit",
       "options": {
-        "field": "critical",
-        "optionsData": "[[ $search.filters.CriticalFilter.options.optionsData ]]",
-        "optionsKeys": "[[ $search.filters.CriticalFilter.options.optionsKeys ]]"
+        "field": "businessUnit",
+        "optionsData": "[[ $search.filters.BusinessUnitFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.BusinessUnitFilter.options.optionsKeys ]]"
+      },
+      "data": {}
+    },
+    "ProjectOrgFilter": {
+      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
+      "label": "Project Organization",
+      "options": {
+        "field": "projectOrg",
+        "optionsData": "[[ $search.filters.ProjectOrgFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.ProjectOrgFilter.options.optionsKeys ]]"
       },
       "data": {}
     },
