@@ -1,0 +1,44 @@
+/* Project Procurement Plan — status & critical capsule badges, filter panel */
+
+.ppp-filter-panel {
+  background-color: var(--oj-core-bg-color-secondary, #f4f6f8);
+  border-radius: 8px;
+}
+
+.ppp-plan-header > div {
+  min-width: 120px;
+}
+
+.ppp-status-ready {
+  background-color: var(--oj-core-bg-success-subtle, #e5fdf4);
+  color: var(--oj-core-text-color-success, #007a33);
+  border-radius: 12px;
+  padding: 4px 12px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.ppp-status-draft {
+  background-color: #e3f2fd;
+  color: #1565c0;
+  border-radius: 12px;
+  padding: 4px 12px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.ppp-critical-yes {
+  background-color: var(--oj-core-bg-danger-subtle, #fdeded);
+  color: var(--oj-core-text-color-danger, #c12e2a);
+  border-radius: 12px;
+  padding: 4px 12px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.ppp-critical-no {
+  color: var(--oj-core-text-color-secondary, #637387);
+}
