@@ -9,6 +9,16 @@
     <link rel="icon" type="image/x-icon" href="resources/images/favicon-light.ico" />
     <link rel="preconnect" href="https://static.oracle.com">
     <!-- vb:inject id="headContent" theme="resources/css/dt.theme.redwood" -->
+    <style id="pr-overrides">
+      /* Ensure the page-header color strip ("thread") stretches the full banner width */
+      [class*="header-strip"],
+      [class*="page-texture-strip"],
+      [class*="texture-strip"] {
+        background-size: 100% 100% !important;
+        background-repeat: no-repeat !important;
+        width: 100% !important;
+      }
+    </style>
   </head>
   <body class="oj-body oj-rw-unified-app oj-sp-theme-global-mode-GH oj-sp-theme-global-pt-erp oj-sp-theme-global-mode-mixed"
         style="--oj-sp-theme-global-texture-image-start: url('https://static.oracle.com/cdn/fnd/gallery/2604.0.2/images/background-shell-finance-start.png'); --oj-sp-theme-global-texture-image-end: url('https://static.oracle.com/cdn/fnd/gallery/2604.0.2/images/background-shell-finance-end.png'); --oj-sp-theme-guided-process-drawer-template-themed-image: url('https://static.oracle.com/cdn/fnd/gallery/2604.0.2/images/ill-guided-process-drawer-abstract-finance.png'); --oj-sp-theme-page-header-strip: url('https://static.oracle.com/cdn/fnd/gallery/2604.0.2/images/color-strip-finance-2x.webp'); --oj-core-bg-color-primary: #ffffff; --oj-core-bg-color-secondary: #f4f6f8; --oj-core-text-color-primary: #1f2937; --oj-core-text-color-secondary: #637387; --oj-core-brand-primary: #1B6ACB; background-color: #ffffff;">
