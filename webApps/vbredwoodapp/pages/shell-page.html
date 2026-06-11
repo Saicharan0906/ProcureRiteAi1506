@@ -27,8 +27,9 @@
   <!-- Left navigation drawer -->
   <oj-drawer-popup edge="start" opened="{{ $variables.navDrawerOpen }}">
     <div class="ppp-nav-drawer">
-      <div class="ppp-nav-brand oj-sm-padding-3x">
-        <img :src="[[ $application.path + 'resources/images/procurerite-logo.jpg' ]]" alt="ProcureRite" class="ppp-nav-logo"/>
+      <div class="ppp-nav-brand" style="padding:12px 16px;border-bottom:1px solid #e5e7eb;">
+        <img :src="[[ $application.path + 'resources/images/procurerite-logo.jpg' ]]" alt="ProcureRite"
+          class="ppp-nav-logo" style="max-width:150px;max-height:40px;width:auto;height:auto;object-fit:contain;display:block;"/>
       </div>
       <oj-navigation-list edge="start"
         data="[[ $variables.navigationItemsADP ]]"
