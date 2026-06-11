@@ -4,7 +4,7 @@
 
   <!-- Black global header (Oracle Redwood SaaS style) -->
   <header class="pr-global-header"
-    style="display:flex;align-items:center;gap:6px;height:48px;min-height:48px;padding:0 12px;background:#1a1714;color:#ffffff;position:relative;z-index:1100;width:100%;box-sizing:border-box;">
+    style="display:flex;align-items:center;gap:6px;height:48px;min-height:48px;padding:0 12px;background:#1a1714;color:#ffffff;position:fixed;top:0;left:0;right:0;width:100%;z-index:2000;box-sizing:border-box;">
     <oj-button class="pr-gh-btn" display="icons" chroming="borderless" title="Menu"
       style="--oj-button-icon-color:#ffffff;color:#ffffff;"
       aria-label="Open navigation menu" on-oj-action="[[ $listeners.toggleNavDrawer ]]">
@@ -47,7 +47,7 @@
     </div>
   </oj-drawer-popup>
 
-  <div class="oj-web-applayout-content-nopad">
+  <div class="oj-web-applayout-content-nopad" style="padding-top:48px;">
 
     <div class="oj-flex">
       <oj-sp-messages-banner data="[[ $variables.messagesBannerADP ]]" class="oj-flex-item oj-sm-12 oj-md-12"
