@@ -1,135 +1,195 @@
 {
-    "description": "",
-    "routerFlow": "main",
-    "variables": {
-      "navigationItemsADP": {
-        "type": "vb/ArrayDataProvider2",
-        "defaultValue": {
-          "itemType": "any",
-          "keyAttributes": "id",
-          "data": [
-            { "id": "main-project-procurement-plan", "label": "Procurement Plan", "icon": "oj-ux-ico-purchase-order" },
-            { "id": "main-procurement-execution", "label": "Procurement Execution", "icon": "oj-ux-ico-task-complete" },
-            { "id": "main-cost-tracker", "label": "Cost Tracker", "icon": "oj-ux-ico-cost" },
-            { "id": "main-expedite-workbench", "label": "Expedite Workbench", "icon": "oj-ux-ico-shipping" }
-          ]
+  "description": "",
+  "routerFlow": "main",
+  "variables": {
+    "navigationItemsADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "id",
+        "data": [
+          {
+            "id": "main-project-procurement-plan",
+            "label": "Procurement Plan",
+            "icon": "oj-ux-ico-purchase-order"
+          },
+          {
+            "id": "main-procurement-execution",
+            "label": "Procurement Execution",
+            "icon": "oj-ux-ico-task-complete"
+          },
+          {
+            "id": "main-cost-tracker",
+            "label": "Cost Tracker",
+            "icon": "oj-ux-ico-cost"
+          },
+          {
+            "id": "main-expedite-workbench",
+            "label": "Expedite Workbench",
+            "icon": "oj-ux-ico-shipping"
+          },
+          {
+            "id": "main-delivery-tracker",
+            "label": "Delivery Tracker",
+            "icon": "oj-ux-ico-truck"
+          },
+          {
+            "id": "main-supply-plan-exceptions",
+            "label": "Supply Plan Exceptions",
+            "icon": "oj-ux-ico-warning"
+          },
+          {
+            "id": "main-oracle-requisition",
+            "label": "Oracle Requisition",
+            "icon": "oj-ux-ico-purchase-request"
+          },
+          {
+            "id": "main-oracle-po",
+            "label": "Oracle Purchase Order",
+            "icon": "oj-ux-ico-purchase-order"
+          },
+          {
+            "id": "main-receiving",
+            "label": "Receiving",
+            "icon": "oj-ux-ico-product-received"
+          },
+          {
+            "id": "main-change-history",
+            "label": "Change History",
+            "icon": "oj-ux-ico-history"
+          },
+          {
+            "id": "main-admin",
+            "label": "Application Maintenance",
+            "icon": "oj-ux-ico-settings"
+          },
+          {
+            "id": "main-item-creation",
+            "label": "Item Creation",
+            "icon": "oj-ux-ico-add-box"
+          }
+        ]
+      }
+    },
+    "isNavigating": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "messageToast": {
+      "type": "string"
+    },
+    "messagesBannerADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "MessagesBannerType",
+        "keyAttributes": "id"
+      }
+    },
+    "messageId": {
+      "type": "string"
+    },
+    "navDrawerOpen": {
+      "type": "boolean",
+      "defaultValue": false
+    }
+  },
+  "metadata": {},
+  "types": {
+    "MessagesBannerType": {
+      "id": "string",
+      "messageType": "string",
+      "primaryText": "string",
+      "primaryActionLabel": "string",
+      "secondaryText": "any",
+      "secondaryActionLabel": "string"
+    }
+  },
+  "eventListeners": {
+    "application:spShowToast": {
+      "chains": [
+        {
+          "parameters": {
+            "event": "{{ $event }}"
+          },
+          "chain": "showMessageToast"
         }
-      },
-      "isNavigating": {
-        "type": "boolean",
-        "defaultValue": false
-      },
-      "messageToast": {
-        "type": "string"
-      },
-      "messagesBannerADP": {
-        "type": "vb/ArrayDataProvider2",
-        "defaultValue": {
-          "itemType": "MessagesBannerType",
-          "keyAttributes": "id"
+      ]
+    },
+    "messagesBannerSpClose": {
+      "chains": [
+        {
+          "parameters": {
+            "event": "{{ $event }}"
+          },
+          "chain": "closeMessageBanner"
         }
-      },
-      "messageId": {
-        "type": "string"
-      },
-      "navDrawerOpen": {
-        "type": "boolean",
-        "defaultValue": false
-      }
+      ]
     },
-    "metadata": {},
-    "types": {
-      "MessagesBannerType": {
-        "id": "string",
-        "messageType": "string",
-        "primaryText": "string",
-        "primaryActionLabel": "string",
-        "secondaryText": "any",
-        "secondaryActionLabel": "string"
-      }
-    },
-    "eventListeners": {
-      "application:spShowToast": {
-        "chains": [
-          {
-            "parameters": {
-              "event": "{{ $event }}"
-            },
-            "chain": "showMessageToast"
-          }
-        ]
-      },
-      "messagesBannerSpClose": {
-        "chains": [
-          {
-            "parameters": {
-              "event": "{{ $event }}"
-            },
-            "chain": "closeMessageBanner"
-          }
-        ]
-      },
-      "vbNotification": {
-        "chains": [
-          {
-            "parameters": {
-              "event": "{{ $event }}"
-            },
-            "chain": "showNotificationMessage"
-          }
-        ]
-      },
-      "inAppNavigationSpSelectionAction": {
-        "chains": [
-          {
-            "parameters": {
-              "event": "{{ $event }}"
-            },
-            "chain": "onInAppNavAction"
-          }
-        ]
-      },
-      "toggleNavDrawer": {
-        "chains": [
-          { "chain": "toggleNavDrawer" }
-        ]
-      },
-      "sideNavSelection": {
-        "chains": [
-          {
-            "parameters": { "event": "{{ $event }}" },
-            "chain": "sideNavSelection"
-          }
-        ]
-      }
-    },
-    "imports": {
-      "components": {
-        "oj-sp-messages-banner": {
-          "path": "oj-sp/messages-banner/loader"
-        },
-        "oj-sp-messages-toast": {
-          "path": "oj-sp/messages-toast/loader"
-        },
-        "oj-drawer-popup": {
-          "path": "ojs/ojdrawerpopup"
-        },
-        "oj-navigation-list": {
-          "path": "ojs/ojnavigationlist"
-        },
-        "oj-button": {
-          "path": "ojs/ojbutton"
-        },
-        "oj-progress-circle": {
-          "path": "ojs/ojprogress-circle"
-        },
-        "oj-bind-if": {
-          "path": "ojs/ojknockout"
-        },
-        "oj-bind-text": {
-          "path": "ojs/ojknockout"
+    "vbNotification": {
+      "chains": [
+        {
+          "parameters": {
+            "event": "{{ $event }}"
+          },
+          "chain": "showNotificationMessage"
         }
-      }
+      ]
     },
-    "translations": {}
-  }
+    "inAppNavigationSpSelectionAction": {
+      "chains": [
+        {
+          "parameters": {
+            "event": "{{ $event }}"
+          },
+          "chain": "onInAppNavAction"
+        }
+      ]
+    },
+    "toggleNavDrawer": {
+      "chains": [
+        {
+          "chain": "toggleNavDrawer"
+        }
+      ]
+    },
+    "sideNavSelection": {
+      "chains": [
+        {
+          "parameters": {
+            "event": "{{ $event }}"
+          },
+          "chain": "sideNavSelection"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-sp-messages-banner": {
+        "path": "oj-sp/messages-banner/loader"
+      },
+      "oj-sp-messages-toast": {
+        "path": "oj-sp/messages-toast/loader"
+      },
+      "oj-drawer-popup": {
+        "path": "ojs/ojdrawerpopup"
+      },
+      "oj-navigation-list": {
+        "path": "ojs/ojnavigationlist"
+      },
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-progress-circle": {
+        "path": "ojs/ojprogress-circle"
+      },
+      "oj-bind-if": {
+        "path": "ojs/ojknockout"
+      },
+      "oj-bind-text": {
+        "path": "ojs/ojknockout"
+      }
+    }
+  },
+  "translations": {}
+}

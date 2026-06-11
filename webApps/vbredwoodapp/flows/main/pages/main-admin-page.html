@@ -1,0 +1,20 @@
+<!-- Copyright (c) 2026, Oracle and/or its affiliates -->
+<oj-sp-general-overview-page id="oj_adm_gop" display-options.responsive-padding="off" display-mode="mixed"
+  page-title="[[ $variables.pageTitle ]]" page-subtitle="[[ $variables.pageSubtitle ]]"
+  primary-action.label="Save" primary-action.display="on"
+  badge="[[ $variables.badge ]]"
+  on-sp-go-to-parent="[[ $listeners.goToParentChain ]]" on-sp-primary-action="[[ $listeners.primaryActionChain ]]"
+  class="oj-sm-width-full" style="--oj-sp-general-overview-page-max-width: 90% !important;">
+
+  <div class="oj-flex oj-sm-flex-direction-column oj-sm-width-full" slot="main" style="max-width:100% !important;">
+    <div class="oj-panel oj-sm-padding-4x">
+      <oj-form-layout max-columns="2" label-edge="top" direction="row">
+        <oj-select-single label-hint="Business Unit" data="[[ $variables.businessUnitADP ]]" item-text="label" value="{{ $variables.form.businessUnit }}"></oj-select-single>
+        <oj-input-text label-hint="PR Default (Requisition BU)" value="{{ $variables.form.prDefault }}"></oj-input-text>
+        <oj-input-text label-hint="PO Default (Style)" value="{{ $variables.form.poDefault }}"></oj-input-text>
+        <oj-input-text label-hint="Receipt Default (Routing)" value="{{ $variables.form.receiptDefault }}"></oj-input-text>
+        <oj-input-text label-hint="RFQ Default (Template)" value="{{ $variables.form.rfqDefault }}"></oj-input-text>
+      </oj-form-layout>
+    </div>
+  </div>
+</oj-sp-general-overview-page>

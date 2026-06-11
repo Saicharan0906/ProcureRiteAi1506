@@ -1,0 +1,94 @@
+{
+  "title": "Application Maintenance",
+  "description": "Configure PR / PO / Receipt / RFQ default values (mock pending ORDS/Fusion).",
+  "variables": {
+    "pageTitle": {
+      "type": "string",
+      "defaultValue": "Application Maintenance"
+    },
+    "pageSubtitle": {
+      "type": "string",
+      "defaultValue": "Configure PR / PO / Receipt / RFQ default values"
+    },
+    "badge": {
+      "type": "object",
+      "defaultValue": {
+        "text": "Admin",
+        "status": "info"
+      }
+    },
+    "form": {
+      "type": "object",
+      "defaultValue": {
+        "businessUnit": "US1 Business Unit",
+        "prDefault": "",
+        "poDefault": "",
+        "receiptDefault": "",
+        "rfqDefault": ""
+      }
+    },
+    "businessUnitArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "value": "US1 Business Unit",
+          "label": "US1 Business Unit"
+        },
+        {
+          "value": "UK Business Unit",
+          "label": "UK Business Unit"
+        }
+      ]
+    },
+    "businessUnitADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "value",
+        "data": "{{ $page.variables.businessUnitArray }}"
+      }
+    }
+  },
+  "metadata": {},
+  "types": {},
+  "chains": {},
+  "eventListeners": {
+    "vbEnter": {
+      "chains": [
+        {
+          "chain": "vbEnterChain"
+        }
+      ]
+    },
+    "spGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParentChain"
+        }
+      ]
+    },
+    "spPrimaryAction": {
+      "chains": [
+        {
+          "chainId": "primaryActionChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-sp-general-overview-page": {
+        "path": "oj-sp/general-overview-page/loader"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      }
+    }
+  }
+}

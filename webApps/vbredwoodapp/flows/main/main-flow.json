@@ -1,5 +1,4 @@
 {
-
   "id": "main",
   "description": "Flow main",
   "defaultPage": "main-project-procurement-plan",
@@ -31,6 +30,30 @@
     },
     "main-expedite-workbench": {
       "path": "pages/main-expedite-workbench-page"
+    },
+    "main-delivery-tracker": {
+      "path": "pages/main-delivery-tracker-page"
+    },
+    "main-supply-plan-exceptions": {
+      "path": "pages/main-supply-plan-exceptions-page"
+    },
+    "main-oracle-requisition": {
+      "path": "pages/main-oracle-requisition-page"
+    },
+    "main-oracle-po": {
+      "path": "pages/main-oracle-po-page"
+    },
+    "main-receiving": {
+      "path": "pages/main-receiving-page"
+    },
+    "main-change-history": {
+      "path": "pages/main-change-history-page"
+    },
+    "main-admin": {
+      "path": "pages/main-admin-page"
+    },
+    "main-item-creation": {
+      "path": "pages/main-item-creation-page"
     }
   }
 }

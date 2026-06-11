@@ -1,0 +1,38 @@
+{
+  "description": "Change History smart search configuration",
+  "options": {
+    "keyword": "on"
+  },
+  "filters": {
+    "ProjectNumberFilter": {
+      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
+      "label": "Project Number",
+      "options": {
+        "field": "projectNumber",
+        "optionsData": "[[ $search.filters.ProjectNumberFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.ProjectNumberFilter.options.optionsKeys ]]"
+      },
+      "data": {}
+    },
+    "BusinessUnitFilter": {
+      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
+      "label": "Business Unit",
+      "options": {
+        "field": "businessUnit",
+        "optionsData": "[[ $search.filters.BusinessUnitFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.BusinessUnitFilter.options.optionsKeys ]]"
+      },
+      "data": {}
+    },
+    "ProjectOrgFilter": {
+      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
+      "label": "Project Organization",
+      "options": {
+        "field": "projectOrg",
+        "optionsData": "[[ $search.filters.ProjectOrgFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.ProjectOrgFilter.options.optionsKeys ]]"
+      },
+      "data": {}
+    }
+  }
+}

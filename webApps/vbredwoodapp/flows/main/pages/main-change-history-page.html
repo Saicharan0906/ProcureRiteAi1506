@@ -1,0 +1,42 @@
+<!-- Copyright (c) 2026, Oracle and/or its affiliates -->
+<oj-sp-general-overview-page id="oj_ch_gop" display-options.responsive-padding="off" display-mode="mixed"
+  page-title="[[ $variables.pageTitle ]]" page-subtitle="[[ $variables.pageSubtitle ]]"
+  primary-action.label="Export" primary-action.display="on"
+  contextual-info="[[ $variables.contextualInfo ]]" badge="[[ $variables.badge ]]"
+  on-sp-go-to-parent="[[ $listeners.goToParentChain ]]" on-sp-primary-action="[[ $listeners.primaryActionChain ]]"
+  class="oj-sm-width-full" style="--oj-sp-general-overview-page-max-width: 90% !important;">
+
+  <div class="oj-flex oj-sm-flex-direction-column oj-sm-width-full oj-sm-gap-4x" slot="main" style="max-width:100% !important;">
+
+    <oj-sp-smart-search filter-criterion="{{ $variables.filterCriterion }}"
+      on-filter-criterion-changed="[[ $listeners.filterCriterionChanged ]]"
+      search-context="[[ $variables.searchContext ]]" search-config="[[ $variables.searchConfiguration.provider ]]"
+      suggestion-filters='["ProjectNumberFilter", "BusinessUnitFilter", "ProjectOrgFilter"]' placeholder="Search by item, task, user - or add filters">
+    </oj-sp-smart-search>
+
+    <oj-bind-if test="[[ $variables.planHeader.projectName ]]">
+      <div class="ch-plan-header">
+        <div class="ch-field"><span class="ch-field-label">Project Name</span>
+          <span class="ch-field-value"><oj-bind-text value="[[ $variables.planHeader.projectName ]]"></oj-bind-text></span></div>
+        <div class="ch-field"><span class="ch-field-label">Business Unit</span>
+          <span class="ch-field-value"><oj-bind-text value="[[ $variables.planHeader.businessUnit || 'Select Business Unit' ]]"></oj-bind-text></span></div>
+        <div class="ch-field"><span class="ch-field-label">Project Organization</span>
+          <span class="ch-field-value"><oj-bind-text value="[[ $variables.planHeader.projectOrg || 'Select Organization' ]]"></oj-bind-text></span></div>
+        <div class="ch-field"><span class="ch-field-label">Project Manager</span>
+          <span class="ch-field-value"><oj-bind-text value="[[ $variables.planHeader.projectManager ]]"></oj-bind-text></span></div>
+      </div>
+    </oj-bind-if>
+
+    <oj-table id="auditLinesTable" data="[[ $variables.auditLinesADP ]]" class="oj-sm-width-full"
+      horizontal-grid-visible="enabled" vertical-grid-visible="disabled"
+      scroll-policy="loadMoreOnScroll" scroll-policy-options.fetch-size="25"
+      selection-mode='{"row":"none","column":"none"}'
+      columns='[{"headerText":"Item","field":"itemNumber","headerClassName":"list-header-label","width":120},{"headerText":"Item Description","template":"itemDescTemplate","headerClassName":"list-header-label","weight":3,"minWidth":190},{"headerText":"Item Category","field":"itemCategory","headerClassName":"list-header-label","width":150},{"headerText":"Task Number","field":"taskNumber","headerClassName":"list-header-label","width":110},{"headerText":"Task Name","field":"taskName","headerClassName":"list-header-label","width":140},{"headerText":"Modified Value","field":"modifiedValue","headerClassName":"list-header-label","width":220},{"headerText":"Updated By","field":"updatedBy","headerClassName":"list-header-label","width":140},{"headerText":"Date","field":"changeDate","headerClassName":"list-header-label","width":120}]'>
+
+      <template slot="itemDescTemplate" data-oj-as="cell"><span class="oj-typography-body-md oj-typography-semi-bold"><oj-bind-text value="[[ cell.row.itemDescription ]]"></oj-bind-text></span></template>
+      <template slot="statusTemplate" data-oj-as="cell"><span :class="[[ $functions.statusClass(cell.row.status) ]]"><oj-bind-text value="[[ cell.row.status ]]"></oj-bind-text></span></template>
+
+    </oj-table>
+
+  </div>
+</oj-sp-general-overview-page>

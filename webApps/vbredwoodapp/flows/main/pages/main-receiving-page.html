@@ -1,0 +1,42 @@
+<!-- Copyright (c) 2026, Oracle and/or its affiliates -->
+<oj-sp-general-overview-page id="oj_rcv_gop" display-options.responsive-padding="off" display-mode="mixed"
+  page-title="[[ $variables.pageTitle ]]" page-subtitle="[[ $variables.pageSubtitle ]]"
+  primary-action.label="Create Receipt" primary-action.display="on"
+  contextual-info="[[ $variables.contextualInfo ]]" badge="[[ $variables.badge ]]"
+  on-sp-go-to-parent="[[ $listeners.goToParentChain ]]" on-sp-primary-action="[[ $listeners.primaryActionChain ]]"
+  class="oj-sm-width-full" style="--oj-sp-general-overview-page-max-width: 90% !important;">
+
+  <div class="oj-flex oj-sm-flex-direction-column oj-sm-width-full oj-sm-gap-4x" slot="main" style="max-width:100% !important;">
+
+    <oj-sp-smart-search filter-criterion="{{ $variables.filterCriterion }}"
+      on-filter-criterion-changed="[[ $listeners.filterCriterionChanged ]]"
+      search-context="[[ $variables.searchContext ]]" search-config="[[ $variables.searchConfiguration.provider ]]"
+      suggestion-filters='["ProjectNumberFilter", "BusinessUnitFilter", "ProjectOrgFilter", "PONumberFilter"]' placeholder="Search by PO, item, supplier - or add filters">
+    </oj-sp-smart-search>
+
+    <oj-bind-if test="[[ $variables.planHeader.projectName ]]">
+      <div class="rcv-plan-header">
+        <div class="rcv-field"><span class="rcv-field-label">Project Name</span>
+          <span class="rcv-field-value"><oj-bind-text value="[[ $variables.planHeader.projectName ]]"></oj-bind-text></span></div>
+        <div class="rcv-field"><span class="rcv-field-label">Business Unit</span>
+          <span class="rcv-field-value"><oj-bind-text value="[[ $variables.planHeader.businessUnit || 'Select Business Unit' ]]"></oj-bind-text></span></div>
+        <div class="rcv-field"><span class="rcv-field-label">Project Organization</span>
+          <span class="rcv-field-value"><oj-bind-text value="[[ $variables.planHeader.projectOrg || 'Select Organization' ]]"></oj-bind-text></span></div>
+        <div class="rcv-field"><span class="rcv-field-label">Project Manager</span>
+          <span class="rcv-field-value"><oj-bind-text value="[[ $variables.planHeader.projectManager ]]"></oj-bind-text></span></div>
+      </div>
+    </oj-bind-if>
+
+    <oj-table id="receiptLinesTable" data="[[ $variables.receiptLinesADP ]]" class="oj-sm-width-full"
+      horizontal-grid-visible="enabled" vertical-grid-visible="disabled"
+      scroll-policy="loadMoreOnScroll" scroll-policy-options.fetch-size="25"
+      selection-mode='{"row":"multiple","column":"none"}'
+      columns='[{"headerText":"Task","field":"taskName","headerClassName":"list-header-label","width":130},{"headerText":"Item","field":"itemNumber","headerClassName":"list-header-label","width":120},{"headerText":"Item Description","template":"itemDescTemplate","headerClassName":"list-header-label","weight":3,"minWidth":190},{"headerText":"Supplier","field":"supplier","headerClassName":"list-header-label","width":120},{"headerText":"PO Number","field":"poNumber","headerClassName":"list-header-label","width":120},{"headerText":"Ordered Qty","field":"orderedQty","headerClassName":"list-header-label","width":100},{"headerText":"Qty Received","field":"qtyReceived","headerClassName":"list-header-label","width":110},{"headerText":"UOM","field":"uom","headerClassName":"list-header-label","width":70},{"headerText":"Org","field":"orgCode","headerClassName":"list-header-label","width":90},{"headerText":"Status","template":"statusTemplate","headerClassName":"list-header-label","width":120}]'>
+
+      <template slot="itemDescTemplate" data-oj-as="cell"><span class="oj-typography-body-md oj-typography-semi-bold"><oj-bind-text value="[[ cell.row.itemDescription ]]"></oj-bind-text></span></template>
+      <template slot="statusTemplate" data-oj-as="cell"><span :class="[[ $functions.statusClass(cell.row.status) ]]"><oj-bind-text value="[[ cell.row.status ]]"></oj-bind-text></span></template>
+
+    </oj-table>
+
+  </div>
+</oj-sp-general-overview-page>

@@ -1,0 +1,181 @@
+{
+  "title": "Item Creation",
+  "description": "Create a new item in Oracle PIM (mock pending ORDS/Fusion).",
+  "variables": {
+    "pageTitle": {
+      "type": "string",
+      "defaultValue": "Item Creation"
+    },
+    "pageSubtitle": {
+      "type": "string",
+      "defaultValue": "Create a new item in Oracle PIM"
+    },
+    "badge": {
+      "type": "object",
+      "defaultValue": {
+        "text": "PIM",
+        "status": "info"
+      }
+    },
+    "form": {
+      "type": "object",
+      "defaultValue": {
+        "businessUnit": "US1 Business Unit",
+        "organization": "Consulting US",
+        "template": "Purchased Item",
+        "lifecycle": "Active",
+        "uom": "Ea",
+        "itemNumber": "",
+        "description": "",
+        "category": ""
+      }
+    },
+    "businessUnitArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "value": "US1 Business Unit",
+          "label": "US1 Business Unit"
+        },
+        {
+          "value": "UK Business Unit",
+          "label": "UK Business Unit"
+        }
+      ]
+    },
+    "businessUnitADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "value",
+        "data": "{{ $page.variables.businessUnitArray }}"
+      }
+    },
+    "projectOrgArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "value": "Consulting US",
+          "label": "Consulting US"
+        },
+        {
+          "value": "OAK PPM",
+          "label": "OAK PPM"
+        }
+      ]
+    },
+    "projectOrgADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "value",
+        "data": "{{ $page.variables.projectOrgArray }}"
+      }
+    },
+    "uomArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "value": "Ea",
+          "label": "Ea"
+        },
+        {
+          "value": "Box",
+          "label": "Box"
+        }
+      ]
+    },
+    "uomADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "value",
+        "data": "{{ $page.variables.uomArray }}"
+      }
+    },
+    "templateArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "value": "Finished Goods",
+          "label": "Finished Goods"
+        },
+        {
+          "value": "Purchased Item",
+          "label": "Purchased Item"
+        }
+      ]
+    },
+    "templateADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "value",
+        "data": "{{ $page.variables.templateArray }}"
+      }
+    },
+    "lifecycleArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "value": "Active",
+          "label": "Active"
+        },
+        {
+          "value": "Design",
+          "label": "Design"
+        }
+      ]
+    },
+    "lifecycleADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "value",
+        "data": "{{ $page.variables.lifecycleArray }}"
+      }
+    }
+  },
+  "metadata": {},
+  "types": {},
+  "chains": {},
+  "eventListeners": {
+    "vbEnter": {
+      "chains": [
+        {
+          "chain": "vbEnterChain"
+        }
+      ]
+    },
+    "spGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParentChain"
+        }
+      ]
+    },
+    "spPrimaryAction": {
+      "chains": [
+        {
+          "chainId": "primaryActionChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-sp-general-overview-page": {
+        "path": "oj-sp/general-overview-page/loader"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      }
+    }
+  }
+}

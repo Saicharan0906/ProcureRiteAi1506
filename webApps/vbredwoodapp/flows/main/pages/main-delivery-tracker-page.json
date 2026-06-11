@@ -1,0 +1,347 @@
+{
+  "title": "Delivery Tracker",
+  "description": "Promised vs actual delivery timelines (mock data pending ORDS/Fusion).",
+  "variables": {
+    "pageTitle": {
+      "type": "string",
+      "defaultValue": "Delivery Tracker"
+    },
+    "pageSubtitle": {
+      "type": "string",
+      "defaultValue": "Promised vs actual delivery timelines"
+    },
+    "contextualInfo": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "label": "PO Lines",
+          "value": "6"
+        },
+        {
+          "label": "On Time",
+          "value": "3"
+        },
+        {
+          "label": "Delayed",
+          "value": "1"
+        },
+        {
+          "label": "Delivered",
+          "value": "2"
+        }
+      ]
+    },
+    "badge": {
+      "type": "object",
+      "defaultValue": {
+        "text": "Tracking",
+        "status": "info"
+      }
+    },
+    "planHeader": {
+      "type": "object",
+      "defaultValue": {
+        "projectName": "",
+        "businessUnit": "",
+        "projectOrg": "",
+        "projectManager": ""
+      }
+    },
+    "lastProjectNumber": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "projectMeta": {
+      "type": "object",
+      "defaultValue": {
+        "P012025": {
+          "projectName": "Pinnacle Park Project",
+          "businessUnits": [
+            "US1 Business Unit"
+          ],
+          "orgs": [
+            "Consulting US"
+          ],
+          "projectManager": "Rite Developer"
+        },
+        "P012026": {
+          "projectName": "Riverside Expansion",
+          "businessUnits": [
+            "US1 Business Unit",
+            "UK Business Unit"
+          ],
+          "orgs": [
+            "OAK PPM",
+            "Consulting US"
+          ],
+          "projectManager": "A. Kumar"
+        }
+      }
+    },
+    "filterCriterion": {
+      "type": "any"
+    },
+    "searchConfiguration": {
+      "type": "oj-sp/smart-search/strategies/JsonSearchConfigProviderFactory",
+      "defaultValue": {
+        "url": "[[ $application.path + 'resources/data/delivery-tracker-search-config.json' ]]"
+      }
+    },
+    "searchContext": {
+      "type": "object",
+      "defaultValue": {
+        "$search": {
+          "filters": {
+            "ProjectNumberFilter": {
+              "label": "Project Number",
+              "options": {
+                "optionsData": "[[ $page.variables.projectNumberADP ]]",
+                "optionsKeys": {
+                  "label": "label",
+                  "value": "value"
+                }
+              }
+            },
+            "BusinessUnitFilter": {
+              "label": "Business Unit",
+              "options": {
+                "optionsData": "[[ $page.variables.businessUnitADP ]]",
+                "optionsKeys": {
+                  "label": "label",
+                  "value": "value"
+                }
+              }
+            },
+            "ProjectOrgFilter": {
+              "label": "Project Organization",
+              "options": {
+                "optionsData": "[[ $page.variables.projectOrgADP ]]",
+                "optionsKeys": {
+                  "label": "label",
+                  "value": "value"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "deliveryArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "projectNumber": "P012025",
+          "businessUnit": "US1 Business Unit",
+          "projectOrg": "Consulting US",
+          "id": 1,
+          "poNumber": "US165224",
+          "itemNumber": "AS00106",
+          "itemDescription": "Alliance 7 Pro",
+          "supplier": "EIP Inc",
+          "buyer": "Developer, Rite",
+          "lineStatus": "CLOSED",
+          "poCreationDate": "24-Apr-2025",
+          "needByDate": "25-Apr-2025",
+          "promisedDate": "30-Apr-2025",
+          "actualDate": "30-Apr-2025",
+          "status": "Delivered"
+        },
+        {
+          "projectNumber": "P012025",
+          "businessUnit": "US1 Business Unit",
+          "projectOrg": "Consulting US",
+          "id": 2,
+          "poNumber": "US165225",
+          "itemNumber": "AS00106",
+          "itemDescription": "Alliance 7 Pro",
+          "supplier": "EIP Inc",
+          "buyer": "AJITH",
+          "lineStatus": "OPEN",
+          "poCreationDate": "24-Apr-2025",
+          "needByDate": "28-Apr-2025",
+          "promisedDate": "28-Apr-2025",
+          "actualDate": "",
+          "status": "On Time"
+        },
+        {
+          "projectNumber": "P012025",
+          "businessUnit": "US1 Business Unit",
+          "projectOrg": "Consulting US",
+          "id": 3,
+          "poNumber": "US165226",
+          "itemNumber": "AS00106",
+          "itemDescription": "Alliance 7 Pro",
+          "supplier": "FEC",
+          "buyer": "Developer, Rite",
+          "lineStatus": "OPEN",
+          "poCreationDate": "24-Apr-2025",
+          "needByDate": "08-May-2025",
+          "promisedDate": "13-May-2025",
+          "actualDate": "",
+          "status": "Delayed"
+        },
+        {
+          "projectNumber": "P012025",
+          "businessUnit": "US1 Business Unit",
+          "projectOrg": "Consulting US",
+          "id": 4,
+          "poNumber": "US165236",
+          "itemNumber": "AS00103",
+          "itemDescription": "Blue Hat Enterprise",
+          "supplier": "FEC",
+          "buyer": "Developer, Rite",
+          "lineStatus": "CLOSED",
+          "poCreationDate": "24-Apr-2025",
+          "needByDate": "29-Apr-2025",
+          "promisedDate": "30-Apr-2025",
+          "actualDate": "30-Apr-2025",
+          "status": "Delivered"
+        },
+        {
+          "projectNumber": "P012025",
+          "businessUnit": "US1 Business Unit",
+          "projectOrg": "Consulting US",
+          "id": 5,
+          "poNumber": "US165240",
+          "itemNumber": "AS00110",
+          "itemDescription": "Edge Router X",
+          "supplier": "EIP Inc",
+          "buyer": "Developer, Rite",
+          "lineStatus": "OPEN",
+          "poCreationDate": "25-Apr-2025",
+          "needByDate": "18-May-2025",
+          "promisedDate": "18-May-2025",
+          "actualDate": "",
+          "status": "On Time"
+        }
+      ]
+    },
+    "deliveryAllArray": {
+      "type": "any[]",
+      "defaultValue": []
+    },
+    "deliveryADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "id",
+        "data": "{{ $page.variables.deliveryArray }}"
+      }
+    },
+    "projectNumberArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "value": "P012025",
+          "label": "P012025"
+        },
+        {
+          "value": "P012026",
+          "label": "P012026"
+        }
+      ]
+    },
+    "projectNumberADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "value",
+        "data": "{{ $page.variables.projectNumberArray }}"
+      }
+    },
+    "businessUnitArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "value": "US1 Business Unit",
+          "label": "US1 Business Unit"
+        },
+        {
+          "value": "UK Business Unit",
+          "label": "UK Business Unit"
+        }
+      ]
+    },
+    "businessUnitADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "value",
+        "data": "{{ $page.variables.businessUnitArray }}"
+      }
+    },
+    "projectOrgArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "value": "Consulting US",
+          "label": "Consulting US"
+        },
+        {
+          "value": "OAK PPM",
+          "label": "OAK PPM"
+        }
+      ]
+    },
+    "projectOrgADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "value",
+        "data": "{{ $page.variables.projectOrgArray }}"
+      }
+    }
+  },
+  "metadata": {},
+  "types": {},
+  "chains": {},
+  "eventListeners": {
+    "vbEnter": {
+      "chains": [
+        {
+          "chain": "vbEnterChain"
+        }
+      ]
+    },
+    "spGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParentChain"
+        }
+      ]
+    },
+    "spPrimaryAction": {
+      "chains": [
+        {
+          "chainId": "primaryActionChain"
+        }
+      ]
+    },
+    "filterCriterionChanged": {
+      "chains": [
+        {
+          "chain": "filterChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-sp-general-overview-page": {
+        "path": "oj-sp/general-overview-page/loader"
+      },
+      "oj-sp-smart-search": {
+        "path": "oj-sp/smart-search/loader"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-bind-text": {
+        "path": "ojs/ojknockout"
+      },
+      "oj-bind-if": {
+        "path": "ojs/ojknockout"
+      }
+    }
+  }
+}

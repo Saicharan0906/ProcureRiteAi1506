@@ -1,0 +1,361 @@
+{
+  "title": "Oracle Requisition",
+  "description": "Read-only requisition drill-back from Oracle (mock data pending ORDS/Fusion).",
+  "variables": {
+    "pageTitle": {
+      "type": "string",
+      "defaultValue": "Oracle Requisition"
+    },
+    "pageSubtitle": {
+      "type": "string",
+      "defaultValue": "Read-only requisition drill-back from Oracle"
+    },
+    "contextualInfo": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "label": "Requisitions",
+          "value": "4"
+        },
+        {
+          "label": "Approved",
+          "value": "2"
+        },
+        {
+          "label": "Pending",
+          "value": "1"
+        },
+        {
+          "label": "Incomplete",
+          "value": "1"
+        }
+      ]
+    },
+    "badge": {
+      "type": "object",
+      "defaultValue": {
+        "text": "Drill-back",
+        "status": "info"
+      }
+    },
+    "planHeader": {
+      "type": "object",
+      "defaultValue": {
+        "projectName": "",
+        "businessUnit": "",
+        "projectOrg": "",
+        "projectManager": ""
+      }
+    },
+    "lastProjectNumber": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "projectMeta": {
+      "type": "object",
+      "defaultValue": {
+        "P012025": {
+          "projectName": "Pinnacle Park Project",
+          "businessUnits": [
+            "US1 Business Unit"
+          ],
+          "orgs": [
+            "Consulting US"
+          ],
+          "projectManager": "Rite Developer"
+        },
+        "P012026": {
+          "projectName": "Riverside Expansion",
+          "businessUnits": [
+            "US1 Business Unit",
+            "UK Business Unit"
+          ],
+          "orgs": [
+            "OAK PPM",
+            "Consulting US"
+          ],
+          "projectManager": "A. Kumar"
+        }
+      }
+    },
+    "filterCriterion": {
+      "type": "any"
+    },
+    "searchConfiguration": {
+      "type": "oj-sp/smart-search/strategies/JsonSearchConfigProviderFactory",
+      "defaultValue": {
+        "url": "[[ $application.path + 'resources/data/oracle-req-search-config.json' ]]"
+      }
+    },
+    "searchContext": {
+      "type": "object",
+      "defaultValue": {
+        "$search": {
+          "filters": {
+            "ProjectNumberFilter": {
+              "label": "Project Number",
+              "options": {
+                "optionsData": "[[ $page.variables.projectNumberADP ]]",
+                "optionsKeys": {
+                  "label": "label",
+                  "value": "value"
+                }
+              }
+            },
+            "BusinessUnitFilter": {
+              "label": "Business Unit",
+              "options": {
+                "optionsData": "[[ $page.variables.businessUnitADP ]]",
+                "optionsKeys": {
+                  "label": "label",
+                  "value": "value"
+                }
+              }
+            },
+            "ProjectOrgFilter": {
+              "label": "Project Organization",
+              "options": {
+                "optionsData": "[[ $page.variables.projectOrgADP ]]",
+                "optionsKeys": {
+                  "label": "label",
+                  "value": "value"
+                }
+              }
+            },
+            "ReqNumberFilter": {
+              "label": "Requisition Number",
+              "options": {
+                "optionsData": "[[ $page.variables.reqNumberADP ]]",
+                "optionsKeys": {
+                  "label": "label",
+                  "value": "value"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "reqLinesArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "projectNumber": "P012025",
+          "businessUnit": "US1 Business Unit",
+          "projectOrg": "Consulting US",
+          "id": 1,
+          "reqNumber": "REQ-100245",
+          "lineNumber": 1,
+          "itemNumber": "AS00106",
+          "itemDescription": "Alliance 7 Pro",
+          "quantity": 30,
+          "price": 80,
+          "currency": "USD",
+          "preparer": "Rite Dev",
+          "requester": "PM Park",
+          "status": "Approved"
+        },
+        {
+          "projectNumber": "P012025",
+          "businessUnit": "US1 Business Unit",
+          "projectOrg": "Consulting US",
+          "id": 2,
+          "reqNumber": "REQ-100250",
+          "lineNumber": 1,
+          "itemNumber": "AS00110",
+          "itemDescription": "Edge Router X",
+          "quantity": 12,
+          "price": 35,
+          "currency": "USD",
+          "preparer": "Rite Dev",
+          "requester": "PM Park",
+          "status": "Pending"
+        },
+        {
+          "projectNumber": "P012025",
+          "businessUnit": "US1 Business Unit",
+          "projectOrg": "Consulting US",
+          "id": 3,
+          "reqNumber": "REQ-100251",
+          "lineNumber": 2,
+          "itemNumber": "AS00107",
+          "itemDescription": "Alliance 7 Ultimate",
+          "quantity": 10,
+          "price": 98,
+          "currency": "USD",
+          "preparer": "AJITH",
+          "requester": "PM Park",
+          "status": "Incomplete"
+        },
+        {
+          "projectNumber": "P012025",
+          "businessUnit": "US1 Business Unit",
+          "projectOrg": "Consulting US",
+          "id": 4,
+          "reqNumber": "REQ-100245",
+          "lineNumber": 2,
+          "itemNumber": "AS00103",
+          "itemDescription": "Blue Hat Enterprise",
+          "quantity": 6,
+          "price": 716,
+          "currency": "USD",
+          "preparer": "Rite Dev",
+          "requester": "PM Park",
+          "status": "Approved"
+        }
+      ]
+    },
+    "reqLinesAllArray": {
+      "type": "any[]",
+      "defaultValue": []
+    },
+    "reqLinesADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "id",
+        "data": "{{ $page.variables.reqLinesArray }}"
+      }
+    },
+    "projectNumberArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "value": "P012025",
+          "label": "P012025"
+        },
+        {
+          "value": "P012026",
+          "label": "P012026"
+        }
+      ]
+    },
+    "projectNumberADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "value",
+        "data": "{{ $page.variables.projectNumberArray }}"
+      }
+    },
+    "businessUnitArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "value": "US1 Business Unit",
+          "label": "US1 Business Unit"
+        },
+        {
+          "value": "UK Business Unit",
+          "label": "UK Business Unit"
+        }
+      ]
+    },
+    "businessUnitADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "value",
+        "data": "{{ $page.variables.businessUnitArray }}"
+      }
+    },
+    "projectOrgArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "value": "Consulting US",
+          "label": "Consulting US"
+        },
+        {
+          "value": "OAK PPM",
+          "label": "OAK PPM"
+        }
+      ]
+    },
+    "projectOrgADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "value",
+        "data": "{{ $page.variables.projectOrgArray }}"
+      }
+    },
+    "reqNumberArray": {
+      "type": "any[]",
+      "defaultValue": [
+        {
+          "value": "REQ-100245",
+          "label": "REQ-100245"
+        },
+        {
+          "value": "REQ-100250",
+          "label": "REQ-100250"
+        },
+        {
+          "value": "REQ-100251",
+          "label": "REQ-100251"
+        }
+      ]
+    },
+    "reqNumberADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "value",
+        "data": "{{ $page.variables.reqNumberArray }}"
+      }
+    }
+  },
+  "metadata": {},
+  "types": {},
+  "chains": {},
+  "eventListeners": {
+    "vbEnter": {
+      "chains": [
+        {
+          "chain": "vbEnterChain"
+        }
+      ]
+    },
+    "spGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParentChain"
+        }
+      ]
+    },
+    "spPrimaryAction": {
+      "chains": [
+        {
+          "chainId": "primaryActionChain"
+        }
+      ]
+    },
+    "filterCriterionChanged": {
+      "chains": [
+        {
+          "chain": "filterChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-sp-general-overview-page": {
+        "path": "oj-sp/general-overview-page/loader"
+      },
+      "oj-sp-smart-search": {
+        "path": "oj-sp/smart-search/loader"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-bind-text": {
+        "path": "ojs/ojknockout"
+      },
+      "oj-bind-if": {
+        "path": "ojs/ojknockout"
+      }
+    }
+  }
+}

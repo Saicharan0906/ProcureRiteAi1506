@@ -1,0 +1,23 @@
+<!-- Copyright (c) 2026, Oracle and/or its affiliates -->
+<oj-sp-general-overview-page id="oj_itm_gop" display-options.responsive-padding="off" display-mode="mixed"
+  page-title="[[ $variables.pageTitle ]]" page-subtitle="[[ $variables.pageSubtitle ]]"
+  primary-action.label="Create Item" primary-action.display="on"
+  badge="[[ $variables.badge ]]"
+  on-sp-go-to-parent="[[ $listeners.goToParentChain ]]" on-sp-primary-action="[[ $listeners.primaryActionChain ]]"
+  class="oj-sm-width-full" style="--oj-sp-general-overview-page-max-width: 90% !important;">
+
+  <div class="oj-flex oj-sm-flex-direction-column oj-sm-width-full" slot="main" style="max-width:100% !important;">
+    <div class="oj-panel oj-sm-padding-4x">
+      <oj-form-layout max-columns="2" label-edge="top" direction="row">
+        <oj-select-single label-hint="Business Unit" data="[[ $variables.businessUnitADP ]]" item-text="label" value="{{ $variables.form.businessUnit }}"></oj-select-single>
+        <oj-select-single label-hint="Organization" data="[[ $variables.projectOrgADP ]]" item-text="label" value="{{ $variables.form.organization }}"></oj-select-single>
+        <oj-select-single label-hint="Item Template" data="[[ $variables.templateADP ]]" item-text="label" value="{{ $variables.form.template }}"></oj-select-single>
+        <oj-select-single label-hint="Lifecycle Phase" data="[[ $variables.lifecycleADP ]]" item-text="label" value="{{ $variables.form.lifecycle }}"></oj-select-single>
+        <oj-select-single label-hint="UOM" data="[[ $variables.uomADP ]]" item-text="label" value="{{ $variables.form.uom }}"></oj-select-single>
+        <oj-input-text label-hint="Item Number" value="{{ $variables.form.itemNumber }}"></oj-input-text>
+        <oj-input-text label-hint="Description" value="{{ $variables.form.description }}"></oj-input-text>
+        <oj-input-text label-hint="Category" value="{{ $variables.form.category }}"></oj-input-text>
+      </oj-form-layout>
+    </div>
+  </div>
+</oj-sp-general-overview-page>

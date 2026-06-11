@@ -1,0 +1,10 @@
+.rcv-plan-header{display:flex;flex-wrap:wrap;gap:12px 40px;padding:12px 4px;border-bottom:1px solid var(--oj-core-divider-color,#e5e7eb);}
+.rcv-field{display:flex;flex-direction:column;min-width:150px;}
+.rcv-field-label{font-size:0.72rem;color:var(--oj-core-text-color-secondary,#637387);margin-bottom:2px;}
+.rcv-field-value{font-size:0.95rem;font-weight:600;color:var(--oj-core-text-color-primary,#1f2937);}
+
+.pr-badge{border-radius:12px;padding:4px 12px;display:inline-block;font-weight:600;font-size:0.82rem;}
+.pr-badge-info{background-color:#e3f2fd;color:#1565c0;}
+.pr-badge-good{background-color:var(--oj-core-bg-success-subtle,#e5fdf4);color:var(--oj-core-text-color-success,#007a33);}
+.pr-badge-warn{background-color:#fff8e1;color:#B45309;}
+.pr-badge-bad{background-color:var(--oj-core-bg-danger-subtle,#fdeded);color:var(--oj-core-text-color-danger,#c12e2a);}
