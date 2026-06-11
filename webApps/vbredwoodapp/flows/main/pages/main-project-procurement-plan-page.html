@@ -23,49 +23,15 @@
   <div class="oj-flex oj-sm-flex-direction-column oj-sm-width-full oj-sm-gap-4x"
        slot="main" style="max-width: 100% !important;">
 
-    <!-- ═══ Search / Filter panel ═══ -->
-    <div class="oj-panel oj-sm-padding-4x ppp-filter-panel">
-      <oj-form-layout max-columns="3" label-edge="top" direction="row" class="oj-sm-width-full">
-        <oj-select-single label-hint="Project Number"
-          data="[[ $variables.projectNumberADP ]]" item-text="label"
-          value="{{ $variables.filter.projectNumber }}"
-          on-value-changed="[[ $listeners.projectChangedChain ]]">
-        </oj-select-single>
-
-        <oj-input-text label-hint="Project Name" readonly="true"
-          value="[[ $variables.filter.projectName ]]">
-        </oj-input-text>
-
-        <oj-select-single label-hint="Business Unit"
-          data="[[ $variables.businessUnitADP ]]" item-text="label"
-          value="{{ $variables.filter.businessUnit }}">
-        </oj-select-single>
-
-        <oj-select-single label-hint="Project Organization"
-          data="[[ $variables.projectOrgADP ]]" item-text="label"
-          value="{{ $variables.filter.projectOrg }}">
-        </oj-select-single>
-
-        <oj-select-single label-hint="Item Category"
-          data="[[ $variables.itemCategoryADP ]]" item-text="label"
-          value="{{ $variables.filter.itemCategory }}">
-        </oj-select-single>
-
-        <oj-select-single label-hint="Buyer"
-          data="[[ $variables.buyerADP ]]" item-text="label"
-          value="{{ $variables.filter.buyer }}">
-        </oj-select-single>
-      </oj-form-layout>
-
-      <div class="oj-flex oj-sm-justify-content-flex-end oj-sm-gap-2x oj-sm-margin-2x-top">
-        <oj-button chroming="outlined" on-oj-action="[[ $listeners.resetActionChain ]]">
-          <span slot="startIcon" class="oj-ux-ico-undo"></span>Reset
-        </oj-button>
-        <oj-button chroming="callToAction" on-oj-action="[[ $listeners.searchActionChain ]]">
-          <span slot="startIcon" class="oj-ux-ico-search"></span>Search
-        </oj-button>
-      </div>
-    </div>
+    <!-- ═══ Smart Search (Redwood oj-sp-smart-search, MCP template) ═══ -->
+    <oj-sp-smart-search
+      filter-criterion="{{ $variables.filterCriterion }}"
+      on-filter-criterion-changed="[[ $listeners.filterCriterionChanged ]]"
+      search-context="[[ $variables.searchContext ]]"
+      search-config="[[ $variables.searchConfiguration.provider ]]"
+      suggestion-filters='["StatusFilter","CriticalFilter","ItemCategoryFilter","BuyerFilter"]'
+      placeholder="Search plan lines by item, description, task — or add filters">
+    </oj-sp-smart-search>
 
     <!-- ═══ Plan header info row ═══ -->
     <div class="oj-flex oj-sm-flex-wrap oj-sm-gap-6x ppp-plan-header">

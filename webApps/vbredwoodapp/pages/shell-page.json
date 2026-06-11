@@ -30,6 +30,10 @@
       },
       "messageId": {
         "type": "string"
+      },
+      "navDrawerOpen": {
+        "type": "boolean",
+        "defaultValue": false
       }
     },
     "metadata": {},
@@ -83,6 +87,19 @@
             "chain": "onInAppNavAction"
           }
         ]
+      },
+      "toggleNavDrawer": {
+        "chains": [
+          { "chain": "toggleNavDrawer" }
+        ]
+      },
+      "sideNavSelection": {
+        "chains": [
+          {
+            "parameters": { "event": "{{ $event }}" },
+            "chain": "sideNavSelection"
+          }
+        ]
       }
     },
     "imports": {
@@ -93,13 +110,22 @@
         "oj-sp-messages-toast": {
           "path": "oj-sp/messages-toast/loader"
         },
-        "oj-sp-in-app-navigation": {
-          "path": "oj-sp/in-app-navigation/loader"
+        "oj-drawer-popup": {
+          "path": "ojs/ojdrawerpopup"
+        },
+        "oj-navigation-list": {
+          "path": "ojs/ojnavigationlist"
+        },
+        "oj-button": {
+          "path": "ojs/ojbutton"
         },
         "oj-progress-circle": {
           "path": "ojs/ojprogress-circle"
         },
         "oj-bind-if": {
+          "path": "ojs/ojknockout"
+        },
+        "oj-bind-text": {
           "path": "ojs/ojknockout"
         }
       }

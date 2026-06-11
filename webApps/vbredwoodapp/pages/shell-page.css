@@ -1,0 +1,22 @@
+/* Shell — left nav drawer toggle + drawer styling */
+
+.ppp-nav-toggle {
+  position: fixed;
+  top: 6px;
+  left: 8px;
+  z-index: 1100;
+  --oj-button-icon-color: #ffffff;
+  color: #ffffff;
+}
+
+.ppp-nav-drawer {
+  width: 280px;
+  height: 100%;
+  background-color: var(--oj-core-bg-color-primary, #ffffff);
+}
+
+.ppp-nav-brand {
+  color: var(--oj-core-brand-primary, #1B6ACB);
+  font-weight: 700;
+  border-bottom: 1px solid var(--oj-core-divider-color, #e5e7eb);
+}

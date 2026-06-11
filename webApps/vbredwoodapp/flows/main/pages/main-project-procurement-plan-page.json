@@ -97,6 +97,44 @@
         "keyAttributes": "id",
         "data": "{{ $page.variables.planLinesArray }}"
       }
+    },
+
+    "statusOptionsArray": { "type": "any[]", "defaultValue": [
+      { "value": "Draft", "label": "Draft" },
+      { "value": "Ready for Procurement", "label": "Ready for Procurement" }
+    ] },
+    "statusOptionsADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.statusOptionsArray }}" } },
+
+    "criticalOptionsArray": { "type": "any[]", "defaultValue": [
+      { "value": "Yes", "label": "Yes" }, { "value": "No", "label": "No" }
+    ] },
+    "criticalOptionsADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.criticalOptionsArray }}" } },
+
+    "filterCriterion": { "type": "any" },
+    "searchConfiguration": {
+      "type": "oj-sp/smart-search/strategies/JsonSearchConfigProviderFactory",
+      "defaultValue": {
+        "url": "[[ $application.path + 'resources/data/ppp-search-config.json' ]]"
+      }
+    },
+    "searchContext": {
+      "type": "object",
+      "defaultValue": {
+        "$search": {
+          "filters": {
+            "StatusFilter": { "label": "Status", "options": {
+              "optionsData": "[[ $page.variables.statusOptionsADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "CriticalFilter": { "label": "Critical", "options": {
+              "optionsData": "[[ $page.variables.criticalOptionsADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "ItemCategoryFilter": { "label": "Item Category", "options": {
+              "optionsData": "[[ $page.variables.itemCategoryADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "BuyerFilter": { "label": "Buyer", "options": {
+              "optionsData": "[[ $page.variables.buyerADP ]]", "optionsKeys": { "label": "label", "value": "value" } } }
+          }
+        }
+      }
     }
   },
   "metadata": {},
@@ -113,18 +151,13 @@
     "spGoToParent": { "chains": [ { "chainId": "goToParentChain" } ] },
     "spPrimaryAction": { "chains": [ { "chainId": "primaryActionChain" } ] },
     "spSecondaryAction": { "chains": [ { "chainId": "secondaryActionChain", "parameters": { "detail": "{{ $event.detail }}" } } ] },
-    "searchActionChain": { "chains": [ { "chain": "searchActionChain" } ] },
-    "resetActionChain": { "chains": [ { "chain": "resetActionChain" } ] },
-    "projectChangedChain": { "chains": [ { "chain": "projectChangedChain" } ] }
+    "filterCriterionChanged": { "chains": [ { "chain": "filterChain" } ] }
   },
   "imports": {
     "components": {
       "oj-sp-general-overview-page": { "path": "oj-sp/general-overview-page/loader" },
+      "oj-sp-smart-search": { "path": "oj-sp/smart-search/loader" },
       "oj-table": { "path": "ojs/ojtable" },
-      "oj-form-layout": { "path": "ojs/ojformlayout" },
-      "oj-select-single": { "path": "ojs/ojselectsingle" },
-      "oj-input-text": { "path": "ojs/ojinputtext" },
-      "oj-button": { "path": "ojs/ojbutton" },
       "oj-bind-text": { "path": "ojs/ojknockout" }
     }
   }

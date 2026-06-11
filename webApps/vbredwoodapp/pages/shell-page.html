@@ -1,40 +1,58 @@
 <!-- Copyright (c) 2026, Oracle and/or its affiliates -->
 
 <div id="pageContent" class="oj-web-applayout-page">
-    <div class="oj-web-applayout-content-nopad oj-web-applayout-max-width">
 
-      <div class="oj-flex">
-        <oj-sp-messages-banner data="[[ $variables.messagesBannerADP ]]" class="oj-flex-item oj-sm-12 oj-md-12"
-          on-sp-close="[[$listeners.messagesBannerSpClose]]"
-          ></oj-sp-messages-banner>
-      </div>
+  <!-- Menu toggle (hamburger) — opens the left navigation drawer -->
+  <oj-button id="navToggle" display="icons" chroming="borderless"
+    class="ppp-nav-toggle" title="Menu" aria-label="Open navigation menu"
+    on-oj-action="[[ $listeners.toggleNavDrawer ]]">
+    <span slot="startIcon" class="oj-ux-ico-menu"></span>
+  </oj-button>
 
-      <oj-sp-messages-toast primary-text="[[ $variables.messageToast ]]" id="messageToast"></oj-sp-messages-toast>
-
-      <!-- Page navigation loading overlay -->
-      <oj-bind-if test="[[ $variables.isNavigating ]]">
-        <div style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.35);z-index:1000;display:flex;align-items:center;justify-content:center;cursor:wait;">
-          <div style="background:#fff;border-radius:8px;padding:32px 40px;display:flex;flex-direction:column;align-items:center;gap:16px;box-shadow:0 8px 24px rgba(0,0,0,0.18);">
-            <oj-progress-circle value="-1" size="md"></oj-progress-circle>
-            <span class="oj-typography-body-sm oj-text-color-secondary">Loading…</span>
-          </div>
-        </div>
-      </oj-bind-if>
-
-      <div class="oj-flex" style="padding-bottom: 80px;">
-        <!-- Renders flow content -->
-        <oj-vb-content id="vbRouterContent" class="oj-flex-item" config="[[vbRouterFlow]]">
-        </oj-vb-content>
-      </div>
-
-      <!-- Global Footer Navigation Bar -->
-      <div style="position: fixed; bottom: 0; width: 100%; z-index: 100; box-shadow: 0 -2px 5px rgba(0,0,0,0.05); background: white;">
-        <oj-sp-in-app-navigation
-          navigation-data="[[ $variables.navigationItemsADP ]]"
-          selection="{{ $application.variables.activeNavTab }}"
-          on-sp-selection-action="[[ $listeners.inAppNavigationSpSelectionAction ]]">
-        </oj-sp-in-app-navigation>
-      </div>
-
+  <!-- Left navigation drawer (scales to many pages) -->
+  <oj-drawer-popup edge="start" opened="{{ $variables.navDrawerOpen }}">
+    <div class="ppp-nav-drawer">
+      <div class="oj-typography-heading-sm oj-sm-padding-4x ppp-nav-brand">ProcureRite</div>
+      <oj-navigation-list edge="start"
+        data="[[ $variables.navigationItemsADP ]]"
+        selection="{{ $application.variables.activeNavTab }}"
+        on-selection-changed="[[ $listeners.sideNavSelection ]]">
+        <template slot="itemTemplate" data-oj-as="item">
+          <li>
+            <a href="#">
+              <span :class="[[ 'oj-navigationlist-item-icon ' + item.data.icon ]]"></span>
+              <oj-bind-text value="[[ item.data.label ]]"></oj-bind-text>
+            </a>
+          </li>
+        </template>
+      </oj-navigation-list>
     </div>
+  </oj-drawer-popup>
+
+  <div class="oj-web-applayout-content-nopad oj-web-applayout-max-width">
+
+    <div class="oj-flex">
+      <oj-sp-messages-banner data="[[ $variables.messagesBannerADP ]]" class="oj-flex-item oj-sm-12 oj-md-12"
+        on-sp-close="[[$listeners.messagesBannerSpClose]]"></oj-sp-messages-banner>
+    </div>
+
+    <oj-sp-messages-toast primary-text="[[ $variables.messageToast ]]" id="messageToast"></oj-sp-messages-toast>
+
+    <!-- Page navigation loading overlay -->
+    <oj-bind-if test="[[ $variables.isNavigating ]]">
+      <div style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.35);z-index:1000;display:flex;align-items:center;justify-content:center;cursor:wait;">
+        <div style="background:#fff;border-radius:8px;padding:32px 40px;display:flex;flex-direction:column;align-items:center;gap:16px;box-shadow:0 8px 24px rgba(0,0,0,0.18);">
+          <oj-progress-circle value="-1" size="md"></oj-progress-circle>
+          <span class="oj-typography-body-sm oj-text-color-secondary">Loading…</span>
+        </div>
+      </div>
+    </oj-bind-if>
+
+    <!-- Renders flow content -->
+    <div class="oj-flex">
+      <oj-vb-content id="vbRouterContent" class="oj-flex-item" config="[[vbRouterFlow]]">
+      </oj-vb-content>
+    </div>
+
   </div>
+</div>
