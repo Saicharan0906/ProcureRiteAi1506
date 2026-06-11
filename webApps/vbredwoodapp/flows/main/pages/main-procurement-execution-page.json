@@ -1,0 +1,121 @@
+{
+  "title": "Procurement Execution",
+  "description": "Generate requisitions, purchase orders and negotiations from ready plan lines. Rebuilt fresh on Redwood. Data is mock placeholder pending ORDS/Fusion wiring.",
+  "variables": {
+    "pageTitle": { "type": "string", "defaultValue": "Procurement Execution" },
+    "pageSubtitle": { "type": "string", "defaultValue": "Create requisitions, POs and negotiations from ready plan lines" },
+    "contextualInfo": {
+      "type": "any[]",
+      "defaultValue": [
+        { "label": "Total Lines", "value": "6" },
+        { "label": "Ready", "value": "3" },
+        { "label": "Requisitioned", "value": "2" },
+        { "label": "PO Created", "value": "1" }
+      ]
+    },
+    "badge": { "type": "object", "defaultValue": { "text": "Execution", "status": "info" } },
+    "secondaryActions": {
+      "type": "object[]",
+      "defaultValue": [
+        { "id": "purchaseRequisition", "label": "Purchase Requisition", "icon": "oj-ux-ico-purchase-request", "display": "on" },
+        { "id": "purchaseOrder", "label": "Purchase Order", "icon": "oj-ux-ico-purchase-order", "display": "on" },
+        { "id": "negotiation", "label": "Negotiation", "icon": "oj-ux-ico-contract", "display": "on" }
+      ]
+    },
+    "planHeader": {
+      "type": "object",
+      "defaultValue": { "projectName": "", "businessUnit": "", "projectOrg": "", "status": "", "projectManager": "" }
+    },
+    "lastProjectNumber": { "type": "string", "defaultValue": "" },
+    "projectMeta": {
+      "type": "object",
+      "defaultValue": {
+        "P012025": { "projectName": "Pinnacle Park Project", "businessUnits": ["US1 Business Unit"], "orgs": ["Consulting US"], "status": "In Execution", "projectManager": "Rite Developer" },
+        "P012026": { "projectName": "Riverside Expansion", "businessUnits": ["US1 Business Unit", "UK Business Unit"], "orgs": ["OAK PPM", "Consulting US"], "status": "In Execution", "projectManager": "A. Kumar" }
+      }
+    },
+
+    "projectNumberArray": { "type": "any[]", "defaultValue": [
+      { "value": "P012025", "label": "P012025" }, { "value": "P012026", "label": "P012026" } ] },
+    "projectNumberADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.projectNumberArray }}" } },
+
+    "businessUnitArray": { "type": "any[]", "defaultValue": [
+      { "value": "US1 Business Unit", "label": "US1 Business Unit" }, { "value": "UK Business Unit", "label": "UK Business Unit" } ] },
+    "businessUnitADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.businessUnitArray }}" } },
+
+    "projectOrgArray": { "type": "any[]", "defaultValue": [
+      { "value": "Consulting US", "label": "Consulting US" }, { "value": "OAK PPM", "label": "OAK PPM" } ] },
+    "projectOrgADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.projectOrgArray }}" } },
+
+    "criticalOptionsArray": { "type": "any[]", "defaultValue": [
+      { "value": "Yes", "label": "Yes" }, { "value": "No", "label": "No" } ] },
+    "criticalOptionsADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.criticalOptionsArray }}" } },
+
+    "execLinesArray": {
+      "type": "any[]",
+      "defaultValue": [
+        { "id": 1, "planLineNumber": 214, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "Yes", "lineType": "Goods", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "uom": "Ea", "plannedQuantity": 30, "orderQuantity": 30, "currency": "USD", "documentNumber": "REQ-100245", "status": "Requisitioned" },
+        { "id": 2, "planLineNumber": 215, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "No", "lineType": "Goods", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "uom": "Ea", "plannedQuantity": 40, "orderQuantity": 0, "currency": "USD", "documentNumber": "", "status": "Ready" },
+        { "id": 3, "planLineNumber": 216, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "Yes", "lineType": "Goods", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "uom": "Ea", "plannedQuantity": 55, "orderQuantity": 55, "currency": "USD", "documentNumber": "PO-US165224", "status": "PO Created" },
+        { "id": 4, "planLineNumber": 217, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "No", "lineType": "Goods", "itemNumber": "AS00107", "itemDescription": "Alliance 7 Ultimate", "itemCategory": "Software.Server", "uom": "Ea", "plannedQuantity": 10, "orderQuantity": 0, "currency": "USD", "documentNumber": "", "status": "Ready" },
+        { "id": 5, "planLineNumber": 218, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "No", "lineType": "Goods", "itemNumber": "AS00103", "itemDescription": "Blue Hat Enterprise", "itemCategory": "Hardware.Network", "uom": "Ea", "plannedQuantity": 6, "orderQuantity": 6, "currency": "USD", "documentNumber": "RFQ-50012", "status": "Negotiation" },
+        { "id": 6, "planLineNumber": 219, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "No", "lineType": "Goods", "itemNumber": "AS00110", "itemDescription": "Edge Router X", "itemCategory": "Hardware.Network", "uom": "Ea", "plannedQuantity": 12, "orderQuantity": 12, "currency": "USD", "documentNumber": "REQ-100250", "status": "Requisitioned" }
+      ]
+    },
+    "execLinesAllArray": { "type": "any[]", "defaultValue": [] },
+    "execLinesADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": { "itemType": "any", "keyAttributes": "id", "data": "{{ $page.variables.execLinesArray }}" }
+    },
+
+    "filterCriterion": { "type": "any" },
+    "searchConfiguration": {
+      "type": "oj-sp/smart-search/strategies/JsonSearchConfigProviderFactory",
+      "defaultValue": { "url": "[[ $application.path + 'resources/data/proc-exec-search-config.json' ]]" }
+    },
+    "searchContext": {
+      "type": "object",
+      "defaultValue": {
+        "$search": {
+          "filters": {
+            "ProjectNumberFilter": { "label": "Project Number", "options": {
+              "optionsData": "[[ $page.variables.projectNumberADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "BusinessUnitFilter": { "label": "Business Unit", "options": {
+              "optionsData": "[[ $page.variables.businessUnitADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "ProjectOrgFilter": { "label": "Project Organization", "options": {
+              "optionsData": "[[ $page.variables.projectOrgADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "CriticalFilter": { "label": "Critical", "options": {
+              "optionsData": "[[ $page.variables.criticalOptionsADP ]]", "optionsKeys": { "label": "label", "value": "value" } } }
+          }
+        }
+      }
+    }
+  },
+  "metadata": {},
+  "types": {},
+  "chains": {
+    "secondaryActionChain": {
+      "variables": { "detail": { "type": "any", "input": "fromCaller", "required": true } }
+    }
+  },
+  "eventListeners": {
+    "vbEnter": { "chains": [ { "chain": "vbEnterChain" } ] },
+    "spGoToParent": { "chains": [ { "chainId": "goToParentChain" } ] },
+    "spPrimaryAction": { "chains": [ { "chainId": "primaryActionChain" } ] },
+    "spSecondaryAction": { "chains": [ { "chainId": "secondaryActionChain", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "filterCriterionChanged": { "chains": [ { "chain": "filterChain" } ] }
+  },
+  "imports": {
+    "components": {
+      "oj-sp-general-overview-page": { "path": "oj-sp/general-overview-page/loader" },
+      "oj-sp-smart-search": { "path": "oj-sp/smart-search/loader" },
+      "oj-table": { "path": "ojs/ojtable" },
+      "oj-bind-text": { "path": "ojs/ojknockout" },
+      "oj-bind-if": { "path": "ojs/ojknockout" }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+/* Procurement Execution — plan header + status capsule badges */
+
+.pexec-plan-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 40px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--oj-core-divider-color, #e5e7eb);
+}
+
+.pexec-field { display: flex; flex-direction: column; min-width: 150px; }
+.pexec-field-label { font-size: 0.72rem; color: var(--oj-core-text-color-secondary, #637387); margin-bottom: 2px; }
+.pexec-field-value { font-size: 0.95rem; font-weight: 600; color: var(--oj-core-text-color-primary, #1f2937); }
+
+.pexec-status-ready { background-color: #e3f2fd; color: #1565c0; border-radius: 12px; padding: 4px 12px; display: inline-block; font-weight: 600; font-size: 0.82rem; }
+.pexec-status-req { background-color: #fff8e1; color: #B45309; border-radius: 12px; padding: 4px 12px; display: inline-block; font-weight: 600; font-size: 0.82rem; }
+.pexec-status-po { background-color: var(--oj-core-bg-success-subtle, #e5fdf4); color: var(--oj-core-text-color-success, #007a33); border-radius: 12px; padding: 4px 12px; display: inline-block; font-weight: 600; font-size: 0.82rem; }
+.pexec-status-nego { background-color: #ede7f6; color: #5e35b1; border-radius: 12px; padding: 4px 12px; display: inline-block; font-weight: 600; font-size: 0.82rem; }

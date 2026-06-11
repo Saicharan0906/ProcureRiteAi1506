@@ -1,0 +1,38 @@
+{
+  "description": "Procurement Execution smart search configuration (filters mirror the original page)",
+  "options": { "keyword": "on" },
+  "filters": {
+    "ProjectNumberFilter": {
+      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
+      "label": "Project Number",
+      "options": { "field": "projectNumber",
+        "optionsData": "[[ $search.filters.ProjectNumberFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.ProjectNumberFilter.options.optionsKeys ]]" },
+      "data": {}
+    },
+    "BusinessUnitFilter": {
+      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
+      "label": "Business Unit",
+      "options": { "field": "businessUnit",
+        "optionsData": "[[ $search.filters.BusinessUnitFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.BusinessUnitFilter.options.optionsKeys ]]" },
+      "data": {}
+    },
+    "ProjectOrgFilter": {
+      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
+      "label": "Project Organization",
+      "options": { "field": "projectOrg",
+        "optionsData": "[[ $search.filters.ProjectOrgFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.ProjectOrgFilter.options.optionsKeys ]]" },
+      "data": {}
+    },
+    "CriticalFilter": {
+      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
+      "label": "Critical",
+      "options": { "field": "critical",
+        "optionsData": "[[ $search.filters.CriticalFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.CriticalFilter.options.optionsKeys ]]" },
+      "data": {}
+    }
+  }
+}

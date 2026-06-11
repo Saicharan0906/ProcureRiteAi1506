@@ -1,0 +1,94 @@
+<!-- Copyright (c) 2026, Oracle and/or its affiliates -->
+<!-- Procurement Execution — rebuilt fresh on Redwood (oj-sp-general-overview-page),
+     same theme/banner/header as the Projects/Procurement Plan pages. Smart-search
+     filters mirror the original page. Data is mock placeholder pending ORDS/Fusion. -->
+
+<oj-sp-general-overview-page
+  id="oj_pexec_gop"
+  display-options.responsive-padding="on"
+  display-mode="mixed"
+  page-title="[[ $variables.pageTitle ]]"
+  page-subtitle="[[ $variables.pageSubtitle ]]"
+  primary-action.label="Refresh ERP Details"
+  primary-action.display="on"
+  secondary-actions="[[ $variables.secondaryActions ]]"
+  contextual-info="[[ $variables.contextualInfo ]]"
+  badge="[[ $variables.badge ]]"
+  on-sp-go-to-parent="[[ $listeners.goToParentChain ]]"
+  on-sp-primary-action="[[ $listeners.primaryActionChain ]]"
+  on-sp-secondary-action="[[ $listeners.secondaryActionChain ]]"
+  class="oj-sm-width-full"
+  style="--oj-sp-general-overview-page-max-width: 100% !important;">
+
+  <div class="oj-flex oj-sm-flex-direction-column oj-sm-width-full oj-sm-gap-4x"
+       slot="main" style="max-width: 100% !important;">
+
+    <oj-sp-smart-search
+      filter-criterion="{{ $variables.filterCriterion }}"
+      on-filter-criterion-changed="[[ $listeners.filterCriterionChanged ]]"
+      search-context="[[ $variables.searchContext ]]"
+      search-config="[[ $variables.searchConfiguration.provider ]]"
+      suggestion-filters='["ProjectNumberFilter","BusinessUnitFilter","ProjectOrgFilter","CriticalFilter"]'
+      placeholder="Search by RFQ / PR / PO number, item — or add filters">
+    </oj-sp-smart-search>
+
+    <oj-bind-if test="[[ $variables.planHeader.projectName ]]">
+      <div class="pexec-plan-header">
+        <div class="pexec-field"><span class="pexec-field-label">Project Name</span>
+          <span class="pexec-field-value"><oj-bind-text value="[[ $variables.planHeader.projectName ]]"></oj-bind-text></span></div>
+        <div class="pexec-field"><span class="pexec-field-label">Business Unit</span>
+          <span class="pexec-field-value"><oj-bind-text value="[[ $variables.planHeader.businessUnit || 'Select Business Unit' ]]"></oj-bind-text></span></div>
+        <div class="pexec-field"><span class="pexec-field-label">Project Organization</span>
+          <span class="pexec-field-value"><oj-bind-text value="[[ $variables.planHeader.projectOrg || 'Select Organization' ]]"></oj-bind-text></span></div>
+        <div class="pexec-field"><span class="pexec-field-label">Status</span>
+          <span class="pexec-field-value"><oj-bind-text value="[[ $variables.planHeader.status ]]"></oj-bind-text></span></div>
+        <div class="pexec-field"><span class="pexec-field-label">Project Manager</span>
+          <span class="pexec-field-value"><oj-bind-text value="[[ $variables.planHeader.projectManager ]]"></oj-bind-text></span></div>
+      </div>
+    </oj-bind-if>
+
+    <oj-table
+      id="execLinesTable"
+      data="[[ $variables.execLinesADP ]]"
+      class="oj-sm-width-full"
+      horizontal-grid-visible="enabled"
+      vertical-grid-visible="disabled"
+      scroll-policy="loadMoreOnScroll"
+      scroll-policy-options.fetch-size="25"
+      selection-mode='{"row": "multiple", "column": "none"}'
+      columns='[
+        {"headerText": "Plan Line #",   "field": "planLineNumber", "headerClassName": "list-header-label", "width": 100},
+        {"headerText": "Line Type",     "field": "lineType",       "headerClassName": "list-header-label", "width": 110},
+        {"headerText": "Item",          "field": "itemNumber",     "headerClassName": "list-header-label", "width": 130},
+        {"headerText": "Item Description","template": "itemDescTemplate","headerClassName": "list-header-label", "weight": 3, "minWidth": 200},
+        {"headerText": "Category",      "field": "itemCategory",   "headerClassName": "list-header-label", "width": 150},
+        {"headerText": "UOM",           "field": "uom",            "headerClassName": "list-header-label", "width": 80},
+        {"headerText": "Planned Qty",   "field": "plannedQuantity","headerClassName": "list-header-label", "width": 110},
+        {"headerText": "Order Qty",     "field": "orderQuantity",  "headerClassName": "list-header-label", "width": 100},
+        {"headerText": "Currency",      "field": "currency",       "headerClassName": "list-header-label", "width": 90},
+        {"headerText": "Document",      "field": "documentNumber", "headerClassName": "list-header-label", "width": 150},
+        {"headerText": "Status",        "template": "statusTemplate","headerClassName": "list-header-label", "width": 160}
+      ]'>
+
+      <template slot="itemDescTemplate" data-oj-as="cell">
+        <span class="oj-typography-body-md oj-typography-semi-bold">
+          <oj-bind-text value="[[ cell.row.itemDescription ]]"></oj-bind-text>
+        </span>
+      </template>
+
+      <template slot="statusTemplate" data-oj-as="cell">
+        <span :class="[[
+          cell.row.status === 'PO Created'    ? 'pexec-status-po'   :
+          cell.row.status === 'Requisitioned' ? 'pexec-status-req'  :
+          cell.row.status === 'Negotiation'   ? 'pexec-status-nego' :
+                                                 'pexec-status-ready'
+        ]]">
+          <oj-bind-text value="[[ cell.row.status ]]"></oj-bind-text>
+        </span>
+      </template>
+
+    </oj-table>
+
+  </div>
+
+</oj-sp-general-overview-page>
