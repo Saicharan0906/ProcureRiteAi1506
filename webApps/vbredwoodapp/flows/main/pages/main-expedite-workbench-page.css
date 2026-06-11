@@ -1,0 +1,18 @@
+/* Expedite Workbench — plan header + activity status badges */
+
+.exp-plan-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 40px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--oj-core-divider-color, #e5e7eb);
+}
+
+.exp-field { display: flex; flex-direction: column; min-width: 150px; }
+.exp-field-label { font-size: 0.72rem; color: var(--oj-core-text-color-secondary, #637387); margin-bottom: 2px; }
+.exp-field-value { font-size: 0.95rem; font-weight: 600; color: var(--oj-core-text-color-primary, #1f2937); }
+
+.exp-status-assigned { background-color: #e3f2fd; color: #1565c0; border-radius: 12px; padding: 4px 12px; display: inline-block; font-weight: 600; font-size: 0.82rem; }
+.exp-status-wip { background-color: #fff8e1; color: #B45309; border-radius: 12px; padding: 4px 12px; display: inline-block; font-weight: 600; font-size: 0.82rem; }
+.exp-status-complete { background-color: var(--oj-core-bg-success-subtle, #e5fdf4); color: var(--oj-core-text-color-success, #007a33); border-radius: 12px; padding: 4px 12px; display: inline-block; font-weight: 600; font-size: 0.82rem; }
+.exp-status-hold { background-color: var(--oj-core-bg-danger-subtle, #fdeded); color: var(--oj-core-text-color-danger, #c12e2a); border-radius: 12px; padding: 4px 12px; display: inline-block; font-weight: 600; font-size: 0.82rem; }

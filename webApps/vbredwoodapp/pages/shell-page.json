@@ -10,7 +10,8 @@
           "data": [
             { "id": "main-project-procurement-plan", "label": "Procurement Plan", "icon": "oj-ux-ico-purchase-order" },
             { "id": "main-procurement-execution", "label": "Procurement Execution", "icon": "oj-ux-ico-task-complete" },
-            { "id": "main-cost-tracker", "label": "Cost Tracker", "icon": "oj-ux-ico-cost" }
+            { "id": "main-cost-tracker", "label": "Cost Tracker", "icon": "oj-ux-ico-cost" },
+            { "id": "main-expedite-workbench", "label": "Expedite Workbench", "icon": "oj-ux-ico-shipping" }
           ]
         }
       },

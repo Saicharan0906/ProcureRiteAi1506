@@ -1,0 +1,94 @@
+<!-- Copyright (c) 2026, Oracle and/or its affiliates -->
+<!-- Expedite Workbench — rebuilt fresh on Redwood (oj-sp-general-overview-page),
+     same theme/banner/header. Manage pre-receipt PO activities. Smart-search
+     filters mirror the original page. Data is mock placeholder pending ORDS/Fusion. -->
+
+<oj-sp-general-overview-page
+  id="oj_exp_gop"
+  display-options.responsive-padding="off"
+  display-mode="mixed"
+  page-title="[[ $variables.pageTitle ]]"
+  page-subtitle="[[ $variables.pageSubtitle ]]"
+  primary-action.label="Export"
+  primary-action.display="on"
+  secondary-actions="[[ $variables.secondaryActions ]]"
+  contextual-info="[[ $variables.contextualInfo ]]"
+  badge="[[ $variables.badge ]]"
+  on-sp-go-to-parent="[[ $listeners.goToParentChain ]]"
+  on-sp-primary-action="[[ $listeners.primaryActionChain ]]"
+  on-sp-secondary-action="[[ $listeners.secondaryActionChain ]]"
+  class="oj-sm-width-full"
+  style="--oj-sp-general-overview-page-max-width: 100% !important;">
+
+  <div class="oj-flex oj-sm-flex-direction-column oj-sm-width-full oj-sm-gap-4x"
+       slot="main" style="max-width: 100% !important;">
+
+    <oj-sp-smart-search
+      filter-criterion="{{ $variables.filterCriterion }}"
+      on-filter-criterion-changed="[[ $listeners.filterCriterionChanged ]]"
+      search-context="[[ $variables.searchContext ]]"
+      search-config="[[ $variables.searchConfiguration.provider ]]"
+      suggestion-filters='["ProjectNumberFilter","BusinessUnitFilter","ProjectOrgFilter","CriticalFilter","AssigneeFilter"]'
+      placeholder="Search by PO number, item, supplier — or add filters">
+    </oj-sp-smart-search>
+
+    <oj-bind-if test="[[ $variables.planHeader.projectName ]]">
+      <div class="exp-plan-header">
+        <div class="exp-field"><span class="exp-field-label">Project Name</span>
+          <span class="exp-field-value"><oj-bind-text value="[[ $variables.planHeader.projectName ]]"></oj-bind-text></span></div>
+        <div class="exp-field"><span class="exp-field-label">Business Unit</span>
+          <span class="exp-field-value"><oj-bind-text value="[[ $variables.planHeader.businessUnit || 'Select Business Unit' ]]"></oj-bind-text></span></div>
+        <div class="exp-field"><span class="exp-field-label">Project Organization</span>
+          <span class="exp-field-value"><oj-bind-text value="[[ $variables.planHeader.projectOrg || 'Select Organization' ]]"></oj-bind-text></span></div>
+        <div class="exp-field"><span class="exp-field-label">Status</span>
+          <span class="exp-field-value"><oj-bind-text value="[[ $variables.planHeader.status ]]"></oj-bind-text></span></div>
+        <div class="exp-field"><span class="exp-field-label">Project Manager</span>
+          <span class="exp-field-value"><oj-bind-text value="[[ $variables.planHeader.projectManager ]]"></oj-bind-text></span></div>
+      </div>
+    </oj-bind-if>
+
+    <oj-table
+      id="poSchedulesTable"
+      data="[[ $variables.poSchedulesADP ]]"
+      class="oj-sm-width-full"
+      horizontal-grid-visible="enabled"
+      vertical-grid-visible="disabled"
+      scroll-policy="loadMoreOnScroll"
+      scroll-policy-options.fetch-size="25"
+      selection-mode='{"row": "multiple", "column": "none"}'
+      columns='[
+        {"headerText": "PO Number",     "field": "poNumber",       "headerClassName": "list-header-label", "width": 120},
+        {"headerText": "Item",          "field": "itemNumber",     "headerClassName": "list-header-label", "width": 120},
+        {"headerText": "Item Description","template": "itemDescTemplate","headerClassName": "list-header-label", "weight": 3, "minWidth": 190},
+        {"headerText": "Item Category", "field": "itemCategory",   "headerClassName": "list-header-label", "width": 140},
+        {"headerText": "Supplier",      "field": "supplier",       "headerClassName": "list-header-label", "width": 120},
+        {"headerText": "Buyer",         "field": "buyer",          "headerClassName": "list-header-label", "width": 130},
+        {"headerText": "Assignee",      "field": "assignee",       "headerClassName": "list-header-label", "width": 120},
+        {"headerText": "Promised Date", "field": "promisedDate",   "headerClassName": "list-header-label", "width": 130},
+        {"headerText": "Need By Date",  "field": "needByDate",     "headerClassName": "list-header-label", "width": 130},
+        {"headerText": "Actual Date",   "field": "actualDate",     "headerClassName": "list-header-label", "width": 120},
+        {"headerText": "Activity",      "template": "statusTemplate","headerClassName": "list-header-label", "width": 130}
+      ]'>
+
+      <template slot="itemDescTemplate" data-oj-as="cell">
+        <span class="oj-typography-body-md oj-typography-semi-bold">
+          <oj-bind-text value="[[ cell.row.itemDescription ]]"></oj-bind-text>
+        </span>
+      </template>
+
+      <template slot="statusTemplate" data-oj-as="cell">
+        <span :class="[[
+          cell.row.status === 'On Hold'  ? 'exp-status-hold' :
+          cell.row.status === 'Complete' ? 'exp-status-complete' :
+          cell.row.status === 'WIP'      ? 'exp-status-wip' :
+                                           'exp-status-assigned'
+        ]]">
+          <oj-bind-text value="[[ cell.row.status ]]"></oj-bind-text>
+        </span>
+      </template>
+
+    </oj-table>
+
+  </div>
+
+</oj-sp-general-overview-page>

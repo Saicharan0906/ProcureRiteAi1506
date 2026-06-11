@@ -28,6 +28,9 @@
     },
     "main-cost-tracker": {
       "path": "pages/main-cost-tracker-page"
+    },
+    "main-expedite-workbench": {
+      "path": "pages/main-expedite-workbench-page"
     }
   }
 }
