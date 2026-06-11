@@ -16,7 +16,13 @@
 }
 
 .ppp-nav-brand {
-  color: var(--oj-core-brand-primary, #1B6ACB);
-  font-weight: 700;
   border-bottom: 1px solid var(--oj-core-divider-color, #e5e7eb);
+}
+
+.ppp-nav-logo {
+  max-width: 220px;
+  max-height: 56px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }

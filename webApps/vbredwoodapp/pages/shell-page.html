@@ -12,7 +12,9 @@
   <!-- Left navigation drawer (scales to many pages) -->
   <oj-drawer-popup edge="start" opened="{{ $variables.navDrawerOpen }}">
     <div class="ppp-nav-drawer">
-      <div class="oj-typography-heading-sm oj-sm-padding-4x ppp-nav-brand">ProcureRite</div>
+      <div class="ppp-nav-brand oj-sm-padding-3x">
+        <img :src="[[ $application.path + 'resources/images/procurerite-logo.jpg' ]]" alt="ProcureRite" class="ppp-nav-logo"/>
+      </div>
       <oj-navigation-list edge="start"
         data="[[ $variables.navigationItemsADP ]]"
         selection="{{ $application.variables.activeNavTab }}"
