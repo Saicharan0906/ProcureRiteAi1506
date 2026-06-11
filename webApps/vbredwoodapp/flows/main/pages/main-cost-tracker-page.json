@@ -1,0 +1,122 @@
+{
+  "title": "Cost Tracker",
+  "description": "Compare planned vs actual spend per item/project. Rebuilt fresh on Redwood (read-only). Data is mock placeholder pending ORDS wiring.",
+  "variables": {
+    "pageTitle": { "type": "string", "defaultValue": "Cost Tracker" },
+    "pageSubtitle": { "type": "string", "defaultValue": "Planned vs actual spend per item / project" },
+    "contextualInfo": {
+      "type": "any[]",
+      "defaultValue": [
+        { "label": "Plan Lines", "value": "6" },
+        { "label": "Planned Cost", "value": "$9.2K" },
+        { "label": "Ordered Amount", "value": "$8.4K" },
+        { "label": "Variance", "value": "-8.7%" }
+      ]
+    },
+    "badge": { "type": "object", "defaultValue": { "text": "Tracking", "status": "info" } },
+    "planHeader": {
+      "type": "object",
+      "defaultValue": { "projectName": "", "businessUnit": "", "projectOrg": "", "plannedCostTotal": "", "orderedTotal": "" }
+    },
+    "lastProjectNumber": { "type": "string", "defaultValue": "" },
+    "projectMeta": {
+      "type": "object",
+      "defaultValue": {
+        "P012025": { "projectName": "Pinnacle Park Project", "businessUnits": ["US1 Business Unit"], "orgs": ["Consulting US"], "plannedCostTotal": "$9,195", "orderedTotal": "$8,400" },
+        "P012026": { "projectName": "Riverside Expansion", "businessUnits": ["US1 Business Unit", "UK Business Unit"], "orgs": ["OAK PPM", "Consulting US"], "plannedCostTotal": "$0", "orderedTotal": "$0" }
+      }
+    },
+
+    "projectNumberArray": { "type": "any[]", "defaultValue": [
+      { "value": "P012025", "label": "P012025" }, { "value": "P012026", "label": "P012026" } ] },
+    "projectNumberADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.projectNumberArray }}" } },
+
+    "businessUnitArray": { "type": "any[]", "defaultValue": [
+      { "value": "US1 Business Unit", "label": "US1 Business Unit" }, { "value": "UK Business Unit", "label": "UK Business Unit" } ] },
+    "businessUnitADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.businessUnitArray }}" } },
+
+    "projectOrgArray": { "type": "any[]", "defaultValue": [
+      { "value": "Consulting US", "label": "Consulting US" }, { "value": "OAK PPM", "label": "OAK PPM" } ] },
+    "projectOrgADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.projectOrgArray }}" } },
+
+    "poNumberArray": { "type": "any[]", "defaultValue": [
+      { "value": "US165224", "label": "US165224" }, { "value": "US165226", "label": "US165226" } ] },
+    "poNumberADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.poNumberArray }}" } },
+
+    "supplierArray": { "type": "any[]", "defaultValue": [
+      { "value": "EIP Inc", "label": "EIP Inc" }, { "value": "FEC", "label": "FEC" } ] },
+    "supplierADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.supplierArray }}" } },
+
+    "itemCategoryArray": { "type": "any[]", "defaultValue": [
+      { "value": "Software.Server", "label": "Software.Server" }, { "value": "Hardware.Network", "label": "Hardware.Network" } ] },
+    "itemCategoryADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.itemCategoryArray }}" } },
+
+    "costLinesArray": {
+      "type": "any[]",
+      "defaultValue": [
+        { "id": 1, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "taskNumber": 1, "taskName": "Site Analysis", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "supplier": "EIP Inc", "buyer": "Developer, Rite", "poNumber": "US165224", "status": "OPEN", "plannedCost": 2500, "orderedAmount": 2400, "unitPrice": 80, "currency": "USD" },
+        { "id": 2, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "taskNumber": 1, "taskName": "Site Analysis", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "supplier": "EIP Inc", "buyer": "AJITH", "poNumber": "US165226", "status": "CLOSED FOR RECEIVING", "plannedCost": 175, "orderedAmount": 175, "unitPrice": 4, "currency": "USD" },
+        { "id": 3, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "taskNumber": 1, "taskName": "Site Analysis", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "supplier": "FEC", "buyer": "Developer, Rite", "poNumber": "US165233", "status": "OPEN", "plannedCost": 1240, "orderedAmount": 1100, "unitPrice": 22, "currency": "USD" },
+        { "id": 4, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "taskNumber": 2, "taskName": "Implementation", "itemNumber": "AS00107", "itemDescription": "Alliance 7 Ultimate", "itemCategory": "Software.Server", "supplier": "EIP Inc", "buyer": "AJITH", "poNumber": "US165234", "status": "INCOMPLETE", "plannedCost": 980, "orderedAmount": 0, "unitPrice": 98, "currency": "USD" },
+        { "id": 5, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "taskNumber": 2, "taskName": "Implementation", "itemNumber": "AS00103", "itemDescription": "Blue Hat Enterprise", "itemCategory": "Hardware.Network", "supplier": "FEC", "buyer": "Developer, Rite", "poNumber": "US165236", "status": "CLOSED FOR RECEIVING", "plannedCost": 4300, "orderedAmount": 4300, "unitPrice": 716, "currency": "USD" },
+        { "id": 6, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "taskNumber": 3, "taskName": "Rollout", "itemNumber": "AS00110", "itemDescription": "Edge Router X", "itemCategory": "Hardware.Network", "supplier": "EIP Inc", "buyer": "Developer, Rite", "poNumber": "US165240", "status": "OPEN", "plannedCost": 0, "orderedAmount": 425, "unitPrice": 35, "currency": "USD" }
+      ]
+    },
+    "costLinesAllArray": { "type": "any[]", "defaultValue": [] },
+    "costLinesADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": { "itemType": "any", "keyAttributes": "id", "data": "{{ $page.variables.costLinesArray }}" }
+    },
+
+    "filterCriterion": { "type": "any" },
+    "searchConfiguration": {
+      "type": "oj-sp/smart-search/strategies/JsonSearchConfigProviderFactory",
+      "defaultValue": { "url": "[[ $application.path + 'resources/data/cost-tracker-search-config.json' ]]" }
+    },
+    "searchContext": {
+      "type": "object",
+      "defaultValue": {
+        "$search": {
+          "filters": {
+            "ProjectNumberFilter": { "label": "Project Number", "options": {
+              "optionsData": "[[ $page.variables.projectNumberADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "BusinessUnitFilter": { "label": "Business Unit", "options": {
+              "optionsData": "[[ $page.variables.businessUnitADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "ProjectOrgFilter": { "label": "Project Organization", "options": {
+              "optionsData": "[[ $page.variables.projectOrgADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "PONumberFilter": { "label": "PO Number", "options": {
+              "optionsData": "[[ $page.variables.poNumberADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "SupplierFilter": { "label": "Supplier", "options": {
+              "optionsData": "[[ $page.variables.supplierADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "ItemCategoryFilter": { "label": "Item Category", "options": {
+              "optionsData": "[[ $page.variables.itemCategoryADP ]]", "optionsKeys": { "label": "label", "value": "value" } } }
+          }
+        }
+      }
+    }
+  },
+  "metadata": {},
+  "types": {},
+  "chains": {},
+  "eventListeners": {
+    "vbEnter": { "chains": [ { "chain": "vbEnterChain" } ] },
+    "spGoToParent": { "chains": [ { "chainId": "goToParentChain" } ] },
+    "spPrimaryAction": { "chains": [ { "chainId": "primaryActionChain" } ] },
+    "filterCriterionChanged": { "chains": [ { "chain": "filterChain" } ] }
+  },
+  "imports": {
+    "components": {
+      "oj-sp-general-overview-page": { "path": "oj-sp/general-overview-page/loader" },
+      "oj-sp-smart-search": { "path": "oj-sp/smart-search/loader" },
+      "oj-table": { "path": "ojs/ojtable" },
+      "oj-bind-text": { "path": "ojs/ojknockout" },
+      "oj-bind-if": { "path": "ojs/ojknockout" }
+    }
+  }
+}

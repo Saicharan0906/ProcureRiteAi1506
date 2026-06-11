@@ -25,6 +25,9 @@
     },
     "main-procurement-execution": {
       "path": "pages/main-procurement-execution-page"
+    },
+    "main-cost-tracker": {
+      "path": "pages/main-cost-tracker-page"
     }
   }
 }

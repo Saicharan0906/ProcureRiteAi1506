@@ -1,0 +1,18 @@
+{
+  "description": "Cost Tracker smart search configuration (filters mirror the original page)",
+  "options": { "keyword": "on" },
+  "filters": {
+    "ProjectNumberFilter": { "type": "oj-sp/smart-search/default-filters/SelectSingleFilter", "label": "Project Number",
+      "options": { "field": "projectNumber", "optionsData": "[[ $search.filters.ProjectNumberFilter.options.optionsData ]]", "optionsKeys": "[[ $search.filters.ProjectNumberFilter.options.optionsKeys ]]" }, "data": {} },
+    "BusinessUnitFilter": { "type": "oj-sp/smart-search/default-filters/SelectSingleFilter", "label": "Business Unit",
+      "options": { "field": "businessUnit", "optionsData": "[[ $search.filters.BusinessUnitFilter.options.optionsData ]]", "optionsKeys": "[[ $search.filters.BusinessUnitFilter.options.optionsKeys ]]" }, "data": {} },
+    "ProjectOrgFilter": { "type": "oj-sp/smart-search/default-filters/SelectSingleFilter", "label": "Project Organization",
+      "options": { "field": "projectOrg", "optionsData": "[[ $search.filters.ProjectOrgFilter.options.optionsData ]]", "optionsKeys": "[[ $search.filters.ProjectOrgFilter.options.optionsKeys ]]" }, "data": {} },
+    "PONumberFilter": { "type": "oj-sp/smart-search/default-filters/SelectSingleFilter", "label": "PO Number",
+      "options": { "field": "poNumber", "optionsData": "[[ $search.filters.PONumberFilter.options.optionsData ]]", "optionsKeys": "[[ $search.filters.PONumberFilter.options.optionsKeys ]]" }, "data": {} },
+    "SupplierFilter": { "type": "oj-sp/smart-search/default-filters/SelectSingleFilter", "label": "Supplier",
+      "options": { "field": "supplier", "optionsData": "[[ $search.filters.SupplierFilter.options.optionsData ]]", "optionsKeys": "[[ $search.filters.SupplierFilter.options.optionsKeys ]]" }, "data": {} },
+    "ItemCategoryFilter": { "type": "oj-sp/smart-search/default-filters/SelectSingleFilter", "label": "Item Category",
+      "options": { "field": "itemCategory", "optionsData": "[[ $search.filters.ItemCategoryFilter.options.optionsData ]]", "optionsKeys": "[[ $search.filters.ItemCategoryFilter.options.optionsKeys ]]" }, "data": {} }
+  }
+}
