@@ -33,19 +33,25 @@
       placeholder="Search by project number, item, supplier — or add filters">
     </oj-sp-smart-search>
 
-    <!-- ═══ Plan header info row ═══ -->
-    <div class="oj-flex oj-sm-flex-wrap oj-sm-gap-6x ppp-plan-header">
-      <div><span class="oj-typography-body-xs oj-text-color-secondary">Project Name</span>
-        <div class="oj-typography-body-md oj-typography-semi-bold"><oj-bind-text value="[[ $variables.planHeader.projectName ]]"></oj-bind-text></div></div>
-      <div><span class="oj-typography-body-xs oj-text-color-secondary">Start Date</span>
-        <div class="oj-typography-body-md oj-typography-semi-bold"><oj-bind-text value="[[ $variables.planHeader.startDate ]]"></oj-bind-text></div></div>
-      <div><span class="oj-typography-body-xs oj-text-color-secondary">Finish Date</span>
-        <div class="oj-typography-body-md oj-typography-semi-bold"><oj-bind-text value="[[ $variables.planHeader.finishDate ]]"></oj-bind-text></div></div>
-      <div><span class="oj-typography-body-xs oj-text-color-secondary">Status</span>
-        <div class="oj-typography-body-md oj-typography-semi-bold"><oj-bind-text value="[[ $variables.planHeader.status ]]"></oj-bind-text></div></div>
-      <div><span class="oj-typography-body-xs oj-text-color-secondary">Project Manager</span>
-        <div class="oj-typography-body-md oj-typography-semi-bold"><oj-bind-text value="[[ $variables.planHeader.projectManager ]]"></oj-bind-text></div></div>
-    </div>
+    <!-- ═══ Plan header info row (auto-filled from selected Project) ═══ -->
+    <oj-bind-if test="[[ $variables.planHeader.projectName ]]">
+      <div class="ppp-plan-header">
+        <div class="ppp-field"><span class="ppp-field-label">Project Name</span>
+          <span class="ppp-field-value"><oj-bind-text value="[[ $variables.planHeader.projectName ]]"></oj-bind-text></span></div>
+        <div class="ppp-field"><span class="ppp-field-label">Business Unit</span>
+          <span class="ppp-field-value"><oj-bind-text value="[[ $variables.planHeader.businessUnit || 'Select Business Unit' ]]"></oj-bind-text></span></div>
+        <div class="ppp-field"><span class="ppp-field-label">Project Organization</span>
+          <span class="ppp-field-value"><oj-bind-text value="[[ $variables.planHeader.projectOrg || 'Select Organization' ]]"></oj-bind-text></span></div>
+        <div class="ppp-field"><span class="ppp-field-label">Start Date</span>
+          <span class="ppp-field-value"><oj-bind-text value="[[ $variables.planHeader.startDate ]]"></oj-bind-text></span></div>
+        <div class="ppp-field"><span class="ppp-field-label">Finish Date</span>
+          <span class="ppp-field-value"><oj-bind-text value="[[ $variables.planHeader.finishDate ]]"></oj-bind-text></span></div>
+        <div class="ppp-field"><span class="ppp-field-label">Status</span>
+          <span class="ppp-field-value"><oj-bind-text value="[[ $variables.planHeader.status ]]"></oj-bind-text></span></div>
+        <div class="ppp-field"><span class="ppp-field-label">Project Manager</span>
+          <span class="ppp-field-value"><oj-bind-text value="[[ $variables.planHeader.projectManager ]]"></oj-bind-text></span></div>
+      </div>
+    </oj-bind-if>
 
     <!-- ═══ Plan Lines table ═══ -->
     <oj-table

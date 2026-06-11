@@ -26,11 +26,33 @@
     "planHeader": {
       "type": "object",
       "defaultValue": {
-        "projectName": "Pinnacle Park Project",
-        "startDate": "01-Jan-2025",
-        "finishDate": "01-Dec-2030",
-        "status": "Draft",
-        "projectManager": "Rite Developer"
+        "projectName": "",
+        "businessUnit": "",
+        "projectOrg": "",
+        "startDate": "",
+        "finishDate": "",
+        "status": "",
+        "projectManager": ""
+      }
+    },
+    "lastProjectNumber": { "type": "string", "defaultValue": "" },
+    "projectMeta": {
+      "type": "object",
+      "defaultValue": {
+        "P012025": {
+          "projectName": "Pinnacle Park Project",
+          "businessUnits": ["US1 Business Unit"],
+          "orgs": ["Consulting US"],
+          "startDate": "01-Jan-2025", "finishDate": "01-Dec-2030",
+          "status": "Draft", "projectManager": "Rite Developer"
+        },
+        "P012026": {
+          "projectName": "Riverside Expansion",
+          "businessUnits": ["US1 Business Unit", "UK Business Unit"],
+          "orgs": ["OAK PPM", "Consulting US"],
+          "startDate": "01-Mar-2026", "finishDate": "30-Jun-2031",
+          "status": "Draft", "projectManager": "A. Kumar"
+        }
       }
     },
     "filter": {
@@ -161,7 +183,8 @@
       "oj-sp-general-overview-page": { "path": "oj-sp/general-overview-page/loader" },
       "oj-sp-smart-search": { "path": "oj-sp/smart-search/loader" },
       "oj-table": { "path": "ojs/ojtable" },
-      "oj-bind-text": { "path": "ojs/ojknockout" }
+      "oj-bind-text": { "path": "ojs/ojknockout" },
+      "oj-bind-if": { "path": "ojs/ojknockout" }
     }
   }
 }
