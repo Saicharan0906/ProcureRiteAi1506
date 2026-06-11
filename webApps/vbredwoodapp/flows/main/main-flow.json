@@ -19,6 +19,9 @@
     },
     "main-projects-overview": {
       "path": "pages/main-projects-overview-page"
+    },
+    "main-project-procurement-plan": {
+      "path": "pages/main-project-procurement-plan-page"
     }
   }
 }

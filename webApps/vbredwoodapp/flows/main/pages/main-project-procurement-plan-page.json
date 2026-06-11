@@ -1,0 +1,131 @@
+{
+  "title": "Project Procurement Plan",
+  "description": "Plan materials against project WBS tasks. Rebuilt fresh on Redwood (general-overview-page). Data is mock placeholder pending ORDS/Fusion service wiring.",
+  "variables": {
+    "pageTitle": { "type": "string", "defaultValue": "Project Procurement Plan" },
+    "pageSubtitle": { "type": "string", "defaultValue": "Plan materials against project WBS tasks" },
+    "contextualInfo": {
+      "type": "any[]",
+      "defaultValue": [
+        { "label": "Total Plan Lines", "value": "8" },
+        { "label": "Ready to Procure", "value": "3" },
+        { "label": "Draft", "value": "5" },
+        { "label": "Critical", "value": "2" }
+      ]
+    },
+    "badge": { "type": "object", "defaultValue": { "text": "Draft", "status": "info" } },
+    "secondaryActions": {
+      "type": "object[]",
+      "defaultValue": [
+        { "id": "readyForProcurement", "label": "Ready for Procurement", "icon": "oj-ux-ico-task-complete", "display": "on" },
+        { "id": "export", "label": "Export", "icon": "oj-ux-ico-download", "display": "on" },
+        { "id": "import", "label": "Import", "icon": "oj-ux-ico-upload", "display": "on" },
+        { "id": "gantt", "label": "Gantt", "icon": "oj-ux-ico-gantt", "display": "on" }
+      ]
+    },
+    "planHeader": {
+      "type": "object",
+      "defaultValue": {
+        "startDate": "01-Jan-2025",
+        "finishDate": "01-Dec-2030",
+        "status": "Draft",
+        "projectManager": "Rite Developer"
+      }
+    },
+    "filter": {
+      "type": "object",
+      "defaultValue": {
+        "projectNumber": null,
+        "projectName": "Pinnacle Park Project",
+        "businessUnit": null,
+        "projectOrg": null,
+        "itemCategory": null,
+        "buyer": null
+      }
+    },
+
+    "projectNumberArray": { "type": "any[]", "defaultValue": [
+      { "value": "P012025", "label": "P012025" },
+      { "value": "P012026", "label": "P012026" }
+    ] },
+    "projectNumberADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.projectNumberArray }}" } },
+
+    "businessUnitArray": { "type": "any[]", "defaultValue": [
+      { "value": "US1 Business Unit", "label": "US1 Business Unit" },
+      { "value": "UK Business Unit", "label": "UK Business Unit" }
+    ] },
+    "businessUnitADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.businessUnitArray }}" } },
+
+    "projectOrgArray": { "type": "any[]", "defaultValue": [
+      { "value": "Consulting US", "label": "Consulting US" },
+      { "value": "OAK PPM", "label": "OAK PPM" }
+    ] },
+    "projectOrgADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.projectOrgArray }}" } },
+
+    "itemCategoryArray": { "type": "any[]", "defaultValue": [
+      { "value": "Software.Server", "label": "Software.Server" },
+      { "value": "Hardware.Network", "label": "Hardware.Network" }
+    ] },
+    "itemCategoryADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.itemCategoryArray }}" } },
+
+    "buyerArray": { "type": "any[]", "defaultValue": [
+      { "value": "Developer, Rite", "label": "Developer, Rite" },
+      { "value": "AJITH", "label": "AJITH" }
+    ] },
+    "buyerADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
+      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.buyerArray }}" } },
+
+    "planLinesArray": {
+      "type": "any[]",
+      "defaultValue": [
+        { "id": 1, "lineNumber": 214, "critical": "Yes", "lineType": "Goods", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "taskName": "Site Analysis", "plannedQuantity": 30, "uom": "Ea", "plannedCost": 2500, "currency": "USD", "buyer": "Developer, Rite", "supplier": "EIP Inc", "expenditureType": "Material", "status": "Ready for Procurement" },
+        { "id": 2, "lineNumber": 215, "critical": "No", "lineType": "Goods", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "taskName": "Site Analysis", "plannedQuantity": 40, "uom": "Ea", "plannedCost": 175, "currency": "USD", "buyer": "AJITH", "supplier": "EIP Inc", "expenditureType": "Material", "status": "Draft" },
+        { "id": 3, "lineNumber": 216, "critical": "Yes", "lineType": "Goods", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "taskName": "Site Analysis", "plannedQuantity": 55, "uom": "Ea", "plannedCost": 1240, "currency": "USD", "buyer": "Developer, Rite", "supplier": "FEC", "expenditureType": "Material", "status": "Ready for Procurement" },
+        { "id": 4, "lineNumber": 217, "critical": "No", "lineType": "Goods", "itemNumber": "AS00107", "itemDescription": "Alliance 7 Ultimate", "itemCategory": "Software.Server", "taskName": "Site Analysis", "plannedQuantity": 10, "uom": "Ea", "plannedCost": 980, "currency": "USD", "buyer": "AJITH", "supplier": "EIP Inc", "expenditureType": "Material", "status": "Draft" },
+        { "id": 5, "lineNumber": 218, "critical": "No", "lineType": "Goods", "itemNumber": "AS00103", "itemDescription": "Blue Hat Enterprise", "itemCategory": "Hardware.Network", "taskName": "Implementation", "plannedQuantity": 6, "uom": "Ea", "plannedCost": 4300, "currency": "USD", "buyer": "Developer, Rite", "supplier": "FEC", "expenditureType": "15003 HVAC", "status": "Draft" }
+      ]
+    },
+    "planLinesAllArray": { "type": "any[]", "defaultValue": [] },
+    "planLinesADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "any",
+        "keyAttributes": "id",
+        "data": "{{ $page.variables.planLinesArray }}"
+      }
+    }
+  },
+  "metadata": {},
+  "types": {},
+  "chains": {
+    "secondaryActionChain": {
+      "variables": {
+        "detail": { "type": "any", "input": "fromCaller", "required": true }
+      }
+    }
+  },
+  "eventListeners": {
+    "vbEnter": { "chains": [ { "chain": "vbEnterChain" } ] },
+    "spGoToParent": { "chains": [ { "chainId": "goToParentChain" } ] },
+    "spPrimaryAction": { "chains": [ { "chainId": "primaryActionChain" } ] },
+    "spSecondaryAction": { "chains": [ { "chainId": "secondaryActionChain", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "searchActionChain": { "chains": [ { "chain": "searchActionChain" } ] },
+    "resetActionChain": { "chains": [ { "chain": "resetActionChain" } ] },
+    "projectChangedChain": { "chains": [ { "chain": "projectChangedChain" } ] }
+  },
+  "imports": {
+    "components": {
+      "oj-sp-general-overview-page": { "path": "oj-sp/general-overview-page/loader" },
+      "oj-table": { "path": "ojs/ojtable" },
+      "oj-form-layout": { "path": "ojs/ojformlayout" },
+      "oj-select-single": { "path": "ojs/ojselectsingle" },
+      "oj-input-text": { "path": "ojs/ojinputtext" },
+      "oj-button": { "path": "ojs/ojbutton" },
+      "oj-bind-text": { "path": "ojs/ojknockout" }
+    }
+  }
+}

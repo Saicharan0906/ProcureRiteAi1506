@@ -9,7 +9,8 @@
           "keyAttributes": "id",
           "data": [
             { "id": "main-erp-dashboard",    "label": "Dashboard", "icon": "oj-ux-ico-dashboard" },
-            { "id": "main-projects-overview","label": "Projects",  "icon": "oj-ux-ico-folder"    }
+            { "id": "main-projects-overview","label": "Projects",  "icon": "oj-ux-ico-folder"    },
+            { "id": "main-project-procurement-plan", "label": "Procurement Plan", "icon": "oj-ux-ico-purchase-order" }
           ]
         }
       },

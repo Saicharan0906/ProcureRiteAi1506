@@ -1,0 +1,136 @@
+<!-- Copyright (c) 2026, Oracle and/or its affiliates -->
+<!-- Project Procurement Plan — rebuilt fresh on Redwood (oj-sp-general-overview-page),
+     matching the Projects Overview layout/theme/banner/header. Data is mock placeholder
+     pending ORDS/Fusion service wiring (see claude-context metadata + ORDS-vs-REST plan). -->
+
+<oj-sp-general-overview-page
+  id="oj_ppp_gop"
+  display-options.responsive-padding="on"
+  display-mode="mixed"
+  page-title="[[ $variables.pageTitle ]]"
+  page-subtitle="[[ $variables.pageSubtitle ]]"
+  primary-action.label="Add Line"
+  primary-action.display="on"
+  secondary-actions="[[ $variables.secondaryActions ]]"
+  contextual-info="[[ $variables.contextualInfo ]]"
+  badge="[[ $variables.badge ]]"
+  on-sp-go-to-parent="[[ $listeners.goToParentChain ]]"
+  on-sp-primary-action="[[ $listeners.primaryActionChain ]]"
+  on-sp-secondary-action="[[ $listeners.secondaryActionChain ]]"
+  class="oj-sm-width-full"
+  style="--oj-sp-general-overview-page-max-width: 100% !important;">
+
+  <div class="oj-flex oj-sm-flex-direction-column oj-sm-width-full oj-sm-gap-4x"
+       slot="main" style="max-width: 100% !important;">
+
+    <!-- ═══ Search / Filter panel ═══ -->
+    <div class="oj-panel oj-sm-padding-4x ppp-filter-panel">
+      <oj-form-layout max-columns="3" label-edge="top" direction="row" class="oj-sm-width-full">
+        <oj-select-single label-hint="Project Number"
+          data="[[ $variables.projectNumberADP ]]" item-text="label"
+          value="{{ $variables.filter.projectNumber }}"
+          on-value-changed="[[ $listeners.projectChangedChain ]]">
+        </oj-select-single>
+
+        <oj-input-text label-hint="Project Name" readonly="true"
+          value="[[ $variables.filter.projectName ]]">
+        </oj-input-text>
+
+        <oj-select-single label-hint="Business Unit"
+          data="[[ $variables.businessUnitADP ]]" item-text="label"
+          value="{{ $variables.filter.businessUnit }}">
+        </oj-select-single>
+
+        <oj-select-single label-hint="Project Organization"
+          data="[[ $variables.projectOrgADP ]]" item-text="label"
+          value="{{ $variables.filter.projectOrg }}">
+        </oj-select-single>
+
+        <oj-select-single label-hint="Item Category"
+          data="[[ $variables.itemCategoryADP ]]" item-text="label"
+          value="{{ $variables.filter.itemCategory }}">
+        </oj-select-single>
+
+        <oj-select-single label-hint="Buyer"
+          data="[[ $variables.buyerADP ]]" item-text="label"
+          value="{{ $variables.filter.buyer }}">
+        </oj-select-single>
+      </oj-form-layout>
+
+      <div class="oj-flex oj-sm-justify-content-flex-end oj-sm-gap-2x oj-sm-margin-2x-top">
+        <oj-button chroming="outlined" on-oj-action="[[ $listeners.resetActionChain ]]">
+          <span slot="startIcon" class="oj-ux-ico-undo"></span>Reset
+        </oj-button>
+        <oj-button chroming="callToAction" on-oj-action="[[ $listeners.searchActionChain ]]">
+          <span slot="startIcon" class="oj-ux-ico-search"></span>Search
+        </oj-button>
+      </div>
+    </div>
+
+    <!-- ═══ Plan header info row ═══ -->
+    <div class="oj-flex oj-sm-flex-wrap oj-sm-gap-6x ppp-plan-header">
+      <div><span class="oj-typography-body-xs oj-text-color-secondary">Start Date</span>
+        <div class="oj-typography-body-md oj-typography-semi-bold"><oj-bind-text value="[[ $variables.planHeader.startDate ]]"></oj-bind-text></div></div>
+      <div><span class="oj-typography-body-xs oj-text-color-secondary">Finish Date</span>
+        <div class="oj-typography-body-md oj-typography-semi-bold"><oj-bind-text value="[[ $variables.planHeader.finishDate ]]"></oj-bind-text></div></div>
+      <div><span class="oj-typography-body-xs oj-text-color-secondary">Status</span>
+        <div class="oj-typography-body-md oj-typography-semi-bold"><oj-bind-text value="[[ $variables.planHeader.status ]]"></oj-bind-text></div></div>
+      <div><span class="oj-typography-body-xs oj-text-color-secondary">Project Manager</span>
+        <div class="oj-typography-body-md oj-typography-semi-bold"><oj-bind-text value="[[ $variables.planHeader.projectManager ]]"></oj-bind-text></div></div>
+    </div>
+
+    <!-- ═══ Plan Lines table ═══ -->
+    <oj-table
+      id="planLinesTable"
+      data="[[ $variables.planLinesADP ]]"
+      class="oj-sm-width-full"
+      horizontal-grid-visible="enabled"
+      vertical-grid-visible="disabled"
+      scroll-policy="loadMoreOnScroll"
+      scroll-policy-options.fetch-size="25"
+      selection-mode='{"row": "multiple", "column": "none"}'
+      columns='[
+        {"headerText": "Line #",        "field": "lineNumber",      "headerClassName": "list-header-label", "width": 80},
+        {"headerText": "Critical",      "template": "criticalTemplate", "headerClassName": "list-header-label", "width": 100},
+        {"headerText": "Line Type",     "field": "lineType",        "headerClassName": "list-header-label", "width": 110},
+        {"headerText": "Item Number",   "field": "itemNumber",      "headerClassName": "list-header-label", "width": 130},
+        {"headerText": "Item Description","template": "itemDescTemplate","headerClassName": "list-header-label", "weight": 3, "minWidth": 200},
+        {"headerText": "Item Category", "field": "itemCategory",    "headerClassName": "list-header-label", "width": 150},
+        {"headerText": "Task",          "field": "taskName",        "headerClassName": "list-header-label", "width": 150},
+        {"headerText": "Planned Qty",   "field": "plannedQuantity", "headerClassName": "list-header-label", "width": 110},
+        {"headerText": "UOM",           "field": "uom",             "headerClassName": "list-header-label", "width": 80},
+        {"headerText": "Planned Cost",  "template": "costTemplate", "headerClassName": "list-header-label", "width": 130},
+        {"headerText": "Buyer",         "field": "buyer",           "headerClassName": "list-header-label", "width": 140},
+        {"headerText": "Supplier",      "field": "supplier",        "headerClassName": "list-header-label", "width": 150},
+        {"headerText": "Status",        "template": "statusTemplate","headerClassName": "list-header-label", "width": 150}
+      ]'>
+
+      <template slot="criticalTemplate" data-oj-as="cell">
+        <span :class="[[ cell.row.critical === 'Yes' ? 'ppp-critical-yes' : 'ppp-critical-no' ]]">
+          <oj-bind-text value="[[ cell.row.critical ]]"></oj-bind-text>
+        </span>
+      </template>
+
+      <template slot="itemDescTemplate" data-oj-as="cell">
+        <span class="oj-typography-body-md oj-typography-semi-bold">
+          <oj-bind-text value="[[ cell.row.itemDescription ]]"></oj-bind-text>
+        </span>
+      </template>
+
+      <template slot="costTemplate" data-oj-as="cell">
+        <span class="oj-typography-body-sm">
+          <oj-bind-text value="[[ $functions.formatCurrency(cell.row.plannedCost, cell.row.currency) ]]"></oj-bind-text>
+        </span>
+      </template>
+
+      <template slot="statusTemplate" data-oj-as="cell">
+        <span :class="[[ cell.row.status === 'Ready for Procurement' ? 'ppp-status-ready' : 'ppp-status-draft' ]]">
+          <oj-bind-text value="[[ cell.row.status ]]"></oj-bind-text>
+        </span>
+      </template>
+
+    </oj-table>
+
+  </div>
+
+</oj-sp-general-overview-page>
