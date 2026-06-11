@@ -10,13 +10,22 @@
     <link rel="preconnect" href="https://static.oracle.com">
     <!-- vb:inject id="headContent" theme="resources/css/dt.theme.redwood" -->
     <style id="pr-overrides">
+      /* Taller teal banner to match Oracle SaaS proportions */
+      oj-sp-general-overview-page {
+        --oj-sp-page-banner-height: 190px !important;
+        --oj-sp-theme-global-bkgd-banner-height: 260px !important;
+      }
       /* Ensure the page-header color strip ("thread") stretches the full banner width */
       [class*="header-strip"],
       [class*="page-texture-strip"],
-      [class*="texture-strip"] {
+      [class*="texture-strip"],
+      [class*="header-strip"] img,
+      [class*="texture-strip"] img {
         background-size: 100% 100% !important;
         background-repeat: no-repeat !important;
         width: 100% !important;
+        min-width: 100% !important;
+        object-fit: fill !important;
       }
     </style>
   </head>
