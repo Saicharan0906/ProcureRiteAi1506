@@ -2,14 +2,25 @@
 
 <div id="pageContent" class="oj-web-applayout-page">
 
-  <!-- Menu toggle (hamburger) — opens the left navigation drawer -->
-  <oj-button id="navToggle" display="icons" chroming="borderless"
-    class="ppp-nav-toggle" title="Menu" aria-label="Open navigation menu"
-    on-oj-action="[[ $listeners.toggleNavDrawer ]]">
-    <span slot="startIcon" class="oj-ux-ico-menu"></span>
-  </oj-button>
+  <!-- Black global header (Oracle Redwood SaaS style) -->
+  <header class="pr-global-header">
+    <oj-button class="pr-gh-btn" display="icons" chroming="borderless" title="Menu"
+      aria-label="Open navigation menu" on-oj-action="[[ $listeners.toggleNavDrawer ]]">
+      <span slot="startIcon" class="oj-ux-ico-menu"></span>
+    </oj-button>
+    <span class="pr-gh-title">ProcureRite</span>
+    <div class="pr-gh-spacer"></div>
+    <oj-button class="pr-gh-btn" display="icons" chroming="borderless" title="Home" aria-label="Home">
+      <span slot="startIcon" class="oj-ux-ico-home"></span>
+    </oj-button>
+    <oj-button class="pr-gh-btn" display="icons" chroming="borderless" title="Notifications" aria-label="Notifications">
+      <span slot="startIcon" class="oj-ux-ico-bell"></span>
+    </oj-button>
+    <oj-avatar role="img" size="xs" initials="RU" background="orange"
+      class="oj-sm-margin-2x-start" aria-label="User"></oj-avatar>
+  </header>
 
-  <!-- Left navigation drawer (scales to many pages) -->
+  <!-- Left navigation drawer -->
   <oj-drawer-popup edge="start" opened="{{ $variables.navDrawerOpen }}">
     <div class="ppp-nav-drawer">
       <div class="ppp-nav-brand oj-sm-padding-3x">
@@ -40,7 +51,6 @@
 
     <oj-sp-messages-toast primary-text="[[ $variables.messageToast ]]" id="messageToast"></oj-sp-messages-toast>
 
-    <!-- Page navigation loading overlay -->
     <oj-bind-if test="[[ $variables.isNavigating ]]">
       <div style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.35);z-index:1000;display:flex;align-items:center;justify-content:center;cursor:wait;">
         <div style="background:#fff;border-radius:8px;padding:32px 40px;display:flex;flex-direction:column;align-items:center;gap:16px;box-shadow:0 8px 24px rgba(0,0,0,0.18);">
@@ -50,7 +60,6 @@
       </div>
     </oj-bind-if>
 
-    <!-- Renders flow content -->
     <div class="oj-flex">
       <oj-vb-content id="vbRouterContent" class="oj-flex-item" config="[[vbRouterFlow]]">
       </oj-vb-content>

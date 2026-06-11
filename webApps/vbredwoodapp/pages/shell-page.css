@@ -1,10 +1,29 @@
 /* Shell — left nav drawer toggle + drawer styling */
 
-.ppp-nav-toggle {
-  position: fixed;
-  top: 6px;
-  left: 8px;
+.pr-global-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 48px;
+  padding: 0 12px;
+  background-color: #1a1714;
+  color: #ffffff;
+  position: sticky;
+  top: 0;
   z-index: 1100;
+}
+
+.pr-gh-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  margin-left: 4px;
+}
+
+.pr-gh-spacer { flex: 1 1 auto; }
+
+.pr-gh-btn {
   --oj-button-icon-color: #ffffff;
   color: #ffffff;
 }

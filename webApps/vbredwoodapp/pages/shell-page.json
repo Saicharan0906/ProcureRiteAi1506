@@ -180,6 +180,9 @@
       "oj-button": {
         "path": "ojs/ojbutton"
       },
+      "oj-avatar": {
+        "path": "ojs/ojavatar"
+      },
       "oj-progress-circle": {
         "path": "ojs/ojprogress-circle"
       },
