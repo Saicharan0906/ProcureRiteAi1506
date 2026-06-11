@@ -183,6 +183,8 @@
       "oj-sp-general-overview-page": { "path": "oj-sp/general-overview-page/loader" },
       "oj-sp-smart-search": { "path": "oj-sp/smart-search/loader" },
       "oj-table": { "path": "ojs/ojtable" },
+      "oj-form-layout": { "path": "ojs/ojformlayout" },
+      "oj-input-text": { "path": "ojs/ojinputtext" },
       "oj-bind-text": { "path": "ojs/ojknockout" },
       "oj-bind-if": { "path": "ojs/ojknockout" }
     }
