@@ -176,6 +176,10 @@
     "spGoToParent": { "chains": [ { "chainId": "goToParentChain" } ] },
     "spPrimaryAction": { "chains": [ { "chainId": "primaryActionChain" } ] },
     "spSecondaryAction": { "chains": [ { "chainId": "secondaryActionChain", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "readyForProcurementAction": { "chains": [ { "chainId": "secondaryActionChain", "parameters": { "detail": { "id": "readyForProcurement" } } } ] },
+    "exportAction": { "chains": [ { "chainId": "secondaryActionChain", "parameters": { "detail": { "id": "export" } } } ] },
+    "importAction": { "chains": [ { "chainId": "secondaryActionChain", "parameters": { "detail": { "id": "import" } } } ] },
+    "ganttAction": { "chains": [ { "chainId": "secondaryActionChain", "parameters": { "detail": { "id": "gantt" } } } ] },
     "filterCriterionChanged": { "chains": [ { "chain": "filterChain" } ] }
   },
   "imports": {
@@ -183,6 +187,8 @@
       "oj-sp-general-overview-page": { "path": "oj-sp/general-overview-page/loader" },
       "oj-sp-smart-search": { "path": "oj-sp/smart-search/loader" },
       "oj-table": { "path": "ojs/ojtable" },
+      "oj-toolbar": { "path": "ojs/ojtoolbar" },
+      "oj-button": { "path": "ojs/ojbutton" },
       "oj-form-layout": { "path": "ojs/ojformlayout" },
       "oj-input-text": { "path": "ojs/ojinputtext" },
       "oj-bind-text": { "path": "ojs/ojknockout" },

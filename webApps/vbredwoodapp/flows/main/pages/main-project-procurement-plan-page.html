@@ -11,7 +11,6 @@
   page-subtitle="[[ $variables.pageSubtitle ]]"
   primary-action.label="Add Line"
   primary-action.display="on"
-  secondary-actions="[[ $variables.secondaryActions ]]"
   contextual-info="[[ $variables.contextualInfo ]]"
   badge="[[ $variables.badge ]]"
   on-sp-go-to-parent="[[ $listeners.goToParentChain ]]"
@@ -46,6 +45,25 @@
         <oj-input-text label-hint="Status" readonly="true" value="[[ $variables.planHeader.status ]]"></oj-input-text>
       </oj-form-layout>
     </oj-bind-if>
+
+    <!-- ═══ Action toolbar (Oracle SaaS style — visible buttons above the table) ═══ -->
+    <div class="oj-flex oj-sm-align-items-center oj-sm-width-full" style="gap:8px;">
+      <span class="oj-typography-body-sm oj-text-color-secondary" style="flex:1 1 auto;">5 plan lines</span>
+      <oj-toolbar aria-label="Plan line actions">
+        <oj-button display="all" chroming="outlined" on-oj-action="[[ $listeners.readyForProcurementAction ]]">
+          <span slot="startIcon" class="oj-ux-ico-check"></span>Ready for Procurement
+        </oj-button>
+        <oj-button display="all" chroming="outlined" on-oj-action="[[ $listeners.exportAction ]]">
+          <span slot="startIcon" class="oj-ux-ico-download"></span>Export
+        </oj-button>
+        <oj-button display="all" chroming="outlined" on-oj-action="[[ $listeners.importAction ]]">
+          <span slot="startIcon" class="oj-ux-ico-upload"></span>Import
+        </oj-button>
+        <oj-button display="all" chroming="outlined" on-oj-action="[[ $listeners.ganttAction ]]">
+          <span slot="startIcon" class="oj-ux-ico-bar-chart"></span>Gantt
+        </oj-button>
+      </oj-toolbar>
+    </div>
 
     <!-- ═══ Plan Lines table ═══ -->
     <oj-table
