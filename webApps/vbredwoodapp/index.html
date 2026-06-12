@@ -23,6 +23,22 @@
       oj-sp-smart-search .oj-sp-smart-search-container {
         max-width: 900px !important;
       }
+      /* Keep the wide grid's horizontal scroll INSIDE the content area so the whole
+         page (banner + Add Line button) never scrolls sideways. Bound the full chain:
+         page -> slot=main -> collection container -> table. */
+      oj-sp-general-overview-page [slot="main"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        overflow-x: auto !important;
+        box-sizing: border-box !important;
+      }
+      oj-sp-collection-container {
+        display: block !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+      }
       /* Ensure the page-header color strip ("thread") stretches the full banner width */
       [class*="header-strip"],
       [class*="page-texture-strip"],
