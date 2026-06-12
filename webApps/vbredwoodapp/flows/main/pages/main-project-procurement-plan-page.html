@@ -27,13 +27,14 @@
   </oj-sp-smart-search>
 
   <!-- ═══ Main slot: result count + functional actions + grid.
-       slot=main is width-capped (page-content-max-width / max-width:100%) and the
-       oj-table is given its OWN bounded height (style height/min-height) so the grid
-       scrolls INTERNALLY — both horizontal and vertical scrollbars are native to the
-       table. This keeps the wide grid from widening the page, so the banner never
-       shifts and the Add Line button stays visible — WITHOUT any page-level
-       overflow:hidden (which would clip the button and the scrollbar). ═══ -->
-  <div slot="main" class="page-content-max-width" style="min-width:0;max-width:100%;box-sizing:border-box;">
+       The oj-table is sized in VIEWPORT units (width:96vw + bounded height) so it can
+       NEVER exceed the viewport — overflowing columns scroll INSIDE the table's own
+       native scrollbar, not by scrolling the whole page (which would drag the banner
+       sideways). width:100% was the trap: it resolves against a parent that grows to
+       fit the wide grid, widening the page. overflow-x:hidden on this slot=main div
+       (which is BELOW the banner, so it never touches the Add Line button) is a hard
+       backstop guaranteeing the page/banner can't scroll horizontally. ═══ -->
+  <div slot="main" class="page-content-max-width" style="min-width:0;max-width:100%;overflow-x:hidden;box-sizing:border-box;">
   <oj-sp-collection-container
     display-options.export="on"
     functional-primary-actions="[[ $variables.ccPrimaryActions ]]"
@@ -46,8 +47,7 @@
     <oj-table
       id="planLinesTable"
       data="[[ $variables.planLinesADP ]]"
-      class="oj-sm-width-full"
-      style="width:100%;height:calc(100vh - 420px);min-height:300px;"
+      style="width:96vw;height:calc(100vh - 420px);min-height:300px;"
       horizontal-grid-visible="enabled"
       vertical-grid-visible="disabled"
       scroll-policy="loadMoreOnScroll"
