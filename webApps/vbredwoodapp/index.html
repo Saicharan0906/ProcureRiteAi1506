@@ -18,6 +18,12 @@
         max-width: 100% !important;
         overflow-x: hidden !important;
       }
+      /* The smart-search container query decides layout by ITS width: wide => filter
+         chips sit BESIDE the field; medium => field is full-width with chips BELOW.
+         Cap the container so it lands in the "chips below" tier (like onboardrite). */
+      oj-sp-smart-search .oj-sp-smart-search-container {
+        max-width: 900px !important;
+      }
       /* Ensure the page-header color strip ("thread") stretches the full banner width */
       [class*="header-strip"],
       [class*="page-texture-strip"],
