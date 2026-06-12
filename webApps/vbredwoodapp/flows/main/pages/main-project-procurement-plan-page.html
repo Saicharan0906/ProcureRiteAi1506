@@ -1,23 +1,22 @@
 <!-- Copyright (c) 2026, Oracle and/or its affiliates -->
-<!-- Project Procurement Plan — Redwood oj-sp-smart-search-page (PATH B / non-ADF, ORDS-backed).
-     Smart search lives in the banner search slot; the grid sits in an oj-sp-collection-container
-     whose functional actions replace the old header overflow. No subtitle / no aggregation
-     KPIs — the collection container shows the result count automatically. Data is mock
-     placeholder pending ORDS wiring (getPDSCPlanDetails). -->
+<!-- Project Procurement Plan — Redwood oj-sp-general-overview-page with the smart search in
+     the banner search slot and the grid in slot="main" (structure matches the onboardrite
+     "Programs" reference page, which renders the search full-width with a filter dropdown
+     rather than a chip bar). Data is mock placeholder pending ORDS wiring (getPDSCPlanDetails). -->
 
-<oj-sp-smart-search-page
-  id="oj_ppp_ssp"
+<oj-sp-general-overview-page
+  id="oj_ppp_gop"
   display-mode="mixed"
+  display-options.responsive-padding="on"
   page-title="[[ $variables.pageTitle ]]"
   primary-action.label="Add Line"
   primary-action.display="on"
   on-sp-primary-action="[[ $listeners.primaryActionChain ]]"
   on-sp-go-to-parent="[[ $listeners.goToParentChain ]]">
 
-  <!-- ═══ Smart Search — banner search slot. No suggestion-filters attribute, so
-       filters are NOT pinned as chips; they appear in the dropdown when the user
-       clicks the field and become removable chips inside the input once applied
-       (matches the onboardrite "Programs" reference page). ═══ -->
+  <!-- ═══ Smart Search — banner search slot. On general-overview-page this renders
+       full-width with the filter dropdown on click; applied filters become removable
+       chips inside the input (matches the onboardrite "Programs" reference). ═══ -->
   <oj-sp-smart-search
     slot="search"
     filter-criterion="{{ $variables.filterCriterion }}"
@@ -27,7 +26,8 @@
     ask-hint="Search by project number, item, supplier...">
   </oj-sp-smart-search>
 
-  <!-- ═══ Collection container: result count + functional actions + grid ═══ -->
+  <!-- ═══ Main slot: result count + functional actions + grid ═══ -->
+  <div slot="main" class="oj-sm-width-full" style="min-width:0;">
   <oj-sp-collection-container
     display-options.export="on"
     functional-primary-actions="[[ $variables.ccPrimaryActions ]]"
@@ -89,5 +89,6 @@
     </oj-table>
 
   </oj-sp-collection-container>
+  </div>
 
-</oj-sp-smart-search-page>
+</oj-sp-general-overview-page>

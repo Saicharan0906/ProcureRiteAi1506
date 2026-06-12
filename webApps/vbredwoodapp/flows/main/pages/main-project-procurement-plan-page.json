@@ -185,7 +185,7 @@
   },
   "imports": {
     "components": {
-      "oj-sp-smart-search-page": { "path": "oj-sp/smart-search-page/loader" },
+      "oj-sp-general-overview-page": { "path": "oj-sp/general-overview-page/loader" },
       "oj-sp-smart-search": { "path": "oj-sp/smart-search/loader" },
       "oj-sp-collection-container": { "path": "oj-sp/collection-container/loader" },
       "oj-table": { "path": "ojs/ojtable" },
