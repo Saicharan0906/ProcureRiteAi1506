@@ -159,7 +159,11 @@
             "ItemCategoryFilter": { "label": "Item Category", "options": {
               "optionsData": "[[ $page.variables.itemCategoryADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
             "BuyerFilter": { "label": "Buyer", "options": {
-              "optionsData": "[[ $page.variables.buyerADP ]]", "optionsKeys": { "label": "label", "value": "value" } } }
+              "optionsData": "[[ $page.variables.buyerADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "StatusFilter": { "label": "Status", "options": {
+              "optionsData": "[[ $page.variables.statusOptionsADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "CriticalFilter": { "label": "Critical", "options": {
+              "optionsData": "[[ $page.variables.criticalOptionsADP ]]", "optionsKeys": { "label": "label", "value": "value" } } }
           }
         }
       }

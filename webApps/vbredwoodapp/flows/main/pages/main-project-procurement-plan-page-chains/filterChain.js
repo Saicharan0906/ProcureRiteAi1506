@@ -75,6 +75,8 @@ define([
       if (effOrg) rows = rows.filter(r => r.projectOrg === effOrg);
       if (selected.itemCategory) rows = rows.filter(r => r.itemCategory === selected.itemCategory);
       if (selected.buyer) rows = rows.filter(r => r.buyer === selected.buyer);
+      if (selected.status) rows = rows.filter(r => r.status === selected.status);
+      if (selected.critical) rows = rows.filter(r => r.critical === selected.critical);
       if (keyword) {
         const words = String(keyword).toLowerCase().split(/\s+/).filter(Boolean);
         const KW = ['itemNumber', 'itemDescription', 'taskName', 'supplier'];

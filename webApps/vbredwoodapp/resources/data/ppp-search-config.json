@@ -50,6 +50,26 @@
         "optionsKeys": "[[ $search.filters.BuyerFilter.options.optionsKeys ]]"
       },
       "data": {}
+    },
+    "StatusFilter": {
+      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
+      "label": "Status",
+      "options": {
+        "field": "status",
+        "optionsData": "[[ $search.filters.StatusFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.StatusFilter.options.optionsKeys ]]"
+      },
+      "data": {}
+    },
+    "CriticalFilter": {
+      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
+      "label": "Critical",
+      "options": {
+        "field": "critical",
+        "optionsData": "[[ $search.filters.CriticalFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.CriticalFilter.options.optionsKeys ]]"
+      },
+      "data": {}
     }
   }
 }
