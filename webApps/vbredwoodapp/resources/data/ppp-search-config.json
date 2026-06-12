@@ -6,6 +6,7 @@
       "label": "Project Number",
       "options": {
         "field": "projectNumber",
+        "suggestionsProvider": "none",
         "optionsData": "[[ $search.filters.ProjectNumberFilter.options.optionsData ]]",
         "optionsKeys": "[[ $search.filters.ProjectNumberFilter.options.optionsKeys ]]"
       },
@@ -16,6 +17,7 @@
       "label": "Business Unit",
       "options": {
         "field": "businessUnit",
+        "suggestionsProvider": "none",
         "optionsData": "[[ $search.filters.BusinessUnitFilter.options.optionsData ]]",
         "optionsKeys": "[[ $search.filters.BusinessUnitFilter.options.optionsKeys ]]"
       },
@@ -26,6 +28,7 @@
       "label": "Project Organization",
       "options": {
         "field": "projectOrg",
+        "suggestionsProvider": "none",
         "optionsData": "[[ $search.filters.ProjectOrgFilter.options.optionsData ]]",
         "optionsKeys": "[[ $search.filters.ProjectOrgFilter.options.optionsKeys ]]"
       },
@@ -36,6 +39,7 @@
       "label": "Item Category",
       "options": {
         "field": "itemCategory",
+        "suggestionsProvider": "none",
         "optionsData": "[[ $search.filters.ItemCategoryFilter.options.optionsData ]]",
         "optionsKeys": "[[ $search.filters.ItemCategoryFilter.options.optionsKeys ]]"
       },
@@ -46,6 +50,7 @@
       "label": "Buyer",
       "options": {
         "field": "buyer",
+        "suggestionsProvider": "none",
         "optionsData": "[[ $search.filters.BuyerFilter.options.optionsData ]]",
         "optionsKeys": "[[ $search.filters.BuyerFilter.options.optionsKeys ]]"
       },
