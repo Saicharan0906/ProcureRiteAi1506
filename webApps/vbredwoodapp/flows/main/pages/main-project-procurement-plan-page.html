@@ -14,16 +14,17 @@
   on-sp-primary-action="[[ $listeners.primaryActionChain ]]"
   on-sp-go-to-parent="[[ $listeners.goToParentChain ]]">
 
-  <!-- ═══ Smart Search — banner search slot (Ask Oracle + filter chips below) ═══ -->
+  <!-- ═══ Smart Search — banner search slot. No suggestion-filters attribute, so
+       filters are NOT pinned as chips; they appear in the dropdown when the user
+       clicks the field and become removable chips inside the input once applied
+       (matches the onboardrite "Programs" reference page). ═══ -->
   <oj-sp-smart-search
     slot="search"
-    class="oj-sm-width-full"
-    style="width:100%;display:block;"
     filter-criterion="{{ $variables.filterCriterion }}"
     on-filter-criterion-changed="[[ $listeners.filterCriterionChanged ]]"
     search-context="[[ $variables.searchContext ]]"
     search-config="[[ $variables.searchConfiguration.provider ]]"
-    placeholder="Search by project number, item, supplier — or add filters">
+    ask-hint="Search by project number, item, supplier...">
   </oj-sp-smart-search>
 
   <!-- ═══ Collection container: result count + functional actions + grid ═══ -->
