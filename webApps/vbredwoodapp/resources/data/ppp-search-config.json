@@ -11,23 +11,43 @@
       },
       "data": {}
     },
-    "StatusFilter": {
+    "BusinessUnitFilter": {
       "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
-      "label": "Status",
+      "label": "Business Unit",
       "options": {
-        "field": "status",
-        "optionsData": "[[ $search.filters.StatusFilter.options.optionsData ]]",
-        "optionsKeys": "[[ $search.filters.StatusFilter.options.optionsKeys ]]"
+        "field": "businessUnit",
+        "optionsData": "[[ $search.filters.BusinessUnitFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.BusinessUnitFilter.options.optionsKeys ]]"
       },
       "data": {}
     },
-    "CriticalFilter": {
+    "ProjectOrgFilter": {
       "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
-      "label": "Critical",
+      "label": "Project Organization",
       "options": {
-        "field": "critical",
-        "optionsData": "[[ $search.filters.CriticalFilter.options.optionsData ]]",
-        "optionsKeys": "[[ $search.filters.CriticalFilter.options.optionsKeys ]]"
+        "field": "projectOrg",
+        "optionsData": "[[ $search.filters.ProjectOrgFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.ProjectOrgFilter.options.optionsKeys ]]"
+      },
+      "data": {}
+    },
+    "ItemCategoryFilter": {
+      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
+      "label": "Item Category",
+      "options": {
+        "field": "itemCategory",
+        "optionsData": "[[ $search.filters.ItemCategoryFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.ItemCategoryFilter.options.optionsKeys ]]"
+      },
+      "data": {}
+    },
+    "BuyerFilter": {
+      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
+      "label": "Buyer",
+      "options": {
+        "field": "buyer",
+        "optionsData": "[[ $search.filters.BuyerFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters.BuyerFilter.options.optionsKeys ]]"
       },
       "data": {}
     }

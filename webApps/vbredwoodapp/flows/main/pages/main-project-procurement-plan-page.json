@@ -152,10 +152,14 @@
           "filters": {
             "ProjectNumberFilter": { "label": "Project Number", "options": {
               "optionsData": "[[ $page.variables.projectNumberADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
-            "StatusFilter": { "label": "Status", "options": {
-              "optionsData": "[[ $page.variables.statusOptionsADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
-            "CriticalFilter": { "label": "Critical", "options": {
-              "optionsData": "[[ $page.variables.criticalOptionsADP ]]", "optionsKeys": { "label": "label", "value": "value" } } }
+            "BusinessUnitFilter": { "label": "Business Unit", "options": {
+              "optionsData": "[[ $page.variables.businessUnitADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "ProjectOrgFilter": { "label": "Project Organization", "options": {
+              "optionsData": "[[ $page.variables.projectOrgADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "ItemCategoryFilter": { "label": "Item Category", "options": {
+              "optionsData": "[[ $page.variables.itemCategoryADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "BuyerFilter": { "label": "Buyer", "options": {
+              "optionsData": "[[ $page.variables.buyerADP ]]", "optionsKeys": { "label": "label", "value": "value" } } }
           }
         }
       }
