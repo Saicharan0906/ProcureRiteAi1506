@@ -11,46 +11,6 @@
       },
       "data": {}
     },
-    "BusinessUnitFilter": {
-      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
-      "label": "Business Unit",
-      "options": {
-        "field": "businessUnit",
-        "optionsData": "[[ $search.filters.BusinessUnitFilter.options.optionsData ]]",
-        "optionsKeys": "[[ $search.filters.BusinessUnitFilter.options.optionsKeys ]]"
-      },
-      "data": {}
-    },
-    "ProjectOrgFilter": {
-      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
-      "label": "Project Organization",
-      "options": {
-        "field": "projectOrg",
-        "optionsData": "[[ $search.filters.ProjectOrgFilter.options.optionsData ]]",
-        "optionsKeys": "[[ $search.filters.ProjectOrgFilter.options.optionsKeys ]]"
-      },
-      "data": {}
-    },
-    "ItemCategoryFilter": {
-      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
-      "label": "Item Category",
-      "options": {
-        "field": "itemCategory",
-        "optionsData": "[[ $search.filters.ItemCategoryFilter.options.optionsData ]]",
-        "optionsKeys": "[[ $search.filters.ItemCategoryFilter.options.optionsKeys ]]"
-      },
-      "data": {}
-    },
-    "BuyerFilter": {
-      "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
-      "label": "Buyer",
-      "options": {
-        "field": "buyer",
-        "optionsData": "[[ $search.filters.BuyerFilter.options.optionsData ]]",
-        "optionsKeys": "[[ $search.filters.BuyerFilter.options.optionsKeys ]]"
-      },
-      "data": {}
-    },
     "StatusFilter": {
       "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",
       "label": "Status",
