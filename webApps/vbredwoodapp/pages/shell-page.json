@@ -11,52 +11,52 @@
           {
             "id": "main-project-procurement-plan",
             "label": "Procurement Plan",
-            "icon": "oj-ux-ico-purchase-order"
+            "icon": "oj-ux-ico-table-view"
           },
           {
             "id": "main-procurement-execution",
             "label": "Procurement Execution",
-            "icon": "oj-ux-ico-task-complete"
+            "icon": "oj-ux-ico-action"
           },
           {
             "id": "main-cost-tracker",
             "label": "Cost Tracker",
-            "icon": "oj-ux-ico-cost"
+            "icon": "oj-ux-ico-audits"
           },
           {
             "id": "main-expedite-workbench",
             "label": "Expedite Workbench",
-            "icon": "oj-ux-ico-shipping"
+            "icon": "oj-ux-ico-chart-gantt-create"
           },
           {
             "id": "main-delivery-tracker",
             "label": "Delivery Tracker",
-            "icon": "oj-ux-ico-truck"
+            "icon": "oj-ux-ico-sync"
           },
           {
             "id": "main-supply-plan-exceptions",
             "label": "Supply Plan Exceptions",
-            "icon": "oj-ux-ico-warning"
+            "icon": "oj-ux-ico-filter-2"
           },
           {
             "id": "main-oracle-requisition",
             "label": "Oracle Requisition",
-            "icon": "oj-ux-ico-purchase-request"
+            "icon": "oj-ux-ico-file"
           },
           {
             "id": "main-oracle-po",
             "label": "Oracle Purchase Order",
-            "icon": "oj-ux-ico-purchase-order"
+            "icon": "oj-ux-ico-list"
           },
           {
             "id": "main-receiving",
             "label": "Receiving",
-            "icon": "oj-ux-ico-product-received"
+            "icon": "oj-ux-ico-item-reciept"
           },
           {
             "id": "main-change-history",
             "label": "Change History",
-            "icon": "oj-ux-ico-history"
+            "icon": "oj-ux-ico-log"
           },
           {
             "id": "main-admin",
@@ -66,7 +66,7 @@
           {
             "id": "main-item-creation",
             "label": "Item Creation",
-            "icon": "oj-ux-ico-add-box"
+            "icon": "oj-ux-ico-plus"
           }
         ]
       }

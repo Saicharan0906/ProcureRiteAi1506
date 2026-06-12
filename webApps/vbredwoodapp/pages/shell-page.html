@@ -38,8 +38,10 @@
         <template slot="itemTemplate" data-oj-as="item">
           <li>
             <a href="#">
-              <span :class="[[ 'oj-navigationlist-item-icon ' + item.data.icon ]]"></span>
-              <oj-bind-text value="[[ item.data.label ]]"></oj-bind-text>
+              <span :class="[[ item.data.icon + ' oj-navigationlist-item-icon' ]]"></span>
+              <span class="oj-navigationlist-item-label oj-typography-body-sm oj-typography-semi-bold">
+                <oj-bind-text value="[[ item.data.label ]]"></oj-bind-text>
+              </span>
             </a>
           </li>
         </template>

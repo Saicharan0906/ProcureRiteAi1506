@@ -12,7 +12,7 @@ define([
    */
   class SecondaryActionChain extends ActionChain {
     async run(context, { detail }) {
-      const id = detail && (detail.secondaryItem || detail.id);
+      const id = detail && (detail.actionId || detail.secondaryItem || detail.id);
       const labels = {
         readyForProcurement: 'Marked selected lines Ready for Procurement',
         export: 'Export started',
