@@ -26,8 +26,10 @@
     ask-hint="Search by project number, item, supplier...">
   </oj-sp-smart-search>
 
-  <!-- ═══ Main slot: result count + functional actions + grid ═══ -->
-  <div slot="main" class="oj-sm-width-full" style="min-width:0;">
+  <!-- ═══ Main slot: result count + functional actions + grid.
+       overflow-x:auto + min-width:0 keep the wide table's horizontal scroll
+       INSIDE this content area instead of scrolling the whole page/banner. ═══ -->
+  <div slot="main" class="oj-sm-width-full" style="min-width:0;max-width:100%;overflow-x:auto;box-sizing:border-box;">
   <oj-sp-collection-container
     display-options.export="on"
     functional-primary-actions="[[ $variables.ccPrimaryActions ]]"
