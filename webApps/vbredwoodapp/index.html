@@ -40,13 +40,18 @@
         box-sizing: border-box !important;
         overflow-x: hidden !important;
       }
-      oj-sp-collection-container {
-        display: block !important;
-        margin: -24px 16px 0 16px !important;
-        border-radius: 12px 12px 0 0 !important;
-        box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.10) !important;
-        background: var(--oj-core-bg-color-primary, #ffffff) !important;
-        overflow: hidden !important;
+      /* Table column headers on ONE line + full cell text. These MUST live here in
+         index.html — the page-level .css file does not load in this app, so rules
+         placed there have no effect. oj-table is light-DOM so global CSS reaches it. */
+      #planLinesTable .list-header-label,
+      #planLinesTable .oj-table-column-header-text,
+      #planLinesTable .oj-table-column-header-cell {
+        white-space: nowrap !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+      }
+      #planLinesTable .oj-table-data-cell {
+        white-space: nowrap !important;
       }
       /* Comfortable left/right inset for the banner content (title / search / chips /
          Add Line), matching onboardrite's Programs page. The grid area (slot=main)

@@ -38,6 +38,11 @@
        floating rounded inset card (16px side gap + 16px padding = 32px/side), so the
        table width 100vw-64px fills the card and lines up under the banner title. ═══ -->
   <div slot="main" class="page-content-max-width" style="min-width:0;max-width:100%;overflow-x:hidden;box-sizing:border-box;">
+  <!-- Floating results CARD — plain div with INLINE styles (inline always renders;
+       styling oj-sp-collection-container did nothing as it ignores the box). The 16px
+       L/R margin is the side GAP that shows the teal banner beside the card; rounded
+       top corners + soft shadow give the elevated onboardrite look. -->
+  <div style="margin:8px 16px 0 16px;border-radius:12px 12px 0 0;box-shadow:0 1px 14px rgba(0,0,0,0.12);background:#ffffff;overflow:hidden;min-width:0;box-sizing:border-box;">
   <oj-sp-collection-container
     display-options.export="on"
     functional-primary-actions="[[ $variables.ccPrimaryActions ]]"
@@ -99,6 +104,7 @@
     </oj-table>
 
   </oj-sp-collection-container>
+  </div>
   </div>
 
 </oj-sp-general-overview-page>
