@@ -9,6 +9,22 @@
   min-width: 0 !important;
 }
 
+/* Column headers on a SINGLE line (no wrapping like "Line / #" or "Planne / Qty")
+   and full cell text visible (no ellipsis). Columns are widened in the markup so
+   nowrap text fits; horizontal scroll reaches any that exceed the viewport. */
+#planLinesTable .list-header-label,
+#planLinesTable .oj-table-column-header-text {
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
+#planLinesTable .oj-table-data-cell,
+#planLinesTable .oj-table-data-cell .oj-bind-text {
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
+
 .ppp-filter-panel {
   background-color: var(--oj-core-bg-color-secondary, #f4f6f8);
   border-radius: 8px;
