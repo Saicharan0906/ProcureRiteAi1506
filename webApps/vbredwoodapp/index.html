@@ -32,6 +32,15 @@
         max-width: 100% !important;
         min-width: 0 !important;
         box-sizing: border-box !important;
+        padding-left: 32px !important;
+        padding-right: 32px !important;
+      }
+      /* Comfortable left/right inset for the banner content (title / search / chips /
+         Add Line), matching onboardrite's Programs page. The grid area (slot=main)
+         above gets the same 32px so the table lines up under the title. */
+      oj-sp-general-overview-page [class*="general-overview-page-header"] {
+        padding-left: 32px !important;
+        padding-right: 32px !important;
       }
       /* Ensure the page-header color strip ("thread") stretches the full banner width */
       [class*="header-strip"],
