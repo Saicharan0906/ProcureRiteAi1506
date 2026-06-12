@@ -1,6 +1,5 @@
 {
   "description": "Project Procurement Plan smart search configuration (filters mirror the original page search header)",
-  "options": { "keyword": "on" },
   "filters": {
     "ProjectNumberFilter": {
       "type": "oj-sp/smart-search/default-filters/SelectSingleFilter",

@@ -17,6 +17,8 @@
   <!-- ═══ Smart Search — banner search slot (Ask Oracle + filter chips below) ═══ -->
   <oj-sp-smart-search
     slot="search"
+    class="oj-sm-width-full"
+    style="width:100%;display:block;"
     filter-criterion="{{ $variables.filterCriterion }}"
     on-filter-criterion-changed="[[ $listeners.filterCriterionChanged ]]"
     search-context="[[ $variables.searchContext ]]"
