@@ -15,6 +15,19 @@
         --oj-sp-page-banner-height: 190px !important;
         --oj-sp-theme-global-bkgd-banner-height: 260px !important;
       }
+      /* Search field is capped at the JET default form-control width (~490px), which
+         leaves room for the filter chips to sit BESIDE it. Plain width CSS can't reach
+         the input's shadow DOM, but these --oj-* custom properties inherit through it,
+         so the field fills the banner and the chips wrap BELOW (like onboardrite). */
+      oj-sp-smart-search {
+        --oj-text-field-width: 100%;
+        --oj-form-control-max-width: 100%;
+        --oj-form-control-max-width-sm: 100%;
+        --oj-form-control-max-width-md: 100%;
+        --oj-form-control-max-width-lg: 100%;
+        display: block;
+        width: 100%;
+      }
       /* Ensure the page-header color strip ("thread") stretches the full banner width */
       [class*="header-strip"],
       [class*="page-texture-strip"],
