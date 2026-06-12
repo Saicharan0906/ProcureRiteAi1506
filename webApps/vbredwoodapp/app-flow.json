@@ -7,7 +7,7 @@
   "configuration": {},
   "requirejs": {
     "paths": {
-      "oj-sp": "https://static.oracle.com/cdn/spectra-ui/oj-sp/2604.0.4",
+      "oj-sp": "https://static.oracle.com/cdn/spectra-ui/oj-sp/2601.0.3",
       "oj-dynamic": "https://static.oracle.com/cdn/jet/packs/oj-dynamic/18.1.4/min"
     },
     "bundles": {
