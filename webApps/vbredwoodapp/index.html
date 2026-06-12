@@ -15,18 +15,20 @@
         --oj-sp-page-banner-height: 190px !important;
         --oj-sp-theme-global-bkgd-banner-height: 260px !important;
       }
-      /* Search field is capped at the JET default form-control width (~490px), which
-         leaves room for the filter chips to sit BESIDE it. Plain width CSS can't reach
-         the input's shadow DOM, but these --oj-* custom properties inherit through it,
-         so the field fills the banner and the chips wrap BELOW (like onboardrite). */
-      oj-sp-smart-search {
-        --oj-text-field-width: 100%;
-        --oj-form-control-max-width: 100%;
-        --oj-form-control-max-width-sm: 100%;
-        --oj-form-control-max-width-md: 100%;
-        --oj-form-control-max-width-lg: 100%;
-        display: block;
-        width: 100%;
+      /* The smart search renders in MOBILE layout (data-smart-search-view="mobile")
+         because its container query (oj-sp-smart-search-container has
+         container-type: inline-size) measures the container as narrow. These are
+         LIGHT-DOM elements, so forcing them full width makes the container wide ->
+         the component switches to DESKTOP layout (full-width field, filters below),
+         matching onboardrite. */
+      oj-sp-smart-search,
+      oj-sp-smart-search .oj-sp-smart-search-container,
+      oj-sp-smart-search .oj-sp-smart-search-bar-wrapper,
+      oj-sp-smart-search .oj-sp-smart-search-bar,
+      oj-sp-smart-search .oj-sp-smart-search-input-area {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
       }
       /* Ensure the page-header color strip ("thread") stretches the full banner width */
       [class*="header-strip"],
