@@ -28,12 +28,20 @@
          suppresses the grid's horizontal scrollbar. The grid is instead contained by
          giving oj-table its own bounded height (it scrolls internally), so the page
          never needs to scroll/shift sideways. */
+      /* Render the results area as a floating, rounded, inset white "surface" that
+         overlaps the banner — matching onboardrite's Programs card. The L/R margin is
+         the side GAP (teal shows beside the card); the negative top margin pulls it up
+         over the banner; rounded top corners + soft shadow give the elevated look. */
       oj-sp-general-overview-page [slot="main"] {
         max-width: 100% !important;
         min-width: 0 !important;
         box-sizing: border-box !important;
-        padding-left: 32px !important;
-        padding-right: 32px !important;
+        background: var(--oj-core-bg-color-primary, #ffffff) !important;
+        border-radius: 12px 12px 0 0 !important;
+        box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.10) !important;
+        margin: -24px 16px 0 16px !important;
+        padding: 12px 16px 0 16px !important;
+        overflow-x: hidden !important;
       }
       /* Comfortable left/right inset for the banner content (title / search / chips /
          Add Line), matching onboardrite's Programs page. The grid area (slot=main)

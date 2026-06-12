@@ -34,8 +34,9 @@
        the trap: it resolves against a parent that grows to fit the wide grid, widening
        the page. overflow-x:hidden on this slot=main div (which is BELOW the banner, so
        it never touches the Add Line button) is a hard backstop guaranteeing the
-       page/banner can't scroll horizontally. The 32px slot=main padding (index.html)
-       insets the grid to line up under the banner title. ═══ -->
+       page/banner can't scroll horizontally. slot=main is styled (index.html) as a
+       floating rounded inset card (16px side gap + 16px padding = 32px/side), so the
+       table width 100vw-64px fills the card and lines up under the banner title. ═══ -->
   <div slot="main" class="page-content-max-width" style="min-width:0;max-width:100%;overflow-x:hidden;box-sizing:border-box;">
   <oj-sp-collection-container
     display-options.export="on"
