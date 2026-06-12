@@ -15,12 +15,12 @@
         --oj-sp-page-banner-height: 190px !important;
         --oj-sp-theme-global-bkgd-banner-height: 260px !important;
       }
-      /* Constrain the overview page width (as onboardrite does). This narrows the
-         smart-search container enough to drop it from the extra-wide "chips beside"
-         layout into the "search full-width / filter chips below" layout. */
-      oj-sp-general-overview-page {
-        max-width: calc(100% - 80px) !important;
-        margin: 0 auto !important;
+      /* Cap the smart-search container width (it holds the container query that
+         decides layout). Above a wide breakpoint the component shows "chips beside";
+         capping it below that breakpoint forces the "search full-width / chips below"
+         layout, matching onboardrite. The container is light DOM, so this applies. */
+      oj-sp-smart-search .oj-sp-smart-search-container {
+        max-width: 1024px !important;
       }
       /* Ensure the page-header color strip ("thread") stretches the full banner width */
       [class*="header-strip"],
