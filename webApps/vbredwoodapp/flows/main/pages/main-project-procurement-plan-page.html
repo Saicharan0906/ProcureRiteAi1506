@@ -27,9 +27,13 @@
   </oj-sp-smart-search>
 
   <!-- ═══ Main slot: result count + functional actions + grid.
-       overflow-x:auto + min-width:0 keep the wide table's horizontal scroll
-       INSIDE this content area instead of scrolling the whole page/banner. ═══ -->
-  <div slot="main" class="oj-sm-width-full" style="min-width:0;max-width:100%;overflow-x:auto;box-sizing:border-box;">
+       Containment mirrors the onboardrite "Programs" page (page-content-max-width +
+       bounded height + overflow:hidden on the outer, overflow:auto on an inner div).
+       This gives the wide grid its OWN scroll region so it can never push the banner
+       sideways — which is what was clipping the page title / shifting "Add Line". ═══ -->
+  <div slot="main" class="page-content-max-width oj-sm-width-full"
+       style="height:calc(100vh - 300px);overflow:hidden;display:flex;flex-direction:column;min-width:0;box-sizing:border-box;">
+  <div style="flex:1;overflow:auto;min-height:0;min-width:0;">
   <oj-sp-collection-container
     display-options.export="on"
     functional-primary-actions="[[ $variables.ccPrimaryActions ]]"
@@ -91,6 +95,7 @@
     </oj-table>
 
   </oj-sp-collection-container>
+  </div>
   </div>
 
 </oj-sp-general-overview-page>

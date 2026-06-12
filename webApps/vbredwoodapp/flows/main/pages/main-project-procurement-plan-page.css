@@ -1,5 +1,14 @@
 /* Project Procurement Plan — status & critical capsule badges, filter panel */
 
+/* Keep slot="main" content within the page width and shrinkable, so the wide
+   plan-lines grid scrolls inside its own region and never widens the banner
+   (matches the onboardrite "Programs" page). */
+.page-content-max-width {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
 .ppp-filter-panel {
   background-color: var(--oj-core-bg-color-secondary, #f4f6f8);
   border-radius: 8px;
