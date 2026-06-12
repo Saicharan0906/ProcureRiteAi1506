@@ -61,7 +61,7 @@
       ]'>
 
       <template slot="criticalTemplate" data-oj-as="cell">
-        <span :class="[[ cell.row.critical === 'Yes' ? 'ppp-critical-yes' : 'ppp-critical-no' ]]">
+        <span :style="[[ $functions.criticalPill(cell.row.critical) ]]">
           <oj-bind-text value="[[ cell.row.critical ]]"></oj-bind-text>
         </span>
       </template>
@@ -79,7 +79,7 @@
       </template>
 
       <template slot="statusTemplate" data-oj-as="cell">
-        <span :class="[[ cell.row.status === 'Ready for Procurement' ? 'ppp-status-ready' : 'ppp-status-draft' ]]">
+        <span :style="[[ $functions.statusPill(cell.row.status) ]]">
           <oj-bind-text value="[[ cell.row.status ]]"></oj-bind-text>
         </span>
       </template>
