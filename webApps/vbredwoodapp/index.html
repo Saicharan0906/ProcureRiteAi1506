@@ -23,16 +23,14 @@
       oj-sp-smart-search .oj-sp-smart-search-container {
         max-width: 900px !important;
       }
-      /* Kill page-level horizontal scroll at the root so the whole viewport (banner +
-         Add Line) never shifts sideways. The grid scrolls inside slot=main instead. */
-      html, body {
-        overflow-x: hidden !important;
-        max-width: 100vw !important;
-      }
+      /* NOTE: do NOT put overflow-x:hidden on html/body or on the overview page —
+         it clips the banner's primary-action button (Add Line) at the right edge AND
+         suppresses the grid's horizontal scrollbar. The grid is instead contained by
+         giving oj-table its own bounded height (it scrolls internally), so the page
+         never needs to scroll/shift sideways. */
       oj-sp-general-overview-page [slot="main"] {
         max-width: 100% !important;
         min-width: 0 !important;
-        overflow-x: auto !important;
         box-sizing: border-box !important;
       }
       /* Ensure the page-header color strip ("thread") stretches the full banner width */

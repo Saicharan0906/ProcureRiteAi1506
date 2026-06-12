@@ -27,13 +27,13 @@
   </oj-sp-smart-search>
 
   <!-- ═══ Main slot: result count + functional actions + grid.
-       Containment mirrors the onboardrite "Programs" page (page-content-max-width +
-       bounded height + overflow:hidden on the outer, overflow:auto on an inner div).
-       This gives the wide grid its OWN scroll region so it can never push the banner
-       sideways — which is what was clipping the page title / shifting "Add Line". ═══ -->
-  <div slot="main" class="page-content-max-width oj-sm-width-full"
-       style="height:calc(100vh - 300px);overflow:hidden;display:flex;flex-direction:column;min-width:0;box-sizing:border-box;">
-  <div style="flex:1;overflow:auto;min-height:0;min-width:0;">
+       slot=main is width-capped (page-content-max-width / max-width:100%) and the
+       oj-table is given its OWN bounded height (style height/min-height) so the grid
+       scrolls INTERNALLY — both horizontal and vertical scrollbars are native to the
+       table. This keeps the wide grid from widening the page, so the banner never
+       shifts and the Add Line button stays visible — WITHOUT any page-level
+       overflow:hidden (which would clip the button and the scrollbar). ═══ -->
+  <div slot="main" class="page-content-max-width" style="min-width:0;max-width:100%;box-sizing:border-box;">
   <oj-sp-collection-container
     display-options.export="on"
     functional-primary-actions="[[ $variables.ccPrimaryActions ]]"
@@ -47,6 +47,7 @@
       id="planLinesTable"
       data="[[ $variables.planLinesADP ]]"
       class="oj-sm-width-full"
+      style="width:100%;height:calc(100vh - 420px);min-height:300px;"
       horizontal-grid-visible="enabled"
       vertical-grid-visible="disabled"
       scroll-policy="loadMoreOnScroll"
@@ -95,7 +96,6 @@
     </oj-table>
 
   </oj-sp-collection-container>
-  </div>
   </div>
 
 </oj-sp-general-overview-page>
