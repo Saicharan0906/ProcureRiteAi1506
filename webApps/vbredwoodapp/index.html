@@ -15,6 +15,18 @@
         --oj-sp-page-banner-height: 190px !important;
         --oj-sp-theme-global-bkgd-banner-height: 260px !important;
       }
+      /* Force the banner smart search to span full width so its filter chips wrap
+         BELOW the field (oj-sp 2604 otherwise renders a narrow field with the
+         chips inline beside it; 2601 was full-width by default). */
+      oj-sp-smart-search {
+        width: 100% !important;
+        display: block !important;
+        flex: 1 1 100% !important;
+      }
+      oj-sp-smart-search > * {
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
       /* Ensure the page-header color strip ("thread") stretches the full banner width */
       [class*="header-strip"],
       [class*="page-texture-strip"],
