@@ -84,7 +84,8 @@
         {"headerText": "Planned Cost",   "template": "costTemplate", "headerClassName": "list-header-label", "width": 160},
         {"headerText": "Buyer",          "field": "buyer",            "headerClassName": "list-header-label", "width": 170},
         {"headerText": "Supplier",       "field": "supplier",         "headerClassName": "list-header-label", "width": 160},
-        {"headerText": "Status",         "template": "statusTemplate","headerClassName": "list-header-label", "width": 180}
+        {"headerText": "Status",         "template": "statusTemplate","headerClassName": "list-header-label", "width": 180},
+        {"headerText": "",               "template": "actionsTemplate","headerClassName": "list-header-label", "width": 90, "sortable": "disabled"}
       ]'>
 
       <template slot="criticalTemplate" data-oj-as="cell">
@@ -111,10 +112,102 @@
         </span>
       </template>
 
+      <template slot="actionsTemplate" data-oj-as="cell">
+        <oj-button display="icons" chroming="borderless" title="Edit line"
+          :data-row="[[ JSON.stringify(cell.row) ]]"
+          on-oj-action="[[ $listeners.editRow ]]">
+          <span slot="startIcon" class="oj-ux-ico-edit"></span>Edit
+        </oj-button>
+      </template>
+
     </oj-table>
 
   </oj-sp-collection-container>
   </div>
   </div>
+
+  <!-- ═══ Add / Edit plan line — Redwood side drawer. Cascading selects (item -> desc/UOM,
+       task -> dates) run client-side; constant lists (Line Type / Destination / Strategy /
+       Critical) are static. Save -> postPDSCPlanDetails; Delete (edit only) ->
+       deletePDSCPlanDetails. ═══ -->
+  <oj-drawer-popup edge="end" opened="{{ $variables.drawerOpen }}" style="width: min(560px, 100vw);">
+    <div class="oj-flex oj-sm-flex-direction-column" style="height:100%;overflow:hidden;">
+
+      <div class="oj-flex oj-sm-align-items-center oj-sm-justify-content-space-between"
+        style="padding:16px 20px;border-bottom:1px solid #e5e7eb;flex-shrink:0;">
+        <div class="oj-typography-heading-sm">
+          <oj-bind-text value="[[ $variables.drawerMode === 'edit' ? 'Edit Plan Line' : 'Add Plan Line' ]]"></oj-bind-text>
+        </div>
+        <oj-button display="icons" chroming="borderless" on-oj-action="[[ $listeners.closeDrawer ]]" title="Close">
+          <span slot="startIcon" class="oj-ux-ico-close"></span>Close
+        </oj-button>
+      </div>
+
+      <div style="flex:1;overflow-y:auto;padding:16px 24px;">
+        <oj-form-layout label-edge="inside" max-columns="2" column-gap="20px">
+          <oj-select-single label-hint="Critical" data="[[ $variables.criticalOptionsADP ]]"
+            item-text="label" value="{{ $variables.planForm.critical_flag }}"></oj-select-single>
+          <oj-select-single label-hint="Line Type" data="[[ $variables.lineTypeADP ]]"
+            item-text="label" value="{{ $variables.planForm.line_type }}"></oj-select-single>
+
+          <oj-select-single label-hint="Item Number" data="[[ $variables.itemADP ]]"
+            item-text="item_number" value="{{ $variables.planForm.item_number }}"
+            on-value-item-changed="[[ $listeners.itemChanged ]]"></oj-select-single>
+          <oj-input-text label-hint="Item Description" value="{{ $variables.planForm.item_desc }}" readonly="true"></oj-input-text>
+
+          <oj-select-single label-hint="Item Category" data="[[ $variables.itemCategoryADP ]]"
+            item-text="label" value="{{ $variables.planForm.item_category }}"></oj-select-single>
+          <oj-select-single label-hint="Task" data="[[ $variables.taskADP ]]"
+            item-text="task_number" value="{{ $variables.planForm.task_number }}"
+            on-value-item-changed="[[ $listeners.taskChanged ]]"></oj-select-single>
+
+          <oj-input-number label-hint="Planned Quantity" value="{{ $variables.planForm.planned_quantity }}" min="0"></oj-input-number>
+          <oj-input-text label-hint="UOM" value="{{ $variables.planForm.uom }}" readonly="true"></oj-input-text>
+
+          <oj-input-number label-hint="Planned Cost" value="{{ $variables.planForm.planned_cost }}" min="0"></oj-input-number>
+          <oj-select-single label-hint="Currency" data="[[ $variables.currencyADP ]]"
+            item-text="currency_code" value="{{ $variables.planForm.currency_code }}"></oj-select-single>
+
+          <oj-select-single label-hint="Buyer" data="[[ $variables.buyerADP ]]"
+            item-text="label" value="{{ $variables.planForm.buyer }}"></oj-select-single>
+          <oj-select-single label-hint="Supplier" data="[[ $variables.supplierADP ]]"
+            item-text="vendor_name" value="{{ $variables.planForm.supplier }}"></oj-select-single>
+
+          <oj-input-text label-hint="Supplier Email" value="{{ $variables.planForm.supplier_email_address }}"></oj-input-text>
+          <oj-select-single label-hint="Expenditure Type" data="[[ $variables.expTypeADP ]]"
+            item-text="expenditure_type_name" value="{{ $variables.planForm.expenditure_type }}"
+            on-value-item-changed="[[ $listeners.expTypeChanged ]]"></oj-select-single>
+
+          <oj-select-single label-hint="Inventory Org" data="[[ $variables.invOrgADP ]]"
+            item-text="organization_name" value="{{ $variables.planForm.inv_org_name }}"
+            on-value-item-changed="[[ $listeners.invOrgChanged ]]"></oj-select-single>
+          <oj-select-single label-hint="Destination Type" data="[[ $variables.destinationTypeADP ]]"
+            item-text="label" value="{{ $variables.planForm.destination_type }}"></oj-select-single>
+
+          <oj-select-single label-hint="Strategy Objective" data="[[ $variables.strategyADP ]]"
+            item-text="label" value="{{ $variables.planForm.acquisition_strategy_objective }}"></oj-select-single>
+          <oj-input-date label-hint="Requested Delivery Date" value="{{ $variables.planForm.requested_delivery_date }}"></oj-input-date>
+
+          <oj-input-text label-hint="Planned Start Date" value="{{ $variables.planForm.planned_start_date }}" readonly="true"></oj-input-text>
+          <oj-input-text label-hint="Planned Finish Date" value="{{ $variables.planForm.planned_finish_date }}" readonly="true"></oj-input-text>
+        </oj-form-layout>
+      </div>
+
+      <div class="oj-flex oj-sm-align-items-center oj-sm-justify-content-space-between"
+        style="padding:12px 20px;border-top:1px solid #e5e7eb;gap:8px;flex-shrink:0;">
+        <oj-bind-if test="[[ $variables.drawerMode === 'edit' ]]">
+          <oj-button chroming="danger" on-oj-action="[[ $listeners.deletePlanLine ]]">
+            <span slot="startIcon" class="oj-ux-ico-trash"></span>Delete
+          </oj-button>
+        </oj-bind-if>
+        <div class="oj-flex" style="gap:8px;margin-left:auto;">
+          <oj-button on-oj-action="[[ $listeners.closeDrawer ]]">Cancel</oj-button>
+          <oj-button chroming="callToAction" on-oj-action="[[ $listeners.savePlanLine ]]"
+            disabled="[[ $variables.drawerSaving ]]">Save</oj-button>
+        </div>
+      </div>
+
+    </div>
+  </oj-drawer-popup>
 
 </oj-sp-general-overview-page>

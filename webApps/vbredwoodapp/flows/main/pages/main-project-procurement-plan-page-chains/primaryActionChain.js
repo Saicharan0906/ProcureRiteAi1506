@@ -6,26 +6,37 @@ define([
   'use strict';
 
   /**
-   * Primary action = "Add Line".
-   *
-   * The read path (LOVs, project cascade, header, live plan lines, filters) and the
-   * Ready-for-Procurement write are wired to ORDS. The full Add/Edit create form
-   * (drawer with ~20 fields + cascading LOVs: task, item, item-category, buyer,
-   * supplier, currency, expenditure type, inventory org, dates -> postPDSCPlanDetails
-   * INSERT) is the next phase. For now surface a clear toast instead of a half-working
-   * inline draft that cannot be saved.
+   * Primary action = "Add Line". Seed a blank Draft plan line, load the drawer LOVs for
+   * the current project/BU, then open the Add/Edit drawer in create mode.
    */
   class PrimaryActionChain extends ActionChain {
     async run(context) {
       const { $page } = context;
-      const hasProject = $page.variables.planHeader && $page.variables.planHeader.projectNumber;
-      const message = hasProject
-        ? 'Add Line — the create form (item, task, qty, cost, buyer, supplier, dates) is the next phase.'
-        : 'Select a Project Number first, then Add Line.';
-      await Actions.fireEvent(context, {
-        event: 'application:spShowToast',
-        payload: { detail: { message } }
-      });
+      const h = $page.variables.planHeader || {};
+      if (!h.projectNumber) {
+        await Actions.fireEvent(context, {
+          event: 'application:spShowToast',
+          payload: { detail: { message: 'Select a Project Number first, then Add Line.' } }
+        });
+        return;
+      }
+
+      const lines = $page.variables.planLinesAllArray || [];
+      const nextNum = lines.reduce((m, l) => Math.max(m, Number(l.line_number) || 0), 0) + 1;
+
+      $page.variables.planForm = {
+        plan_id: null, line_number: nextNum, critical_flag: 'No', line_type: 'Goods',
+        item_number: '', item_desc: '', item_category: '', task_number: '', task_name: '', task_id: null,
+        planned_quantity: null, uom: '', planned_cost: null, currency_code: 'USD', buyer: '', supplier: '',
+        supplier_email_address: '', expenditure_type: 'Material', expenditure_type_id: null,
+        inv_org_name: '', inventory_org_id: null, organization_code: '', destination_type: 'Expense',
+        acquisition_strategy_objective: 'On time Delivery', planned_start_date: '', planned_finish_date: '',
+        requested_delivery_date: '', item_onhand: null, tag_number: '', status: 'Draft', isNew: 'Y'
+      };
+      $page.variables.drawerMode = 'create';
+
+      try { await Actions.callChain(context, { chain: 'loadDrawerLovs' }); } catch (e) { /* LOVs best-effort */ }
+      $page.variables.drawerOpen = true;
     }
   }
 

@@ -1,6 +1,6 @@
 {
   "title": "Project Procurement Plan",
-  "description": "Plan materials against project WBS tasks. Wired to the ORDS PDSCBUDetails service (getPDSCPlanDetails / getPDSCGetProjectByBU / LOVs); postPDSCPlanDetails for Ready-for-Procurement.",
+  "description": "Plan materials against project WBS tasks. ORDS PDSCBUDetails read path + Add/Edit/Delete via a Redwood drawer (postPDSCPlanDetails / deletePDSCPlanDetails). Constant lists are static client-side enums (no API round-trip).",
   "variables": {
     "pageTitle": { "type": "string", "defaultValue": "Project Procurement Plan" },
     "pageSubtitle": { "type": "string", "defaultValue": "Plan materials against project WBS tasks" },
@@ -8,15 +8,8 @@
     "planHeader": {
       "type": "object",
       "defaultValue": {
-        "projectNumber": "",
-        "projectName": "",
-        "businessUnit": "",
-        "projectOrg": "",
-        "startDate": "",
-        "finishDate": "",
-        "status": "",
-        "projectManager": "",
-        "projectId": null
+        "projectNumber": "", "projectName": "", "businessUnit": "", "projectOrg": "",
+        "startDate": "", "finishDate": "", "status": "", "projectManager": "", "projectId": null
       }
     },
     "lastProjectNumber": { "type": "string", "defaultValue": "" },
@@ -25,13 +18,26 @@
     "planLinesAllArray": { "type": "any[]", "defaultValue": [] },
     "planLinesADP": {
       "type": "vb/ArrayDataProvider2",
-      "defaultValue": {
-        "itemType": "any",
-        "keyAttributes": "plan_id",
-        "data": "{{ $page.variables.planLinesArray }}"
-      }
+      "defaultValue": { "itemType": "any", "keyAttributes": "plan_id", "data": "{{ $page.variables.planLinesArray }}" }
     },
     "selectedKeys": { "type": "any" },
+
+    "drawerOpen": { "type": "boolean", "defaultValue": false },
+    "drawerMode": { "type": "string", "defaultValue": "create" },
+    "drawerSaving": { "type": "boolean", "defaultValue": false },
+    "planForm": {
+      "type": "object",
+      "defaultValue": {
+        "plan_id": null, "line_number": null, "critical_flag": "No", "line_type": "Goods",
+        "item_number": "", "item_desc": "", "item_category": "", "task_number": "", "task_name": "",
+        "task_id": null, "planned_quantity": null, "uom": "", "planned_cost": null, "currency_code": "USD",
+        "buyer": "", "supplier": "", "supplier_email_address": "", "expenditure_type": "Material",
+        "expenditure_type_id": null, "inv_org_name": "", "inventory_org_id": null, "organization_code": "",
+        "destination_type": "Expense", "acquisition_strategy_objective": "On time Delivery",
+        "planned_start_date": "", "planned_finish_date": "", "requested_delivery_date": "",
+        "item_onhand": null, "tag_number": "", "status": "Draft", "isNew": "Y"
+      }
+    },
 
     "ccPrimaryActions": {
       "type": "object[]",
@@ -48,60 +54,53 @@
     },
 
     "projectNumberArray": { "type": "any[]", "defaultValue": [] },
-    "projectNumberADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
-      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.projectNumberArray }}" } },
-
+    "projectNumberADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.projectNumberArray }}" } },
     "businessUnitArray": { "type": "any[]", "defaultValue": [] },
-    "businessUnitADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
-      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.businessUnitArray }}" } },
-
+    "businessUnitADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.businessUnitArray }}" } },
     "projectOrgArray": { "type": "any[]", "defaultValue": [] },
-    "projectOrgADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
-      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.projectOrgArray }}" } },
-
+    "projectOrgADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.projectOrgArray }}" } },
     "itemCategoryArray": { "type": "any[]", "defaultValue": [] },
-    "itemCategoryADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
-      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.itemCategoryArray }}" } },
-
+    "itemCategoryADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.itemCategoryArray }}" } },
     "buyerArray": { "type": "any[]", "defaultValue": [] },
-    "buyerADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
-      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.buyerArray }}" } },
+    "buyerADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.buyerArray }}" } },
 
-    "statusOptionsArray": { "type": "any[]", "defaultValue": [
-      { "value": "Draft", "label": "Draft" },
-      { "value": "Ready for Procurement", "label": "Ready for Procurement" }
-    ] },
-    "statusOptionsADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
-      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.statusOptionsArray }}" } },
+    "taskArray": { "type": "any[]", "defaultValue": [] },
+    "taskADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "task_number", "data": "{{ $page.variables.taskArray }}" } },
+    "itemArray": { "type": "any[]", "defaultValue": [] },
+    "itemADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "item_number", "data": "{{ $page.variables.itemArray }}" } },
+    "supplierArray": { "type": "any[]", "defaultValue": [] },
+    "supplierADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "vendor_name", "data": "{{ $page.variables.supplierArray }}" } },
+    "expTypeArray": { "type": "any[]", "defaultValue": [] },
+    "expTypeADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "expenditure_type_name", "data": "{{ $page.variables.expTypeArray }}" } },
+    "invOrgArray": { "type": "any[]", "defaultValue": [] },
+    "invOrgADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "organization_name", "data": "{{ $page.variables.invOrgArray }}" } },
+    "currencyArray": { "type": "any[]", "defaultValue": [] },
+    "currencyADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "currency_code", "data": "{{ $page.variables.currencyArray }}" } },
 
-    "criticalOptionsArray": { "type": "any[]", "defaultValue": [
-      { "value": "Yes", "label": "Yes" }, { "value": "No", "label": "No" }
-    ] },
-    "criticalOptionsADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
-      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.criticalOptionsArray }}" } },
+    "lineTypeArray": { "type": "any[]", "defaultValue": [ { "value": "Goods", "label": "Goods" }, { "value": "Services", "label": "Services" } ] },
+    "lineTypeADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.lineTypeArray }}" } },
+    "destinationTypeArray": { "type": "any[]", "defaultValue": [ { "value": "Expense", "label": "Expense" }, { "value": "Inventory", "label": "Inventory" } ] },
+    "destinationTypeADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.destinationTypeArray }}" } },
+    "strategyArray": { "type": "any[]", "defaultValue": [ { "value": "On time Delivery", "label": "On time Delivery" }, { "value": "Cost", "label": "Cost" }, { "value": "Quality", "label": "Quality" } ] },
+    "strategyADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.strategyArray }}" } },
+    "criticalOptionsArray": { "type": "any[]", "defaultValue": [ { "value": "Yes", "label": "Yes" }, { "value": "No", "label": "No" } ] },
+    "criticalOptionsADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.criticalOptionsArray }}" } },
 
     "filterCriterion": { "type": "any" },
     "searchConfiguration": {
       "type": "oj-sp/smart-search/strategies/JsonSearchConfigProviderFactory",
-      "defaultValue": {
-        "url": "[[ $application.path + 'resources/data/ppp-search-config.json' ]]"
-      }
+      "defaultValue": { "url": "[[ $application.path + 'resources/data/ppp-search-config.json' ]]" }
     },
     "searchContext": {
       "type": "object",
       "defaultValue": {
         "$search": {
           "filters": {
-            "ProjectNumberFilter": { "label": "Project Number", "options": {
-              "optionsData": "[[ $page.variables.projectNumberADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
-            "BusinessUnitFilter": { "label": "Business Unit", "options": {
-              "optionsData": "[[ $page.variables.businessUnitADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
-            "ProjectOrgFilter": { "label": "Project Organization", "options": {
-              "optionsData": "[[ $page.variables.projectOrgADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
-            "ItemCategoryFilter": { "label": "Item Category", "options": {
-              "optionsData": "[[ $page.variables.itemCategoryADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
-            "BuyerFilter": { "label": "Buyer", "options": {
-              "optionsData": "[[ $page.variables.buyerADP ]]", "optionsKeys": { "label": "label", "value": "value" } } }
+            "ProjectNumberFilter": { "label": "Project Number", "options": { "optionsData": "[[ $page.variables.projectNumberADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "BusinessUnitFilter": { "label": "Business Unit", "options": { "optionsData": "[[ $page.variables.businessUnitADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "ProjectOrgFilter": { "label": "Project Organization", "options": { "optionsData": "[[ $page.variables.projectOrgADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "ItemCategoryFilter": { "label": "Item Category", "options": { "optionsData": "[[ $page.variables.itemCategoryADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "BuyerFilter": { "label": "Buyer", "options": { "optionsData": "[[ $page.variables.buyerADP ]]", "optionsKeys": { "label": "label", "value": "value" } } }
           }
         }
       }
@@ -110,20 +109,29 @@
   "metadata": {},
   "types": {},
   "chains": {
-    "secondaryActionChain": {
-      "variables": {
-        "detail": { "type": "any", "input": "fromCaller", "required": true }
-      }
-    }
+    "secondaryActionChain": { "variables": { "detail": { "type": "any", "input": "fromCaller", "required": true } } },
+    "editRow": { "variables": { "event": { "type": "any", "input": "fromCaller", "required": true } } },
+    "itemChanged": { "variables": { "detail": { "type": "any", "input": "fromCaller" } } },
+    "taskChanged": { "variables": { "detail": { "type": "any", "input": "fromCaller" } } },
+    "expTypeChanged": { "variables": { "detail": { "type": "any", "input": "fromCaller" } } },
+    "invOrgChanged": { "variables": { "detail": { "type": "any", "input": "fromCaller" } } }
   },
   "eventListeners": {
     "vbEnter": { "chains": [ { "chain": "vbEnterChain" } ] },
-    "spGoToParent": { "chains": [ { "chainId": "goToParentChain" } ] },
-    "spPrimaryAction": { "chains": [ { "chainId": "primaryActionChain" } ] },
+    "goToParentChain": { "chains": [ { "chainId": "goToParentChain" } ] },
+    "primaryActionChain": { "chains": [ { "chainId": "primaryActionChain" } ] },
     "ccPrimaryAction": { "chains": [ { "chainId": "secondaryActionChain", "parameters": { "detail": "{{ $event.detail }}" } } ] },
     "ccSecondaryAction": { "chains": [ { "chainId": "secondaryActionChain", "parameters": { "detail": "{{ $event.detail }}" } } ] },
     "ccExport": { "chains": [ { "chainId": "secondaryActionChain", "parameters": { "detail": { "id": "export" } } } ] },
-    "filterCriterionChanged": { "chains": [ { "chain": "filterChain" } ] }
+    "filterCriterionChanged": { "chains": [ { "chain": "filterChain" } ] },
+    "editRow": { "chains": [ { "chainId": "editRow", "parameters": { "event": "{{ $event }}" } } ] },
+    "savePlanLine": { "chains": [ { "chainId": "savePlanLine" } ] },
+    "deletePlanLine": { "chains": [ { "chainId": "deletePlanLine" } ] },
+    "closeDrawer": { "chains": [ { "chainId": "closeDrawer" } ] },
+    "itemChanged": { "chains": [ { "chainId": "itemChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "taskChanged": { "chains": [ { "chainId": "taskChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "expTypeChanged": { "chains": [ { "chainId": "expTypeChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "invOrgChanged": { "chains": [ { "chainId": "invOrgChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] }
   },
   "imports": {
     "components": {
@@ -131,7 +139,15 @@
       "oj-sp-smart-search": { "path": "oj-sp/smart-search/loader" },
       "oj-sp-collection-container": { "path": "oj-sp/collection-container/loader" },
       "oj-table": { "path": "ojs/ojtable" },
-      "oj-bind-text": { "path": "ojs/ojknockout" }
+      "oj-bind-text": { "path": "ojs/ojknockout" },
+      "oj-drawer-popup": { "path": "ojs/ojdrawerpopup" },
+      "oj-form-layout": { "path": "ojs/ojformlayout" },
+      "oj-select-single": { "path": "ojs/ojselectsingle" },
+      "oj-input-text": { "path": "ojs/ojinputtext" },
+      "oj-input-number": { "path": "ojs/ojinputnumber" },
+      "oj-input-date": { "path": "ojs/ojdatetimepicker" },
+      "oj-button": { "path": "ojs/ojbutton" },
+      "oj-validation-group": { "path": "ojs/ojvalidationgroup" }
     }
   }
 }

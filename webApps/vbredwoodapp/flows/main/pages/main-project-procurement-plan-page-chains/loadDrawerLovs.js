@@ -1,0 +1,45 @@
+/* Copyright (c) 2026, Oracle and/or its affiliates */
+define([
+  'vb/action/actionChain',
+  'vb/action/actions'
+], (ActionChain, Actions) => {
+  'use strict';
+
+  /**
+   * Load the Add/Edit drawer LOVs from ORDS for the currently selected project/BU:
+   *   - Task         -> getPDSCGetTaskByProject(P_PROJECT_NUMBER)
+   *   - Item         -> getPDSCItemDetails       (cascades: description, UOM, on-hand)
+   *   - Supplier     -> getPDSCSupplierDetails
+   *   - Expenditure  -> getPDSCEXPTypes          (cascade: expenditure_type_id)
+   *   - Inventory Org-> getPDSCGetInvOrgsByBU     (cascade: org id + code)
+   *   - Currency     -> getPDSCCurrencyCode
+   * Line Type / Destination / Strategy / Critical are static client-side enums.
+   * All loads are best-effort (Promise.allSettled) so one failure never blanks the rest.
+   */
+  class LoadDrawerLovs extends ActionChain {
+    async run(context) {
+      const { $application, $page } = context;
+      const user = $application.variables.user || 'ProcureRite';
+      const h = $page.variables.planHeader || {};
+      const items = (r) => (r && r.body && Array.isArray(r.body.items)) ? r.body.items : [];
+
+      const [task, item, sup, exp, inv, cur] = await Promise.allSettled([
+        h.projectNumber ? Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCGetTaskByProject', uriParams: { P_PROJECT_NUMBER: h.projectNumber, P_USERNAME: user } }) : Promise.resolve(null),
+        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCItemDetails', uriParams: { P_USERNAME: user, p_organization_name: '' } }),
+        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCSupplierDetails', uriParams: { P_USERNAME: user } }),
+        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCEXPTypes' }),
+        h.businessUnit ? Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCGetInvOrgsByBU', uriParams: { p_business_unit_name: h.businessUnit } }) : Promise.resolve(null),
+        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCCurrencyCode' })
+      ]);
+
+      if (task.status === 'fulfilled' && task.value) $page.variables.taskArray = items(task.value);
+      if (item.status === 'fulfilled') $page.variables.itemArray = items(item.value);
+      if (sup.status === 'fulfilled') $page.variables.supplierArray = items(sup.value);
+      if (exp.status === 'fulfilled') $page.variables.expTypeArray = items(exp.value);
+      if (inv.status === 'fulfilled' && inv.value) $page.variables.invOrgArray = items(inv.value);
+      if (cur.status === 'fulfilled') $page.variables.currencyArray = items(cur.value);
+    }
+  }
+
+  return LoadDrawerLovs;
+});
