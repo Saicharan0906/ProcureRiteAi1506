@@ -1,0 +1,38 @@
+{
+    "items": [
+        {
+            "po_number": "US165143",
+            "action_details": "Action ",
+            "planned_date": "2025-04-08",
+            "assignee": "Madhu",
+            "status": "Pending",
+            "actual_date": "2025-04-08",
+            "po_add_id": 3,
+            "po_header_id": 300001700252237,
+            "expedite_workbench_id": 81,
+            "outcome_remarks": null
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCPOAdditonalDetails?p_expedite_workbench_id=81"
+        },
+        {
+            "rel": "edit",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCPOAdditonalDetails?p_expedite_workbench_id=81"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCPOAdditonalDetails?p_expedite_workbench_id=81"
+        }
+    ]
+}

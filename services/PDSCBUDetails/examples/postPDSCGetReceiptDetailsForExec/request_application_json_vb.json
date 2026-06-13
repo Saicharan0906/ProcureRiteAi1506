@@ -1,0 +1,17 @@
+{
+"pdsc_receipt_id":"",
+"execute_id":"", 
+"plan_id":"", 
+"receipt_number":"",
+"item_number":"",
+"received_date":"",
+"oracle_receipt_id":"",
+"req_clob":"",
+"status":"",
+"po_id":"", 
+"order_quantity":"",
+"received_quantity":"",
+"returned_quantity":"",
+"error_message":"",
+"rejected_quantity":""
+}

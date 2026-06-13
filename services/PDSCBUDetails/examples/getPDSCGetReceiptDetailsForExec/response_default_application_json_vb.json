@@ -1,0 +1,25 @@
+{
+    "items": [],
+    "hasMore": false,
+    "limit": 200,
+    "offset": 0,
+    "count": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCGetReceiptDetailsForExec?p_execute_id=300001769874390&p_po_header_id=919"
+        },
+        {
+            "rel": "edit",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCGetReceiptDetailsForExec?p_execute_id=300001769874390&p_po_header_id=919"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCGetReceiptDetailsForExec?p_execute_id=300001769874390&p_po_header_id=919"
+        }
+    ]
+}

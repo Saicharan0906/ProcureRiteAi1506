@@ -1,0 +1,201 @@
+{
+    "items": [
+        {
+            "expenditure_type_id": 300000092852105,
+            "expenditure_type_name": "Intercompany Charge",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Intercompany Charge"
+        },
+        {
+            "expenditure_type_id": 300000146405089,
+            "expenditure_type_name": "Medical Equipment",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Medical Equipment"
+        },
+        {
+            "expenditure_type_id": 300000047429450,
+            "expenditure_type_name": "Administrative",
+            "revenue_category_code": "LABOR",
+            "unit_of_measure": "HOURS",
+            "description": "Administrative"
+        },
+        {
+            "expenditure_type_id": 300000047429455,
+            "expenditure_type_name": "Administrative Costs",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "zzu",
+            "description": "Administrative Costs"
+        },
+        {
+            "expenditure_type_id": 300000047429459,
+            "expenditure_type_name": "Airfare",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Airline Ticket Cost"
+        },
+        {
+            "expenditure_type_id": 300000047429465,
+            "expenditure_type_name": "Computers",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "HOURS",
+            "description": "Non-Labor Resource Usage"
+        },
+        {
+            "expenditure_type_id": 300000047429469,
+            "expenditure_type_name": "Contract Services",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Contract Services"
+        },
+        {
+            "expenditure_type_id": 300000047429474,
+            "expenditure_type_name": "Equipment",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "HOURS",
+            "description": "Equipment"
+        },
+        {
+            "expenditure_type_id": 300000047429478,
+            "expenditure_type_name": "Fee",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Fee"
+        },
+        {
+            "expenditure_type_id": 300000047429482,
+            "expenditure_type_name": "Fringe",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Fringe"
+        },
+        {
+            "expenditure_type_id": 300000047429486,
+            "expenditure_type_name": "Hardware",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Hardware"
+        },
+        {
+            "expenditure_type_id": 300000047429491,
+            "expenditure_type_name": "Hotel",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Hotel/Motel Lodging"
+        },
+        {
+            "expenditure_type_id": 300000047429509,
+            "expenditure_type_name": "Material",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Material Costs for Inventory Transactions"
+        },
+        {
+            "expenditure_type_id": 300000047429515,
+            "expenditure_type_name": "Material Handling",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Material Handling"
+        },
+        {
+            "expenditure_type_id": 300000047429519,
+            "expenditure_type_name": "Meals",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Employee Subsistence"
+        },
+        {
+            "expenditure_type_id": 300000047429525,
+            "expenditure_type_name": "Miscellaneous",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Miscellaneous"
+        },
+        {
+            "expenditure_type_id": 300000047429530,
+            "expenditure_type_name": "Miscellaneous Labor",
+            "revenue_category_code": "LABOR",
+            "unit_of_measure": "HOURS",
+            "description": "Miscellaneous Labor"
+        },
+        {
+            "expenditure_type_id": 300000047429535,
+            "expenditure_type_name": "Overhead",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Overhead"
+        },
+        {
+            "expenditure_type_id": 300000047429539,
+            "expenditure_type_name": "Proceeds from Sale",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Proceeds of Sale"
+        },
+        {
+            "expenditure_type_id": 300000047429543,
+            "expenditure_type_name": "Professional",
+            "revenue_category_code": "LABOR",
+            "unit_of_measure": "HOURS",
+            "description": "Professional Labor"
+        },
+        {
+            "expenditure_type_id": 300000047429548,
+            "expenditure_type_name": "Purchased Equipment",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Purchased Equipment"
+        },
+        {
+            "expenditure_type_id": 300000047429553,
+            "expenditure_type_name": "Software",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "Software"
+        },
+        {
+            "expenditure_type_id": 300000047429558,
+            "expenditure_type_name": "Supplies",
+            "revenue_category_code": "OTHER",
+            "unit_of_measure": "DOLLARS",
+            "description": "General Supplies"
+        },
+        {
+            "expenditure_type_id": 300000101410247,
+            "expenditure_type_name": "Student Wages",
+            "revenue_category_code": "LABOR",
+            "unit_of_measure": "HOURS",
+            "description": "Student Wages"
+        },
+        {
+            "expenditure_type_id": 300000101410251,
+            "expenditure_type_name": "Other Pay",
+            "revenue_category_code": "LABOR",
+            "unit_of_measure": "HOURS",
+            "description": "Other Pay"
+        }
+    ],
+    "hasMore": true,
+    "limit": 25,
+    "offset": 0,
+    "count": 25,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCEXPTypes"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCEXPTypes"
+        },
+        {
+            "rel": "next",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCEXPTypes?offset=25"
+        }
+    ]
+}

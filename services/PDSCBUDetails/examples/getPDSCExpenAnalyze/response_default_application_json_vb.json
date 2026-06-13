@@ -1,0 +1,65 @@
+{
+    "items": [
+        {
+            "line_number": null,
+            "task_number": null,
+            "task_name": null,
+            "expenditure_type": null,
+            "line_type": null,
+            "item_number": null,
+            "item_desc": null,
+            "item_category": null,
+            "planned_start_date": null,
+            "planned_finish_date": null,
+            "status": null,
+            "document_type": null,
+            "document": null,
+            "buyer": null,
+            "acquisition_strategy_objective": null,
+            "planned_quantity": null,
+            "planned_amount": null,
+            "actual_quantity": null,
+            "actual_amount": null,
+            "commitment_cost": null,
+            "project_number": "PCS10007",
+            "attribute1": null,
+            "attribute2": null,
+            "attribute3": null,
+            "attribute4": null,
+            "attribute5": null,
+            "attribute6": null,
+            "attribute7": null,
+            "attribute8": null,
+            "attribute9": null,
+            "attribute10": null,
+            "attribute11": null,
+            "attribute12": null,
+            "attribute13": null,
+            "attribute14": null,
+            "attribute15": null,
+            "creation_date": null,
+            "last_update_date": null,
+            "last_updated_by": null,
+            "created_by": null,
+            "last_update_login": null
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCExpenAnalyze?P_PROJECT_NUMBER=PCS10007"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCExpenAnalyze?P_PROJECT_NUMBER=PCS10007"
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "items": [
+        {
+            "purchasing_category": "204.54 Laptops"
+        },
+        {
+            "purchasing_category": "Marketing"
+        },
+        {
+            "purchasing_category": "Miscellaneous"
+        },
+        {
+            "purchasing_category": "Printers"
+        },
+        {
+            "purchasing_category": "Software"
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 5,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCCostTrackerItemCatLOV?P_USERNAME=rite.user"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCCostTrackerItemCatLOV?P_USERNAME=rite.user"
+        }
+    ]
+}

@@ -1,0 +1,55 @@
+{
+    "items": [
+        {
+            "style_name": "Materials, Equipment, and Supplies"
+        },
+        {
+            "style_name": "SBEC Two Stage RFQ 1"
+        },
+        {
+            "style_name": "Public Works Contracts (Construction)"
+        },
+        {
+            "style_name": "Professional and Other Services"
+        },
+        {
+            "style_name": "Standard Negotiation"
+        },
+        {
+            "style_name": "W1000"
+        },
+        {
+            "style_name": "Two Stage Negotiation"
+        },
+        {
+            "style_name": "Internal Cost Factors Simple"
+        },
+        {
+            "style_name": "Standard with Abstract"
+        },
+        {
+            "style_name": "Composite Scoring RFQ"
+        },
+        {
+            "style_name": "Demande de devis"
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 11,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCNegotiationStyle"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCNegotiationStyle"
+        }
+    ]
+}

@@ -6,27 +6,32 @@ define([
   'use strict';
 
   /**
-   * oj-sp-smart-search filter-criterion-changed handler (PATH B, client-side mock).
+   * oj-sp-smart-search filter-criterion-changed handler — ORDS-backed.
    *
-   * Cascade: when Project Number is applied, auto-fill Project Name + Start/Finish/
-   * Status/Manager in the header, and for Business Unit / Project Organization:
-   *   - if the project has exactly ONE value, auto-fill & auto-apply it
-   *   - if it has MANY, narrow that filter's list so the user picks a valid one
-   * Then filter the plan lines by the effective filters + keyword.
+   * On Project Number change (the primary cascade key):
+   *   1. getPDSCGetProjectByBU(P_PROJECT_NUMBER) -> fill the project header
+   *      (name, BU, org, dates, status, manager, projectId)
+   *   2. getPDSCGetOrgbyBU(P_BU_NAME) + getPDSCBuyerDetails(P_BU_NAME) -> narrow the
+   *      Project Organization & Buyer filter LOVs to the selected project's BU
+   *   3. getPDSCPlanDetails(P_PROJECT_NUMBER) -> the plan lines (planLinesAllArray)
    *
-   * When wired to ORDS, replace with getPDSCGetProjectByBU (cascade) +
-   * getPDSCPlanDetails (server-side lines).
+   * Every fire (including when only the other chips / keyword change) then refines the
+   * already-loaded project rows CLIENT-SIDE by Business Unit, Item Category, Buyer,
+   * Status, Critical and the free-text keyword -> planLinesArray (the table data).
+   * Re-fetch happens only when the Project Number actually changes.
    */
   class FilterChain extends ActionChain {
     async run(context) {
-      const { $page } = context;
+      const { $application, $page } = context;
+      const user = $application.variables.user || 'ProcureRite';
+      const items = (r) => (r && r.body && Array.isArray(r.body.items)) ? r.body.items : [];
+      const opts = (arr, field) => {
+        const seen = {};
+        return arr.map((o) => ({ value: o[field], label: o[field] }))
+          .filter((o) => o.value != null && o.value !== '' && !seen[o.value] && (seen[o.value] = true));
+      };
 
-      if (!$page.variables.planLinesAllArray || !$page.variables.planLinesAllArray.length) {
-        $page.variables.planLinesAllArray = [...$page.variables.planLinesArray];
-      }
-      const all = $page.variables.planLinesAllArray;
-
-      // ---- collect applied filters + keyword ----
+      // ---- collect applied filters + keyword from the smart-search criterion ----
       const selected = {};
       let keyword = '';
       const collect = (c) => {
@@ -43,44 +48,78 @@ define([
       };
       collect($page.variables.filterCriterion);
 
-      // ---- cascade on Project Number change ----
       const pn = selected.projectNumber || '';
+
+      // ---- cascade + plan-line fetch only when the project actually changes ----
       if (pn !== $page.variables.lastProjectNumber) {
-        const meta = ($page.variables.projectMeta || {})[pn];
-        if (pn && meta) {
-          $page.variables.planHeader = {
-            projectName: meta.projectName,
-            businessUnit: (meta.businessUnits && meta.businessUnits.length === 1) ? meta.businessUnits[0] : '',
-            projectOrg: (meta.orgs && meta.orgs.length === 1) ? meta.orgs[0] : '',
-            startDate: meta.startDate, finishDate: meta.finishDate,
-            status: meta.status, projectManager: meta.projectManager
+        if (pn) {
+          let header = {
+            projectNumber: pn, projectName: '', businessUnit: '', projectOrg: '',
+            startDate: '', finishDate: '', status: '', projectManager: '', projectId: null
           };
-          // narrow the dependent LOVs to this project's valid values
-          $page.variables.businessUnitArray = (meta.businessUnits || []).map(v => ({ value: v, label: v }));
-          $page.variables.projectOrgArray = (meta.orgs || []).map(v => ({ value: v, label: v }));
+          try {
+            const hdr = await Actions.callRest(context, {
+              endpoint: 'PDSCBUDetails/getPDSCGetProjectByBU',
+              uriParams: { P_PROJECT_NUMBER: pn, P_USERNAME: user }
+            });
+            const h = items(hdr)[0];
+            if (h) {
+              header = {
+                projectNumber: h.project_number != null ? h.project_number : pn,
+                projectName: h.project_name || '',
+                businessUnit: h.bu_name || '',
+                projectOrg: h.organization_name || '',
+                startDate: h.project_start_date || '',
+                finishDate: h.project_end_date || '',
+                status: h.project_status_code || '',
+                projectManager: h.attribute1 || '',
+                projectId: h.project_id != null ? h.project_id : null
+              };
+            }
+          } catch (e) { /* header best-effort */ }
+          $page.variables.planHeader = header;
+
+          // narrow Project Org + Buyer LOVs to this project's BU + fetch plan lines
+          const [orgRes, buyerRes, linesRes] = await Promise.allSettled([
+            header.businessUnit ? Actions.callRest(context, {
+              endpoint: 'PDSCBUDetails/getPDSCGetOrgbyBU', uriParams: { P_BU_NAME: header.businessUnit }
+            }) : Promise.resolve(null),
+            header.businessUnit ? Actions.callRest(context, {
+              endpoint: 'PDSCBUDetails/getPDSCBuyerDetails', uriParams: { P_BU_NAME: header.businessUnit, P_USERNAME: user }
+            }) : Promise.resolve(null),
+            Actions.callRest(context, {
+              endpoint: 'PDSCBUDetails/getPDSCPlanDetails', uriParams: { P_PROJECT_NUMBER: pn, P_USERNAME: user }
+            })
+          ]);
+
+          if (orgRes.status === 'fulfilled' && orgRes.value) {
+            $page.variables.projectOrgArray = opts(items(orgRes.value), 'organization_name');
+          }
+          if (buyerRes.status === 'fulfilled' && buyerRes.value) {
+            $page.variables.buyerArray = opts(items(buyerRes.value), 'buyer_name');
+          }
+          $page.variables.planLinesAllArray = (linesRes.status === 'fulfilled') ? items(linesRes.value) : [];
         } else {
-          $page.variables.planHeader = { projectName: '', businessUnit: '', projectOrg: '', startDate: '', finishDate: '', status: '', projectManager: '' };
+          $page.variables.planHeader = {
+            projectNumber: '', projectName: '', businessUnit: '', projectOrg: '',
+            startDate: '', finishDate: '', status: '', projectManager: '', projectId: null
+          };
+          $page.variables.planLinesAllArray = [];
         }
         $page.variables.lastProjectNumber = pn;
       }
 
-      // effective BU/Org = user-picked chip OR auto-filled single value
-      const effBU = selected.businessUnit || $page.variables.planHeader.businessUnit;
-      const effOrg = selected.projectOrg || $page.variables.planHeader.projectOrg;
-
-      // ---- filter the plan lines ----
-      let rows = [...all];
-      if (pn) rows = rows.filter(r => r.projectNumber === pn);
-      if (effBU) rows = rows.filter(r => r.businessUnit === effBU);
-      if (effOrg) rows = rows.filter(r => r.projectOrg === effOrg);
-      if (selected.itemCategory) rows = rows.filter(r => r.itemCategory === selected.itemCategory);
-      if (selected.buyer) rows = rows.filter(r => r.buyer === selected.buyer);
-      if (selected.status) rows = rows.filter(r => r.status === selected.status);
-      if (selected.critical) rows = rows.filter(r => r.critical === selected.critical);
+      // ---- client-side refine of the loaded project rows ----
+      let rows = [...($page.variables.planLinesAllArray || [])];
+      if (selected.businessUnit) rows = rows.filter((r) => r.business_unit === selected.businessUnit);
+      if (selected.itemCategory) rows = rows.filter((r) => r.item_category === selected.itemCategory);
+      if (selected.buyer) rows = rows.filter((r) => r.buyer === selected.buyer);
+      if (selected.status) rows = rows.filter((r) => r.status === selected.status);
+      if (selected.critical) rows = rows.filter((r) => r.critical_flag === selected.critical);
       if (keyword) {
         const words = String(keyword).toLowerCase().split(/\s+/).filter(Boolean);
-        const KW = ['itemNumber', 'itemDescription', 'taskName', 'supplier'];
-        rows = rows.filter(item => words.some(w => KW.some(f => item[f] && String(item[f]).toLowerCase().includes(w))));
+        const KW = ['item_number', 'item_desc', 'task_name', 'supplier'];
+        rows = rows.filter((item) => words.some((w) => KW.some((f) => item[f] && String(item[f]).toLowerCase().includes(w))));
       }
 
       $page.variables.planLinesArray = rows;

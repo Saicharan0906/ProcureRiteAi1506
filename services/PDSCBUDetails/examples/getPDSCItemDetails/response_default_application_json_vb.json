@@ -1,0 +1,176 @@
+{
+    "items": [
+        {
+            "item_number": "0006204H",
+            "description": "0006204H\n",
+            "item_onhand": 0,
+            "unit_of_measure": "Ea"
+        },
+        {
+            "item_number": "001_Testitem",
+            "description": "001_Testitem",
+            "item_onhand": 0,
+            "unit_of_measure": "Ea"
+        },
+        {
+            "item_number": "002_Testitem",
+            "description": "002_Testitem",
+            "item_onhand": 0,
+            "unit_of_measure": "Ea"
+        },
+        {
+            "item_number": "004F72P8F4",
+            "description": "BETHANECHOL",
+            "item_onhand": 0,
+            "unit_of_measure": "g"
+        },
+        {
+            "item_number": "00Y6A5AJU6",
+            "description": "SOFPIRONIUM",
+            "item_onhand": 0,
+            "unit_of_measure": "g"
+        },
+        {
+            "item_number": "0101Z",
+            "description": "ZIMMER COLLAGEN PATCH, 10/PKG",
+            "item_onhand": 0,
+            "unit_of_measure": "Each"
+        },
+        {
+            "item_number": "010O4LC9TS",
+            "description": "THIAZOLYL BLUE CATION",
+            "item_onhand": 0,
+            "unit_of_measure": "g"
+        },
+        {
+            "item_number": "01920",
+            "description": "Iron Pipe",
+            "item_onhand": 0,
+            "unit_of_measure": "Each"
+        },
+        {
+            "item_number": "01930",
+            "description": "Steel Pipe",
+            "item_onhand": 7,
+            "unit_of_measure": "Ea"
+        },
+        {
+            "item_number": "01950",
+            "description": "U/G Precast Basins",
+            "item_onhand": 0,
+            "unit_of_measure": "Ea"
+        },
+        {
+            "item_number": "02F3473H9O",
+            "description": "MAGNESIUM CHLORIDE",
+            "item_onhand": 0,
+            "unit_of_measure": "g"
+        },
+        {
+            "item_number": "031A4BN94T",
+            "description": "DELPHINIDIN CATION",
+            "item_onhand": 0,
+            "unit_of_measure": "g"
+        },
+        {
+            "item_number": "0388G963HY",
+            "description": "HYDROCORTISONE SODIUM PHOSPHATE",
+            "item_onhand": 0,
+            "unit_of_measure": "g"
+        },
+        {
+            "item_number": "03V657ZD3V",
+            "description": "METHACHOLINE",
+            "item_onhand": 0,
+            "unit_of_measure": "g"
+        },
+        {
+            "item_number": "04000",
+            "description": "Concrete",
+            "item_onhand": 0,
+            "unit_of_measure": "Ea"
+        },
+        {
+            "item_number": "04610",
+            "description": "Sand and Cement",
+            "item_onhand": 0,
+            "unit_of_measure": "Ea"
+        },
+        {
+            "item_number": "04620",
+            "description": "Epoxy",
+            "item_onhand": 0,
+            "unit_of_measure": "Ea"
+        },
+        {
+            "item_number": "04QQ8SWA4U",
+            "description": "EMEPRONIUM",
+            "item_onhand": 0,
+            "unit_of_measure": "g"
+        },
+        {
+            "item_number": "05456MVL7T",
+            "description": "RADIUM CATION",
+            "item_onhand": 0,
+            "unit_of_measure": "g"
+        },
+        {
+            "item_number": "059QF0KO0R",
+            "description": "WATER",
+            "item_onhand": 0,
+            "unit_of_measure": "mL"
+        },
+        {
+            "item_number": "05MVC8T5JN",
+            "description": "MAGNESIUM NITRITE",
+            "item_onhand": 0,
+            "unit_of_measure": "g"
+        },
+        {
+            "item_number": "0710_al_10",
+            "description": "desc",
+            "item_onhand": 0,
+            "unit_of_measure": "Each"
+        },
+        {
+            "item_number": "0710_al_2",
+            "description": "desc",
+            "item_onhand": 0,
+            "unit_of_measure": "Each"
+        },
+        {
+            "item_number": "0710_al_3",
+            "description": "desc",
+            "item_onhand": 0,
+            "unit_of_measure": "Each"
+        },
+        {
+            "item_number": "0710_al_4",
+            "description": "desc",
+            "item_onhand": 0,
+            "unit_of_measure": "Each"
+        }
+    ],
+    "hasMore": true,
+    "limit": 25,
+    "offset": 0,
+    "count": 25,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCItemDetails"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCItemDetails"
+        },
+        {
+            "rel": "next",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCItemDetails?offset=25"
+        }
+    ]
+}

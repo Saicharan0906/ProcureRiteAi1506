@@ -1,0 +1,101 @@
+{
+    "items": [
+        {
+            "auction_title": "India BU Nego Template"
+        },
+        {
+            "auction_title": "Services Auction W500 (UK)"
+        },
+        {
+            "auction_title": "Latop T600 BPA Auction"
+        },
+        {
+            "auction_title": "General C100 PO / Auction (China)"
+        },
+        {
+            "auction_title": "Laptop J700 BPA Auction"
+        },
+        {
+            "auction_title": "PC Portable H450 BPA Auction"
+        },
+        {
+            "auction_title": "General J443 BPA / Auction"
+        },
+        {
+            "auction_title": "Laptop  H500 PO"
+        },
+        {
+            "auction_title": "Laptop X700 PO Auction"
+        },
+        {
+            "auction_title": "IT Equipment Upgrade Univ Auction"
+        },
+        {
+            "auction_title": "Laptop S700 PO / Auction"
+        },
+        {
+            "auction_title": "Laptop G3000 PO"
+        },
+        {
+            "auction_title": "Laptop SW 1100 BPA RFQ"
+        },
+        {
+            "auction_title": "IT Equipment Upgrade JP"
+        },
+        {
+            "auction_title": "Laptop SW 1100 BPA Auction"
+        },
+        {
+            "auction_title": "IT Equipment Upgrade FR"
+        },
+        {
+            "auction_title": "Laptop IN3000 PO RFQ"
+        },
+        {
+            "auction_title": "General SUP100 Auction PO"
+        },
+        {
+            "auction_title": "Laptop FED 122 PO RFQ"
+        },
+        {
+            "auction_title": "IT Equipment Upgrade Progress"
+        },
+        {
+            "auction_title": "IT Equipment Upgrade Italy Auction"
+        },
+        {
+            "auction_title": "Laptop T700 PO"
+        },
+        {
+            "auction_title": "IT Equipment Upgrade HC"
+        },
+        {
+            "auction_title": "Services Auction HC500"
+        },
+        {
+            "auction_title": "Laptop  H500 PO Auction"
+        }
+    ],
+    "hasMore": true,
+    "limit": 25,
+    "offset": 0,
+    "count": 25,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCNegotiationTemplate?P_NEGOTIATION_TYPE=RFQ&P_STYLE_NAME=Standard+Negotiation"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCNegotiationTemplate?P_NEGOTIATION_TYPE=RFQ&P_STYLE_NAME=Standard+Negotiation"
+        },
+        {
+            "rel": "next",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCNegotiationTemplate?P_NEGOTIATION_TYPE=RFQ&P_STYLE_NAME=Standard+Negotiation&offset=25"
+        }
+    ]
+}

@@ -1,0 +1,126 @@
+{
+    "items": [
+        {
+            "organization_id": 300000047274447,
+            "organization_name": "Atlanta"
+        },
+        {
+            "organization_id": 300000047370546,
+            "organization_name": "US Operations"
+        },
+        {
+            "organization_id": 300000047480122,
+            "organization_name": "France Legal Entity"
+        },
+        {
+            "organization_id": 300000047568131,
+            "organization_name": "France Business Unit"
+        },
+        {
+            "organization_id": 300000047597348,
+            "organization_name": "Accounting UK"
+        },
+        {
+            "organization_id": 300000047597353,
+            "organization_name": "Benefits UK"
+        },
+        {
+            "organization_id": 300000047597358,
+            "organization_name": "Commercial Sales UK"
+        },
+        {
+            "organization_id": 300000047597363,
+            "organization_name": "Compensation UK"
+        },
+        {
+            "organization_id": 300000047597368,
+            "organization_name": "Consulting East UK"
+        },
+        {
+            "organization_id": 300000047597373,
+            "organization_name": "Consulting North UK"
+        },
+        {
+            "organization_id": 300000047597378,
+            "organization_name": "Consulting South UK"
+        },
+        {
+            "organization_id": 300000047597383,
+            "organization_name": "Consulting West UK"
+        },
+        {
+            "organization_id": 300000047597388,
+            "organization_name": "Finance UK"
+        },
+        {
+            "organization_id": 300000047597393,
+            "organization_name": "Government Sales UK"
+        },
+        {
+            "organization_id": 300000047597398,
+            "organization_name": "HCM UK"
+        },
+        {
+            "organization_id": 300000047597408,
+            "organization_name": "Human Resources UK"
+        },
+        {
+            "organization_id": 300000047597413,
+            "organization_name": "Learning UK"
+        },
+        {
+            "organization_id": 300000047597418,
+            "organization_name": "Ledger UK"
+        },
+        {
+            "organization_id": 300000047597423,
+            "organization_name": "Manufacturing UK"
+        },
+        {
+            "organization_id": 300000047597428,
+            "organization_name": "Marketing UK"
+        },
+        {
+            "organization_id": 300000047597433,
+            "organization_name": "Operations UK"
+        },
+        {
+            "organization_id": 300000047597438,
+            "organization_name": "Organizational Development UK"
+        },
+        {
+            "organization_id": 300000047597443,
+            "organization_name": "Payables and Assets UK"
+        },
+        {
+            "organization_id": 300000047597448,
+            "organization_name": "Payroll UK"
+        },
+        {
+            "organization_id": 300000047597453,
+            "organization_name": "Procurement UK"
+        }
+    ],
+    "hasMore": true,
+    "limit": 25,
+    "offset": 0,
+    "count": 25,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCHROrgDetails"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCHROrgDetails"
+        },
+        {
+            "rel": "next",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCHROrgDetails?offset=25"
+        }
+    ]
+}

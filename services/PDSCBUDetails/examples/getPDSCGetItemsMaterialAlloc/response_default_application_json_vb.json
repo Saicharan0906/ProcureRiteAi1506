@@ -1,0 +1,28 @@
+{
+    "items": [
+        {
+            "item_number": "AS00107"
+        },
+        {
+            "item_number": "1"
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 2,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCGetItemsMaterialAlloc?p_project_number=PCS10042"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCGetItemsMaterialAlloc?p_project_number=PCS10042"
+        }
+    ]
+}

@@ -1,0 +1,126 @@
+{
+    "items": [
+        {
+            "vendor_number": "3032853",
+            "vendor_name": "100 ABC"
+        },
+        {
+            "vendor_number": "USA1099001_PS_28",
+            "vendor_name": "1099 ALL-001_PS_28"
+        },
+        {
+            "vendor_number": "USA1099008_PS_28",
+            "vendor_name": "1099 ALL-002_PS_28"
+        },
+        {
+            "vendor_number": "USA1099011_PS_28",
+            "vendor_name": "1099 FRG-001_PS_28"
+        },
+        {
+            "vendor_number": "USA1099002_PS_28",
+            "vendor_name": "1099 RPT-001_PS_28"
+        },
+        {
+            "vendor_number": "USA1099014_PS_28",
+            "vendor_name": "1099 RPT-004_PS_28"
+        },
+        {
+            "vendor_number": "USA1099021_7",
+            "vendor_name": "1099 Reporting Supplier Multiple Classes_7"
+        },
+        {
+            "vendor_number": "USA1099001_6",
+            "vendor_name": "1099 Reporting Vendor - All Classes_6"
+        },
+        {
+            "vendor_number": "USA1099012_6",
+            "vendor_name": "1099 Reporting Vendor - Multiple Locs_6"
+        },
+        {
+            "vendor_number": "USA1099002_6",
+            "vendor_name": "1099 Standard Reporting Vendor_6"
+        },
+        {
+            "vendor_number": "USA1099003_6",
+            "vendor_name": "1099 Standard Withholding Vendor_6"
+        },
+        {
+            "vendor_number": "USA1099003_PS_28",
+            "vendor_name": "1099 WTHD-001_PS_28"
+        },
+        {
+            "vendor_number": "USA1099007_PS_28",
+            "vendor_name": "1099G ALL-001_PS_28"
+        },
+        {
+            "vendor_number": "USA1099005_PS_28",
+            "vendor_name": "1099G RPT-001_PS_28"
+        },
+        {
+            "vendor_number": "USA1099005_6",
+            "vendor_name": "1099G Standard Reporting Vendor_6"
+        },
+        {
+            "vendor_number": "USA1099010_PS_28",
+            "vendor_name": "1099G WTHD-001_PS_28"
+        },
+        {
+            "vendor_number": "USA1099006_PS_28",
+            "vendor_name": "1099I ALL-001_PS_28"
+        },
+        {
+            "vendor_number": "USA1099004_PS_28",
+            "vendor_name": "1099I RPT-001_PS_28"
+        },
+        {
+            "vendor_number": "USA1099004_6",
+            "vendor_name": "1099I Standard Reporting Vendor_6"
+        },
+        {
+            "vendor_number": "USA1099009_PS_28",
+            "vendor_name": "1099I WTHD-001_PS_28"
+        },
+        {
+            "vendor_number": "USA1099016_PS_28",
+            "vendor_name": "1099M-001_PS_28"
+        },
+        {
+            "vendor_number": "USA1099017_PS_28",
+            "vendor_name": "1099N-001_PS_28"
+        },
+        {
+            "vendor_number": "5057_04JUN25_ASC_3",
+            "vendor_name": "3G Communications, Inc._04JUN25_ASC_3"
+        },
+        {
+            "vendor_number": "3117391",
+            "vendor_name": "3G Communications, Inc._1002025_1"
+        },
+        {
+            "vendor_number": "5057",
+            "vendor_name": "3G Communications, Inc._1002025_2"
+        }
+    ],
+    "hasMore": true,
+    "limit": 25,
+    "offset": 0,
+    "count": 25,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCSupplierDetails?P_USERNAME=ProcureRite"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCSupplierDetails?P_USERNAME=ProcureRite"
+        },
+        {
+            "rel": "next",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCSupplierDetails?P_USERNAME=ProcureRite&offset=25"
+        }
+    ]
+}

@@ -1,0 +1,73 @@
+{
+    "items": [
+        {
+            "line_number": "183",
+            "task_number": "3.0",
+            "task_name": "Constructions",
+            "expenditure_type": "Equipment",
+            "line_type": "Goods",
+            "item_number": "AS00106",
+            "item_desc": "Alliance 7 Pro",
+            "item_category": "Software.Server",
+            "planned_start_date": "01-JAN-24",
+            "planned_finish_date": "31-DEC-25",
+            "status": "Draft",
+            "buyer": "Developer, Rite",
+            "acquisition_strategy_objective": null,
+            "planned_quantity": "500",
+            "planned_cost": "1000",
+            "attribute1": null,
+            "attribute2": null,
+            "attribute3": null,
+            "attribute4": null,
+            "attribute5": null,
+            "attribute6": null,
+            "attribute7": null,
+            "attribute8": null,
+            "attribute9": null,
+            "attribute10": null,
+            "attribute11": null,
+            "attribute12": null,
+            "attribute13": null,
+            "attribute14": null,
+            "attribute15": null,
+            "creation_date": "16-APR-25",
+            "last_update_date": "16-APR-25",
+            "last_update_login": null,
+            "project_id": 300001516234489,
+            "plan_id": 466,
+            "project_number": "1049",
+            "inv_org_name": null,
+            "uom": "Ea",
+            "supplier": "EIP Inc",
+            "negotiation": null,
+            "last_updated_by": "anonymous",
+            "created_by": "anonymous",
+            "currency_code": "USD",
+            "critical_flag": "No",
+            "requested_delivery_date": "30-APR-25",
+            "destination_type": "Inventory",
+            "audit_id": 540,
+            "updated_by": "anonymous",
+            "modified_value": "PLANNED_QUANTITY changed from 200 to 500; "
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCPlanDetailsAuditLog?p_project_number=1049"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCPlanDetailsAuditLog?p_project_number=1049"
+        }
+    ]
+}

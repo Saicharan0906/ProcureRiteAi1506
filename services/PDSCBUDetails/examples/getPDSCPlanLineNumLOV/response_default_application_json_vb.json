@@ -1,0 +1,52 @@
+{
+    "items": [
+        {
+            "line_number": 108
+        },
+        {
+            "line_number": 124
+        },
+        {
+            "line_number": 109
+        },
+        {
+            "line_number": 110
+        },
+        {
+            "line_number": 121
+        },
+        {
+            "line_number": 120
+        },
+        {
+            "line_number": 112
+        },
+        {
+            "line_number": 60
+        },
+        {
+            "line_number": 119
+        },
+        {
+            "line_number": 123
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 10,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCPlanLineNumLOV?p_project_number=PCS10042"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCPlanLineNumLOV?p_project_number=PCS10042"
+        }
+    ]
+}

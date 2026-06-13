@@ -1,0 +1,34 @@
+{
+    "items": [
+        {
+            "item_number": "AS00106",
+            "organization_name": "Seattle",
+            "onhand_subinventory": "Completed",
+            "total_onhand_qty": 70
+        },
+        {
+            "item_number": "AS00106",
+            "organization_name": "Seattle",
+            "onhand_subinventory": "Stores",
+            "total_onhand_qty": 24
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 2,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCItemOnHand?p_inventory_org_name=Seattle&p_item_number=AS00106"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCItemOnHand?p_inventory_org_name=Seattle&p_item_number=AS00106"
+        }
+    ]
+}

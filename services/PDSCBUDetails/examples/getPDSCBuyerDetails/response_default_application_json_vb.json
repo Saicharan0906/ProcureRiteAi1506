@@ -1,0 +1,126 @@
+{
+    "items": [
+        {
+            "buyer_name": "AJITH",
+            "email_address": "AJITH@gmail.com"
+        },
+        {
+            "buyer_name": "April",
+            "email_address": "oracleinstance@gmail.com"
+        },
+        {
+            "buyer_name": "Arrendondo, Rosario",
+            "email_address": "rosario.arrendondo_etao-dev20@oraclepdemos.com"
+        },
+        {
+            "buyer_name": "Clark, Ava",
+            "email_address": "ava.clark_etao-dev20@oraclepdemos.com"
+        },
+        {
+            "buyer_name": "Curtis, Karen",
+            "email_address": "karen.curtis_etao-dev20@oraclepdemos.com"
+        },
+        {
+            "buyer_name": "Dunbar, John",
+            "email_address": "john.dunbar_etao-dev20@oraclepdemos.com"
+        },
+        {
+            "buyer_name": "Gee, May",
+            "email_address": "may.gee_etao-dev20@oraclepdemos.com"
+        },
+        {
+            "buyer_name": "Gupta, Himanshu",
+            "email_address": "himanshu.a.gupta@outlook.com"
+        },
+        {
+            "buyer_name": "Irving, Tiffany",
+            "email_address": "tiffany.irving_etao-dev20@oraclepdemos.com"
+        },
+        {
+            "buyer_name": "Jones, Lisa",
+            "email_address": "TestEmployee@xyz.com"
+        },
+        {
+            "buyer_name": "KarthikRites123",
+            "email_address": "KarthikRites123@gmail.com"
+        },
+        {
+            "buyer_name": "Marlin, Amy",
+            "email_address": "TestEmployee@xyz.com"
+        },
+        {
+            "buyer_name": "Miller, Saville",
+            "email_address": "saville.miller_etao-dev20@oraclepdemos.com"
+        },
+        {
+            "buyer_name": "Procure rite",
+            "email_address": "procure@rite.digital"
+        },
+        {
+            "buyer_name": "RS-PPM",
+            "email_address": "kkshok.apps@gmail.com"
+        },
+        {
+            "buyer_name": "Rite Tech",
+            "email_address": "Rite.Tech@gmail.com"
+        },
+        {
+            "buyer_name": "Sai, Kengo",
+            "email_address": "kengo.sai_etao-dev20@oraclepdemos.com"
+        },
+        {
+            "buyer_name": "Student, PRC07",
+            "email_address": "17890samuel@gmail.com"
+        },
+        {
+            "buyer_name": "Telangana, Saikiran",
+            "email_address": "saikiranyadav26@gmail.comPO"
+        },
+        {
+            "buyer_name": "Test_user",
+            "email_address": "Test_user@gmail.com"
+        },
+        {
+            "buyer_name": "US-USER",
+            "email_address": "kkashok.apps@gmail.com"
+        },
+        {
+            "buyer_name": "convert, rite",
+            "email_address": "dinakar.tiruveedhi@test.com"
+        },
+        {
+            "buyer_name": "mahesh, bathula",
+            "email_address": "maheshbabubattula3665@gmail.com"
+        },
+        {
+            "buyer_name": "mto, user",
+            "email_address": "chinna.ussaini@rite.digital"
+        },
+        {
+            "buyer_name": "mukund",
+            "email_address": "reuester227@gmail.com"
+        }
+    ],
+    "hasMore": true,
+    "limit": 25,
+    "offset": 0,
+    "count": 25,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCBuyerDetails?P_BU_NAME=US1+Business+Unit&P_USERNAME=ProcureRite"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCBuyerDetails?P_BU_NAME=US1+Business+Unit&P_USERNAME=ProcureRite"
+        },
+        {
+            "rel": "next",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCBuyerDetails?P_BU_NAME=US1+Business+Unit&P_USERNAME=ProcureRite&offset=25"
+        }
+    ]
+}

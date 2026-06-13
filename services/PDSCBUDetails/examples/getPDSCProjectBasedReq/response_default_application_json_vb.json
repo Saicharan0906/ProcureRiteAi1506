@@ -1,0 +1,97 @@
+{
+    "items": [
+        {
+            "requisition_number": "205060"
+        },
+        {
+            "requisition_number": "204958"
+        },
+        {
+            "requisition_number": "205041"
+        },
+        {
+            "requisition_number": "205059"
+        },
+        {
+            "requisition_number": "205036"
+        },
+        {
+            "requisition_number": "205038"
+        },
+        {
+            "requisition_number": "205039"
+        },
+        {
+            "requisition_number": "205047"
+        },
+        {
+            "requisition_number": "205096"
+        },
+        {
+            "requisition_number": "205098"
+        },
+        {
+            "requisition_number": "205044"
+        },
+        {
+            "requisition_number": "205058"
+        },
+        {
+            "requisition_number": "205075"
+        },
+        {
+            "requisition_number": "205050"
+        },
+        {
+            "requisition_number": "205051"
+        },
+        {
+            "requisition_number": "205053"
+        },
+        {
+            "requisition_number": "205074"
+        },
+        {
+            "requisition_number": "205097"
+        },
+        {
+            "requisition_number": "205055"
+        },
+        {
+            "requisition_number": "205072"
+        },
+        {
+            "requisition_number": "204957"
+        },
+        {
+            "requisition_number": "205035"
+        },
+        {
+            "requisition_number": "205048"
+        },
+        {
+            "requisition_number": "205076"
+        },
+        {
+            "requisition_number": "205099"
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 25,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCProjectBasedReq?p_project_number=PCS10042"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCProjectBasedReq?p_project_number=PCS10042"
+        }
+    ]
+}

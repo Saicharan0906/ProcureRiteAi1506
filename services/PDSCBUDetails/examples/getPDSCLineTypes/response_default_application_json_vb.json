@@ -1,0 +1,31 @@
+{
+    "items": [
+        {
+            "'goods'": "Goods"
+        },
+        {
+            "'goods'": "Fixed price services"
+        },
+        {
+            "'goods'": "Services by quantity"
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 3,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCLineTypes"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCLineTypes"
+        }
+    ]
+}

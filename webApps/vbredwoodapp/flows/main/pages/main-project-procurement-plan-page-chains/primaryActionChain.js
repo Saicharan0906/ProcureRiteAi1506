@@ -6,21 +6,26 @@ define([
   'use strict';
 
   /**
-   * Primary action = "Add Line". Placeholder: appends a new draft plan line to the
-   * mock array. Replace with create-line drawer + ORDS postPDSCPlanDetails when wired.
+   * Primary action = "Add Line".
+   *
+   * The read path (LOVs, project cascade, header, live plan lines, filters) and the
+   * Ready-for-Procurement write are wired to ORDS. The full Add/Edit create form
+   * (drawer with ~20 fields + cascading LOVs: task, item, item-category, buyer,
+   * supplier, currency, expenditure type, inventory org, dates -> postPDSCPlanDetails
+   * INSERT) is the next phase. For now surface a clear toast instead of a half-working
+   * inline draft that cannot be saved.
    */
   class PrimaryActionChain extends ActionChain {
     async run(context) {
       const { $page } = context;
-      const lines = $page.variables.planLinesArray || [];
-      const nextNum = lines.reduce((m, l) => Math.max(m, l.lineNumber || 0), 0) + 1;
-      const newLine = {
-        id: Date.now(), lineNumber: nextNum, critical: 'No', lineType: 'Goods',
-        itemNumber: '', itemDescription: '', itemCategory: '', taskName: '',
-        plannedQuantity: 0, uom: '', plannedCost: 0, currency: 'USD',
-        buyer: '', supplier: '', expenditureType: '', status: 'Draft'
-      };
-      $page.variables.planLinesArray = [...lines, newLine];
+      const hasProject = $page.variables.planHeader && $page.variables.planHeader.projectNumber;
+      const message = hasProject
+        ? 'Add Line — the create form (item, task, qty, cost, buyer, supplier, dates) is the next phase.'
+        : 'Select a Project Number first, then Add Line.';
+      await Actions.fireEvent(context, {
+        event: 'application:spShowToast',
+        payload: { detail: { message } }
+      });
     }
   }
 

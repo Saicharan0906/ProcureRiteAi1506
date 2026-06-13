@@ -1,0 +1,18 @@
+{
+   "execute_id": 602,
+            "plan_id": 467,
+            "po_id": 265,
+            "po_number": null,
+            "item_number": "AS00107",
+            "quantity": 1,
+            "error_details": "You must provide a value for the SupplierSite attribute.",
+            "need_by_date": null,
+            "status": null,
+            "supplier": "AUTO HAUS_1002025_1",
+            "supplier_site": null,
+            "po_header_id": null,
+            "planned_qty": null,
+            "remaining_qty": null,
+            "total_ordered_quantity": null
+} 
+

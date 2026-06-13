@@ -1,0 +1,18 @@
+{
+"req_id":1,
+"execute_id":1,
+"plan_id":1,
+"requisition_number":1,
+"requisition_line_id":1,
+"item_number":"1",
+"error_details":" " ,
+"quantity":100,
+"req_clob":"",
+"status":" ",
+"preparer":"",
+"requester":"",
+"destinationorgname":"",
+"requisition_header_id":"",
+"need_by_date":"1"
+}
+

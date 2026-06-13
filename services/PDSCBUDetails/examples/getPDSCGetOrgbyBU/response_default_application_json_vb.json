@@ -1,0 +1,52 @@
+{
+    "items": [
+        {
+            "organization_name": "Consulting East US"
+        },
+        {
+            "organization_name": "US1 Business Unit"
+        },
+        {
+            "organization_name": "Applications and Services"
+        },
+        {
+            "organization_name": "Consulting US"
+        },
+        {
+            "organization_name": "Global Networks"
+        },
+        {
+            "organization_name": "Accounting US"
+        },
+        {
+            "organization_name": "Consulting South US"
+        },
+        {
+            "organization_name": "Data Center Operations"
+        },
+        {
+            "organization_name": "Consulting North US"
+        },
+        {
+            "organization_name": "Consulting West US"
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 10,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCGetOrgbyBU?P_BU_NAME=US1+Business+Unit"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCGetOrgbyBU?P_BU_NAME=US1+Business+Unit"
+        }
+    ]
+}

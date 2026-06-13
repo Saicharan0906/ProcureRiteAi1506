@@ -252,6 +252,10 @@
     "activeNavTab": {
       "type": "string",
       "defaultValue": "main-erp-dashboard"
+    },
+    "user": {
+      "type": "string",
+      "defaultValue": "ProcureRite"
     }
   },
   "userConfig": {

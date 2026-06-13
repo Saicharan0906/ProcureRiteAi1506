@@ -1,0 +1,26 @@
+{
+    "items": [
+        {
+            "vendor_site_code": "FEC NY",
+            "supplier_email_address": "FEC.John@test.com"
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCSupplierSiteDetails?P_VENDOR_NAME=FEC"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCSupplierSiteDetails?P_VENDOR_NAME=FEC"
+        }
+    ]
+}

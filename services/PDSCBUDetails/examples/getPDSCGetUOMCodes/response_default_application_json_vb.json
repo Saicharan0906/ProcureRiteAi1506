@@ -1,0 +1,176 @@
+{
+    "items": [
+        {
+            "unit_of_measure_id": 300000152242634,
+            "uom_code": "GHz",
+            "unit_of_measure": "GHz",
+            "description": "GHz"
+        },
+        {
+            "unit_of_measure_id": 300000152243443,
+            "uom_code": "mi",
+            "unit_of_measure": "mi",
+            "description": "Mile"
+        },
+        {
+            "unit_of_measure_id": 300000154525516,
+            "uom_code": "MT",
+            "unit_of_measure": "Mnth",
+            "description": "Month"
+        },
+        {
+            "unit_of_measure_id": 300000047284445,
+            "uom_code": "zzx",
+            "unit_of_measure": "in",
+            "description": "Inch"
+        },
+        {
+            "unit_of_measure_id": 300000047284451,
+            "uom_code": "zzv",
+            "unit_of_measure": "Month",
+            "description": "Month"
+        },
+        {
+            "unit_of_measure_id": 300000047284457,
+            "uom_code": "zzt",
+            "unit_of_measure": "Hr",
+            "description": "Hour"
+        },
+        {
+            "unit_of_measure_id": 300000047284460,
+            "uom_code": "zzs",
+            "unit_of_measure": "cu in",
+            "description": "Cubic Inch"
+        },
+        {
+            "unit_of_measure_id": 300000047284467,
+            "uom_code": "zzp",
+            "unit_of_measure": "TB",
+            "description": "Terabyte"
+        },
+        {
+            "unit_of_measure_id": 300000047284469,
+            "uom_code": "zzn",
+            "unit_of_measure": "cm",
+            "description": "Centimeter"
+        },
+        {
+            "unit_of_measure_id": 300000047284471,
+            "uom_code": "zzl",
+            "unit_of_measure": "mm",
+            "description": "Millimeter"
+        },
+        {
+            "unit_of_measure_id": 300000047284473,
+            "uom_code": "zzj",
+            "unit_of_measure": "Yr",
+            "description": "Year"
+        },
+        {
+            "unit_of_measure_id": 300000047284476,
+            "uom_code": "zzg",
+            "unit_of_measure": "Min",
+            "description": "Minute"
+        },
+        {
+            "unit_of_measure_id": 300000047284478,
+            "uom_code": "zze",
+            "unit_of_measure": "Week",
+            "description": "Week"
+        },
+        {
+            "unit_of_measure_id": 300000047284480,
+            "uom_code": "zzc",
+            "unit_of_measure": "cu ft",
+            "description": "Cubic Foot"
+        },
+        {
+            "unit_of_measure_id": 300000047284482,
+            "uom_code": "zza",
+            "unit_of_measure": "mL",
+            "description": "Milliliter"
+        },
+        {
+            "unit_of_measure_id": 300000047284484,
+            "uom_code": "zzY",
+            "unit_of_measure": "oz",
+            "description": "Ounce"
+        },
+        {
+            "unit_of_measure_id": 300000047284486,
+            "uom_code": "zzW",
+            "unit_of_measure": "mg",
+            "description": "Milligram"
+        },
+        {
+            "unit_of_measure_id": 300000069554922,
+            "uom_code": "zzT",
+            "unit_of_measure": "GBP",
+            "description": "British Pound"
+        },
+        {
+            "unit_of_measure_id": 300000069554923,
+            "uom_code": "zzS",
+            "unit_of_measure": "EUR",
+            "description": "Euro"
+        },
+        {
+            "unit_of_measure_id": 300000069554924,
+            "uom_code": "zzR",
+            "unit_of_measure": "CNY",
+            "description": "Yen"
+        },
+        {
+            "unit_of_measure_id": 300000116443105,
+            "uom_code": "zzQ",
+            "unit_of_measure": "kWh",
+            "description": "Kilowatt Hour"
+        },
+        {
+            "unit_of_measure_id": 300000154525551,
+            "uom_code": "YR",
+            "unit_of_measure": "Year",
+            "description": "Year"
+        },
+        {
+            "unit_of_measure_id": 300000156397636,
+            "uom_code": "mp",
+            "unit_of_measure": "mp",
+            "description": "Megapixel"
+        },
+        {
+            "unit_of_measure_id": 300000156397637,
+            "uom_code": "px",
+            "unit_of_measure": "px",
+            "description": "Pixel per inch"
+        },
+        {
+            "unit_of_measure_id": 300000156597723,
+            "uom_code": "QTR",
+            "unit_of_measure": "QTR",
+            "description": "Quarter"
+        }
+    ],
+    "hasMore": true,
+    "limit": 25,
+    "offset": 0,
+    "count": 25,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCGetUOMCodes"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCGetUOMCodes"
+        },
+        {
+            "rel": "next",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCGetUOMCodes?offset=25"
+        }
+    ]
+}

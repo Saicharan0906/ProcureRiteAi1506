@@ -1,0 +1,72 @@
+{
+    "items": [
+        {
+            "business_unit": "US1 Business Unit",
+            "business_unit_id": 300000046987012,
+            "content_server": null,
+            "sever_url": null,
+            "instance_url": "https://fa-etao-dev20-saasfademo1.ds-fa.oraclepdemos.com",
+            "externally_managed": "false",
+            "negotiated_by_preparer": "true",
+            "buyer_managed_transport": "true",
+            "receipt_required": "true",
+            "inspection_required": "true",
+            "pay_on_receipt": "Y",
+            "receipt_routing": null,
+            "receipt_routing_id": 3,
+            "invoice_close_tolerance_percent": "0",
+            "invoice_match_option_code": "R",
+            "receipt_close_tolerance_percent": "0",
+            "required_acknowledgment": "None",
+            "supplier_communication_method": "EMAIL",
+            "receipt_source_code": "VENDOR",
+            "source_document_code": "PO",
+            "transaction_type": "RECEIVE",
+            "auto_transact_code": "RECEIVE",
+            "negotiation_type": null,
+            "negotiation_styleid": null,
+            "negotiation_style": null,
+            "price_precision": null,
+            "negotiation_layout_name": null,
+            "response_layout_name": null,
+            "response_visibility": null,
+            "ranking_method": null,
+            "rfq_outcome": null,
+            "contract_terms_layout": null,
+            "group_type": "LINE",
+            "app_main_seq_id": 8,
+            "creation_date": "2025-05-05T11:47:31Z",
+            "last_update_date": "2025-08-22T06:02:02Z",
+            "last_updated_by": "nikhil kolisetty",
+            "created_by": "nikhil kolisetty",
+            "show_on_hand": "false",
+            "project_template": "US South Billable no burden",
+            "line_type": "Goods",
+            "price_break_type": "CUMULATIVE",
+            "display_target_price_flag": "false",
+            "line_type_id": 1
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCAppMaintenance?business_unit=US1+Business+Unit"
+        },
+        {
+            "rel": "edit",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCAppMaintenance?business_unit=US1+Business+Unit"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCAppMaintenance?business_unit=US1+Business+Unit"
+        }
+    ]
+}

@@ -1,0 +1,126 @@
+{
+    "items": [
+        {
+            "currency_code": "DKK",
+            "name": "Danimarka Kronu"
+        },
+        {
+            "currency_code": "JOD",
+            "name": "Jordanska dinarer"
+        },
+        {
+            "currency_code": "ARS",
+            "name": "Arjantin Pesosu"
+        },
+        {
+            "currency_code": "XAG",
+            "name": "Gümüş"
+        },
+        {
+            "currency_code": "USS",
+            "name": "ABD Doları (aynı gün)"
+        },
+        {
+            "currency_code": "QAR",
+            "name": "Rial Qatar"
+        },
+        {
+            "currency_code": "LYD",
+            "name": "Libya Dinarı"
+        },
+        {
+            "currency_code": "ECS",
+            "name": "Sucre"
+        },
+        {
+            "currency_code": "MRU",
+            "name": "茅利塔尼亞 Ouguiya 幣"
+        },
+        {
+            "currency_code": "UGX",
+            "name": "Uganda Şilini"
+        },
+        {
+            "currency_code": "SHP",
+            "name": "Saint Helena Poundu"
+        },
+        {
+            "currency_code": "GMD",
+            "name": "Dalasi"
+        },
+        {
+            "currency_code": "CUP",
+            "name": "Кубинский песо"
+        },
+        {
+            "currency_code": "MUR",
+            "name": "Mauritius Rupisi"
+        },
+        {
+            "currency_code": "ZAR",
+            "name": "Rand"
+        },
+        {
+            "currency_code": "CHW",
+            "name": "WIR 法郎"
+        },
+        {
+            "currency_code": "ALL",
+            "name": "Lek"
+        },
+        {
+            "currency_code": "LSL",
+            "name": "Loti"
+        },
+        {
+            "currency_code": "MKD",
+            "name": "Dinar"
+        },
+        {
+            "currency_code": "MGF",
+            "name": "Madagaskar Frankı"
+        },
+        {
+            "currency_code": "MOP",
+            "name": "Pataka"
+        },
+        {
+            "currency_code": "BRC",
+            "name": "巴西 Cruzado 幣"
+        },
+        {
+            "currency_code": "NZD",
+            "name": "Yeni Zelanda Doları"
+        },
+        {
+            "currency_code": "MZN",
+            "name": "Метикал"
+        },
+        {
+            "currency_code": "LUF",
+            "name": "Lüksemburg Frankı"
+        }
+    ],
+    "hasMore": true,
+    "limit": 25,
+    "offset": 0,
+    "count": 25,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCCurrencyCode"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCCurrencyCode"
+        },
+        {
+            "rel": "next",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCCurrencyCode?offset=25"
+        }
+    ]
+}

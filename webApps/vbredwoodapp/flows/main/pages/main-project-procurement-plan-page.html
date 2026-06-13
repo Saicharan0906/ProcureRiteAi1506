@@ -43,6 +43,15 @@
        L/R margin is the side GAP that shows the teal banner beside the card; rounded
        top corners + soft shadow give the elevated onboardrite look. -->
   <div style="margin:8px 16px 0 16px;border-radius:12px 12px 0 0;box-shadow:0 1px 14px rgba(0,0,0,0.12);background:#ffffff;overflow:hidden;min-width:0;box-sizing:border-box;">
+  <!-- Project context strip — shows the selected project header once a Project Number
+       is chosen in the smart search (populated by filterChain from getPDSCGetProjectByBU). -->
+  <div :style="[[ $variables.planHeader.projectNumber ? 'display:flex;flex-wrap:wrap;gap:8px 28px;padding:12px 16px 4px;font-size:0.85rem;color:#3a4a5a;' : 'display:none;' ]]">
+    <span><b>Project:</b> <oj-bind-text value="[[ $variables.planHeader.projectName ]]"></oj-bind-text></span>
+    <span><b>Business Unit:</b> <oj-bind-text value="[[ $variables.planHeader.businessUnit ]]"></oj-bind-text></span>
+    <span><b>Project Org:</b> <oj-bind-text value="[[ $variables.planHeader.projectOrg ]]"></oj-bind-text></span>
+    <span><b>Manager:</b> <oj-bind-text value="[[ $variables.planHeader.projectManager ]]"></oj-bind-text></span>
+    <span><b>Status:</b> <oj-bind-text value="[[ $variables.planHeader.status ]]"></oj-bind-text></span>
+  </div>
   <oj-sp-collection-container
     display-options.export="on"
     functional-primary-actions="[[ $variables.ccPrimaryActions ]]"
@@ -61,37 +70,38 @@
       scroll-policy="loadMoreOnScroll"
       scroll-policy-options.fetch-size="25"
       selection-mode='{"row": "multiple", "column": "none"}'
+      selected.row="{{ $variables.selectedKeys }}"
       columns='[
-        {"headerText": "Line #",         "field": "lineNumber",      "headerClassName": "list-header-label", "width": 120},
+        {"headerText": "Line #",         "field": "line_number",      "headerClassName": "list-header-label", "width": 120},
         {"headerText": "Critical",       "template": "criticalTemplate", "headerClassName": "list-header-label", "width": 120},
-        {"headerText": "Line Type",      "field": "lineType",        "headerClassName": "list-header-label", "width": 140},
-        {"headerText": "Item Number",    "field": "itemNumber",      "headerClassName": "list-header-label", "width": 160},
+        {"headerText": "Line Type",      "field": "line_type",        "headerClassName": "list-header-label", "width": 140},
+        {"headerText": "Item Number",    "field": "item_number",      "headerClassName": "list-header-label", "width": 160},
         {"headerText": "Item Description","template": "itemDescTemplate","headerClassName": "list-header-label", "width": 240},
-        {"headerText": "Item Category",  "field": "itemCategory",    "headerClassName": "list-header-label", "width": 190},
-        {"headerText": "Task",           "field": "taskName",        "headerClassName": "list-header-label", "width": 150},
-        {"headerText": "Planned Qty",    "field": "plannedQuantity", "headerClassName": "list-header-label", "width": 150},
-        {"headerText": "UOM",            "field": "uom",             "headerClassName": "list-header-label", "width": 90},
+        {"headerText": "Item Category",  "field": "item_category",    "headerClassName": "list-header-label", "width": 190},
+        {"headerText": "Task",           "field": "task_name",        "headerClassName": "list-header-label", "width": 150},
+        {"headerText": "Planned Qty",    "field": "planned_quantity", "headerClassName": "list-header-label", "width": 150},
+        {"headerText": "UOM",            "field": "uom",              "headerClassName": "list-header-label", "width": 90},
         {"headerText": "Planned Cost",   "template": "costTemplate", "headerClassName": "list-header-label", "width": 160},
-        {"headerText": "Buyer",          "field": "buyer",           "headerClassName": "list-header-label", "width": 170},
-        {"headerText": "Supplier",       "field": "supplier",        "headerClassName": "list-header-label", "width": 160},
+        {"headerText": "Buyer",          "field": "buyer",            "headerClassName": "list-header-label", "width": 170},
+        {"headerText": "Supplier",       "field": "supplier",         "headerClassName": "list-header-label", "width": 160},
         {"headerText": "Status",         "template": "statusTemplate","headerClassName": "list-header-label", "width": 180}
       ]'>
 
       <template slot="criticalTemplate" data-oj-as="cell">
-        <span :style="[[ $functions.criticalPill(cell.row.critical) ]]">
-          <oj-bind-text value="[[ cell.row.critical ]]"></oj-bind-text>
+        <span :style="[[ $functions.criticalPill(cell.row.critical_flag) ]]">
+          <oj-bind-text value="[[ cell.row.critical_flag ]]"></oj-bind-text>
         </span>
       </template>
 
       <template slot="itemDescTemplate" data-oj-as="cell">
         <span class="oj-typography-body-md oj-typography-semi-bold">
-          <oj-bind-text value="[[ cell.row.itemDescription ]]"></oj-bind-text>
+          <oj-bind-text value="[[ cell.row.item_desc ]]"></oj-bind-text>
         </span>
       </template>
 
       <template slot="costTemplate" data-oj-as="cell">
         <span class="oj-typography-body-sm">
-          <oj-bind-text value="[[ $functions.formatCurrency(cell.row.plannedCost, cell.row.currency) ]]"></oj-bind-text>
+          <oj-bind-text value="[[ $functions.formatCurrency(cell.row.planned_cost, cell.row.currency_code) ]]"></oj-bind-text>
         </span>
       </template>
 

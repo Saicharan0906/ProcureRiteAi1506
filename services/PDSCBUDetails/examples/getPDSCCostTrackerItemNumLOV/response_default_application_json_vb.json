@@ -1,0 +1,67 @@
+{
+    "items": [
+        {
+            "item_number": "AS00102"
+        },
+        {
+            "item_number": "AS00103"
+        },
+        {
+            "item_number": "AS00105"
+        },
+        {
+            "item_number": "AS00106"
+        },
+        {
+            "item_number": "AS00107"
+        },
+        {
+            "item_number": "Acoustic transponders"
+        },
+        {
+            "item_number": "Board"
+        },
+        {
+            "item_number": "CM60002"
+        },
+        {
+            "item_number": "Compressor_A_base_Plate"
+        },
+        {
+            "item_number": "Compressor_A_motor"
+        },
+        {
+            "item_number": "Compressor_B_Base_Plate"
+        },
+        {
+            "item_number": "Compressor_B_motor"
+        },
+        {
+            "item_number": "Debris baskets"
+        },
+        {
+            "item_number": "Electro-hydraulic umbilicals"
+        },
+        {
+            "item_number": "Pipe centralizers"
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 15,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCCostTrackerItemNumLOV?P_USERNAME=rite.user"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCCostTrackerItemNumLOV?P_USERNAME=rite.user"
+        }
+    ]
+}

@@ -1,0 +1,726 @@
+{
+    "items": [
+        {
+            "item_number": null,
+            "category_code": "204.54 Laptops"
+        },
+        {
+            "item_number": null,
+            "category_code": "204.91 Servers"
+        },
+        {
+            "item_number": null,
+            "category_code": "205.53 Desktops"
+        },
+        {
+            "item_number": null,
+            "category_code": "206.61 Monitors"
+        },
+        {
+            "item_number": null,
+            "category_code": "206.68 Peripherals"
+        },
+        {
+            "item_number": null,
+            "category_code": "206.74 Printers"
+        },
+        {
+            "item_number": null,
+            "category_code": "425.06 Chair"
+        },
+        {
+            "item_number": null,
+            "category_code": "425.21 Desk"
+        },
+        {
+            "item_number": null,
+            "category_code": "485.00 Janitoral Supplies"
+        },
+        {
+            "item_number": null,
+            "category_code": "615.00 Office Supplies"
+        },
+        {
+            "item_number": null,
+            "category_code": "615.33 Desk Supplies"
+        },
+        {
+            "item_number": null,
+            "category_code": "620.00 Pen and Pencils"
+        },
+        {
+            "item_number": null,
+            "category_code": "640.75 Toilet Tissues, Paper Towels"
+        },
+        {
+            "item_number": null,
+            "category_code": "645.33 Copy Paper"
+        },
+        {
+            "item_number": null,
+            "category_code": "725.51 Cellular Phone"
+        },
+        {
+            "item_number": null,
+            "category_code": "785.73 Notebooks"
+        },
+        {
+            "item_number": null,
+            "category_code": "918.74 Legal Consulting"
+        },
+        {
+            "item_number": null,
+            "category_code": "925.33 Engineering Services"
+        },
+        {
+            "item_number": null,
+            "category_code": "925.44 General Construction"
+        },
+        {
+            "item_number": null,
+            "category_code": "961.85 Utility Services"
+        },
+        {
+            "item_number": null,
+            "category_code": "962.58 Professional Services"
+        },
+        {
+            "item_number": null,
+            "category_code": "999.99 Miscellaneous"
+        },
+        {
+            "item_number": null,
+            "category_code": "Accountancy"
+        },
+        {
+            "item_number": null,
+            "category_code": "Activators & Appliers"
+        },
+        {
+            "item_number": null,
+            "category_code": "Adjustors"
+        },
+        {
+            "item_number": null,
+            "category_code": "Administrative Fee"
+        },
+        {
+            "item_number": null,
+            "category_code": "Adult"
+        },
+        {
+            "item_number": null,
+            "category_code": "Adult & Further Education Services"
+        },
+        {
+            "item_number": null,
+            "category_code": "Advertising"
+        },
+        {
+            "item_number": null,
+            "category_code": "Animal Services"
+        },
+        {
+            "item_number": null,
+            "category_code": "Arms and Pedals"
+        },
+        {
+            "item_number": null,
+            "category_code": "Banquet & Catering"
+        },
+        {
+            "item_number": null,
+            "category_code": "Blood Draw"
+        },
+        {
+            "item_number": null,
+            "category_code": "Bookcases"
+        },
+        {
+            "item_number": null,
+            "category_code": "Books, newspapers and magazines"
+        },
+        {
+            "item_number": null,
+            "category_code": "Brochures"
+        },
+        {
+            "item_number": null,
+            "category_code": "Building Maintenance and Repairs"
+        },
+        {
+            "item_number": null,
+            "category_code": "Buildings"
+        },
+        {
+            "item_number": null,
+            "category_code": "Burial & Cremation"
+        },
+        {
+            "item_number": null,
+            "category_code": "Business"
+        },
+        {
+            "item_number": null,
+            "category_code": "Business Cards"
+        },
+        {
+            "item_number": null,
+            "category_code": "Business Liability Insurance"
+        },
+        {
+            "item_number": null,
+            "category_code": "CPU CABINETS"
+        },
+        {
+            "item_number": null,
+            "category_code": "Cafeteria Subsidies"
+        },
+        {
+            "item_number": null,
+            "category_code": "Capital Equipment"
+        },
+        {
+            "item_number": null,
+            "category_code": "Casual Apparel"
+        },
+        {
+            "item_number": null,
+            "category_code": "Catheters"
+        },
+        {
+            "item_number": null,
+            "category_code": "Chairs"
+        },
+        {
+            "item_number": null,
+            "category_code": "Chemicals"
+        },
+        {
+            "item_number": null,
+            "category_code": "Children"
+        },
+        {
+            "item_number": null,
+            "category_code": "Cleaning Materials"
+        },
+        {
+            "item_number": null,
+            "category_code": "Cleaning Service"
+        },
+        {
+            "item_number": null,
+            "category_code": "Cleaning Supplies"
+        },
+        {
+            "item_number": null,
+            "category_code": "Clinical Engineering"
+        },
+        {
+            "item_number": null,
+            "category_code": "Commercial Furniture"
+        },
+        {
+            "item_number": null,
+            "category_code": "Computer Packaging"
+        },
+        {
+            "item_number": null,
+            "category_code": "Computer Supplies"
+        },
+        {
+            "item_number": null,
+            "category_code": "Consultancy"
+        },
+        {
+            "item_number": null,
+            "category_code": "Contractor Expense"
+        },
+        {
+            "item_number": null,
+            "category_code": "Copy Paper"
+        },
+        {
+            "item_number": null,
+            "category_code": "Counselling"
+        },
+        {
+            "item_number": null,
+            "category_code": "DPF"
+        },
+        {
+            "item_number": null,
+            "category_code": "Desk Supplies"
+        },
+        {
+            "item_number": null,
+            "category_code": "Desks"
+        },
+        {
+            "item_number": null,
+            "category_code": "Desktop Phones"
+        },
+        {
+            "item_number": null,
+            "category_code": "Desktops"
+        },
+        {
+            "item_number": null,
+            "category_code": "Devices and Implants"
+        },
+        {
+            "item_number": null,
+            "category_code": "Digital Camera"
+        },
+        {
+            "item_number": null,
+            "category_code": "Documentation"
+        },
+        {
+            "item_number": null,
+            "category_code": "Drinks"
+        },
+        {
+            "item_number": null,
+            "category_code": "Electricity/Water"
+        },
+        {
+            "item_number": null,
+            "category_code": "Electronics"
+        },
+        {
+            "item_number": null,
+            "category_code": "Endodontics"
+        },
+        {
+            "item_number": null,
+            "category_code": "Engineering"
+        },
+        {
+            "item_number": null,
+            "category_code": "Envelopes"
+        },
+        {
+            "item_number": null,
+            "category_code": "Equipment"
+        },
+        {
+            "item_number": null,
+            "category_code": "Event"
+        },
+        {
+            "item_number": null,
+            "category_code": "Exhibitions"
+        },
+        {
+            "item_number": null,
+            "category_code": "Facility - Contractor Services"
+        },
+        {
+            "item_number": null,
+            "category_code": "Fax Paper"
+        },
+        {
+            "item_number": null,
+            "category_code": "File Cabinets"
+        },
+        {
+            "item_number": null,
+            "category_code": "Fitness Accessory"
+        },
+        {
+            "item_number": null,
+            "category_code": "Fitness Components"
+        },
+        {
+            "item_number": null,
+            "category_code": "Floor Coverings"
+        },
+        {
+            "item_number": null,
+            "category_code": "Food - Ingredients"
+        },
+        {
+            "item_number": null,
+            "category_code": "Food and Beverages"
+        },
+        {
+            "item_number": null,
+            "category_code": "Footwear"
+        },
+        {
+            "item_number": null,
+            "category_code": "Forms"
+        },
+        {
+            "item_number": null,
+            "category_code": "Frames"
+        },
+        {
+            "item_number": null,
+            "category_code": "Freight Charges"
+        },
+        {
+            "item_number": null,
+            "category_code": "General Materials"
+        },
+        {
+            "item_number": null,
+            "category_code": "General Med"
+        },
+        {
+            "item_number": null,
+            "category_code": "Graphic Cards"
+        },
+        {
+            "item_number": null,
+            "category_code": "Hardware"
+        },
+        {
+            "item_number": null,
+            "category_code": "Hire"
+        },
+        {
+            "item_number": null,
+            "category_code": "Hotel and accommodation"
+        },
+        {
+            "item_number": null,
+            "category_code": "IV Pumps and Accessories"
+        },
+        {
+            "item_number": null,
+            "category_code": "IV Supplies"
+        },
+        {
+            "item_number": null,
+            "category_code": "Infrastructure Services"
+        },
+        {
+            "item_number": null,
+            "category_code": "Inkjet Printer"
+        },
+        {
+            "item_number": null,
+            "category_code": "Insurance"
+        },
+        {
+            "item_number": null,
+            "category_code": "JIO_PUR_ITEM_CATEGORY"
+        },
+        {
+            "item_number": null,
+            "category_code": "Joints"
+        },
+        {
+            "item_number": null,
+            "category_code": "Lab Supplies"
+        },
+        {
+            "item_number": null,
+            "category_code": "Laptops"
+        },
+        {
+            "item_number": null,
+            "category_code": "Laser Printer"
+        },
+        {
+            "item_number": null,
+            "category_code": "Laundry Equipment"
+        },
+        {
+            "item_number": null,
+            "category_code": "Legal Services"
+        },
+        {
+            "item_number": null,
+            "category_code": "MSM_CATEGORY_CODE"
+        },
+        {
+            "item_number": null,
+            "category_code": "Machine Tools"
+        },
+        {
+            "item_number": null,
+            "category_code": "Maintenance"
+        },
+        {
+            "item_number": null,
+            "category_code": "Management"
+        },
+        {
+            "item_number": null,
+            "category_code": "Marketing"
+        },
+        {
+            "item_number": null,
+            "category_code": "Med-Surg"
+        },
+        {
+            "item_number": null,
+            "category_code": "Miscellaneous"
+        },
+        {
+            "item_number": null,
+            "category_code": "Mobile Phones"
+        },
+        {
+            "item_number": null,
+            "category_code": "Monitors"
+        },
+        {
+            "item_number": null,
+            "category_code": "Motors"
+        },
+        {
+            "item_number": null,
+            "category_code": "Notebooks and Binders"
+        },
+        {
+            "item_number": null,
+            "category_code": "Office Supplies"
+        },
+        {
+            "item_number": null,
+            "category_code": "PO_Default"
+        },
+        {
+            "item_number": null,
+            "category_code": "Packaging"
+        },
+        {
+            "item_number": null,
+            "category_code": "Paper Towels"
+        },
+        {
+            "item_number": null,
+            "category_code": "Pens and Pencils"
+        },
+        {
+            "item_number": null,
+            "category_code": "Pension Funds"
+        },
+        {
+            "item_number": null,
+            "category_code": "Peripherals"
+        },
+        {
+            "item_number": null,
+            "category_code": "Pharmaceutical"
+        },
+        {
+            "item_number": null,
+            "category_code": "Plumbing"
+        },
+        {
+            "item_number": null,
+            "category_code": "Prestation"
+        },
+        {
+            "item_number": null,
+            "category_code": "Printer Accessories"
+        },
+        {
+            "item_number": null,
+            "category_code": "Printers"
+        },
+        {
+            "item_number": null,
+            "category_code": "Printing"
+        },
+        {
+            "item_number": null,
+            "category_code": "Processors"
+        },
+        {
+            "item_number": null,
+            "category_code": "Procurement"
+        },
+        {
+            "item_number": null,
+            "category_code": "Professional Fees - All others"
+        },
+        {
+            "item_number": null,
+            "category_code": "Professional Musical Instruments"
+        },
+        {
+            "item_number": null,
+            "category_code": "Property Management"
+        },
+        {
+            "item_number": null,
+            "category_code": "Protective"
+        },
+        {
+            "item_number": null,
+            "category_code": "Purchase"
+        },
+        {
+            "item_number": null,
+            "category_code": "R2771 Functional Training"
+        },
+        {
+            "item_number": null,
+            "category_code": "R2771 Procurement Training"
+        },
+        {
+            "item_number": null,
+            "category_code": "Raw Material"
+        },
+        {
+            "item_number": null,
+            "category_code": "Recruiting expenses"
+        },
+        {
+            "item_number": null,
+            "category_code": "Room Hire"
+        },
+        {
+            "item_number": null,
+            "category_code": "Running Deck"
+        },
+        {
+            "item_number": null,
+            "category_code": "STATIONERY"
+        },
+        {
+            "item_number": null,
+            "category_code": "S_HSN_CODE"
+        },
+        {
+            "item_number": null,
+            "category_code": "Safety"
+        },
+        {
+            "item_number": null,
+            "category_code": "School Services"
+        },
+        {
+            "item_number": null,
+            "category_code": "Security"
+        },
+        {
+            "item_number": null,
+            "category_code": "Sensors"
+        },
+        {
+            "item_number": null,
+            "category_code": "Server Cmps and Acces"
+        },
+        {
+            "item_number": null,
+            "category_code": "Servers"
+        },
+        {
+            "item_number": null,
+            "category_code": "Services"
+        },
+        {
+            "item_number": null,
+            "category_code": "Software"
+        },
+        {
+            "item_number": null,
+            "category_code": "Software_Anand"
+        },
+        {
+            "item_number": null,
+            "category_code": "StdFasteners"
+        },
+        {
+            "item_number": null,
+            "category_code": "Storage Devices"
+        },
+        {
+            "item_number": null,
+            "category_code": "Straps"
+        },
+        {
+            "item_number": null,
+            "category_code": "Street Cleansing"
+        },
+        {
+            "item_number": null,
+            "category_code": "Street Lighting"
+        },
+        {
+            "item_number": null,
+            "category_code": "Tablet"
+        },
+        {
+            "item_number": null,
+            "category_code": "Tablet Cmps And Acces"
+        },
+        {
+            "item_number": null,
+            "category_code": "Telecommunications"
+        },
+        {
+            "item_number": null,
+            "category_code": "Test_Test"
+        },
+        {
+            "item_number": null,
+            "category_code": "Toilet Paper"
+        },
+        {
+            "item_number": null,
+            "category_code": "Travel"
+        },
+        {
+            "item_number": null,
+            "category_code": "Uniforms"
+        },
+        {
+            "item_number": null,
+            "category_code": "VOLKS_CATEGORY"
+        },
+        {
+            "item_number": null,
+            "category_code": "Waste Management"
+        },
+        {
+            "item_number": null,
+            "category_code": "Wind Turbine"
+        },
+        {
+            "item_number": null,
+            "category_code": "Wound Care"
+        },
+        {
+            "item_number": null,
+            "category_code": "ZMisc1"
+        },
+        {
+            "item_number": null,
+            "category_code": "ZMisc2"
+        },
+        {
+            "item_number": null,
+            "category_code": "ZMisc3"
+        },
+        {
+            "item_number": null,
+            "category_code": "ZMisc4"
+        }
+    ],
+    "hasMore": false,
+    "limit": 500,
+    "offset": 0,
+    "count": 176,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCItemCategories"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.158.228.138:8080/ords/pdsc/metadata-catalog/PDSC/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.158.228.138:8080/ords/pdsc/PDSC/PDSCItemCategories?limit=500"
+        }
+    ]
+}
