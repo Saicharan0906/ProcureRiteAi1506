@@ -5,20 +5,36 @@ define([
 ], (ActionChain, Actions) => {
   'use strict';
 
+  /** Fetch ALL rows from an ORDS GET, paging past the 25-row default until hasMore=false.
+   *  De-dupes by keyField; stops if a page adds nothing new (guards an offset-ignoring handler). */
+  async function fetchAll(context, endpoint, uriParams, keyField) {
+    const PAGE = 500;
+    const all = [];
+    const seen = Object.create(null);
+    let offset = 0;
+    for (let guard = 0; guard < 100; guard++) {
+      let body = null;
+      try {
+        const r = await Actions.callRest(context, { endpoint, uriParams: Object.assign({}, uriParams, { limit: PAGE, offset }) });
+        body = r && r.body;
+      } catch (e) { break; }
+      const items = (body && Array.isArray(body.items)) ? body.items : [];
+      let added = 0;
+      for (let i = 0; i < items.length; i++) {
+        const k = keyField ? String(items[i][keyField]) : JSON.stringify(items[i]);
+        if (!seen[k]) { seen[k] = 1; all.push(items[i]); added++; }
+      }
+      if (items.length === 0 || added === 0 || body.hasMore !== true) break;
+      offset += items.length;
+    }
+    return all;
+  }
+
   /**
    * oj-sp-smart-search filter-criterion-changed handler — ORDS-backed.
-   *
-   * On Project Number change (the primary cascade key):
-   *   1. getPDSCGetProjectByBU(P_PROJECT_NUMBER) -> fill the project header
-   *      (name, BU, org, dates, status, manager, projectId)
-   *   2. getPDSCGetOrgbyBU(P_BU_NAME) + getPDSCBuyerDetails(P_BU_NAME) -> narrow the
-   *      Project Organization & Buyer filter LOVs to the selected project's BU
-   *   3. getPDSCPlanDetails(P_PROJECT_NUMBER) -> the plan lines (planLinesAllArray)
-   *
-   * Every fire (including when only the other chips / keyword change) then refines the
-   * already-loaded project rows CLIENT-SIDE by Business Unit, Item Category, Buyer,
-   * Status, Critical and the free-text keyword -> planLinesArray (the table data).
-   * Re-fetch happens only when the Project Number actually changes.
+   * On Project Number change: load the project header (getPDSCGetProjectByBU), narrow the
+   * Org + Buyer LOVs to that BU, and fetch ALL plan lines (paged). Other chips + keyword
+   * refine the loaded rows client-side. Re-fetch happens only when the project changes.
    */
   class FilterChain extends ActionChain {
     async run(context) {
@@ -26,12 +42,12 @@ define([
       const user = $application.variables.user || 'ProcureRite';
       const items = (r) => (r && r.body && Array.isArray(r.body.items)) ? r.body.items : [];
       const opts = (arr, field) => {
-        const seen = {};
+        const seen = Object.create(null);
         return arr.map((o) => ({ value: o[field], label: o[field] }))
           .filter((o) => o.value != null && o.value !== '' && !seen[o.value] && (seen[o.value] = true));
       };
 
-      // ---- collect applied filters + keyword from the smart-search criterion ----
+      // collect applied filters + keyword
       const selected = {};
       let keyword = '';
       const collect = (c) => {
@@ -50,7 +66,6 @@ define([
 
       const pn = selected.projectNumber || '';
 
-      // ---- cascade + plan-line fetch only when the project actually changes ----
       if (pn !== $page.variables.lastProjectNumber) {
         if (pn) {
           let header = {
@@ -60,7 +75,7 @@ define([
           try {
             const hdr = await Actions.callRest(context, {
               endpoint: 'PDSCBUDetails/getPDSCGetProjectByBU',
-              uriParams: { P_PROJECT_NUMBER: pn, P_USERNAME: user }
+              uriParams: { P_PROJECT_NUMBER: pn, P_USERNAME: user, limit: 500 }
             });
             const h = items(hdr)[0];
             if (h) {
@@ -79,28 +94,14 @@ define([
           } catch (e) { /* header best-effort */ }
           $page.variables.planHeader = header;
 
-          // narrow Project Org + Buyer LOVs to this project's BU + fetch plan lines
-          // (high limit so ORDS pagination doesn't truncate the LOVs / grid at 25 rows)
-          const LIMIT = 5000;
-          const [orgRes, buyerRes, linesRes] = await Promise.allSettled([
-            header.businessUnit ? Actions.callRest(context, {
-              endpoint: 'PDSCBUDetails/getPDSCGetOrgbyBU', uriParams: { P_BU_NAME: header.businessUnit, limit: LIMIT }
-            }) : Promise.resolve(null),
-            header.businessUnit ? Actions.callRest(context, {
-              endpoint: 'PDSCBUDetails/getPDSCBuyerDetails', uriParams: { P_BU_NAME: header.businessUnit, P_USERNAME: user, limit: LIMIT }
-            }) : Promise.resolve(null),
-            Actions.callRest(context, {
-              endpoint: 'PDSCBUDetails/getPDSCPlanDetails', uriParams: { P_PROJECT_NUMBER: pn, P_USERNAME: user, limit: LIMIT }
-            })
+          const [orgList, buyerList, lineList] = await Promise.all([
+            header.businessUnit ? fetchAll(context, 'PDSCBUDetails/getPDSCGetOrgbyBU', { P_BU_NAME: header.businessUnit }, 'organization_name') : Promise.resolve([]),
+            header.businessUnit ? fetchAll(context, 'PDSCBUDetails/getPDSCBuyerDetails', { P_BU_NAME: header.businessUnit, P_USERNAME: user }, 'buyer_name') : Promise.resolve([]),
+            fetchAll(context, 'PDSCBUDetails/getPDSCPlanDetails', { P_PROJECT_NUMBER: pn, P_USERNAME: user }, 'plan_id')
           ]);
-
-          if (orgRes.status === 'fulfilled' && orgRes.value) {
-            $page.variables.projectOrgArray = opts(items(orgRes.value), 'organization_name');
-          }
-          if (buyerRes.status === 'fulfilled' && buyerRes.value) {
-            $page.variables.buyerArray = opts(items(buyerRes.value), 'buyer_name');
-          }
-          $page.variables.planLinesAllArray = (linesRes.status === 'fulfilled') ? items(linesRes.value) : [];
+          $page.variables.projectOrgArray = opts(orgList, 'organization_name');
+          $page.variables.buyerArray = opts(buyerList, 'buyer_name');
+          $page.variables.planLinesAllArray = lineList;
         } else {
           $page.variables.planHeader = {
             projectNumber: '', projectName: '', businessUnit: '', projectOrg: '',
@@ -111,7 +112,7 @@ define([
         $page.variables.lastProjectNumber = pn;
       }
 
-      // ---- client-side refine of the loaded project rows ----
+      // client-side refine of the loaded project rows
       let rows = [...($page.variables.planLinesAllArray || [])];
       if (selected.businessUnit) rows = rows.filter((r) => r.business_unit === selected.businessUnit);
       if (selected.itemCategory) rows = rows.filter((r) => r.item_category === selected.itemCategory);
