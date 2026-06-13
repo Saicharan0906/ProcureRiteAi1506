@@ -78,31 +78,6 @@
     "currencyArray": { "type": "any[]", "defaultValue": [] },
     "currencyADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "currency_code", "data": "{{ $page.variables.currencyArray }}" } },
 
-    "projectSDP": {
-      "type": "vb/ServiceDataProvider",
-      "defaultValue": {
-        "endpoint": "PDSCBUDetails/getPDSCProjectDetails", "keyAttributes": "project_number", "itemsPath": "items",
-        "responseType": "projectResp", "transformsContext": { "vb-textFilterAttributes": ["project_number"] },
-        "uriParameters": { "P_USERNAME": "{{ $application.variables.user }}" }
-      }
-    },
-    "itemSDP": {
-      "type": "vb/ServiceDataProvider",
-      "defaultValue": {
-        "endpoint": "PDSCBUDetails/getPDSCItemDetails", "keyAttributes": "item_number", "itemsPath": "items",
-        "responseType": "itemResp", "transformsContext": { "vb-textFilterAttributes": ["item_number"] },
-        "uriParameters": { "P_USERNAME": "{{ $application.variables.user }}", "p_organization_name": "" }
-      }
-    },
-    "supplierSDP": {
-      "type": "vb/ServiceDataProvider",
-      "defaultValue": {
-        "endpoint": "PDSCBUDetails/getPDSCSupplierDetails", "keyAttributes": "vendor_name", "itemsPath": "items",
-        "responseType": "supplierResp", "transformsContext": { "vb-textFilterAttributes": ["vendor_name"] },
-        "uriParameters": { "P_USERNAME": "{{ $application.variables.user }}" }
-      }
-    },
-
     "lineTypeArray": { "type": "any[]", "defaultValue": [ { "value": "Goods", "label": "Goods" }, { "value": "Services", "label": "Services" } ] },
     "lineTypeADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.lineTypeArray }}" } },
     "destinationTypeArray": { "type": "any[]", "defaultValue": [ { "value": "Expense", "label": "Expense" }, { "value": "Inventory", "label": "Inventory" } ] },
@@ -122,7 +97,7 @@
       "defaultValue": {
         "$search": {
           "filters": {
-            "ProjectNumberFilter": { "label": "Project Number", "options": { "optionsData": "[[ $page.variables.projectSDP ]]", "optionsKeys": { "label": "project_number", "value": "project_number" } } },
+            "ProjectNumberFilter": { "label": "Project Number", "options": { "optionsData": "[[ $page.variables.projectNumberADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
             "BusinessUnitFilter": { "label": "Business Unit", "options": { "optionsData": "[[ $page.variables.businessUnitADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
             "ProjectOrgFilter": { "label": "Project Organization", "options": { "optionsData": "[[ $page.variables.projectOrgADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
             "ItemCategoryFilter": { "label": "Item Category", "options": { "optionsData": "[[ $page.variables.itemCategoryADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
@@ -133,11 +108,7 @@
     }
   },
   "metadata": {},
-  "types": {
-    "@decorators.projectResp": { "endpoint": "getPDSCProjectDetails", "service": "PDSCBUDetails", "path": "response" },
-    "@decorators.itemResp": { "endpoint": "getPDSCItemDetails", "service": "PDSCBUDetails", "path": "response" },
-    "@decorators.supplierResp": { "endpoint": "getPDSCSupplierDetails", "service": "PDSCBUDetails", "path": "response" }
-  },
+  "types": {},
   "chains": {
     "secondaryActionChain": { "variables": { "detail": { "type": "any", "input": "fromCaller", "required": true } } },
     "editRow": { "variables": { "event": { "type": "any", "input": "fromCaller", "required": true } } },
