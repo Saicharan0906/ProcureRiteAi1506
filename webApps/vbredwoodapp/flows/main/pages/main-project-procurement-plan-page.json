@@ -25,6 +25,7 @@
     "drawerOpen": { "type": "boolean", "defaultValue": false },
     "drawerMode": { "type": "string", "defaultValue": "create" },
     "drawerSaving": { "type": "boolean", "defaultValue": false },
+    "drawerLovsLoadedFor": { "type": "string", "defaultValue": "" },
     "planForm": {
       "type": "object",
       "defaultValue": {

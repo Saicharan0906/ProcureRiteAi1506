@@ -50,9 +50,9 @@ define([
 
       $page.variables.planForm = Object.assign({}, $page.variables.planForm, row, { isNew: 'N' });
       $page.variables.drawerMode = 'edit';
-
-      try { await Actions.callChain(context, { chain: 'loadDrawerLovs' }); } catch (e) { /* LOVs best-effort */ }
+      // open the drawer IMMEDIATELY, then load LOVs while it's visible (don't block the open)
       $page.variables.drawerOpen = true;
+      try { await Actions.callChain(context, { chain: 'loadDrawerLovs' }); } catch (e) { /* LOVs best-effort */ }
     }
   }
 

@@ -23,6 +23,13 @@ define([
       const h = $page.variables.planHeader || {};
       const items = (r) => (r && r.body && Array.isArray(r.body.items)) ? r.body.items : [];
 
+      // Cache: the drawer LOVs depend on the project/BU — skip the reload if we already
+      // loaded them for this project (makes re-opening Add/Edit instant).
+      const key = h.projectNumber || '';
+      if (key && $page.variables.drawerLovsLoadedFor === key && (($page.variables.itemArray || []).length || ($page.variables.currencyArray || []).length)) {
+        return;
+      }
+
       const LIMIT = 5000;
       const [task, item, sup, exp, inv, cur] = await Promise.allSettled([
         h.projectNumber ? Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCGetTaskByProject', uriParams: { P_PROJECT_NUMBER: h.projectNumber, P_USERNAME: user, limit: LIMIT } }) : Promise.resolve(null),
@@ -39,6 +46,8 @@ define([
       if (exp.status === 'fulfilled') $page.variables.expTypeArray = items(exp.value);
       if (inv.status === 'fulfilled' && inv.value) $page.variables.invOrgArray = items(inv.value);
       if (cur.status === 'fulfilled') $page.variables.currencyArray = items(cur.value);
+
+      $page.variables.drawerLovsLoadedFor = key;
     }
   }
 
