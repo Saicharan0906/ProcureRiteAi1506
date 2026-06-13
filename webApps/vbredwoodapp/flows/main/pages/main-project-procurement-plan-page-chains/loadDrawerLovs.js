@@ -6,15 +6,15 @@ define([
   'use strict';
 
   /**
-   * Load the Add/Edit drawer LOVs from ORDS for the currently selected project/BU:
-   *   - Task         -> getPDSCGetTaskByProject(P_PROJECT_NUMBER)
-   *   - Item         -> getPDSCItemDetails       (cascades: description, UOM, on-hand)
-   *   - Supplier     -> getPDSCSupplierDetails
-   *   - Expenditure  -> getPDSCEXPTypes          (cascade: expenditure_type_id)
-   *   - Inventory Org-> getPDSCGetInvOrgsByBU     (cascade: org id + code)
-   *   - Currency     -> getPDSCCurrencyCode
-   * Line Type / Destination / Strategy / Critical are static client-side enums.
-   * All loads are best-effort (Promise.allSettled) so one failure never blanks the rest.
+   * Load the SMALL Add/Edit drawer LOVs for the selected project/BU (one fast call each):
+   *   - Task        -> getPDSCGetTaskByProject(P_PROJECT_NUMBER)  (cascades: start/finish dates)
+   *   - Expenditure -> getPDSCEXPTypes                            (cascade: expenditure_type_id)
+   *   - Inventory   -> getPDSCGetInvOrgsByBU                      (cascade: org id + code)
+   *   - Currency    -> getPDSCCurrencyCode
+   * Item & Supplier are NOT loaded here — they are backed by ServiceDataProviders
+   * (itemSDP / supplierSDP) that search the server as the user types (no bulk load).
+   * Line Type / Destination / Strategy / Critical are static client enums.
+   * Cached per project so re-opening the drawer is instant.
    */
   class LoadDrawerLovs extends ActionChain {
     async run(context) {
@@ -23,26 +23,19 @@ define([
       const h = $page.variables.planHeader || {};
       const items = (r) => (r && r.body && Array.isArray(r.body.items)) ? r.body.items : [];
 
-      // Cache: the drawer LOVs depend on the project/BU — skip the reload if we already
-      // loaded them for this project (makes re-opening Add/Edit instant).
       const key = h.projectNumber || '';
-      if (key && $page.variables.drawerLovsLoadedFor === key && (($page.variables.itemArray || []).length || ($page.variables.currencyArray || []).length)) {
+      if (key && $page.variables.drawerLovsLoadedFor === key && (($page.variables.currencyArray || []).length || ($page.variables.expTypeArray || []).length)) {
         return;
       }
 
-      const LIMIT = 5000;
-      const [task, item, sup, exp, inv, cur] = await Promise.allSettled([
-        h.projectNumber ? Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCGetTaskByProject', uriParams: { P_PROJECT_NUMBER: h.projectNumber, P_USERNAME: user, limit: LIMIT } }) : Promise.resolve(null),
-        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCItemDetails', uriParams: { P_USERNAME: user, p_organization_name: '', limit: LIMIT } }),
-        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCSupplierDetails', uriParams: { P_USERNAME: user, limit: LIMIT } }),
-        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCEXPTypes', uriParams: { limit: LIMIT } }),
-        h.businessUnit ? Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCGetInvOrgsByBU', uriParams: { p_business_unit_name: h.businessUnit, limit: LIMIT } }) : Promise.resolve(null),
-        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCCurrencyCode', uriParams: { limit: LIMIT } })
+      const [task, exp, inv, cur] = await Promise.allSettled([
+        h.projectNumber ? Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCGetTaskByProject', uriParams: { P_PROJECT_NUMBER: h.projectNumber, P_USERNAME: user, limit: 1000 } }) : Promise.resolve(null),
+        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCEXPTypes', uriParams: { limit: 1000 } }),
+        h.businessUnit ? Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCGetInvOrgsByBU', uriParams: { p_business_unit_name: h.businessUnit, limit: 1000 } }) : Promise.resolve(null),
+        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCCurrencyCode', uriParams: { limit: 1000 } })
       ]);
 
       if (task.status === 'fulfilled' && task.value) $page.variables.taskArray = items(task.value);
-      if (item.status === 'fulfilled') $page.variables.itemArray = items(item.value);
-      if (sup.status === 'fulfilled') $page.variables.supplierArray = items(sup.value);
       if (exp.status === 'fulfilled') $page.variables.expTypeArray = items(exp.value);
       if (inv.status === 'fulfilled' && inv.value) $page.variables.invOrgArray = items(inv.value);
       if (cur.status === 'fulfilled') $page.variables.currencyArray = items(cur.value);

@@ -150,7 +150,7 @@
           <oj-select-single label-hint="Line Type" data="[[ $variables.lineTypeADP ]]"
             item-text="label" value="{{ $variables.planForm.line_type }}"></oj-select-single>
 
-          <oj-select-single label-hint="Item Number" data="[[ $variables.itemADP ]]"
+          <oj-select-single label-hint="Item Number" data="[[ $variables.itemSDP ]]"
             item-text="item_number" value="{{ $variables.planForm.item_number }}"
             on-value-item-changed="[[ $listeners.itemChanged ]]"></oj-select-single>
           <oj-input-text label-hint="Item Description" value="{{ $variables.planForm.item_desc }}" readonly="true"></oj-input-text>
@@ -170,7 +170,7 @@
 
           <oj-select-single label-hint="Buyer" data="[[ $variables.buyerADP ]]"
             item-text="label" value="{{ $variables.planForm.buyer }}"></oj-select-single>
-          <oj-select-single label-hint="Supplier" data="[[ $variables.supplierADP ]]"
+          <oj-select-single label-hint="Supplier" data="[[ $variables.supplierSDP ]]"
             item-text="vendor_name" value="{{ $variables.planForm.supplier }}"></oj-select-single>
 
           <oj-input-text label-hint="Supplier Email" value="{{ $variables.planForm.supplier_email_address }}"></oj-input-text>
