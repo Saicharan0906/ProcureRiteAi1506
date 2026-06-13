@@ -73,8 +73,6 @@ define([
             startDate: '', finishDate: '', status: '', projectManager: '', projectId: null
           };
           try {
-            // pn = the selected project_number (code). Look up the header and the plan
-            // lines by that code (matches the old working app).
             const hdr = await Actions.callRest(context, {
               endpoint: 'PDSCBUDetails/getPDSCGetProjectByBU',
               uriParams: { P_PROJECT_NUMBER: pn, P_USERNAME: user, limit: 500 }
@@ -82,7 +80,7 @@ define([
             const h = items(hdr)[0];
             if (h) {
               header = {
-                projectNumber: pn,
+                projectNumber: h.project_number != null ? h.project_number : pn,
                 projectName: h.project_name || '',
                 businessUnit: h.bu_name || '',
                 projectOrg: h.organization_name || '',
