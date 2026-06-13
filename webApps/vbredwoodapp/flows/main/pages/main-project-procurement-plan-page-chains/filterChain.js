@@ -73,14 +73,17 @@ define([
             startDate: '', finishDate: '', status: '', projectManager: '', projectId: null
           };
           try {
+            // The Project Number filter is keyed on the project NAME (that is what the
+            // plan-line data stores in its project_number field), so look the header up
+            // by P_PROJECT_NAME and keep the name as the header's projectNumber.
             const hdr = await Actions.callRest(context, {
               endpoint: 'PDSCBUDetails/getPDSCGetProjectByBU',
-              uriParams: { P_PROJECT_NUMBER: pn, P_USERNAME: user, limit: 500 }
+              uriParams: { P_PROJECT_NAME: pn, P_USERNAME: user, limit: 500 }
             });
             const h = items(hdr)[0];
             if (h) {
               header = {
-                projectNumber: h.project_number != null ? h.project_number : pn,
+                projectNumber: pn,
                 projectName: h.project_name || '',
                 businessUnit: h.bu_name || '',
                 projectOrg: h.organization_name || '',

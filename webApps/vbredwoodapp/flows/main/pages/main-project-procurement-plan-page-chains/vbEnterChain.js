@@ -31,7 +31,10 @@ define([
         Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCItemCategories', uriParams: { P_ITEM_NUMBER: '', limit: LIMIT } })
       ]);
 
-      if (proj.status === 'fulfilled') $page.variables.projectNumberArray = opts(items(proj.value), 'project_number');
+      // Key the Project Number filter on the project NAME — that is what users type
+      // ("pin" -> "Pinnacle Park Project") AND what the plan-line data keys on
+      // (getPDSCPlanDetails matches on the name). Code-only labels matched nothing.
+      if (proj.status === 'fulfilled') $page.variables.projectNumberArray = opts(items(proj.value), 'project_name');
       if (bu.status === 'fulfilled') $page.variables.businessUnitArray = opts(items(bu.value), 'bu_name');
       if (cat.status === 'fulfilled') $page.variables.itemCategoryArray = opts(items(cat.value), 'category_code');
     }
