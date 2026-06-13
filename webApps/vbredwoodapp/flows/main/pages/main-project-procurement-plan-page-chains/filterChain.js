@@ -73,12 +73,11 @@ define([
             startDate: '', finishDate: '', status: '', projectManager: '', projectId: null
           };
           try {
-            // The Project Number filter is keyed on the project NAME (that is what the
-            // plan-line data stores in its project_number field), so look the header up
-            // by P_PROJECT_NAME and keep the name as the header's projectNumber.
+            // pn = the selected project_number (code). Look up the header and the plan
+            // lines by that code (matches the old working app).
             const hdr = await Actions.callRest(context, {
               endpoint: 'PDSCBUDetails/getPDSCGetProjectByBU',
-              uriParams: { P_PROJECT_NAME: pn, P_USERNAME: user, limit: 500 }
+              uriParams: { P_PROJECT_NUMBER: pn, P_USERNAME: user, limit: 500 }
             });
             const h = items(hdr)[0];
             if (h) {

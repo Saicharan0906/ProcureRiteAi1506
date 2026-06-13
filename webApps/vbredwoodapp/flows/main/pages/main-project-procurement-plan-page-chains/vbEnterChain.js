@@ -31,10 +31,18 @@ define([
         Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCItemCategories', uriParams: { P_ITEM_NUMBER: '', limit: LIMIT } })
       ]);
 
-      // Key the Project Number filter on the project NAME — that is what users type
-      // ("pin" -> "Pinnacle Park Project") AND what the plan-line data keys on
-      // (getPDSCPlanDetails matches on the name). Code-only labels matched nothing.
-      if (proj.status === 'fulfilled') $page.variables.projectNumberArray = opts(items(proj.value), 'project_name');
+      // Project Number filter: value = project_number (the code the backend keys on),
+      // label = "code — name" so the NUMBER is shown but it is also searchable by NAME
+      // (typing "pin" matches "...Pinnacle..."). Code-only labels matched no names.
+      if (proj.status === 'fulfilled') {
+        const seen = Object.create(null);
+        $page.variables.projectNumberArray = items(proj.value)
+          .filter((p) => p.project_number != null && p.project_number !== '' && !seen[p.project_number] && (seen[p.project_number] = true))
+          .map((p) => ({
+            value: p.project_number,
+            label: p.project_name ? (p.project_number + ' — ' + p.project_name) : String(p.project_number)
+          }));
+      }
       if (bu.status === 'fulfilled') $page.variables.businessUnitArray = opts(items(bu.value), 'bu_name');
       if (cat.status === 'fulfilled') $page.variables.itemCategoryArray = opts(items(cat.value), 'category_code');
     }
