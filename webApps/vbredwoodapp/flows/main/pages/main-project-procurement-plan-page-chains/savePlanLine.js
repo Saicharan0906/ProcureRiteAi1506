@@ -106,7 +106,7 @@ define([
       if (!pn) return;
       try {
         const r = await Actions.callRest(context, {
-          endpoint: 'PDSCBUDetails/getPDSCPlanDetails', uriParams: { P_PROJECT_NUMBER: pn, P_USERNAME: user }
+          endpoint: 'PDSCBUDetails/getPDSCPlanDetails', uriParams: { P_PROJECT_NUMBER: pn, P_USERNAME: user, limit: 5000 }
         });
         const fresh = (r && r.body && Array.isArray(r.body.items)) ? r.body.items : [];
         $page.variables.planLinesAllArray = fresh;

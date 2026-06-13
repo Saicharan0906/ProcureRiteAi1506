@@ -28,10 +28,12 @@ define([
         .map((o) => ({ value: o[field], label: o[field] }))
         .filter((o) => o.value !== null && o.value !== undefined && o.value !== '');
 
+      // ORDS paginates GETs (default 25) — pass a high limit so the filter LOVs are complete.
+      const LIMIT = 5000;
       const [proj, bu, cat] = await Promise.allSettled([
-        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCProjectDetails', uriParams: { P_USERNAME: user } }),
-        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCBUDetails' }),
-        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCItemCategories', uriParams: { P_ITEM_NUMBER: '' } })
+        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCProjectDetails', uriParams: { P_USERNAME: user, limit: LIMIT } }),
+        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCBUDetails', uriParams: { limit: LIMIT } }),
+        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCItemCategories', uriParams: { P_ITEM_NUMBER: '', limit: LIMIT } })
       ]);
 
       if (proj.status === 'fulfilled') {

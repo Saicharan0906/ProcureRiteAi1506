@@ -80,15 +80,17 @@ define([
           $page.variables.planHeader = header;
 
           // narrow Project Org + Buyer LOVs to this project's BU + fetch plan lines
+          // (high limit so ORDS pagination doesn't truncate the LOVs / grid at 25 rows)
+          const LIMIT = 5000;
           const [orgRes, buyerRes, linesRes] = await Promise.allSettled([
             header.businessUnit ? Actions.callRest(context, {
-              endpoint: 'PDSCBUDetails/getPDSCGetOrgbyBU', uriParams: { P_BU_NAME: header.businessUnit }
+              endpoint: 'PDSCBUDetails/getPDSCGetOrgbyBU', uriParams: { P_BU_NAME: header.businessUnit, limit: LIMIT }
             }) : Promise.resolve(null),
             header.businessUnit ? Actions.callRest(context, {
-              endpoint: 'PDSCBUDetails/getPDSCBuyerDetails', uriParams: { P_BU_NAME: header.businessUnit, P_USERNAME: user }
+              endpoint: 'PDSCBUDetails/getPDSCBuyerDetails', uriParams: { P_BU_NAME: header.businessUnit, P_USERNAME: user, limit: LIMIT }
             }) : Promise.resolve(null),
             Actions.callRest(context, {
-              endpoint: 'PDSCBUDetails/getPDSCPlanDetails', uriParams: { P_PROJECT_NUMBER: pn, P_USERNAME: user }
+              endpoint: 'PDSCBUDetails/getPDSCPlanDetails', uriParams: { P_PROJECT_NUMBER: pn, P_USERNAME: user, limit: LIMIT }
             })
           ]);
 

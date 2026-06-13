@@ -49,6 +49,14 @@
                         "x-vb": {
                             "defaultValue": "10000"
                         }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ]
             }
@@ -78,7 +86,7 @@
                     "actionHint": "getMany"
                 },
                 "parameters": [
-{
+                    {
                         "name": "P_PROJECT_NUMBER",
                         "in": "query",
                         "schema": {
@@ -88,7 +96,7 @@
                             "defaultValue": "PCS10007"
                         }
                     },
-{
+                    {
                         "name": "p_critical_flag",
                         "in": "query",
                         "schema": {
@@ -100,6 +108,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ]
@@ -181,6 +205,22 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ]
             }
@@ -208,14 +248,32 @@
                 },
                 "x-vb": {
                     "actionHint": "getMany"
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
             }
         },
         "/PDSCPlanDetails": {
             "get": {
                 "operationId": "getPDSCPlanDetails",
                 "parameters": [
-{
+                    {
                         "name": "P_PROJECT_NUMBER",
                         "in": "query",
                         "schema": {
@@ -231,7 +289,7 @@
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
+                    },
                     {
                         "name": "P_STATUS",
                         "in": "query",
@@ -239,7 +297,7 @@
                             "type": "string"
                         }
                     },
-{
+                    {
                         "name": "P_BUYER",
                         "in": "query",
                         "schema": {
@@ -251,6 +309,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -271,7 +345,7 @@
                             }
                         }
                     }
-               },
+                },
                 "x-vb": {
                     "actionHint": "getMany"
                 }
@@ -370,6 +444,22 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ]
             }
@@ -399,7 +489,7 @@
                     "actionHint": "getMany"
                 },
                 "parameters": [
-{
+                    {
                         "name": "p_organization_name",
                         "in": "query",
                         "schema": {
@@ -412,6 +502,22 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ]
             }
@@ -420,7 +526,7 @@
             "get": {
                 "operationId": "getPDSCGetOrgbyBU",
                 "parameters": [
-{
+                    {
                         "name": "P_BU_NAME",
                         "in": "query",
                         "schema": {
@@ -435,6 +541,14 @@
                         },
                         "x-vb": {
                             "defaultValue": "10000"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -472,7 +586,7 @@
                             "type": "string"
                         }
                     },
-{
+                    {
                         "name": "P_CARRYING_ORG_NAME",
                         "in": "query",
                         "schema": {
@@ -485,8 +599,8 @@
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
-{
+                    },
+                    {
                         "name": "P_PROJECT_NAME",
                         "in": "query",
                         "schema": {
@@ -499,6 +613,22 @@
                             "type": "string"
                         },
                         "name": "P_USERNAME"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "responses": {
@@ -528,7 +658,7 @@
             "get": {
                 "operationId": "getPDSCGetTaskByProject",
                 "parameters": [
-{
+                    {
                         "name": "P_PROJECT_NUMBER",
                         "in": "query",
                         "schema": {
@@ -540,6 +670,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -591,7 +737,7 @@
                     "actionHint": "getMany"
                 },
                 "parameters": [
-{
+                    {
                         "name": "P_BU_NAME",
                         "in": "query",
                         "schema": {
@@ -604,7 +750,22 @@
                         "schema": {
                             "type": "string"
                         }
-
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ]
             }
@@ -632,18 +793,52 @@
                 },
                 "x-vb": {
                     "actionHint": "getMany"
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
             }
         },
         "/PDSCItemCategories": {
             "get": {
                 "operationId": "getPDSCItemCategories",
                 "parameters": [
-{
+                    {
                         "name": "P_ITEM_NUMBER",
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -699,7 +894,25 @@
                 },
                 "x-vb": {
                     "actionHint": "getMany"
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
             }
         },
         "/PDSCStrategyLov": {
@@ -725,7 +938,25 @@
                 },
                 "x-vb": {
                     "actionHint": "getMany"
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
             }
         },
         "/PDSCEXPTypes": {
@@ -751,7 +982,25 @@
                 },
                 "x-vb": {
                     "actionHint": "getMany"
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
             }
         },
         "/PDSCDeliveryTracker": {
@@ -778,8 +1027,8 @@
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
-{
+                    },
+                    {
                         "name": "P_PURCHASING_DOCUMENT_NUMBER",
                         "in": "query",
                         "schema": {
@@ -792,29 +1041,29 @@
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
+                    },
                     {
                         "name": "p_item_category",
                         "in": "query",
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
+                    },
                     {
                         "name": "p_task_name",
                         "in": "query",
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
+                    },
                     {
                         "name": "p_bu",
                         "in": "query",
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
-{
+                    },
+                    {
                         "name": "p_project_org",
                         "in": "query",
                         "schema": {
@@ -826,6 +1075,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -891,6 +1156,22 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "responses": {
@@ -926,6 +1207,22 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "responses": {
@@ -955,7 +1252,7 @@
             "get": {
                 "operationId": "getPDSCGetInvOrgsByBU",
                 "parameters": [
-{
+                    {
                         "name": "p_business_unit_name",
                         "in": "query",
                         "schema": {
@@ -967,6 +1264,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -1016,7 +1329,25 @@
                 },
                 "x-vb": {
                     "actionHint": "getMany"
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
             }
         },
         "/PDSCNegotiationStyle": {
@@ -1042,7 +1373,25 @@
                 },
                 "x-vb": {
                     "actionHint": "getMany"
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
             }
         },
         "/PDSCNegotiationType": {
@@ -1068,7 +1417,25 @@
                 },
                 "x-vb": {
                     "actionHint": "getMany"
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
             }
         },
         "/PDSCNegotiationTemplate": {
@@ -1092,6 +1459,22 @@
                         "required": true,
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -1127,6 +1510,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -1224,7 +1623,7 @@
                     "actionHint": "getMany"
                 },
                 "parameters": [
-{
+                    {
                         "name": "P_PROJECT_NUMBER",
                         "in": "query",
                         "schema": {
@@ -1237,40 +1636,56 @@
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
+                    },
                     {
                         "name": "p_supplier",
                         "in": "query",
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
+                    },
                     {
                         "name": "p_item_category",
                         "in": "query",
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
+                    },
                     {
                         "name": "p_task_name",
                         "in": "query",
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
+                    },
                     {
                         "name": "p_project_org",
                         "in": "query",
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
+                    },
                     {
                         "name": "p_bu",
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ]
@@ -1280,7 +1695,7 @@
             "get": {
                 "operationId": "getPDSCGetPODetailsForExec",
                 "parameters": [
-{
+                    {
                         "name": "p_execute_id",
                         "in": "query",
                         "schema": {
@@ -1292,6 +1707,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -1350,7 +1781,7 @@
                             }
                         }
                     }
-               },
+                },
                 "x-vb": {
                     "actionHint": "create"
                 },
@@ -1411,7 +1842,7 @@
                             "type": "string"
                         }
                     },
-{
+                    {
                         "name": "p_project_number",
                         "in": "query",
                         "schema": {
@@ -1424,12 +1855,27 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ]
             }
         },
-        "/PDSCCurrencyCode ": {
-        },
+        "/PDSCCurrencyCode ": {},
         "/PDSCCurrencyCode": {
             "get": {
                 "operationId": "getPDSCCurrencyCode",
@@ -1453,14 +1899,32 @@
                 },
                 "x-vb": {
                     "actionHint": "getMany"
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
             }
         },
         "/PDSCMaterialTrialAllocPO": {
             "get": {
                 "operationId": "getPDSCMaterialTrialAllocPO",
                 "parameters": [
-{
+                    {
                         "name": "project_number",
                         "in": "query",
                         "schema": {
@@ -1472,6 +1936,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -1521,7 +2001,25 @@
                 },
                 "x-vb": {
                     "actionHint": "getMany"
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
             }
         },
         "/PDSCDestinationType": {
@@ -1547,7 +2045,25 @@
                 },
                 "x-vb": {
                     "actionHint": "getMany"
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
             }
         },
         "/PDSCPRViewOnlyForm": {
@@ -1568,7 +2084,7 @@
                             "type": "string"
                         }
                     },
-{
+                    {
                         "name": "p_business_unit",
                         "in": "query",
                         "schema": {
@@ -1580,6 +2096,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -1630,6 +2162,22 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "responses": {
@@ -1666,7 +2214,7 @@
                             "type": "string"
                         }
                     },
-{
+                    {
                         "name": "p_project_number",
                         "in": "query",
                         "schema": {
@@ -1678,6 +2226,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -1722,7 +2286,7 @@
                             "type": "string"
                         }
                     },
-{
+                    {
                         "name": "p_po_number",
                         "in": "query",
                         "schema": {
@@ -1734,6 +2298,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -1770,6 +2350,22 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "responses": {
@@ -1799,7 +2395,7 @@
             "get": {
                 "operationId": "getPDSCSupplierEmail",
                 "parameters": [
-{
+                    {
                         "name": "p_vendor_number",
                         "in": "query",
                         "schema": {
@@ -1811,6 +2407,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -1853,6 +2465,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -1905,7 +2533,7 @@
                     "headers": {}
                 },
                 "parameters": [
-{
+                    {
                         "name": "p_project_number",
                         "in": "query",
                         "schema": {
@@ -1925,15 +2553,15 @@
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
+                    },
                     {
                         "name": "p_po_number",
                         "in": "query",
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
-{
+                    },
+                    {
                         "name": "p_assignee",
                         "in": "query",
                         "schema": {
@@ -1941,7 +2569,6 @@
                         }
                     },
                     {
-
                         "in": "query",
                         "schema": {
                             "type": "string"
@@ -1954,29 +2581,29 @@
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
+                    },
                     {
                         "name": "p_item_category",
                         "in": "query",
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
+                    },
                     {
                         "name": "p_task_name",
                         "in": "query",
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
+                    },
                     {
                         "name": "p_bu",
                         "in": "query",
                         "schema": {
                             "type": "string"
                         }
-                    }                    ,
-{
+                    },
+                    {
                         "name": "p_project_org",
                         "in": "query",
                         "schema": {
@@ -1988,6 +2615,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ]
@@ -2042,7 +2685,7 @@
             "get": {
                 "operationId": "getPDSCGetReceiptDetailsForExec",
                 "parameters": [
-{
+                    {
                         "name": "p_po_header_id",
                         "in": "query",
                         "schema": {
@@ -2054,6 +2697,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -2134,6 +2793,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -2236,6 +2911,22 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ]
             }
@@ -2250,6 +2941,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -2306,6 +3013,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ]
@@ -2406,7 +3129,7 @@
             "get": {
                 "operationId": "getPDSCPreparerRequesterDetails",
                 "parameters": [
-{
+                    {
                         "name": "BU_NAME",
                         "in": "query",
                         "schema": {
@@ -2418,6 +3141,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -2467,7 +3206,25 @@
                 },
                 "x-vb": {
                     "actionHint": "getMany"
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
             }
         },
         "/PDSCAppMaintenance": {
@@ -2518,7 +3275,7 @@
             "get": {
                 "operationId": "getPDSCAppMaintenance",
                 "parameters": [
-{
+                    {
                         "name": "business_unit",
                         "in": "query",
                         "schema": {
@@ -2530,6 +3287,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -2623,7 +3396,25 @@
                 },
                 "x-vb": {
                     "actionHint": "getMany"
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
             }
         },
         "/PDSCItemOnHand": {
@@ -2642,6 +3433,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -2699,6 +3506,22 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ]
             }
@@ -2733,6 +3556,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ]
@@ -2769,6 +3608,22 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ]
             }
@@ -2782,6 +3637,22 @@
                         "in": "query",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
@@ -2831,7 +3702,25 @@
                 },
                 "x-vb": {
                     "actionHint": "getMany"
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
             },
             "post": {
                 "operationId": "postPDSCOrclRestApi",
@@ -3003,7 +3892,6 @@
                                 "execute_id": {
                                     "type": "integer",
                                     "nullable": true
-
                                 },
                                 "plan_line_number": {
                                     "type": "integer"
@@ -3011,15 +3899,12 @@
                                 "line_number": {
                                     "type": "integer",
                                     "nullable": true
-
                                 },
                                 "project_number": {
                                     "type": "string"
                                 },
                                 "project_name": {
-
                                     "nullable": true
-
                                 },
                                 "line_type": {
                                     "type": "string"
@@ -3073,7 +3958,6 @@
                                 },
                                 "negotiation": {
                                     "type": "string"
-
                                 },
                                 "purchase_order": {
                                     "type": "string"
@@ -3159,14 +4043,12 @@
                                 "lead_time": {
                                     "type": "string",
                                     "nullable": true
-
                                 },
                                 "supply_plan_initiated": {
                                     "type": "string"
                                 }
-
                             }
-                     }
+                        }
                     },
                     "hasMore": {
                         "type": "boolean"
@@ -3328,7 +4210,7 @@
                                     "nullable": true
                                 }
                             }
-                     }
+                        }
                     },
                     "hasMore": {
                         "type": "boolean"
@@ -3570,7 +4452,6 @@
                                     "nullable": true
                                 },
                                 "business_unit": {
-
                                     "nullable": true
                                 },
                                 "supplier_email_address": {
@@ -3580,12 +4461,10 @@
                                 "task_id": {
                                     "type": "integer",
                                     "nullable": true
-
                                 },
                                 "expenditure_type_id": {
                                     "type": "integer",
                                     "nullable": true
-
                                 },
                                 "inventory_org_id": {
                                     "nullable": true
@@ -3596,9 +4475,8 @@
                                 "item_onhand": {
                                     "type": "integer"
                                 }
-
                             }
-                     }
+                        }
                     },
                     "hasMore": {
                         "type": "boolean"
@@ -3657,11 +4535,9 @@
                                 "attribute1": {
                                     "type": "string",
                                     "nullable": true
-
                                 },
                                 "attribute2": {
                                     "type": "string"
-
                                 },
                                 "attribute3": {
                                     "nullable": true
@@ -3887,7 +4763,6 @@
                                 },
                                 "attribute1": {
                                     "type": "string"
-
                                 },
                                 "attribute2": {
                                     "nullable": true
@@ -4228,7 +5103,6 @@
                         "items": {
                             "type": "object",
                             "properties": {
-
                                 "item_number": {
                                     "nullable": true
                                 },
@@ -4467,7 +5341,6 @@
                     "uom": {
                         "type": "string"
                     }
-
                 }
             },
             "PostPDSCExecuteDetailsRequest": {
@@ -4575,7 +5448,6 @@
                     "inv_org_name": {
                         "type": "string"
                     }
-
                 }
             },
             "GetPDSCDeliveryTracker": {
@@ -5024,30 +5896,25 @@
                                     "type": "string"
                                 },
                                 "action_details": {
-
                                     "nullable": true
                                 },
                                 "planned_date": {
-
                                     "nullable": true
                                 },
                                 "assignee": {
-
                                     "nullable": true
                                 },
                                 "action_status": {
                                     "nullable": true
                                 },
                                 "actual_date": {
-
                                     "nullable": true
                                 },
                                 "outcome_remarks": {
                                     "nullable": true
                                 }
-
                             }
-                     }
+                        }
                     },
                     "hasMore": {
                         "type": "boolean"
@@ -5530,18 +6397,15 @@
                                     "nullable": true
                                 },
                                 "requisition_header_id": {
-
                                     "nullable": true
                                 },
                                 "oracle_requisition_line_id": {
-
                                     "nullable": true
                                 },
                                 "requisition_dist_id": {
                                     "nullable": true
                                 },
                                 "requisition_number": {
-
                                     "nullable": true
                                 },
                                 "planned_qty": {
@@ -5554,9 +6418,7 @@
                                     "nullable": true
                                 },
                                 "status": {
-
                                     "nullable": true
-
                                 },
                                 "preparer": {
                                     "type": "string"
@@ -5567,7 +6429,6 @@
                                 "requester": {
                                     "type": "string"
                                 }
-
                             }
                         }
                     },
@@ -5850,7 +6711,6 @@
                                 "trx_business_category": {
                                     "type": "string",
                                     "nullable": true
-
                                 },
                                 "auto_closure_mode": {
                                     "nullable": true
@@ -5957,12 +6817,10 @@
                                 "secondary_quantity_received": {
                                     "type": "integer",
                                     "nullable": true
-
                                 },
                                 "amount_received": {
                                     "type": "integer",
                                     "nullable": true
-
                                 },
                                 "lin_loc_amount_billed": {
                                     "type": "integer"
@@ -5973,7 +6831,6 @@
                                 "closed_for_receiving_date": {
                                     "type": "string",
                                     "nullable": true
-
                                 },
                                 "closed_for_invoice_date": {
                                     "nullable": true
@@ -6054,7 +6911,6 @@
                                 "total_amount": {
                                     "type": "string"
                                 }
-
                             }
                         }
                     },
@@ -6094,7 +6950,6 @@
                         "items": {
                             "type": "object",
                             "properties": {
-
                                 "execute_id": {
                                     "type": "integer"
                                 },
@@ -6128,7 +6983,6 @@
                                 },
                                 "supplier_site": {
                                     "type": "string"
-
                                 },
                                 "po_header_id": {
                                     "type": "integer"
@@ -6142,9 +6996,8 @@
                                 "total_ordered_quantity": {
                                     "nullable": true
                                 }
-
                             }
-                     }
+                        }
                     },
                     "hasMore": {
                         "type": "boolean"
@@ -6222,7 +7075,6 @@
                     "need_by_date": {
                         "type": "string"
                     }
-
                 }
             },
             "GetPDSCPlanDetailsAuditLog": {
@@ -6380,7 +7232,6 @@
                                 "modified_value": {
                                     "type": "string"
                                 }
-
                             }
                         }
                     },
@@ -6471,7 +7322,6 @@
             "PostPDSCGetPODetailsForExecRequest": {
                 "type": "object",
                 "properties": {
-
                     "execute_id": {
                         "type": "integer"
                     },
@@ -6517,7 +7367,6 @@
                     "total_ordered_quantity": {
                         "nullable": true
                     }
-
                 }
             },
             "GetPDSCMaterialTrialAllocPO": {
@@ -6902,9 +7751,7 @@
                                 },
                                 "description": {
                                     "type": "string",
-
                                     "nullable": true
-
                                 },
                                 "document_status": {
                                     "type": "string"
@@ -6914,15 +7761,11 @@
                                 },
                                 "submission_date": {
                                     "type": "string",
-
                                     "nullable": true
-
                                 },
                                 "approved_date": {
                                     "type": "string",
-
                                     "nullable": true
-
                                 },
                                 "default_taxation_country": {
                                     "type": "string",
@@ -6990,9 +7833,7 @@
                                 },
                                 "prc_bu_id": {
                                     "type": "integer",
-
                                     "nullable": true
-
                                 },
                                 "order_type_lookup_code": {
                                     "type": "string"
@@ -7002,9 +7843,7 @@
                                 },
                                 "last_submitted_date": {
                                     "type": "string",
-
                                     "nullable": true
-
                                 },
                                 "distribution_quantity": {
                                     "type": "integer"
@@ -7057,7 +7896,6 @@
                                 "charge_account": {
                                     "type": "string",
                                     "nullable": true
-
                                 },
                                 "justification": {
                                     "nullable": true
@@ -7648,17 +8486,13 @@
                                     "nullable": true
                                 },
                                 "approved_date": {
-
                                     "nullable": true
-
                                 },
                                 "closed_date": {
                                     "nullable": true
                                 },
                                 "submit_date": {
-
                                     "nullable": true
-
                                 },
                                 "item_number": {
                                     "type": "string"
@@ -7745,14 +8579,11 @@
                                     "nullable": true
                                 },
                                 "line_status": {
-
                                     "nullable": true
-
                                 },
                                 "line_num": {
                                     "type": "integer"
                                 }
-
                             }
                         }
                     },
@@ -7880,7 +8711,7 @@
                                     "type": "string"
                                 }
                             }
-                     }
+                        }
                     },
                     "hasMore": {
                         "type": "boolean"
@@ -8144,7 +8975,6 @@
                     "attachment": {
                         "type": "string"
                     }
-
                 }
             },
             "PostPDSCGetReceiptDetailsForExecRequest": {
@@ -8195,7 +9025,6 @@
                     "rejected_quantity": {
                         "type": "string"
                     }
-
                 }
             },
             "GetPDSCGetReceiptDetailsForExec": {
@@ -8203,8 +9032,7 @@
                 "properties": {
                     "items": {
                         "type": "array",
-                        "items": {
-                        }
+                        "items": {}
                     },
                     "hasMore": {
                         "type": "boolean"
@@ -8306,7 +9134,6 @@
                     "SUBJECT": {
                         "type": "string"
                     }
-
                 }
             },
             "GetPDSCCommunicationLog": {
@@ -8360,7 +9187,6 @@
                                 "communication_method": {
                                     "type": "string"
                                 }
-
                             }
                         }
                     },
@@ -8533,7 +9359,7 @@
                                     "nullable": true
                                 }
                             }
-                     }
+                        }
                     },
                     "hasMore": {
                         "type": "boolean"
@@ -8566,7 +9392,6 @@
             "PostPDSCPOAdditonalDetailsRequest": {
                 "type": "object",
                 "properties": {
-
                     "ACTION_DETAILS": {
                         "type": "string"
                     },

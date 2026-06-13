@@ -23,13 +23,14 @@ define([
       const h = $page.variables.planHeader || {};
       const items = (r) => (r && r.body && Array.isArray(r.body.items)) ? r.body.items : [];
 
+      const LIMIT = 5000;
       const [task, item, sup, exp, inv, cur] = await Promise.allSettled([
-        h.projectNumber ? Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCGetTaskByProject', uriParams: { P_PROJECT_NUMBER: h.projectNumber, P_USERNAME: user } }) : Promise.resolve(null),
-        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCItemDetails', uriParams: { P_USERNAME: user, p_organization_name: '' } }),
-        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCSupplierDetails', uriParams: { P_USERNAME: user } }),
-        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCEXPTypes' }),
-        h.businessUnit ? Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCGetInvOrgsByBU', uriParams: { p_business_unit_name: h.businessUnit } }) : Promise.resolve(null),
-        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCCurrencyCode' })
+        h.projectNumber ? Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCGetTaskByProject', uriParams: { P_PROJECT_NUMBER: h.projectNumber, P_USERNAME: user, limit: LIMIT } }) : Promise.resolve(null),
+        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCItemDetails', uriParams: { P_USERNAME: user, p_organization_name: '', limit: LIMIT } }),
+        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCSupplierDetails', uriParams: { P_USERNAME: user, limit: LIMIT } }),
+        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCEXPTypes', uriParams: { limit: LIMIT } }),
+        h.businessUnit ? Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCGetInvOrgsByBU', uriParams: { p_business_unit_name: h.businessUnit, limit: LIMIT } }) : Promise.resolve(null),
+        Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCCurrencyCode', uriParams: { limit: LIMIT } })
       ]);
 
       if (task.status === 'fulfilled' && task.value) $page.variables.taskArray = items(task.value);
