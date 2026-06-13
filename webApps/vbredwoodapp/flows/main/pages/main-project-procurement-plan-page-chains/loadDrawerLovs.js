@@ -30,7 +30,7 @@ define([
         return;
       }
 
-      const LIMIT = 5000;
+      const LIMIT = 1000;
       const [task, item, sup, exp, inv, cur] = await Promise.allSettled([
         h.projectNumber ? Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCGetTaskByProject', uriParams: { P_PROJECT_NUMBER: h.projectNumber, P_USERNAME: user, limit: LIMIT } }) : Promise.resolve(null),
         Actions.callRest(context, { endpoint: 'PDSCBUDetails/getPDSCItemDetails', uriParams: { P_USERNAME: user, p_organization_name: '', limit: LIMIT } }),
