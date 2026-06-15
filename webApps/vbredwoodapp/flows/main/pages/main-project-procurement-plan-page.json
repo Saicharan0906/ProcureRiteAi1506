@@ -119,20 +119,20 @@
   },
   "eventListeners": {
     "vbEnter": { "chains": [ { "chain": "vbEnterChain" } ] },
-    "goToParentChain": { "chains": [ { "chainId": "goToParentChain" } ] },
-    "primaryActionChain": { "chains": [ { "chainId": "primaryActionChain" } ] },
-    "ccPrimaryAction": { "chains": [ { "chainId": "secondaryActionChain", "parameters": { "detail": "{{ $event.detail }}" } } ] },
-    "ccSecondaryAction": { "chains": [ { "chainId": "secondaryActionChain", "parameters": { "detail": "{{ $event.detail }}" } } ] },
-    "ccExport": { "chains": [ { "chainId": "secondaryActionChain", "parameters": { "detail": { "id": "export" } } } ] },
+    "goToParentChain": { "chains": [ { "chain": "goToParentChain" } ] },
+    "primaryActionChain": { "chains": [ { "chain": "primaryActionChain" } ] },
+    "ccPrimaryAction": { "chains": [ { "chain": "secondaryActionChain", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "ccSecondaryAction": { "chains": [ { "chain": "secondaryActionChain", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "ccExport": { "chains": [ { "chain": "secondaryActionChain", "parameters": { "detail": { "id": "export" } } } ] },
     "filterCriterionChanged": { "chains": [ { "chain": "filterChain" } ] },
-    "editRow": { "chains": [ { "chainId": "editRow", "parameters": { "event": "{{ $event }}" } } ] },
-    "savePlanLine": { "chains": [ { "chainId": "savePlanLine" } ] },
-    "deletePlanLine": { "chains": [ { "chainId": "deletePlanLine" } ] },
-    "closeDrawer": { "chains": [ { "chainId": "closeDrawer" } ] },
-    "itemChanged": { "chains": [ { "chainId": "itemChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] },
-    "taskChanged": { "chains": [ { "chainId": "taskChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] },
-    "expTypeChanged": { "chains": [ { "chainId": "expTypeChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] },
-    "invOrgChanged": { "chains": [ { "chainId": "invOrgChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] }
+    "editRow": { "chains": [ { "chain": "editRow", "parameters": { "event": "{{ $event }}" } } ] },
+    "savePlanLine": { "chains": [ { "chain": "savePlanLine" } ] },
+    "deletePlanLine": { "chains": [ { "chain": "deletePlanLine" } ] },
+    "closeDrawer": { "chains": [ { "chain": "closeDrawer" } ] },
+    "itemChanged": { "chains": [ { "chain": "itemChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "taskChanged": { "chains": [ { "chain": "taskChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "expTypeChanged": { "chains": [ { "chain": "expTypeChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "invOrgChanged": { "chains": [ { "chain": "invOrgChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] }
   },
   "imports": {
     "components": {
