@@ -50,11 +50,15 @@ define([
       // collect applied filters + keyword
       const selected = {};
       let keyword = '';
+      // matches a row value against a selected filter value (handles SelectSingle scalar
+      // AND SelectMultiple arrays from $in)
+      const matches = (rowVal, sel) => Array.isArray(sel) ? sel.indexOf(rowVal) !== -1 : rowVal === sel;
       const collect = (c) => {
         if (!c) return;
         if (c.text && c.matchBy === 'phrase') { keyword = c.text; return; }
         if (Array.isArray(c.criteria)) { c.criteria.forEach(collect); return; }
-        if (c.op === '$eq') {
+        // $eq = SelectSingle, $in = SelectMultiple; both arrive flat (attribute) or nested (value{field})
+        if (c.op === '$eq' || c.op === '$in') {
           if (c.attribute) { selected[c.attribute] = c.value; }
           else if (c.value && typeof c.value === 'object') {
             const k = Object.keys(c.value)[0];
@@ -115,11 +119,11 @@ define([
 
       // client-side refine of the loaded project rows
       let rows = [...($page.variables.planLinesAllArray || [])];
-      if (selected.businessUnit) rows = rows.filter((r) => r.business_unit === selected.businessUnit);
-      if (selected.itemCategory) rows = rows.filter((r) => r.item_category === selected.itemCategory);
-      if (selected.buyer) rows = rows.filter((r) => r.buyer === selected.buyer);
-      if (selected.status) rows = rows.filter((r) => r.status === selected.status);
-      if (selected.critical) rows = rows.filter((r) => r.critical_flag === selected.critical);
+      if (selected.businessUnit != null) rows = rows.filter((r) => matches(r.business_unit, selected.businessUnit));
+      if (selected.itemCategory != null) rows = rows.filter((r) => matches(r.item_category, selected.itemCategory));
+      if (selected.buyer != null) rows = rows.filter((r) => matches(r.buyer, selected.buyer));
+      if (selected.status != null) rows = rows.filter((r) => matches(r.status, selected.status));
+      if (selected.critical != null) rows = rows.filter((r) => matches(r.critical_flag, selected.critical));
       if (keyword) {
         const words = String(keyword).toLowerCase().split(/\s+/).filter(Boolean);
         const KW = ['item_number', 'item_desc', 'task_name', 'supplier'];

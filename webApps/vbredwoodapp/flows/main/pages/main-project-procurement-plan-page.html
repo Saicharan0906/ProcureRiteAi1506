@@ -121,6 +121,15 @@
         </oj-button>
       </template>
 
+      <template slot="noData">
+        <div style="padding:40px 16px;text-align:center;color:#5a6b7b;">
+          <span class="oj-ux-ico-search" style="font-size:30px;display:block;margin-bottom:10px;opacity:0.7;"></span>
+          <div class="oj-typography-body-md">
+            <oj-bind-text value="[[ $variables.planHeader.projectNumber ? 'No plan lines match the current filters.' : 'Select a Project Number to load its plan lines.' ]]"></oj-bind-text>
+          </div>
+        </div>
+      </template>
+
     </oj-table>
 
   </oj-sp-collection-container>
