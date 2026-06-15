@@ -14,9 +14,9 @@ define([
       const { $page } = context;
       const h = $page.variables.planHeader || {};
       if (!h.projectNumber) {
-        await Actions.fireEvent(context, {
-          event: 'application:spShowToast',
-          payload: { detail: { message: 'Select a Project Number first, then Add Line.' } }
+        await Actions.fireNotificationEvent(context, {
+          summary: 'Add Line', message: 'Select a Project Number first, then Add Line.',
+          severity: 'warning', type: 'warning', displayMode: 'transient'
         });
         return;
       }

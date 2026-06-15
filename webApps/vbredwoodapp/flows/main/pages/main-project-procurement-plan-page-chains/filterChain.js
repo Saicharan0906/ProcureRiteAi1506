@@ -88,7 +88,8 @@ define([
                 finishDate: h.project_end_date || '',
                 status: h.project_status_code || '',
                 projectManager: h.attribute1 || '',
-                projectId: h.project_id != null ? h.project_id : null
+                projectId: h.project_id != null ? h.project_id : null,
+                buId: h.org_id != null ? h.org_id : null
               };
             }
           } catch (e) { /* header best-effort */ }

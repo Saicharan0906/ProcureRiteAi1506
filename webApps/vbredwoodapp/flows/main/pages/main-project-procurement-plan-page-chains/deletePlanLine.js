@@ -27,7 +27,7 @@ define([
       } catch (e) { ok = false; }
 
       if (!ok) {
-        await this.toast(context, 'Delete failed. Please try again.');
+        await this.notify(context, 'Delete failed', 'Could not delete the plan line. Please try again.', 'error', 'persist');
         return;
       }
 
@@ -45,11 +45,13 @@ define([
       }
 
       $page.variables.drawerOpen = false;
-      await this.toast(context, 'Plan line deleted.');
+      await this.notify(context, 'Deleted', 'Plan line deleted.', 'confirmation');
     }
 
-    async toast(context, message) {
-      await Actions.fireEvent(context, { event: 'application:spShowToast', payload: { detail: { message } } });
+    async notify(context, summary, message, type, displayMode) {
+      await Actions.fireNotificationEvent(context, {
+        summary: summary, message: message, severity: type, type: type, displayMode: displayMode || 'transient'
+      });
     }
   }
 

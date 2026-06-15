@@ -9,10 +9,11 @@
       "type": "object",
       "defaultValue": {
         "projectNumber": "", "projectName": "", "businessUnit": "", "projectOrg": "",
-        "startDate": "", "finishDate": "", "status": "", "projectManager": "", "projectId": null
+        "startDate": "", "finishDate": "", "status": "", "projectManager": "", "projectId": null, "buId": null
       }
     },
     "lastProjectNumber": { "type": "string", "defaultValue": "" },
+    "firstSelectedRow": { "type": "any" },
 
     "planLinesArray": { "type": "any[]", "defaultValue": [] },
     "planLinesAllArray": { "type": "any[]", "defaultValue": [] },

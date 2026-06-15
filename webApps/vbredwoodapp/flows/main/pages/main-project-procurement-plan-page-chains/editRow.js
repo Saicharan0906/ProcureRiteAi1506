@@ -39,11 +39,17 @@ define([
   class EditRow extends ActionChain {
     async run(context, { event }) {
       const { $page } = context;
-      const row = readRow(event);
+      // Prefer reading the clicked row from the event; fall back to the table's
+      // first selected row (reliable — set via first-selected-row binding).
+      let row = readRow(event);
       if (!row) {
-        await Actions.fireEvent(context, {
-          event: 'application:spShowToast',
-          payload: { detail: { message: 'Could not read the selected line. Please try again.' } }
+        const fs = $page.variables.firstSelectedRow;
+        row = fs && fs.data ? fs.data : null;
+      }
+      if (!row) {
+        await Actions.fireNotificationEvent(context, {
+          summary: 'Edit', message: 'Select a plan line first, then click Edit.',
+          severity: 'warning', type: 'warning', displayMode: 'transient'
         });
         return;
       }

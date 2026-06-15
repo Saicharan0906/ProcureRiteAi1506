@@ -5,9 +5,15 @@ define([
 ], (ActionChain, Actions) => {
   'use strict';
 
-  // ISO / Date -> "DD-MM-YYYY" (the format the ORDS postPDSCPlanDetails handler expects)
+  // -> "DD-MM-YYYY". String-split YYYY-MM-DD / ISO (no Date object — avoids the
+  //    timezone off-by-one the old app's convertDateFormat also avoids); fall back to Date.
   function toDDMMYYYY(v) {
     if (!v) return null;
+    const datePart = String(v).split('T')[0];
+    const parts = datePart.split('-');
+    if (parts.length === 3 && parts[0].length === 4) {
+      return parts[2] + '-' + parts[1] + '-' + parts[0];
+    }
     const d = new Date(v);
     if (isNaN(d.getTime())) return v;
     const p = (n) => String(n).padStart(2, '0');
@@ -15,10 +21,9 @@ define([
   }
 
   /**
-   * Save the drawer's plan line via postPDSCPlanDetails (one endpoint for INSERT & UPDATE):
-   *   - create  -> isNew:'Y', no plan_id
-   *   - edit    -> plan_id + p_plan_id
-   * Then reload the project's plan lines and close the drawer.
+   * Save the drawer's plan line via postPDSCPlanDetails (one endpoint for INSERT & UPDATE).
+   * Body mirrors the old working saveplanDialog payload. Feedback uses fireNotificationEvent
+   * (the shell-rendered notification the old app uses) — spShowToast was not surfacing.
    */
   class SavePlanLine extends ActionChain {
     async run(context) {
@@ -28,21 +33,26 @@ define([
       const h = $page.variables.planHeader || {};
 
       if (!f.item_number) {
-        await this.toast(context, 'Item Number is required.');
+        await this.notify(context, 'Validation', 'Item Number is required.', 'warning');
         return;
       }
       $page.variables.drawerSaving = true;
 
       const body = {
+        enable_expediting: f.enable_expediting != null ? f.enable_expediting : null,
+        business_unit_name: h.businessUnit,
+        project_owning_org: h.projectOrg,
+        business_unit_id: h.buId != null ? h.buId : null,
         acquisition_strategy_objective: f.acquisition_strategy_objective,
+        inventory_org_id: f.inventory_org_id,
         buyer: f.buyer,
+        tag_number: f.tag_number,
         critical_flag: f.critical_flag,
         currency_code: f.currency_code,
         destination_type: f.destination_type,
         expenditure_type: f.expenditure_type,
         expenditure_type_id: f.expenditure_type_id,
         inv_org_name: f.inv_org_name,
-        inventory_org_id: f.inventory_org_id,
         item_category: f.item_category,
         item_desc: f.item_desc,
         item_number: f.item_number,
@@ -54,21 +64,15 @@ define([
         planned_finish_date: toDDMMYYYY(f.planned_finish_date),
         planned_quantity: f.planned_quantity,
         planned_start_date: toDDMMYYYY(f.planned_start_date),
-        project_id: h.projectId,
         project_number: h.projectNumber,
         requested_delivery_date: toDDMMYYYY(f.requested_delivery_date),
         status: f.status || 'Draft',
-        supplier: f.supplier,
-        supplier_email_address: f.supplier_email_address,
-        tag_number: f.tag_number,
         task_id: f.task_id,
         task_name: f.task_name,
         task_number: f.task_number,
         uom: f.uom,
         user_name: user,
-        business_unit_name: h.businessUnit,
-        business_unit_id: null,
-        project_owning_org: h.projectOrg
+        project_id: h.projectId
       };
       if ($page.variables.drawerMode === 'edit' && f.plan_id != null) {
         body.plan_id = f.plan_id;
@@ -77,26 +81,27 @@ define([
         body.isNew = 'Y';
       }
 
-      let ok = false;
       try {
         const res = await Actions.callRest(context, {
           endpoint: 'PDSCBUDetails/postPDSCPlanDetails',
           body,
           headers: { 'R_PAGE_NAME': 'project-procurement-plan', 'R_USER_NAME': user }
         });
-        ok = !res || res.ok !== false;
-      } catch (e) { ok = false; }
-
-      $page.variables.drawerSaving = false;
-
-      if (!ok) {
-        await this.toast(context, 'Save failed. Please review the line and try again.');
+        if (res && res.ok === false) {
+          const msg = (res.body && (res.body.detail || res.body.message)) || ('Save failed (HTTP ' + res.status + ')');
+          throw new Error(typeof msg === 'string' ? msg : JSON.stringify(msg));
+        }
+      } catch (e) {
+        $page.variables.drawerSaving = false;
+        await this.notify(context, 'Save failed', (e && e.message) || 'Unknown error saving the plan line.', 'error', 'persist');
         return;
       }
 
+      $page.variables.drawerSaving = false;
       await this.reload(context);
       $page.variables.drawerOpen = false;
-      await this.toast(context, $page.variables.drawerMode === 'edit' ? 'Plan line updated.' : 'Plan line added.');
+      await this.notify(context, 'Saved',
+        $page.variables.drawerMode === 'edit' ? 'Plan line updated.' : 'Plan line added.', 'confirmation');
     }
 
     async reload(context) {
@@ -114,8 +119,14 @@ define([
       } catch (e) { /* keep current data on reload failure */ }
     }
 
-    async toast(context, message) {
-      await Actions.fireEvent(context, { event: 'application:spShowToast', payload: { detail: { message } } });
+    async notify(context, summary, message, type, displayMode) {
+      await Actions.fireNotificationEvent(context, {
+        summary: summary,
+        message: message,
+        severity: type,
+        type: type,
+        displayMode: displayMode || 'transient'
+      });
     }
   }
 

@@ -31,9 +31,9 @@ define([
     }
 
     async toast(context, message) {
-      await Actions.fireEvent(context, {
-        event: 'application:spShowToast',
-        payload: { detail: { message } }
+      await Actions.fireNotificationEvent(context, {
+        summary: 'Project Procurement Plan', message: message,
+        severity: 'confirmation', type: 'confirmation', displayMode: 'transient'
       });
     }
 
