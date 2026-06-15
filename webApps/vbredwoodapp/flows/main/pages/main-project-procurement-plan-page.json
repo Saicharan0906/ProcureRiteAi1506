@@ -110,14 +110,7 @@
   },
   "metadata": {},
   "types": {},
-  "chains": {
-    "secondaryActionChain": { "variables": { "detail": { "type": "any", "input": "fromCaller", "required": true } } },
-    "editRow": { "variables": { "event": { "type": "any", "input": "fromCaller", "required": true } } },
-    "itemChanged": { "variables": { "detail": { "type": "any", "input": "fromCaller" } } },
-    "taskChanged": { "variables": { "detail": { "type": "any", "input": "fromCaller" } } },
-    "expTypeChanged": { "variables": { "detail": { "type": "any", "input": "fromCaller" } } },
-    "invOrgChanged": { "variables": { "detail": { "type": "any", "input": "fromCaller" } } }
-  },
+  "chains": {},
   "eventListeners": {
     "vbEnter": { "chains": [ { "chain": "vbEnterChain" } ] },
     "goToParentChain": { "chains": [ { "chain": "goToParentChain" } ] },
