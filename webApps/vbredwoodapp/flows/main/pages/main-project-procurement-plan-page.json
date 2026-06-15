@@ -15,6 +15,11 @@
     "lastProjectNumber": { "type": "string", "defaultValue": "" },
     "firstSelectedRow": { "type": "any" },
 
+    "activeQuickChipId": { "type": "string", "defaultValue": "" },
+    "chipDraftCount": { "type": "number", "defaultValue": 0 },
+    "chipReadyCount": { "type": "number", "defaultValue": 0 },
+    "chipCriticalCount": { "type": "number", "defaultValue": 0 },
+
     "planLinesArray": { "type": "any[]", "defaultValue": [] },
     "planLinesAllArray": { "type": "any[]", "defaultValue": [] },
     "planLinesADP": {
@@ -119,6 +124,9 @@
     "ccSecondaryAction": { "chains": [ { "chain": "secondaryActionChain", "parameters": { "detail": "{{ $event.detail }}" } } ] },
     "ccExport": { "chains": [ { "chain": "secondaryActionChain", "parameters": { "detail": { "id": "export" } } } ] },
     "filterCriterionChanged": { "chains": [ { "chain": "filterChain" } ] },
+    "quickChipDraft": { "chains": [ { "chain": "quickChipClick", "parameters": { "chipId": "draft" } } ] },
+    "quickChipReady": { "chains": [ { "chain": "quickChipClick", "parameters": { "chipId": "ready" } } ] },
+    "quickChipCritical": { "chains": [ { "chain": "quickChipClick", "parameters": { "chipId": "critical" } } ] },
     "editRow": { "chains": [ { "chain": "editRow", "parameters": { "event": "{{ $event }}" } } ] },
     "savePlanLine": { "chains": [ { "chain": "savePlanLine" } ] },
     "deletePlanLine": { "chains": [ { "chain": "deletePlanLine" } ] },

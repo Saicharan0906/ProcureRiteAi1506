@@ -52,6 +52,22 @@
     <span><b>Manager:</b> <oj-bind-text value="[[ $variables.planHeader.projectManager ]]"></oj-bind-text></span>
     <span><b>Status:</b> <oj-bind-text value="[[ $variables.planHeader.status ]]"></oj-bind-text></span>
   </div>
+  <!-- Quick-filter chips with live counts (Redwood seeded-chip look, computed
+       client-side from the loaded plan lines — no OARS needed). Toggle to filter. -->
+  <div :style="[[ $variables.planHeader.projectNumber ? 'display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 10px;' : 'display:none;' ]]">
+    <div role="button" tabindex="0" on-click="[[ $listeners.quickChipDraft ]]"
+      :style="[[ 'display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:16px;cursor:pointer;font-size:0.82rem;font-weight:600;border:1px solid ' + ($variables.activeQuickChipId === 'draft' ? '#0a4a5e;background:#0a4a5e;color:#ffffff;' : '#cfd6dd;background:#f1f4f6;color:#3a4a5a;') ]]">
+      Draft <oj-bind-text value="[[ $variables.chipDraftCount ]]"></oj-bind-text>
+    </div>
+    <div role="button" tabindex="0" on-click="[[ $listeners.quickChipReady ]]"
+      :style="[[ 'display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:16px;cursor:pointer;font-size:0.82rem;font-weight:600;border:1px solid ' + ($variables.activeQuickChipId === 'ready' ? '#0a4a5e;background:#0a4a5e;color:#ffffff;' : '#cfd6dd;background:#f1f4f6;color:#3a4a5a;') ]]">
+      Ready for Procurement <oj-bind-text value="[[ $variables.chipReadyCount ]]"></oj-bind-text>
+    </div>
+    <div role="button" tabindex="0" on-click="[[ $listeners.quickChipCritical ]]"
+      :style="[[ 'display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:16px;cursor:pointer;font-size:0.82rem;font-weight:600;border:1px solid ' + ($variables.activeQuickChipId === 'critical' ? '#b3261e;background:#b3261e;color:#ffffff;' : '#cfd6dd;background:#f1f4f6;color:#3a4a5a;') ]]">
+      Critical <oj-bind-text value="[[ $variables.chipCriticalCount ]]"></oj-bind-text>
+    </div>
+  </div>
   <oj-sp-collection-container
     display-options.export="on"
     functional-primary-actions="[[ $variables.ccPrimaryActions ]]"

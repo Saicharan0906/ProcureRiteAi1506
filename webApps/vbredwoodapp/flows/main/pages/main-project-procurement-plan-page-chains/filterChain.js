@@ -117,8 +117,14 @@ define([
         $page.variables.lastProjectNumber = pn;
       }
 
+      // quick-filter chip counts (computed off the full project set, like the Redwood seeded chips)
+      const allRows = $page.variables.planLinesAllArray || [];
+      $page.variables.chipDraftCount = allRows.filter((r) => r.status === 'Draft').length;
+      $page.variables.chipReadyCount = allRows.filter((r) => r.status === 'Ready for Procurement').length;
+      $page.variables.chipCriticalCount = allRows.filter((r) => r.critical_flag === 'Yes').length;
+
       // client-side refine of the loaded project rows
-      let rows = [...($page.variables.planLinesAllArray || [])];
+      let rows = [...allRows];
       if (selected.businessUnit != null) rows = rows.filter((r) => matches(r.business_unit, selected.businessUnit));
       if (selected.itemCategory != null) rows = rows.filter((r) => matches(r.item_category, selected.itemCategory));
       if (selected.buyer != null) rows = rows.filter((r) => matches(r.buyer, selected.buyer));
@@ -129,6 +135,12 @@ define([
         const KW = ['item_number', 'item_desc', 'task_name', 'supplier'];
         rows = rows.filter((item) => words.some((w) => KW.some((f) => item[f] && String(item[f]).toLowerCase().includes(w))));
       }
+
+      // active quick-filter chip (applied on top of the smart-search filters)
+      const chip = $page.variables.activeQuickChipId;
+      if (chip === 'draft') rows = rows.filter((r) => r.status === 'Draft');
+      else if (chip === 'ready') rows = rows.filter((r) => r.status === 'Ready for Procurement');
+      else if (chip === 'critical') rows = rows.filter((r) => r.critical_flag === 'Yes');
 
       $page.variables.planLinesArray = rows;
     }
