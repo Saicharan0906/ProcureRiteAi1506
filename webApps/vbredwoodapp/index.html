@@ -48,9 +48,37 @@
       #planLinesTable .oj-table-column-header-cell {
         white-space: nowrap !important;
       }
+      /* Show the FULL header label (JET clips it by default). overflow:visible on the
+         label/text only - NOT the header internals - so the column layout is untouched. */
+      #planLinesTable .list-header-label,
+      #planLinesTable .oj-table-column-header-text {
+        overflow: visible !important;
+        text-overflow: clip !important;
+      }
       #planLinesTable .oj-table-data-cell {
         white-space: nowrap !important;
       }
+      /* Same header treatment for EVERY grid in the app (global, so any oj-table page —
+         Procurement Execution etc. — gets it). nowrap on the header cell + label + text;
+         overflow:visible + clip on the LABEL/TEXT only (never padding/margin on the cell or
+         sort-icon internals — that hides the columns). */
+      .list-header-label,
+      .oj-table-column-header-text,
+      .oj-table-column-header-cell {
+        white-space: nowrap !important;
+      }
+      .list-header-label,
+      .oj-table-column-header-text {
+        overflow: visible !important;
+        text-overflow: clip !important;
+      }
+      .oj-table-data-cell { white-space: nowrap !important; }
+      /* Execution status pills (defined here; page .css does not load). */
+      .pexec-status { display:inline-block; padding:3px 10px; border-radius:12px; font-size:0.78rem; font-weight:600; white-space:nowrap; }
+      .pexec-status-ready { background:#e8f0fe; color:#174ea6; }
+      .pexec-status-req   { background:#fef7e0; color:#8a6d00; }
+      .pexec-status-nego  { background:#f3e8fd; color:#6b21a8; }
+      .pexec-status-po    { background:#e6f4ea; color:#137333; }
       /* Comfortable left/right inset for the banner content (title / search / chips /
          Add Line), matching onboardrite's Programs page. The grid area (slot=main)
          above gets the same 32px so the table lines up under the title. */
@@ -70,6 +98,21 @@
         min-width: 100% !important;
         object-fit: fill !important;
       }
+      /* Quick-filter chips (Draft / Ready for Procurement / Critical). Defined here because
+         the page .css does not load and :style string bindings do not apply in this app;
+         class-based styling on light-DOM divs is reliable. */
+      .ppp-chiprow { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 32px 12px; align-items: center; }
+      .ppp-chiprow.is-hidden { display: none; }
+      .ppp-chip {
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 5px 12px; border-radius: 16px; cursor: pointer;
+        font-size: 0.82rem; font-weight: 600; line-height: 1.1;
+        border: 1px solid #cfd6dd; background: #f1f4f6; color: #3a4a5a;
+        user-select: none; white-space: nowrap;
+      }
+      .ppp-chip:hover { background: #e6ebef; }
+      .ppp-chip.is-active { background: #0a4a5e; border-color: #0a4a5e; color: #ffffff; }
+      .ppp-chip.is-active-critical { background: #b3261e; border-color: #b3261e; color: #ffffff; }
     </style>
   </head>
   <body class="oj-body oj-rw-unified-app oj-sp-theme-global-mode-GH oj-sp-theme-global-pt-erp oj-sp-theme-global-mode-mixed"

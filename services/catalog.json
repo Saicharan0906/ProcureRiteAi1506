@@ -11,6 +11,86 @@
                     }
                 }
             ]
+        },
+        "fa": {
+            "description": "Oracle Cloud Applications",
+            "serviceType": "fa-base",
+            "servers": [
+                {
+                    "url": "https://fa-etao-dev20-saasfademo1.ds-fa.oraclepdemos.com",
+                    "description": "Default Server",
+                    "x-vb": {
+                        "anonymousAccess": true,
+                        "authentication": {
+                            "authenticated": {
+                                "type": "basic",
+                                "credentials": "vb_8849d344-9fb0-4ef5-9d5f-eba45970a919"
+                            },
+                            "anonymous": {
+                                "type": "basic",
+                                "credentials": "vb_36237946-0a59-4fbb-ad75-330c10516458"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "crmRestApi": {
+            "description": "Sales and Service",
+            "serviceType": "adf-describe",
+            "transforms": {
+                "path": "vb/BusinessObjectsTransforms"
+            },
+            "headers": {
+                "REST-Framework-Version": "4"
+            },
+            "serviceTypeProperties": {
+                "faCatalogAppId": "REST-crmRestApp"
+            },
+            "servers": [
+                {
+                    "url": "vb-catalog://backends/fa/crmRestApi/resources",
+                    "description": "Default Server"
+                }
+            ]
+        },
+        "fscmRestApi": {
+            "description": "Enterprise Resource Planning and Supply Chain",
+            "serviceType": "adf-describe",
+            "transforms": {
+                "path": "vb/BusinessObjectsTransforms"
+            },
+            "headers": {
+                "REST-Framework-Version": "4"
+            },
+            "serviceTypeProperties": {
+                "faCatalogAppId": "REST-fscmRestApp"
+            },
+            "servers": [
+                {
+                    "url": "vb-catalog://backends/fa/fscmRestApi/resources",
+                    "description": "Default Server"
+                }
+            ]
+        },
+        "hcmRestApi": {
+            "description": "Human Capital Management",
+            "serviceType": "adf-describe",
+            "transforms": {
+                "path": "vb/BusinessObjectsTransforms"
+            },
+            "headers": {
+                "REST-Framework-Version": "4"
+            },
+            "serviceTypeProperties": {
+                "faCatalogAppId": "REST-hcmRestApp"
+            },
+            "servers": [
+                {
+                    "url": "vb-catalog://backends/fa/hcmRestApi/resources",
+                    "description": "Default Server"
+                }
+            ]
         }
     }
 }

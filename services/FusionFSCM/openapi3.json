@@ -1,0 +1,251 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Oracle Fusion FSCM REST (ProcureRite LOVs)",
+    "version": "11.13.18.05",
+    "description": "Direct Oracle Fusion (fscmRestApi) resources used by ProcureRite for master/reference LOVs. Uses the existing fscmRestApi backend (vb-catalog://backends/fscmRestApi -> fa)."
+  },
+  "servers": [
+    { "url": "vb-catalog://backends/fscmRestApi" }
+  ],
+  "paths": {
+    "/11.13.18.05/projects": {
+      "get": {
+        "operationId": "getProjects",
+        "summary": "Projects",
+        "parameters": [
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 500 } },
+          { "name": "offset", "in": "query", "schema": { "type": "integer" } },
+          { "name": "q", "in": "query", "schema": { "type": "string" } },
+          { "name": "fields", "in": "query", "schema": { "type": "string" } },
+          { "name": "onlyData", "in": "query", "schema": { "type": "boolean", "default": true } }
+        ],
+        "responses": { "200": { "description": "Projects", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ItemsResponse" } } } } }
+      }
+    },
+    "/11.13.18.05/itemsV2": {
+      "get": {
+        "operationId": "getItems",
+        "summary": "Item master (requires a q finder, e.g. ItemNumber LIKE 'A%')",
+        "parameters": [
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 50 } },
+          { "name": "q", "in": "query", "schema": { "type": "string" } },
+          { "name": "fields", "in": "query", "schema": { "type": "string" } },
+          { "name": "expand", "in": "query", "schema": { "type": "string" } },
+          { "name": "onlyData", "in": "query", "schema": { "type": "boolean", "default": true } }
+        ],
+        "responses": { "200": { "description": "Items", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ItemsResponse" } } } } }
+      }
+    },
+    "/11.13.18.05/suppliers": {
+      "get": {
+        "operationId": "getSuppliers",
+        "summary": "Supplier master",
+        "parameters": [
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 100 } },
+          { "name": "q", "in": "query", "schema": { "type": "string" } },
+          { "name": "fields", "in": "query", "schema": { "type": "string" } },
+          { "name": "onlyData", "in": "query", "schema": { "type": "boolean", "default": true } }
+        ],
+        "responses": { "200": { "description": "Suppliers", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ItemsResponse" } } } } }
+      }
+    },
+    "/11.13.18.05/procurementAgents": {
+      "get": {
+        "operationId": "getProcurementAgents",
+        "summary": "Buyers / procurement agents",
+        "parameters": [
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 500 } },
+          { "name": "q", "in": "query", "schema": { "type": "string" } },
+          { "name": "fields", "in": "query", "schema": { "type": "string" } },
+          { "name": "onlyData", "in": "query", "schema": { "type": "boolean", "default": true } }
+        ],
+        "responses": { "200": { "description": "Agents", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ItemsResponse" } } } } }
+      }
+    },
+    "/11.13.18.05/currenciesLOV": {
+      "get": {
+        "operationId": "getCurrencies",
+        "summary": "Currencies",
+        "parameters": [
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 300 } },
+          { "name": "fields", "in": "query", "schema": { "type": "string" } },
+          { "name": "onlyData", "in": "query", "schema": { "type": "boolean", "default": true } }
+        ],
+        "responses": { "200": { "description": "Currencies", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ItemsResponse" } } } } }
+      }
+    },
+    "/11.13.18.05/expenditureTypesLOV": {
+      "get": {
+        "operationId": "getExpenditureTypes",
+        "summary": "Expenditure types",
+        "parameters": [
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 300 } },
+          { "name": "fields", "in": "query", "schema": { "type": "string" } },
+          { "name": "onlyData", "in": "query", "schema": { "type": "boolean", "default": true } }
+        ],
+        "responses": { "200": { "description": "Expenditure types", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ItemsResponse" } } } } }
+      }
+    },
+    "/11.13.18.05/inventoryOrganizationsLOV": {
+      "get": {
+        "operationId": "getInventoryOrgs",
+        "summary": "Inventory organizations",
+        "parameters": [
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 350 } },
+          { "name": "q", "in": "query", "schema": { "type": "string" } },
+          { "name": "fields", "in": "query", "schema": { "type": "string" } },
+          { "name": "onlyData", "in": "query", "schema": { "type": "boolean", "default": true } }
+        ],
+        "responses": { "200": { "description": "Inventory orgs", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ItemsResponse" } } } } }
+      }
+    },
+    "/11.13.18.05/unitsOfMeasure": {
+      "get": {
+        "operationId": "getUnitsOfMeasure",
+        "summary": "Units of measure",
+        "parameters": [
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 200 } },
+          { "name": "fields", "in": "query", "schema": { "type": "string" } },
+          { "name": "onlyData", "in": "query", "schema": { "type": "boolean", "default": true } }
+        ],
+        "responses": { "200": { "description": "UOM", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ItemsResponse" } } } } }
+      }
+    },
+    "/11.13.18.05/purchasingLineTypesLOV": {
+      "get": {
+        "operationId": "getLineTypes",
+        "summary": "Purchasing line types",
+        "parameters": [
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 100 } },
+          { "name": "fields", "in": "query", "schema": { "type": "string" } },
+          { "name": "onlyData", "in": "query", "schema": { "type": "boolean", "default": true } }
+        ],
+        "responses": { "200": { "description": "Line types", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ItemsResponse" } } } } }
+      }
+    },
+    "/11.13.18.05/itemCategories": {
+      "get": {
+        "operationId": "getItemCategories",
+        "summary": "Item categories (filter by CatalogCode, e.g. Purchasing)",
+        "parameters": [
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 500 } },
+          { "name": "q", "in": "query", "schema": { "type": "string" } },
+          { "name": "fields", "in": "query", "schema": { "type": "string" } },
+          { "name": "onlyData", "in": "query", "schema": { "type": "boolean", "default": true } }
+        ],
+        "responses": { "200": { "description": "Item categories", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ItemsResponse" } } } } }
+      }
+    },
+    "/11.13.18.05/purchaseRequisitions": {
+      "post": {
+        "operationId": "createRequisition",
+        "summary": "Create a purchase requisition (header + lines + project DFF distributions)",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } }
+        },
+        "responses": {
+          "default": {
+            "description": "Created requisition",
+            "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } }
+          }
+        },
+        "x-vb": { "actionHint": "create" }
+      }
+    },
+    "/11.13.18.05/draftPurchaseOrders": {
+      "post": {
+        "operationId": "createPurchaseOrder",
+        "summary": "Create a draft purchase order (header + lines + schedules + project DFF distributions)",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } }
+        },
+        "responses": {
+          "default": {
+            "description": "Created draft PO",
+            "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } }
+          }
+        },
+        "x-vb": { "actionHint": "create" }
+      }
+    },
+    "/11.13.18.05/supplierNegotiations/action/CreateNegotiationFromTemplate": {
+      "post": {
+        "operationId": "createNegotiation",
+        "summary": "Create a supplier negotiation (RFQ/auction) from a template",
+        "requestBody": {
+          "required": true,
+          "content": { "application/vnd.oracle.adf.action+json": { "schema": { "type": "object", "additionalProperties": true } } }
+        },
+        "responses": {
+          "default": { "description": "Created negotiation", "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } }
+        },
+        "x-vb": { "actionHint": "create" }
+      }
+    },
+    "/11.13.18.05/supplierNegotiations/{AuctionHeaderId}": {
+      "parameters": [
+        { "name": "AuctionHeaderId", "in": "path", "required": true, "schema": { "type": "string" } }
+      ],
+      "patch": {
+        "operationId": "updateNegotiation",
+        "summary": "Update a negotiation header (title / open + close dates)",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } }
+        },
+        "responses": {
+          "default": { "description": "Updated negotiation", "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } }
+        },
+        "x-vb": { "actionHint": "update" }
+      }
+    },
+    "/11.13.18.05/supplierNegotiations/{AuctionHeaderId}/child/lines": {
+      "parameters": [
+        { "name": "AuctionHeaderId", "in": "path", "required": true, "schema": { "type": "string" } }
+      ],
+      "post": {
+        "operationId": "addNegotiationLine",
+        "summary": "Add a line to a negotiation",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } }
+        },
+        "responses": {
+          "default": { "description": "Added line", "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } }
+        },
+        "x-vb": { "actionHint": "create" }
+      }
+    },
+    "/11.13.18.05/projects/{ProjectId}/child/Tasks": {
+      "get": {
+        "operationId": "getProjectTasks",
+        "summary": "Tasks for a project (work-plan tasks child)",
+        "parameters": [
+          { "name": "ProjectId", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 500 } },
+          { "name": "q", "in": "query", "schema": { "type": "string" } },
+          { "name": "fields", "in": "query", "schema": { "type": "string" } },
+          { "name": "onlyData", "in": "query", "schema": { "type": "boolean", "default": true } }
+        ],
+        "responses": { "200": { "description": "Project tasks", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ItemsResponse" } } } } }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ItemsResponse": {
+        "type": "object",
+        "properties": {
+          "items": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+          "count": { "type": "integer" },
+          "hasMore": { "type": "boolean" },
+          "limit": { "type": "integer" },
+          "offset": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

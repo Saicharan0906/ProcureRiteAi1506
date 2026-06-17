@@ -1,76 +1,103 @@
 {
   "title": "Procurement Execution",
-  "description": "Generate requisitions, purchase orders and negotiations from ready plan lines. Rebuilt fresh on Redwood. Data is mock placeholder pending ORDS/Fusion wiring.",
+  "description": "Create requisitions, POs and negotiations from ready plan lines. Project LOV + BU/Org cascade from direct Fusion REST (ORDS fallback); execution lines from ORDS getPDSCExecuteDetails. Mirrors the Project Procurement Plan page.",
   "variables": {
     "pageTitle": { "type": "string", "defaultValue": "Procurement Execution" },
     "pageSubtitle": { "type": "string", "defaultValue": "Create requisitions, POs and negotiations from ready plan lines" },
-    "contextualInfo": {
-      "type": "any[]",
-      "defaultValue": [
-        { "label": "Total Lines", "value": "6" },
-        { "label": "Ready", "value": "3" },
-        { "label": "Requisitioned", "value": "2" },
-        { "label": "PO Created", "value": "1" }
-      ]
-    },
-    "badge": { "type": "object", "defaultValue": { "text": "Execution", "status": "info" } },
+
     "secondaryActions": {
       "type": "object[]",
       "defaultValue": [
-        { "id": "purchaseRequisition", "label": "Purchase Requisition", "icon": "oj-ux-ico-purchase-request", "display": "on" },
-        { "id": "purchaseOrder", "label": "Purchase Order", "icon": "oj-ux-ico-purchase-order", "display": "on" },
-        { "id": "negotiation", "label": "Negotiation", "icon": "oj-ux-ico-contract", "display": "on" }
+        { "id": "purchaseRequisition", "label": "Purchase Requisition", "display": "on" },
+        { "id": "purchaseOrder", "label": "Purchase Order", "display": "on" },
+        { "id": "negotiation", "label": "Negotiation", "display": "on" },
+        { "id": "initiateSupplyPlan", "label": "Initiate Supply Plan", "display": "on" }
       ]
     },
+
     "planHeader": {
       "type": "object",
-      "defaultValue": { "projectName": "", "businessUnit": "", "projectOrg": "", "status": "", "projectManager": "" }
+      "defaultValue": { "projectNumber": "", "projectName": "", "businessUnit": "", "projectOrg": "", "status": "", "projectManager": "", "projectId": null, "buId": null, "orgId": null }
     },
     "lastProjectNumber": { "type": "string", "defaultValue": "" },
-    "projectMeta": {
+    "selectedKeys": { "type": "any" },
+
+    "prDrawerOpen": { "type": "boolean", "defaultValue": false },
+    "prSaving": { "type": "boolean", "defaultValue": false },
+    "prForm": {
       "type": "object",
-      "defaultValue": {
-        "P012025": { "projectName": "Pinnacle Park Project", "businessUnits": ["US1 Business Unit"], "orgs": ["Consulting US"], "status": "In Execution", "projectManager": "Rite Developer" },
-        "P012026": { "projectName": "Riverside Expansion", "businessUnits": ["US1 Business Unit", "UK Business Unit"], "orgs": ["OAK PPM", "Consulting US"], "status": "In Execution", "projectManager": "A. Kumar" }
-      }
+      "defaultValue": { "preparerId": null, "preparer": "", "requesterId": null, "requester": "", "destinationId": null, "destinationorgname": "" }
     },
-
-    "projectNumberArray": { "type": "any[]", "defaultValue": [
-      { "value": "P012025", "label": "P012025" }, { "value": "P012026", "label": "P012026" } ] },
-    "projectNumberADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
-      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.projectNumberArray }}" } },
-
-    "businessUnitArray": { "type": "any[]", "defaultValue": [
-      { "value": "US1 Business Unit", "label": "US1 Business Unit" }, { "value": "UK Business Unit", "label": "UK Business Unit" } ] },
-    "businessUnitADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
-      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.businessUnitArray }}" } },
-
-    "projectOrgArray": { "type": "any[]", "defaultValue": [
-      { "value": "Consulting US", "label": "Consulting US" }, { "value": "OAK PPM", "label": "OAK PPM" } ] },
-    "projectOrgADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
-      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.projectOrgArray }}" } },
-
-    "criticalOptionsArray": { "type": "any[]", "defaultValue": [
-      { "value": "Yes", "label": "Yes" }, { "value": "No", "label": "No" } ] },
-    "criticalOptionsADP": { "type": "vb/ArrayDataProvider2", "defaultValue": {
-      "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.criticalOptionsArray }}" } },
-
-    "execLinesArray": {
-      "type": "any[]",
-      "defaultValue": [
-        { "id": 1, "planLineNumber": 214, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "Yes", "lineType": "Goods", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "uom": "Ea", "plannedQuantity": 30, "orderQuantity": 30, "currency": "USD", "documentNumber": "REQ-100245", "status": "Requisitioned" },
-        { "id": 2, "planLineNumber": 215, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "No", "lineType": "Goods", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "uom": "Ea", "plannedQuantity": 40, "orderQuantity": 0, "currency": "USD", "documentNumber": "", "status": "Ready" },
-        { "id": 3, "planLineNumber": 216, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "Yes", "lineType": "Goods", "itemNumber": "AS00106", "itemDescription": "Alliance 7 Pro", "itemCategory": "Software.Server", "uom": "Ea", "plannedQuantity": 55, "orderQuantity": 55, "currency": "USD", "documentNumber": "PO-US165224", "status": "PO Created" },
-        { "id": 4, "planLineNumber": 217, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "No", "lineType": "Goods", "itemNumber": "AS00107", "itemDescription": "Alliance 7 Ultimate", "itemCategory": "Software.Server", "uom": "Ea", "plannedQuantity": 10, "orderQuantity": 0, "currency": "USD", "documentNumber": "", "status": "Ready" },
-        { "id": 5, "planLineNumber": 218, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "No", "lineType": "Goods", "itemNumber": "AS00103", "itemDescription": "Blue Hat Enterprise", "itemCategory": "Hardware.Network", "uom": "Ea", "plannedQuantity": 6, "orderQuantity": 6, "currency": "USD", "documentNumber": "RFQ-50012", "status": "Negotiation" },
-        { "id": 6, "planLineNumber": 219, "projectNumber": "P012025", "businessUnit": "US1 Business Unit", "projectOrg": "Consulting US", "critical": "No", "lineType": "Goods", "itemNumber": "AS00110", "itemDescription": "Edge Router X", "itemCategory": "Hardware.Network", "uom": "Ea", "plannedQuantity": 12, "orderQuantity": 12, "currency": "USD", "documentNumber": "REQ-100250", "status": "Requisitioned" }
-      ]
+    "prLinesArray": { "type": "any[]", "defaultValue": [] },
+    "prLinesADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": { "itemType": "any", "keyAttributes": "execute_id", "data": "{{ $page.variables.prLinesArray }}" }
     },
+    "personArray": { "type": "any[]", "defaultValue": [] },
+    "personADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "person_id", "data": "{{ $page.variables.personArray }}" } },
+    "destOrgArray": { "type": "any[]", "defaultValue": [] },
+    "destOrgADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "organization_id", "data": "{{ $page.variables.destOrgArray }}" } },
+    "prLovsLoadedFor": { "type": "string", "defaultValue": "" },
+
+    "poDrawerOpen": { "type": "boolean", "defaultValue": false },
+    "poSaving": { "type": "boolean", "defaultValue": false },
+    "poForm": {
+      "type": "object",
+      "defaultValue": { "currencyCode": "", "buyer": "", "billToLocation": "", "supplier": "", "supplierSite": "", "supplierEmailAddress": "" }
+    },
+    "poLinesArray": { "type": "any[]", "defaultValue": [] },
+    "poLinesADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "execute_id", "data": "{{ $page.variables.poLinesArray }}" } },
+    "poCurrencyArray": { "type": "any[]", "defaultValue": [] },
+    "poCurrencyADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "CurrencyCode", "data": "{{ $page.variables.poCurrencyArray }}" } },
+    "poBuyerArray": { "type": "any[]", "defaultValue": [] },
+    "poBuyerADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "Agent", "data": "{{ $page.variables.poBuyerArray }}" } },
+    "poBillToArray": { "type": "any[]", "defaultValue": [] },
+    "poBillToADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "OrganizationName", "data": "{{ $page.variables.poBillToArray }}" } },
+    "poSupplierArray": { "type": "any[]", "defaultValue": [] },
+    "poSupplierADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "vendor_name", "data": "{{ $page.variables.poSupplierArray }}" } },
+    "poSiteArray": { "type": "any[]", "defaultValue": [] },
+    "poSiteADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "vendor_site_code", "data": "{{ $page.variables.poSiteArray }}" } },
+    "poEmailArray": { "type": "any[]", "defaultValue": [] },
+    "poEmailADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "supplier_email_address", "data": "{{ $page.variables.poEmailArray }}" } },
+    "poLovsLoadedFor": { "type": "string", "defaultValue": "" },
+
+    "negDrawerOpen": { "type": "boolean", "defaultValue": false },
+    "negSaving": { "type": "boolean", "defaultValue": false },
+    "negForm": {
+      "type": "object",
+      "defaultValue": { "negotiationType": "", "negotiationStyle": "", "negotiationTemplate": "", "negotiationCurrency": "", "buyer": "", "title": "", "opendate": "", "closedate": "", "notetoSupplier": "" }
+    },
+    "negLinesArray": { "type": "any[]", "defaultValue": [] },
+    "negLinesADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "execute_id", "data": "{{ $page.variables.negLinesArray }}" } },
+    "negTypeArray": { "type": "any[]", "defaultValue": [] },
+    "negTypeADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "negotiation_display_name", "data": "{{ $page.variables.negTypeArray }}" } },
+    "negStyleArray": { "type": "any[]", "defaultValue": [] },
+    "negStyleADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "style_name", "data": "{{ $page.variables.negStyleArray }}" } },
+    "negTemplateArray": { "type": "any[]", "defaultValue": [] },
+    "negTemplateADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "auction_title", "data": "{{ $page.variables.negTemplateArray }}" } },
+    "negCurrencyArray": { "type": "any[]", "defaultValue": [] },
+    "negCurrencyADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "CurrencyCode", "data": "{{ $page.variables.negCurrencyArray }}" } },
+    "negBuyerArray": { "type": "any[]", "defaultValue": [] },
+    "negBuyerADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "Agent", "data": "{{ $page.variables.negBuyerArray }}" } },
+    "negLovsLoadedFor": { "type": "string", "defaultValue": "" },
+
+    "execLinesArray": { "type": "any[]", "defaultValue": [] },
     "execLinesAllArray": { "type": "any[]", "defaultValue": [] },
     "execLinesADP": {
       "type": "vb/ArrayDataProvider2",
-      "defaultValue": { "itemType": "any", "keyAttributes": "id", "data": "{{ $page.variables.execLinesArray }}" }
+      "defaultValue": { "itemType": "any", "keyAttributes": "execute_id", "data": "{{ $page.variables.execLinesArray }}" }
     },
+
+    "projectNumberArray": { "type": "any[]", "defaultValue": [] },
+    "projectNumberADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.projectNumberArray }}" } },
+    "businessUnitArray": { "type": "any[]", "defaultValue": [] },
+    "businessUnitADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.businessUnitArray }}" } },
+    "projectOrgArray": { "type": "any[]", "defaultValue": [] },
+    "projectOrgADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.projectOrgArray }}" } },
+    "itemCategoryArray": { "type": "any[]", "defaultValue": [] },
+    "itemCategoryADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.itemCategoryArray }}" } },
+    "criticalOptionsArray": { "type": "any[]", "defaultValue": [ { "value": "Yes", "label": "Yes" }, { "value": "No", "label": "No" } ] },
+    "criticalOptionsADP": { "type": "vb/ArrayDataProvider2", "defaultValue": { "itemType": "any", "keyAttributes": "value", "data": "{{ $page.variables.criticalOptionsArray }}" } },
 
     "filterCriterion": { "type": "any" },
     "searchConfiguration": {
@@ -82,14 +109,11 @@
       "defaultValue": {
         "$search": {
           "filters": {
-            "ProjectNumberFilter": { "label": "Project Number", "options": {
-              "optionsData": "[[ $page.variables.projectNumberADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
-            "BusinessUnitFilter": { "label": "Business Unit", "options": {
-              "optionsData": "[[ $page.variables.businessUnitADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
-            "ProjectOrgFilter": { "label": "Project Organization", "options": {
-              "optionsData": "[[ $page.variables.projectOrgADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
-            "CriticalFilter": { "label": "Critical", "options": {
-              "optionsData": "[[ $page.variables.criticalOptionsADP ]]", "optionsKeys": { "label": "label", "value": "value" } } }
+            "ProjectNumberFilter": { "label": "Project Number", "options": { "optionsData": "[[ $page.variables.projectNumberADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "BusinessUnitFilter": { "label": "Business Unit", "options": { "optionsData": "[[ $page.variables.businessUnitADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "ProjectOrgFilter": { "label": "Project Organization", "options": { "optionsData": "[[ $page.variables.projectOrgADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "ItemCategoryFilter": { "label": "Item Category", "options": { "optionsData": "[[ $page.variables.itemCategoryADP ]]", "optionsKeys": { "label": "label", "value": "value" } } },
+            "CriticalFilter": { "label": "Critical", "options": { "optionsData": "[[ $page.variables.criticalOptionsADP ]]", "optionsKeys": { "label": "label", "value": "value" } } }
           }
         }
       }
@@ -104,10 +128,21 @@
   },
   "eventListeners": {
     "vbEnter": { "chains": [ { "chain": "vbEnterChain" } ] },
-    "spGoToParent": { "chains": [ { "chainId": "goToParentChain" } ] },
-    "spPrimaryAction": { "chains": [ { "chainId": "primaryActionChain" } ] },
-    "spSecondaryAction": { "chains": [ { "chainId": "secondaryActionChain", "parameters": { "detail": "{{ $event.detail }}" } } ] },
-    "filterCriterionChanged": { "chains": [ { "chain": "filterChain" } ] }
+    "goToParentChain": { "chains": [ { "chain": "goToParentChain" } ] },
+    "primaryActionChain": { "chains": [ { "chain": "primaryActionChain" } ] },
+    "secondaryActionChain": { "chains": [ { "chain": "secondaryActionChain", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "filterCriterionChanged": { "chains": [ { "chain": "filterChain" } ] },
+    "createRequisition": { "chains": [ { "chain": "createRequisition" } ] },
+    "closePrDrawer": { "chains": [ { "chain": "closePrDrawer" } ] },
+    "prPreparerChanged": { "chains": [ { "chain": "prPreparerChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "prRequesterChanged": { "chains": [ { "chain": "prRequesterChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "prDestOrgChanged": { "chains": [ { "chain": "prDestOrgChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "createPurchaseOrder": { "chains": [ { "chain": "createPurchaseOrder" } ] },
+    "closePoDrawer": { "chains": [ { "chain": "closePoDrawer" } ] },
+    "poSupplierChanged": { "chains": [ { "chain": "poSupplierChanged", "parameters": { "detail": "{{ $event.detail }}" } } ] },
+    "createNegotiation": { "chains": [ { "chain": "createNegotiation" } ] },
+    "closeNegDrawer": { "chains": [ { "chain": "closeNegDrawer" } ] },
+    "negTypeStyleChanged": { "chains": [ { "chain": "negTemplateCascade" } ] }
   },
   "imports": {
     "components": {
@@ -115,7 +150,14 @@
       "oj-sp-smart-search": { "path": "oj-sp/smart-search/loader" },
       "oj-table": { "path": "ojs/ojtable" },
       "oj-bind-text": { "path": "ojs/ojknockout" },
-      "oj-bind-if": { "path": "ojs/ojknockout" }
+      "oj-bind-if": { "path": "ojs/ojknockout" },
+      "oj-drawer-popup": { "path": "ojs/ojdrawerpopup" },
+      "oj-form-layout": { "path": "ojs/ojformlayout" },
+      "oj-select-single": { "path": "ojs/ojselectsingle" },
+      "oj-input-text": { "path": "ojs/ojinputtext" },
+      "oj-input-number": { "path": "ojs/ojinputnumber" },
+      "oj-input-date": { "path": "ojs/ojdatetimepicker" },
+      "oj-button": { "path": "ojs/ojbutton" }
     }
   }
 }
