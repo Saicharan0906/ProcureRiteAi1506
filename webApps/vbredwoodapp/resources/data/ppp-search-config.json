@@ -50,6 +50,12 @@
         "optionsKeys": "[[ $search.filters.BuyerFilter.options.optionsKeys ]]"
       },
       "data": {}
+    },
+    "RequestedDateFilter": {
+      "type": "oj-sp/smart-search/default-filters/DateRangeFilter",
+      "label": "Requested Delivery Date",
+      "options": { "field": "requested_delivery_date", "min": "2000-01-01", "max": "2035-12-31" },
+      "data": {}
     }
   }
 }

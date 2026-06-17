@@ -55,6 +55,7 @@
     "ccSecondaryActions": {
       "type": "object[]",
       "defaultValue": [
+        { "id": "refresh", "label": "Refresh", "icon": "oj-ux-ico-refresh", "display": "on" },
         { "id": "import", "label": "Import", "display": "on" },
         { "id": "gantt", "label": "Gantt", "display": "on" }
       ]

@@ -113,6 +113,16 @@
       .ppp-chip:hover { background: #e6ebef; }
       .ppp-chip.is-active { background: #0a4a5e; border-color: #0a4a5e; color: #ffffff; }
       .ppp-chip.is-active-critical { background: #b3261e; border-color: #b3261e; color: #ffffff; }
+      /* KPI summary band (Oracle "Import and Load Data" metrics-strip pattern): a row of
+         info cards separated by vertical dividers, sitting at the TOP of the content card
+         above the quick-filter chips. Defined here because the page .css does not load. */
+      .ppp-kpi-row { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; padding: 16px 32px 4px; }
+      .ppp-kpi-row.is-hidden { display: none; }
+      .ppp-kpi-card { padding: 2px 28px; border-right: 1px solid #e5e7eb; min-width: 120px; }
+      .ppp-kpi-card:first-child { padding-left: 0; }
+      .ppp-kpi-card:last-child { border-right: none; }
+      .ppp-kpi-label { font-size: 0.82rem; color: #5a6b7b; margin-bottom: 6px; white-space: nowrap; }
+      .ppp-kpi-value { font-size: 1.5rem; font-weight: 700; color: #1f2937; line-height: 1.05; white-space: nowrap; }
     </style>
   </head>
   <body class="oj-body oj-rw-unified-app oj-sp-theme-global-mode-GH oj-sp-theme-global-pt-erp oj-sp-theme-global-mode-mixed"

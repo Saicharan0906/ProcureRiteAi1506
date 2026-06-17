@@ -43,28 +43,37 @@
        L/R margin is the side GAP that shows the teal banner beside the card; rounded
        top corners + soft shadow give the elevated onboardrite look. -->
   <div style="margin:8px 16px 0 16px;border-radius:12px 12px 0 0;box-shadow:0 1px 14px rgba(0,0,0,0.12);background:#ffffff;overflow:hidden;min-width:0;box-sizing:border-box;">
-  <!-- Project context strip — shows the selected project header once a Project Number
-       is chosen in the smart search (populated by filterChain from getPDSCGetProjectByBU). -->
-  <div :style="[[ $variables.planHeader.projectNumber ? 'display:flex;flex-wrap:wrap;gap:8px 28px;padding:12px 16px 4px;font-size:0.85rem;color:#3a4a5a;' : 'display:none;' ]]">
-    <span><b>Project:</b> <oj-bind-text value="[[ $variables.planHeader.projectName ]]"></oj-bind-text></span>
-    <span><b>Business Unit:</b> <oj-bind-text value="[[ $variables.planHeader.businessUnit ]]"></oj-bind-text></span>
-    <span><b>Project Org:</b> <oj-bind-text value="[[ $variables.planHeader.projectOrg ]]"></oj-bind-text></span>
-    <span><b>Manager:</b> <oj-bind-text value="[[ $variables.planHeader.projectManager ]]"></oj-bind-text></span>
-    <span><b>Status:</b> <oj-bind-text value="[[ $variables.planHeader.status ]]"></oj-bind-text></span>
+  <!-- KPI summary band (Oracle "Import and Load Data" metrics strip): at-a-glance totals at
+       the TOP of the card, above the quick chips. Info-only; the chips below are the filters. -->
+  <div class="ppp-kpi-row" :class.is-hidden="[[ !$variables.planHeader.projectNumber ]]">
+    <div class="ppp-kpi-card">
+      <div class="ppp-kpi-label">Total Lines</div>
+      <div class="ppp-kpi-value"><oj-bind-text value="[[ ($variables.planLinesAllArray || []).length ]]"></oj-bind-text></div>
+    </div>
+    <div class="ppp-kpi-card">
+      <div class="ppp-kpi-label">Ready for Procurement</div>
+      <div class="ppp-kpi-value"><oj-bind-text value="[[ $variables.chipReadyCount ]]"></oj-bind-text></div>
+    </div>
+    <div class="ppp-kpi-card">
+      <div class="ppp-kpi-label">Critical</div>
+      <div class="ppp-kpi-value"><oj-bind-text value="[[ $variables.chipCriticalCount ]]"></oj-bind-text></div>
+    </div>
+    <div class="ppp-kpi-card">
+      <div class="ppp-kpi-label">Planned Value</div>
+      <div class="ppp-kpi-value"><oj-bind-text value="[[ $functions.formatCurrency($functions.kpiSum($variables.planLinesAllArray, 'planned_cost'), 'USD') ]]"></oj-bind-text></div>
+    </div>
   </div>
-  <!-- Quick-filter chips with live counts (Redwood seeded-chip look, computed
-       client-side from the loaded plan lines — no OARS needed). Toggle to filter. -->
-  <div :style="[[ $variables.planHeader.projectNumber ? 'display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 10px;' : 'display:none;' ]]">
-    <div role="button" tabindex="0" on-click="[[ $listeners.quickChipDraft ]]"
-      :style="[[ 'display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:16px;cursor:pointer;font-size:0.82rem;font-weight:600;border:1px solid ' + ($variables.activeQuickChipId === 'draft' ? '#0a4a5e;background:#0a4a5e;color:#ffffff;' : '#cfd6dd;background:#f1f4f6;color:#3a4a5a;') ]]">
+
+  <!-- Quick-filter chips with live counts — placed at the TOP of the card, right under the
+       "Project Procurement Plan" title. Toggle to filter the grid. -->
+  <div class="ppp-chiprow" style="padding-top:12px" :class.is-hidden="[[ !$variables.planHeader.projectNumber ]]">
+    <div role="button" tabindex="0" class="ppp-chip" :class.is-active="[[ $variables.activeQuickChipId === 'draft' ]]" on-click="[[ $listeners.quickChipDraft ]]">
       Draft <oj-bind-text value="[[ $variables.chipDraftCount ]]"></oj-bind-text>
     </div>
-    <div role="button" tabindex="0" on-click="[[ $listeners.quickChipReady ]]"
-      :style="[[ 'display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:16px;cursor:pointer;font-size:0.82rem;font-weight:600;border:1px solid ' + ($variables.activeQuickChipId === 'ready' ? '#0a4a5e;background:#0a4a5e;color:#ffffff;' : '#cfd6dd;background:#f1f4f6;color:#3a4a5a;') ]]">
+    <div role="button" tabindex="0" class="ppp-chip" :class.is-active="[[ $variables.activeQuickChipId === 'ready' ]]" on-click="[[ $listeners.quickChipReady ]]">
       Ready for Procurement <oj-bind-text value="[[ $variables.chipReadyCount ]]"></oj-bind-text>
     </div>
-    <div role="button" tabindex="0" on-click="[[ $listeners.quickChipCritical ]]"
-      :style="[[ 'display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:16px;cursor:pointer;font-size:0.82rem;font-weight:600;border:1px solid ' + ($variables.activeQuickChipId === 'critical' ? '#b3261e;background:#b3261e;color:#ffffff;' : '#cfd6dd;background:#f1f4f6;color:#3a4a5a;') ]]">
+    <div role="button" tabindex="0" class="ppp-chip" :class.is-active-critical="[[ $variables.activeQuickChipId === 'critical' ]]" on-click="[[ $listeners.quickChipCritical ]]">
       Critical <oj-bind-text value="[[ $variables.chipCriticalCount ]]"></oj-bind-text>
     </div>
   </div>
@@ -80,7 +89,7 @@
     <oj-table
       id="planLinesTable"
       data="[[ $variables.planLinesADP ]]"
-      style="width:calc(100vw - 64px);height:calc(100vh - 420px);min-height:300px;"
+      style="width:calc(100vw - 64px);height:calc(100vh - 300px);min-height:460px;"
       horizontal-grid-visible="enabled"
       vertical-grid-visible="disabled"
       scroll-policy="loadMoreOnScroll"
@@ -89,6 +98,7 @@
       selected.row="{{ $variables.selectedKeys }}"
       first-selected-row="{{ $variables.firstSelectedRow }}"
       columns='[
+        {"headerText": "Actions",        "template": "actionsTemplate","headerClassName": "list-header-label", "width": 90, "sortable": "disabled", "frozenEdge": "start"},
         {"headerText": "Line #",         "field": "line_number",      "headerClassName": "list-header-label", "width": 120},
         {"headerText": "Critical",       "template": "criticalTemplate", "headerClassName": "list-header-label", "width": 120},
         {"headerText": "Line Type",      "field": "line_type",        "headerClassName": "list-header-label", "width": 140},
@@ -101,8 +111,7 @@
         {"headerText": "Planned Cost",   "template": "costTemplate", "headerClassName": "list-header-label", "width": 160},
         {"headerText": "Buyer",          "field": "buyer",            "headerClassName": "list-header-label", "width": 170},
         {"headerText": "Supplier",       "field": "supplier",         "headerClassName": "list-header-label", "width": 160},
-        {"headerText": "Status",         "template": "statusTemplate","headerClassName": "list-header-label", "width": 180},
-        {"headerText": "",               "template": "actionsTemplate","headerClassName": "list-header-label", "width": 90, "sortable": "disabled"}
+        {"headerText": "Status",         "template": "statusTemplate","headerClassName": "list-header-label", "width": 180}
       ]'>
 
       <template slot="criticalTemplate" data-oj-as="cell">
@@ -156,7 +165,7 @@
        task -> dates) run client-side; constant lists (Line Type / Destination / Strategy /
        Critical) are static. Save -> postPDSCPlanDetails; Delete (edit only) ->
        deletePDSCPlanDetails. ═══ -->
-  <oj-drawer-popup edge="end" opened="{{ $variables.drawerOpen }}" style="width: min(560px, 100vw);">
+  <oj-drawer-popup edge="end" opened="{{ $variables.drawerOpen }}" style="width: min(820px, 100vw);">
     <div class="oj-flex oj-sm-flex-direction-column" style="height:100%;overflow:hidden;">
 
       <div class="oj-flex oj-sm-align-items-center oj-sm-justify-content-space-between"

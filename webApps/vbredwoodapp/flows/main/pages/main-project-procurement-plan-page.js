@@ -9,6 +9,18 @@ define([], function () {
     return (currency || 'USD') + ' ' + Number(amount).toLocaleString();
   };
 
+  // Sum a numeric field across the rows array (for the KPI "Planned Value" card). Reactive:
+  // re-evaluates whenever the bound planLinesAllArray changes.
+  PageModule.prototype.kpiSum = function (arr, field) {
+    if (!arr || !arr.length) return 0;
+    var total = 0;
+    for (var i = 0; i < arr.length; i++) {
+      var v = Number(arr[i] && arr[i][field]);
+      if (!isNaN(v)) total += v;
+    }
+    return total;
+  };
+
   PageModule.prototype.formatDate = function (dateStr) {
     if (!dateStr) return '';
     var d = new Date(dateStr);
